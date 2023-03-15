@@ -1,0 +1,175 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "accuracy": {
+      "type": "object",
+      "description": "An object with lower and upper boundaries to determine a accuracy",
+      "properties": {
+        "repetition": {
+          "type": "object",
+          "description": "Lower an upper boundaries for repetitions",
+          "properties": {
+            "min": {
+              "type": "integer"
+            },
+            "max": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "min",
+            "max"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    "load_profile": {
+      "type": "object",
+      "description": "Constants for different load profiles",
+      "properties": {
+        "load_peak": {
+          "type": "object",
+          "description": "Steady increase in load",
+          "properties": {
+            "high": {
+              "type": "integer"
+            },
+            "very_high": {
+              "type": "integer"
+            },
+            "extremely_high": {
+              "type": "integer"
+            },
+            "slow": {
+              "type": "string",
+              "examples": ["20s", "5m", "1h"]
+            },
+            "fast": {
+              "type": "string",
+              "examples": ["20s", "5m", "1h"]
+            },
+            "very_fast": {
+              "type": "string",
+              "examples": ["20s", "5m", "1h"]
+            },
+            "cool_down_duration": {
+              "type": "string",
+              "examples": ["20s", "5m", "1h"]
+            }
+          },
+          "required": [
+            "high",
+            "very_high",
+            "extremely_high",
+            "slow",
+            "fast",
+            "very_fast",
+            "cool_down_duration"
+          ]
+        },
+        "load_increase": {
+          "type": "object",
+          "description": "Increasing increase in load",
+          "properties": {
+            "start_target": {
+              "type": "integer"
+            },
+            "end_target": {
+              "type": "integer"
+            },
+            "stage_duration": {
+              "type": "string",
+              "examples": ["20s", "5m", "1h"]
+            },
+            "linear": {
+              "type": "integer",
+              "const": 1
+            },
+            "quadratic": {
+              "type": "integer",
+              "const": 2
+            },
+            "cubic": {
+              "type": "integer",
+              "const": 3
+            }
+          },
+          "required": [
+            "start_target",
+            "end_target",
+            "stage_duration",
+            "linear",
+            "quadratic",
+            "cubic"
+          ]
+        },
+        "constant_load": {
+          "type": "object",
+          "description": "Constant load throughout the whole test",
+          "properties": {
+            "low": {
+              "type": "integer"
+            },
+            "medium": {
+              "type": "integer"
+            },
+            "high": {
+              "type": "integer"
+            },
+            "min_duration": {
+              "type": "integer",
+              "description": "Min duration in milliseconds"
+            },
+            "max_duration": {
+              "type": "integer",
+              "description": "Max duration in milliseconds"
+            }
+          },
+          "required": [
+            "low",
+            "medium",
+            "high",
+            "min_duration",
+            "max_duration"
+          ]
+        }
+      },
+      "required": [
+        "load_peak",
+        "load_increase",
+        "constant_load"
+      ],
+      "additionalProperties": false
+    },
+    "response_time": {
+      "type": "object",
+      "description": "Response times in milliseconds",
+      "properties": {
+        "satisfied": {
+          "type": "integer"
+        },
+        "tolerated": {
+          "type": "integer"
+        },
+        "frustrated": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "satisfied",
+        "tolerated",
+        "frustrated"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "accuracy",
+    "load_profile",
+    "response_time"
+  ],
+  "additionalProperties": false
+}
+

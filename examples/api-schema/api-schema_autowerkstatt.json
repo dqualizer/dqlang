@@ -1,0 +1,237 @@
+{
+  "version": 1,
+  "context": "werkstatt",
+  "api": "OpenAPI_3.0.1",
+  "field": [
+    {
+      "path": "/auftrag/new",
+      "operation": "post",
+      "input": [],
+      "body": {
+        "application/json": {
+          "type": "Auftraggeber"
+        }
+      },
+      "output": [
+        {
+          "application/json": {
+            "type": "Werkstattauftrag",
+            "expected_code": "200"
+          }
+        }
+      ],
+      "operation_id": "createAuftrag"
+    },
+    {
+      "path": "/auftrag/{auftragsnummer}",
+      "operation": "get",
+      "input": [
+        {
+          "name": "auftragsnummer",
+          "in": "path",
+          "required": true,
+          "type": "integer"
+        }
+      ],
+      "body": {},
+      "output": [
+        {
+          "*/*": {
+            "type": "Werkstattauftrag",
+            "expected_code": "200"
+          }
+        }
+      ],
+      "operation_id": "readAuftrag"
+    },
+    {
+      "path": "/auftrag/{auftragsnummer}",
+      "operation": "put",
+      "input": [
+        {
+          "name": "auftragsnummer",
+          "in": "path",
+          "required": true,
+          "type": "integer"
+        }
+      ],
+      "body": {
+        "application/json": {
+          "type": "Auftragsstatus"
+        }
+      },
+      "output": [
+        {
+          "application/json": {
+            "type": "string",
+            "expected_code": "200"
+          }
+        }
+      ],
+      "operation_id": "updateStatus"
+    }
+  ],
+  "server_info": [
+    {
+      "host": "http://127.0.0.1:9000",
+      "environment": "Generated server url"
+    }
+  ],
+  "data_schemas": {
+    "Werkstattauftrag": {
+      "type": "object",
+      "properties": [
+        {
+          "name": "auftraggeber",
+          "type": "#/components/schemas/Auftraggeber"
+        },
+        {
+          "name": "aktuellerBearbeiter",
+          "type": "integer"
+        },
+        {
+          "name": "werkstattauftragsnummer",
+          "type": "integer"
+        },
+        {
+          "name": "erstellungsdatum",
+          "type": "string"
+        },
+        {
+          "name": "zusaetzlicheMaterialien",
+          "type": "array"
+        },
+        {
+          "name": "werkstattauftragsstatus",
+          "type": "string"
+        },
+        {
+          "name": "auftragspositionen",
+          "type": "array"
+        },
+        {
+          "name": "auftraggeberHistorie",
+          "type": "array"
+        },
+        {
+          "name": "fahrzeugkennzeichen",
+          "type": "string"
+        },
+        {
+          "name": "bearbeiterverlauf",
+          "type": "array"
+        }
+      ]
+    },
+    "Werkstattservice": {
+      "type": "object",
+      "properties": [
+        {
+          "name": "werkstattserviceRef",
+          "type": "integer"
+        },
+        {
+          "name": "materialien",
+          "type": "array"
+        },
+        {
+          "name": "bezeichnung",
+          "type": "string"
+        },
+        {
+          "name": "arbeitswert",
+          "type": "#/components/schemas/Arbeitswert"
+        }
+      ]
+    },
+    "Auftragsposition": {
+      "type": "object",
+      "properties": [
+        {
+          "name": "auftragspositionsnummer",
+          "type": "integer"
+        },
+        {
+          "name": "werkstattservice",
+          "type": "#/components/schemas/Werkstattservice"
+        },
+        {
+          "name": "menge",
+          "type": "number"
+        }
+      ]
+    },
+    "Material": {
+      "type": "object",
+      "properties": [
+        {
+          "name": "materialnummer",
+          "type": "integer"
+        },
+        {
+          "name": "bezeichnung",
+          "type": "string"
+        },
+        {
+          "name": "materialpreis",
+          "type": "integer"
+        },
+        {
+          "name": "menge",
+          "type": "number"
+        },
+        {
+          "name": "status",
+          "type": "string"
+        }
+      ]
+    },
+    "Auftraggeber": {
+      "type": "object",
+      "properties": [
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "typ",
+          "type": "string"
+        },
+        {
+          "name": "id",
+          "type": "integer"
+        }
+      ]
+    },
+    "Auftragsstatus": {
+      "type": "object",
+      "properties": [
+        {
+          "name": "status",
+          "type": "string"
+        }
+      ]
+    },
+    "Arbeitswert": {
+      "type": "object",
+      "properties": [
+        {
+          "name": "geldwert",
+          "type": "number"
+        },
+        {
+          "name": "waehrung",
+          "type": "string"
+        },
+        {
+          "name": "menge",
+          "type": "number"
+        },
+        {
+          "name": "zeitwert",
+          "type": "number"
+        }
+      ]
+    }
+  }
+}

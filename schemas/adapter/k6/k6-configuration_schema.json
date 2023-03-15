@@ -1,0 +1,126 @@
+
+
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "An optional name for this configuration",
+      "examples": ["kinokasse", "sales", "autowerkstatt"]
+    },
+    "baseURL": {
+      "type": "string",
+      "description": "BaseURL for all loadtest inside this configuration",
+      "examples": ["localhost:8080", "10.10.110.1:5782", "www.meinKino.de"]
+    },
+    "loadTests": {
+      "type": "array",
+      "description": "One array with multiple loadtests",
+      "items": [
+        {
+          "type": "object",
+          "description": "One particular loadtest",
+          "properties": {
+            "repetition": {
+              "type": "integer",
+              "description": "How many times should this load test be executed"
+            },
+            "options": {
+              "type": "object",
+              "description": "Configuration for k6, for more info see here: https://k6.io/docs/using-k6/k6-options/reference/"
+            },
+            "request": {
+              "type": "object",
+              "description": "Information for the k6 'default function()' that will send requests to one endpoint",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "description": "Type of HTTP-method",
+                  "enum": ["GET", "POST", "PUT", "DELETE"]
+                },
+                "path": {
+                  "type": "string",
+                  "description": "Path of this endpoint"
+                },
+                "path_variables": {
+                  "type": "object",
+                  "description": "References to data sources that can be used for url parameters, like Ids, for this method",
+                  "patternProperties": {
+                    ".*": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "query_params": {
+                  "type": "object",
+                  "description": "References to data sources that can be used for url parameters for this method",
+                  "patternProperties": {
+                    ".*": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "params": {
+                  "type": "object",
+                  "description": "References to data sources that can be used for request parameters, like headers or cookies, for this method",
+                  "patternProperties": {
+                    ".*": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "payload": {
+                  "type": "object",
+                  "description": "References to data sources that can be used for payload bodies for this method",
+                  "patternProperties": {
+                    ".*": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "checks": {
+                  "type": "object",
+                  "description": "Values that should be checked by k6",
+                  "properties": {
+                    "status_codes": {
+                      "type": "array",
+                      "description": "Expected status codes for this endpoint",
+                      "items": {
+                        "type": "integer"
+                      }
+                    },
+                    "duration": {
+                      "type": "integer",
+                      "description": "Expected duration for this endpoint in milliseconds"
+                    }
+                  }
+                }
+              },
+              "required": [
+                "type",
+                "path",
+                "path_variables",
+                "query_params",
+                "params",
+                "payload",
+                "checks"
+              ]
+            }
+          },
+          "required": [
+            "repetition",
+            "options",
+            "request"
+          ]
+        }
+      ]
+    }
+  },
+  "required": [
+    "name",
+    "baseURL",
+    "loadTests"
+  ]
+}
+
