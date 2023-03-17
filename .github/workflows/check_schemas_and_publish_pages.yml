@@ -55,7 +55,7 @@ jobs:
       - name: Generate Schema Sites
         run: |
           mkdir -p site
-          generate-schema-doc schemas/ site/
+          generate-schema-doc schemas/ site/ --expand-buttons
       - name: Generate Index.html file
         run: |
           python scripts/generate_index.py schemas/
