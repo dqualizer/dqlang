@@ -32,6 +32,7 @@ if __name__ == '__main__':
             # if the $schema property is a link, we need to download it
             if '$schema' not in data:
                 print("[Error] Schema " + file + " does not contain a $schema key.")
+                has_errors = True
                 continue
             elif data['$schema'].startswith("http"):
                 print("Found Link to schema.")
@@ -49,8 +50,10 @@ if __name__ == '__main__':
                 jsonschema.validate(data, schema_str)
             except jsonschema.exceptions.ValidationError as e:
                 print("[Error] Schema " + file + "does not adhere to schema " + data['$schema'] + ": " + str(e))
+                has_errors = True
 
             if not data.get('title'):
                 print("[Error] Schema " + file + " does not contain a title.")
+                has_errors = True
 
     sys.exit(1 if has_errors else 0)
