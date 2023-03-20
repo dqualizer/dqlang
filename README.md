@@ -1,9 +1,4 @@
-# template
+# dqlang
+The dqlang is a collection of languages utilized by dqualizer e.g., the DST extension for domain-level RQA specification or the language for defining mappings in dqedit.
 
-This is the standard template for dqualizer projects
-
-## What's the purpose of this repository?
-
-- A standardized starting point for all dqualizer repositories
-- Adds a Github-Workflow that automatically adds all issues and pull requests to the project status kanban board
-- Adds issue templates for dependencies and epics
+A more detailed description of this component's architecture is provided in the [arc42 document](https://github.com/dqualizer/dqualizer/tree/main/docs/asciidoc). 
