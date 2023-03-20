@@ -22,15 +22,22 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: '8'
+          distribution: 'adopt'
           cache: 'maven'
 
       - name: Test with Maven
-        run: mvn -B clean test
+        run: |
+          cd generators/java/
+          mvn -B clean test
 
       - name: Prepare Release
-        run: mvn -B clean release:prepare
+        run: |
+          cd generators/java/
+          mvn -B clean release:prepare
 
       - name: Deploy to GitHub Packages
         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: mvn -B release:perform
+        run: |
+          cd generators/java/
+          mvn -B release:perform
