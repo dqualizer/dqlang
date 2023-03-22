@@ -37,7 +37,7 @@ jobs:
           python scripts/check_schemas.py schemas
 
   build_site:
-    name: Builde GitHub Pages Site
+    name: Build GitHub Pages Site
     runs-on: ubuntu-latest
     needs: check_schemas
     steps:
@@ -58,7 +58,7 @@ jobs:
           python scripts/generate_index.py schemas/
 
       - name: Upload site as artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: site
           path: site
