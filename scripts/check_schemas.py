@@ -1,6 +1,5 @@
 import json
 import jsonschema
-import jsonschema.validators
 import requests
 import sys
 import os
@@ -34,6 +33,10 @@ if __name__ == '__main__':
                 data['$schema'] = jsonschema.Draft7Validator.META_SCHEMA.get("$schema")
                 print("[Warning] Schema " +
                       file + f" does not contain a $schema property. Assuming Draft-07 ({data['$schema']}).")
+
+            if 'description' not in data:
+                print("[Warning] Schema " + file + " does not contain a description. Please add one.")
+                data['description'] = "No description provided."
 
             # if the $schema property is a link, we need to (down-)load it
             schema = data['$schema']
