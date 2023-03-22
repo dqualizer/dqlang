@@ -1,5 +1,6 @@
 import json
 import jsonschema
+import jsonschema.validators
 import requests
 import sys
 import os
@@ -29,25 +30,24 @@ if __name__ == '__main__':
 
             data = json.load(f)
 
-            # if the $schema property is a link, we need to download it
             if '$schema' not in data:
-                print("[Error] Schema " + file + " does not contain a $schema key.")
-                has_errors = True
-                continue
-            elif data['$schema'].startswith("http"):
+                data['$schema'] = jsonschema.Draft7Validator.META_SCHEMA.get("$schema")
+                print("[Warning] Schema " +
+                      file + f" does not contain a $schema property. Assuming Draft-07 ({data['$schema']}).")
+
+            # if the $schema property is a link, we need to (down-)load it
+            schema = data['$schema']
+            if schema.startswith("http"):
                 print("Found Link to schema.")
-                if data['$schema'] in schema_cache:
+                if schema in schema_cache:
                     print("Found schema existing in cache.")
-                    schema_str = schema_cache[data['$schema']]
+                    schema = schema_cache[data['$schema']]
                 else:
-                    print("Did not find schema in cache, downloading from " + data['$schema'] + "...")
-                    schema_str = json.loads(requests.get(data['$schema']).text)
-                    schema_cache[data['$schema']] = schema_str
-            else:
-                schema_str = data['$schema']
+                    print("Did not find schema in cache, downloading from " + schema + "...")
+                    schema_cache[schema] = schema = json.loads(requests.get(schema).text)
 
             try:
-                jsonschema.validate(data, schema_str)
+                jsonschema.validate(data, schema)
             except jsonschema.exceptions.ValidationError as e:
                 print("[Error] Schema " + file + "does not adhere to schema " + data['$schema'] + ": " + str(e))
                 has_errors = True
