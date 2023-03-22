@@ -15,7 +15,7 @@ This package is published via [Github Packages](https://github.com/features/pack
 
 ### Maven
 
-To setup your maven for using this package, please have a look the 
+To setup your maven for using this package, have a look the 
 "[Authenticating to GitHub Packages](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-apache-maven-registry)" guide.
 
 
@@ -34,3 +34,25 @@ Then you can use:
     <version>${dqlang.version}</version>
 </dependency>
 ```
+
+## Contribution
+
+Feel free to fork this repository and create pull requests towards the main branch.
+When working on this project, as a developer, ensure that you work on a feature branch and create a pull request to the main branch.
+
+Python packages used to check and generate the documentation are:
+- human-friendly-json-schema
+- jsonschema
+- requests (for loading json-schema files)
+
+
+And for Java code generation:
+- jsonschema2pojo (as maven plugin)
+
+
+If you plan on implementing additional generators, you can finde inspiration [on the official json-schema website](https://json-schema.org/implementations.html#code-generators).
+
+## License
+
+See [LICENSE](LICENSE).
+
