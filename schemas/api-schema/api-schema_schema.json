@@ -187,5 +187,546 @@
     "server_info",
     "field",
     "data_schemas"
-  ]
+  ],
+  "examples": [{
+    "version": 1,
+    "context": "werkstatt",
+    "api": "OpenAPI_3.0.1",
+    "field": [
+      {
+        "path": "/auftrag/new",
+        "operation": "post",
+        "input": [],
+        "body": {
+          "application/json": {
+            "type": "Auftraggeber"
+          }
+        },
+        "output": [
+          {
+            "application/json": {
+              "type": "Werkstattauftrag",
+              "expected_code": "200"
+            }
+          }
+        ],
+        "operation_id": "createAuftrag"
+      },
+      {
+        "path": "/auftrag/{auftragsnummer}",
+        "operation": "get",
+        "input": [
+          {
+            "name": "auftragsnummer",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "body": {},
+        "output": [
+          {
+            "*/*": {
+              "type": "Werkstattauftrag",
+              "expected_code": "200"
+            }
+          }
+        ],
+        "operation_id": "readAuftrag"
+      },
+      {
+        "path": "/auftrag/{auftragsnummer}",
+        "operation": "put",
+        "input": [
+          {
+            "name": "auftragsnummer",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "body": {
+          "application/json": {
+            "type": "Auftragsstatus"
+          }
+        },
+        "output": [
+          {
+            "application/json": {
+              "type": "string",
+              "expected_code": "200"
+            }
+          }
+        ],
+        "operation_id": "updateStatus"
+      }
+    ],
+    "server_info": [
+      {
+        "host": "http://127.0.0.1:9000",
+        "environment": "Generated server url"
+      }
+    ],
+    "data_schemas": {
+      "Werkstattauftrag": {
+        "type": "object",
+        "properties": [
+          {
+            "name": "auftraggeber",
+            "type": "#/components/schemas/Auftraggeber"
+          },
+          {
+            "name": "aktuellerBearbeiter",
+            "type": "integer"
+          },
+          {
+            "name": "werkstattauftragsnummer",
+            "type": "integer"
+          },
+          {
+            "name": "erstellungsdatum",
+            "type": "string"
+          },
+          {
+            "name": "zusaetzlicheMaterialien",
+            "type": "array"
+          },
+          {
+            "name": "werkstattauftragsstatus",
+            "type": "string"
+          },
+          {
+            "name": "auftragspositionen",
+            "type": "array"
+          },
+          {
+            "name": "auftraggeberHistorie",
+            "type": "array"
+          },
+          {
+            "name": "fahrzeugkennzeichen",
+            "type": "string"
+          },
+          {
+            "name": "bearbeiterverlauf",
+            "type": "array"
+          }
+        ]
+      },
+      "Werkstattservice": {
+        "type": "object",
+        "properties": [
+          {
+            "name": "werkstattserviceRef",
+            "type": "integer"
+          },
+          {
+            "name": "materialien",
+            "type": "array"
+          },
+          {
+            "name": "bezeichnung",
+            "type": "string"
+          },
+          {
+            "name": "arbeitswert",
+            "type": "#/components/schemas/Arbeitswert"
+          }
+        ]
+      },
+      "Auftragsposition": {
+        "type": "object",
+        "properties": [
+          {
+            "name": "auftragspositionsnummer",
+            "type": "integer"
+          },
+          {
+            "name": "werkstattservice",
+            "type": "#/components/schemas/Werkstattservice"
+          },
+          {
+            "name": "menge",
+            "type": "number"
+          }
+        ]
+      },
+      "Material": {
+        "type": "object",
+        "properties": [
+          {
+            "name": "materialnummer",
+            "type": "integer"
+          },
+          {
+            "name": "bezeichnung",
+            "type": "string"
+          },
+          {
+            "name": "materialpreis",
+            "type": "integer"
+          },
+          {
+            "name": "menge",
+            "type": "number"
+          },
+          {
+            "name": "status",
+            "type": "string"
+          }
+        ]
+      },
+      "Auftraggeber": {
+        "type": "object",
+        "properties": [
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "typ",
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "type": "integer"
+          }
+        ]
+      },
+      "Auftragsstatus": {
+        "type": "object",
+        "properties": [
+          {
+            "name": "status",
+            "type": "string"
+          }
+        ]
+      },
+      "Arbeitswert": {
+        "type": "object",
+        "properties": [
+          {
+            "name": "geldwert",
+            "type": "number"
+          },
+          {
+            "name": "waehrung",
+            "type": "string"
+          },
+          {
+            "name": "menge",
+            "type": "number"
+          },
+          {
+            "name": "zeitwert",
+            "type": "number"
+          }
+        ]
+      }
+    }
+  },{
+    "version": 1,
+    "context": "sales",
+    "api": "OpenAPI_3.0.1",
+    "field": [
+      {
+        "path": "/riskmanagement/vote",
+        "operation": "post",
+        "input": [
+          {
+            "name": "contract_number",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "vote_result",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "body": {},
+        "output": [
+          {
+            "*/*": {
+              "type": "string",
+              "expected_code": "200"
+            }
+          }
+        ],
+        "operation_id": "voteContract"
+      },
+      {
+        "path": "/riskmanagement/rating",
+        "operation": "get",
+        "input": [
+          {
+            "name": "contract_number",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "body": {},
+        "output": [
+          {
+            "*/*": {
+              "type": "string",
+              "expected_code": "200"
+            }
+          }
+        ],
+        "operation_id": "showCreditRating"
+      },
+      {
+        "path": "/riskmanagement/contract",
+        "operation": "get",
+        "input": [
+          {
+            "name": "number",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "body": {},
+        "output": [
+          {
+            "*/*": {
+              "type": "string",
+              "expected_code": "200"
+            }
+          }
+        ],
+        "operation_id": "showContract"
+      },
+      {
+        "path": "/riskmanagement/rate_contract",
+        "operation": "post",
+        "input": [
+          {
+            "name": "contract_number",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "creditRating",
+            "in": "query",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "body": {},
+        "output": [
+          {
+            "*/*": {
+              "type": "string",
+              "expected_code": "200"
+            }
+          }
+        ],
+        "operation_id": "enterCreditRating"
+      },
+      {
+        "path": "/sales/fillout_contract",
+        "operation": "post",
+        "input": [
+          {
+            "name": "contractNumber",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "lessee",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "car",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "price_amount",
+            "in": "query",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "price_currency",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "body": {},
+        "output": [
+          {
+            "*/*": {
+              "type": "string",
+              "expected_code": "200"
+            }
+          }
+        ],
+        "operation_id": "filloutContract"
+      },
+      {
+        "path": "/sales/sign_contract",
+        "operation": "post",
+        "input": [
+          {
+            "name": "contractNumber",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "body": {},
+        "output": [
+          {
+            "*/*": {
+              "type": "string",
+              "expected_code": "200"
+            }
+          }
+        ],
+        "operation_id": "signContract"
+      },
+      {
+        "path": "/sales/view_contract",
+        "operation": "get",
+        "input": [
+          {
+            "name": "contractNumber",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "body": {},
+        "output": [
+          {
+            "*/*": {
+              "type": "string",
+              "expected_code": "200"
+            }
+          }
+        ],
+        "operation_id": "viewContract"
+      },
+      {
+        "path": "/riskmanagement/contracts",
+        "operation": "get",
+        "input": [],
+        "body": {},
+        "output": [
+          {
+            "*/*": {
+              "type": "string",
+              "expected_code": "200"
+            }
+          }
+        ],
+        "operation_id": "listContracts"
+      }
+    ],
+    "server_info": [
+      {
+        "host": "http://127.0.0.1:8080",
+        "environment": "Generated server url"
+      }
+    ],
+    "data_schemas": {}
+  },{
+    "version": 1.0,
+    "context": "string",
+    "api": "OpenAPI_3.0.1",
+    "server_info": [
+        {   
+            "host": "localhost:8080",
+            "environment": "TEST"
+        }
+    ],
+    "field": [
+        {
+            "path": "/kinoapp/{version}/open",
+            "operation_id": "openApp",
+            "operation": "GET",
+            "input": [
+                {
+                    "name": "version",
+                    "in": "url",
+                    "required": true,
+                    "type": "long"
+                }
+            ],
+            "body": {
+                "application/json": {
+                    "type": "Nutzer"
+                },
+                "application/xml": {
+                    "type": "string"
+                }
+            },
+            "output": [
+                {
+                    "application/json": {
+                        "type": "string",
+                        "expected_code": "200"
+                    }
+                },
+                {
+                    "application/json": {
+                        "type": "string",
+                        "expected_code": "404"
+                    }
+                }
+            ]
+        },
+        {
+            "path": "/graphql",
+            "operation_id": "showAll",
+            "operation": "Query",
+            "input": [],
+            "body": {},
+            "output": [
+                {
+                    "application/json": {
+                        "type": "string",
+                        "expected_code": "200"
+                    }
+                }
+            ]
+        }
+    ],
+    "data_schemas": {
+        "Nutzer": {
+            "type": "object",
+            "properties": [
+               {
+                    "name": "id",
+                    "type": "long"
+               },
+               {
+                    "name": "fullname",
+                    "type": "string"
+               },
+               {
+                    "name": "birthDate",
+                    "type": "date"
+                },
+                {
+                   "name": "custom",
+                   "type": "#/data_schemas/Customclass"
+                }
+            ]
+        },
+        "Customclass": {}
+    }
+}]
 }

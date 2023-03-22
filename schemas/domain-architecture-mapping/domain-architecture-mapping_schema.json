@@ -1,220 +1,617 @@
 {
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "type": "object",
-    "title": "Domain Architecture Mapping",
-    "properties": {
-      "version": {
-          "type": "integer",
-          "description": "Version of this mapping representation",
-          "const": 1.0
-      },
-      "context": {
-        "type": "string",
-        "description": "The name of the Bounded Context to which this mapping belongs",
-        "minLength": 1
-      },
-      "server_info": {
-        "type": "array",
-        "description": "List of different hosts",
-        "uniqueItems": true,
-        "items": {
-          "type": "object",
-          "properties": {
-            "host": {
-              "type": "string",
-              "description": "URL of this host, also logical URLs",
-              "examples": ["localhost:8080", "10.10.110.1:5782", "https://aws.amazon.com/dqualizer-runtime-testing-tool/"]
-            },
-            "environment": {
-              "type": "string",
-              "description": "The environment this host belongs to",
-              "examples": ["PROD", "TEST", "INT", "QUAL"]
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "title": "Domain Architecture Mapping",
+  "properties": {
+    "version": {
+      "type": "integer",
+      "description": "Version of this mapping representation",
+      "const": 1.0
+    },
+    "context": {
+      "type": "string",
+      "description": "The name of the Bounded Context to which this mapping belongs",
+      "minLength": 1
+    },
+    "server_info": {
+      "type": "array",
+      "description": "List of different hosts",
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "properties": {
+          "host": {
+            "type": "string",
+            "description": "URL of this host, also logical URLs",
+            "examples": [
+              "localhost:8080",
+              "10.10.110.1:5782",
+              "https://aws.amazon.com/dqualizer-runtime-testing-tool/"
+            ]
+          },
+          "environment": {
+            "type": "string",
+            "description": "The environment this host belongs to",
+            "examples": [
+              "PROD",
+              "TEST",
+              "INT",
+              "QUAL"
+            ]
+          }
+        },
+        "required": [
+          "host",
+          "environment"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "objects": {
+      "type": "array",
+      "description": "List of technical entities that represent Work Objects and Actors from Domain Stories",
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "properties": {
+          "dq_id": {
+            "type": "string",
+            "description": "Unique ID, which references this object within dqualizer"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of this object inside the Domain Story, if this object is not part of a domain story, use the class name"
+          },
+          "operation_id": {
+            "type": "string",
+            "description": "Fully qualified name of this artifact",
+            "examples": [
+              "wps.arthousecinema.app.KinoApp"
+            ]
+          },
+          "type": {
+            "type": "string",
+            "description": "Type of this object",
+            "enum": [
+              "module",
+              "class",
+              "interface",
+              "variable"
+            ]
+          },
+          "implements": {
+            "type": "array",
+            "description": "References to interfaces or abstract classes that are implemented by this object",
+            "uniqueItems": true,
+            "items": {
+              "type": "string"
             }
           },
-          "required": [
-            "host",
-            "environment"
-          ],
-          "additionalProperties": false
-        }
-      },
-      "objects": {
-        "type": "array",
-        "description": "List of technical entities that represent Work Objects and Actors from Domain Stories",
-        "uniqueItems": true,
-        "items": {
-          "type": "object",
-          "properties": {
-            "dq_id": {
-              "type": "string",
-              "description": "Unique ID, which references this object within dqualizer"
-            },
-            "name": {
-              "type": "string",
-              "description": "Name of this object inside the Domain Story, if this object is not part of a domain story, use the class name"
-            },
-            "operation_id": {
-              "type": "string",
-              "description": "Fully qualified name of this artifact",
-              "examples": ["wps.arthousecinema.app.KinoApp"]
-            },
-            "type": {
-              "type": "string",
-              "description": "Type of this object",
-              "enum": ["module", "class", "interface", "variable"]
-            },
-            "implements": {
-              "type": "array",
-              "description": "References to interfaces or abstract classes that are implemented by this object",
+          "objects": {
+            "type": "array",
+            "description": "References to other objects that are inside this class",
+            "uniqueItems": true,
+            "items": {
+              "type": "string"
+            }
+          },
+          "activities": {
+            "type": "array",
+            "description": "List of objects that represent Activities from Domain Stories",
+            "items": {
+              "type": "object",
               "uniqueItems": true,
-              "items": {
-                  "type": "string"
-              }
-            },
-            "objects": {
-              "type": "array",
-              "description": "References to other objects that are inside this class",
-              "uniqueItems": true,
-              "items": {
-                  "type": "string"
-              }
-            },
-            "activities": {
-              "type": "array",
-              "description": "List of objects that represent Activities from Domain Stories",
-              "items": {
-                "type": "object",
-                "uniqueItems": true,
-                "properties": {
-                  "dq_id": {
-                    "type": "string",
-                    "description": "Unique ID, which references this object within dqualizer"
-                  },
-                  "name": {
-                    "type": "string",
-                    "description": "Name of this object inside the Domain Story"
-                  },
-                  "operation_id": {
-                    "type": "string",
-                    "description": "Name of this object inside the source code"
-                  },
-                  "type": {
-                    "type": "string",
-                    "description": "Type of this object",
-                    "enum": ["method", "class"]
-                  },
-                  "parameter": {
-                    "type": "array",
-                    "uniqueItems": true,
-                    "description": "Parameter for this object",
-                    "items": {
-                        "type": "string"
-                    }
-                  },
-                  "endpoint": {
-                    "type": "object",
-                    "description": "Information about the API endpoint of this object",
-                    "properties": {
-                      "field": {
-                        "type": "string",
-                        "description": "Location of this endpoint",
-                        "examples": ["/kinoapp/{version}/open", "/graphql"]
-                      },
-                      "operation": {
-                        "type": "string",
-                        "description": "Operation of this object",
-                        "examples": ["GET", "POST", "QUERY", "MUTATION"]
-                      },
-                      "path_variables": {
-                        "type": "object",
-                        "description": "References to data sources that can be used for url parameters, like Ids, for this method",
-                        "patternProperties": {
-                          ".*": {
-                            "type": "string"
-                          }
-                        }
-                      },
-                      "url_parameter": {
-                        "type": "object",
-                        "description": "References to data sources that can be used for url parameters for this method",
-                        "patternProperties": {
-                          ".*": {
-                            "type": "string"
-                          }
-                        }
-                      },
-                      "request_parameter": {
-                        "type": "object",
-                        "description": "References to data sources that can be used for request parameters, like headers or cookies, for this method",
-                        "patternProperties": {
-                          ".*": {
-                            "type": "string"
-                          }
-                        }
-                      },
-                      "payload": {
-                        "type": "object",
-                        "description": "References to data sources that can be used for payload bodies for this method",
-                        "patternProperties": {
-                          ".*": {
-                            "type": "string"
-                          }
-                        }
-                      },
-                      "responses": {
-                        "type": "array",
-                        "description": "Anything, that this endpoints returns",
-                        "uniqueItems": true,
-                        "items": {
-                          "type": "object",
-                          "properties": {
-                            "expected_code": {
-                              "type": "integer"
-                            },
-                            "type": {
-                              "type": "string"
-                            }
-                          }
+              "properties": {
+                "dq_id": {
+                  "type": "string",
+                  "description": "Unique ID, which references this object within dqualizer"
+                },
+                "name": {
+                  "type": "string",
+                  "description": "Name of this object inside the Domain Story"
+                },
+                "operation_id": {
+                  "type": "string",
+                  "description": "Name of this object inside the source code"
+                },
+                "type": {
+                  "type": "string",
+                  "description": "Type of this object",
+                  "enum": [
+                    "method",
+                    "class"
+                  ]
+                },
+                "parameter": {
+                  "type": "array",
+                  "uniqueItems": true,
+                  "description": "Parameter for this object",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "endpoint": {
+                  "type": "object",
+                  "description": "Information about the API endpoint of this object",
+                  "properties": {
+                    "field": {
+                      "type": "string",
+                      "description": "Location of this endpoint",
+                      "examples": [
+                        "/kinoapp/{version}/open",
+                        "/graphql"
+                      ]
+                    },
+                    "operation": {
+                      "type": "string",
+                      "description": "Operation of this object",
+                      "examples": [
+                        "GET",
+                        "POST",
+                        "QUERY",
+                        "MUTATION"
+                      ]
+                    },
+                    "path_variables": {
+                      "type": "object",
+                      "description": "References to data sources that can be used for url parameters, like Ids, for this method",
+                      "patternProperties": {
+                        ".*": {
+                          "type": "string"
                         }
                       }
                     },
-                    "required": [
-                      "field",
-                      "operation",
-                      "path_variables",
-                      "url_parameter",
-                      "request_parameter",
-                      "payload",
-                      "responses"
-                    ]
-                  }
+                    "url_parameter": {
+                      "type": "object",
+                      "description": "References to data sources that can be used for url parameters for this method",
+                      "patternProperties": {
+                        ".*": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "request_parameter": {
+                      "type": "object",
+                      "description": "References to data sources that can be used for request parameters, like headers or cookies, for this method",
+                      "patternProperties": {
+                        ".*": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "payload": {
+                      "type": "object",
+                      "description": "References to data sources that can be used for payload bodies for this method",
+                      "patternProperties": {
+                        ".*": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "responses": {
+                      "type": "array",
+                      "description": "Anything, that this endpoints returns",
+                      "uniqueItems": true,
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "expected_code": {
+                            "type": "integer"
+                          },
+                          "type": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "field",
+                    "operation",
+                    "path_variables",
+                    "url_parameter",
+                    "request_parameter",
+                    "payload",
+                    "responses"
+                  ]
+                }
+              },
+              "required": [
+                "dq_id",
+                "name",
+                "operation_id",
+                "type",
+                "parameter"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "dq_id",
+          "name",
+          "operation_id",
+          "type"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "version",
+    "context",
+    "server_info",
+    "objects"
+  ],
+  "additionalProperties": false,
+  "examples": [
+    {
+      "version": 1.0,
+      "context": "werkstattauftrag",
+      "server_info": [
+        {
+          "host": "http://127.0.0.1:9000",
+          "environment": "TEST"
+        }
+      ],
+      "objects": [
+        {
+          "dq_id": "id1",
+          "name": "AuftragsPortal",
+          "operation_id": "ddd.autohaus.tacticald.design.app.werkstattauftrag.api.WerkstattauftragController",
+          "type": "class",
+          "implements": [],
+          "objects": [
+            "id2"
+          ],
+          "activities": [
+            {
+              "dq_id": "id3",
+              "name": "Auftrag lesen",
+              "operation_id": "readAuftrag",
+              "type": "method",
+              "parameter": [],
+              "endpoint": {
+                "field": "/auftrag/{auftragsnummer}",
+                "operation": "GET",
+                "path_variables": {
+                  "auftragsnummer": "auftrag/auftragsnummern/angelegt.json"
                 },
-                "required": [
-                  "dq_id",
-                  "name",
-                  "operation_id",
-                  "type",
-                  "parameter"
-                ],
-                "additionalProperties": false
+                "url_parameter": {},
+                "request_parameter": {},
+                "payload": {},
+                "responses": [
+                  {
+                    "expected_code": 200,
+                    "type": "id8"
+                  }
+                ]
+              }
+            },
+            {
+              "dq_id": "id4",
+              "name": "Auftrag erstellen",
+              "operation_id": "createAuftrag",
+              "type": "method",
+              "parameter": [
+                "id6"
+              ],
+              "endpoint": {
+                "field": "/auftrag/new",
+                "operation": "POST",
+                "path_variables": {},
+                "url_parameter": {},
+                "request_parameter": {
+                  "headers": "auftrag/allgemein/headers.json",
+                  "authorization": "auftrag/allgemein/authorization.json"
+                },
+                "payload": {
+                  "auftraggeber_2022": "auftrag/auftraggeber/2022/auftraggeber.json",
+                  "auftraggeber_2023": "auftrag/auftraggeber/2023/auftraggeber.json"
+                },
+                "responses": [
+                  {
+                    "expected_code": 201,
+                    "type": "id8"
+                  }
+                ]
+              }
+            },
+            {
+              "dq_id": "id5",
+              "name": "Status verändern",
+              "operation_id": "updateStatus",
+              "type": "method",
+              "parameter": [
+                "id7"
+              ],
+              "endpoint": {
+                "field": "/auftrag/{auftragsnummer}",
+                "operation": "PUT",
+                "path_variables": {
+                  "auftragsnummer": "auftrag/auftragsnummern/angelegt.json"
+                },
+                "url_parameter": {},
+                "request_parameter": {
+                  "headers": "auftrag/allgemein/headers.json"
+                },
+                "payload": {
+                  "auftragsstatus": "auftrag/auftragsstatus/auftragsstatus.json"
+                },
+                "responses": [
+                  {
+                    "expected_code": 200,
+                    "type": "string"
+                  }
+                ]
               }
             }
-          },
-          "required": [
-            "dq_id",
-            "name",
-            "operation_id",
-            "type"
-          ],
-          "additionalProperties": false
+          ]
+        },
+        {
+          "dq_id": "id2",
+          "name": "WerkstattauftragService",
+          "operation_id": "ddd.autohaus.tacticald.design.app.werkstattauftrag.api.WerkstattauftragService",
+          "type": "class"
+        },
+        {
+          "dq_id": "id6",
+          "name": "Auftraggeber",
+          "operation_id": "ddd.autohaus.tacticald.design.app.werkstattauftrag.model.auftraggeber.Auftraggeber",
+          "type": "class"
+        },
+        {
+          "dq_id": "id7",
+          "name": "Auftragsstatus",
+          "operation_id": "ddd.autohaus.tacticald.design.app.werkstattauftrag.model.auftragsstatus.Auftragsstatus",
+          "type": "class"
+        },
+        {
+          "dq_id": "id8",
+          "name": "Auftrag",
+          "operation_id": "ddd.autohaus.tacticald.design.app.werkstattauftrag.model.Werkstattauftrag",
+          "type": "class"
         }
-      }
+      ]
     },
-    "required": [
-      "version",
-      "context",
-      "server_info",
-      "objects"
-    ],
-    "additionalProperties": false
-  }
+    {
+      "version": 1.0,
+      "context": "kinokasse",
+      "server_info": [
+        {
+          "host": "localhost:8080",
+          "environment": "TEST"
+        }
+      ],
+      "objects": [
+        {
+          "dq_id": "id1",
+          "name": "Kino App",
+          "operation_id": "wps.arthousecinema.app.KinoApp",
+          "type": "class",
+          "implements": [
+            "id4"
+          ],
+          "objects": [
+            "id2",
+            "id3"
+          ],
+          "activities": [
+            {
+              "dq_id": "id10",
+              "name": "öffnen",
+              "operation_id": "openApp",
+              "type": "method",
+              "parameter": [
+                "id3",
+                "id1"
+              ],
+              "endpoint": {
+                "field": "/kinoapp/{version}/open",
+                "operation": "GET",
+                "path_variables": {
+                  "version": "dq/kinoapp/versions.csv"
+                },
+                "url_parameter": {},
+                "request_parameter": {},
+                "payload": {
+                  "valid_nutzer": "dq/kinoapp/open/valid_nutzer.csv",
+                  "invalid_nutzer": "dq/kinoapp/open/invalid_nutzer.csv"
+                },
+                "responses": [
+                  {
+                    "expected_code": 200,
+                    "type": "id15"
+                  },
+                  {
+                    "expected_code": 404,
+                    "type": "null"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "dq_id": "id2",
+          "name": "Nutzer",
+          "operation_id": "app.Nutzer",
+          "type": "class",
+          "implements": [],
+          "objects": [],
+          "activities": []
+        },
+        {
+          "dq_id": "id3",
+          "name": "version",
+          "operation_id": "version",
+          "type": "variable"
+        },
+        {
+          "dq_id": "id4",
+          "name": "Mobile App",
+          "operation_id": "app.MobileApp",
+          "type": "interface"
+        }
+      ]
+    },
+    {
+      "version": 1.0,
+      "context": "sales",
+      "server_info": [
+        {
+          "host": "http://127.0.0.1:9000",
+          "environment": "TEST"
+        }
+      ],
+      "objects": [
+        {
+          "dq_id": "id1",
+          "name": "salesperson",
+          "operation_id": "io.leasingninja.sales.ui.SalesController",
+          "type": "class",
+          "implements": [],
+          "objects": [
+            "id6",
+            "id7",
+            "id8"
+          ],
+          "activities": [
+            {
+              "dq_id": "id2",
+              "name": "fills out",
+              "operation_id": "filloutContract",
+              "type": "method",
+              "parameter": [],
+              "endpoint": {
+                "field": "/sales/fillout_contract",
+                "operation": "POST",
+                "path_variables": {},
+                "url_parameter": {
+                  "fillout_contract_eu": "sales/url/fillout_contract_params_eu.json",
+                  "fillout_contract_us": "sales/url/fillout_contract_params_us.json"
+                },
+                "request_parameter": {
+                  "headers": "sales/allgemein/headers.json"
+                },
+                "payload": {},
+                "responses": [
+                  {
+                    "expected_code": 200,
+                    "type": "string"
+                  }
+                ]
+              }
+            },
+            {
+              "dq_id": "id3",
+              "name": "shows and offer",
+              "operation_id": "viewContract",
+              "type": "method",
+              "parameter": [],
+              "endpoint": {
+                "field": "/sales/view_contract",
+                "operation": "GET",
+                "path_variables": {},
+                "url_parameter": {
+                  "view_contract": "sales/url/view_contract_params.json"
+                },
+                "request_parameter": {},
+                "payload": {},
+                "responses": [
+                  {
+                    "expected_code": 200,
+                    "type": "string"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "dq_id": "id4",
+          "name": "customer",
+          "operation_id": "io.leasingninja.sales.ui.SalesController",
+          "type": "class",
+          "implements": [],
+          "objects": [
+            "id6",
+            "id7",
+            "id8"
+          ],
+          "activities": [
+            {
+              "dq_id": "id5",
+              "name": "signs",
+              "operation_id": "signContract",
+              "type": "method",
+              "parameter": [],
+              "endpoint": {
+                "field": "/sales/sign_contract",
+                "operation": "POST",
+                "path_variables": {},
+                "url_parameter": {
+                  "sign_contract": "sales/url/sign_contract_params.json"
+                },
+                "request_parameter": {
+                  "headers": "sales/allgemein/headers.json"
+                },
+                "payload": {},
+                "responses": [
+                  {
+                    "expected_code": 200,
+                    "type": "string"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "dq_id": "id6",
+          "name": "FilloutContract",
+          "operation_id": "io.leasingninja.sales.application.FilloutContract",
+          "type": "class",
+          "implements": [],
+          "objects": [],
+          "activities": []
+        },
+        {
+          "dq_id": "id7",
+          "name": "ViewContract",
+          "operation_id": "io.leasingninja.sales.application.ViewContract",
+          "type": "class",
+          "implements": [],
+          "objects": [],
+          "activities": []
+        },
+        {
+          "dq_id": "id8",
+          "name": "SignContract",
+          "operation_id": "io.leasingninja.sales.application.SignContract",
+          "type": "class",
+          "implements": [],
+          "objects": [],
+          "activities": []
+        },
+        {
+          "dq_id": "id9",
+          "name": "Contract",
+          "operation_id": "io.leasingninja.sales.domain.Contract",
+          "type": "class",
+          "implements": [],
+          "objects": [],
+          "activities": [
+            {
+              "dq_id": "id10",
+              "name": "calculates",
+              "operation_id": "calculateInstallmentFor",
+              "type": "method",
+              "parameter": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
