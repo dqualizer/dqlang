@@ -7,10 +7,11 @@ The dqlang is a collection of languages utilized by [dqualizer](https://dqualize
 
 A more detailed description of this component's architecture is provided in the [arc42 document](https://github.com/dqualizer/dqualizer/tree/main/docs/asciidoc). 
 
+Feel free to have a look at the [documentation](https://dqualizer.github.io/dqlang/) which includes examples.
 
 ## Usage
 
-This package is pubished via [Github Packages](https://github.com/features/packages).
+This package is published via [Github Packages](https://github.com/features/packages).
 
 ### Maven
 
@@ -20,8 +21,8 @@ To setup your maven for using this package, please have a look the
 
 In short:
 1. Copy the template from the guide to your `~/.m2/settings.xml` or `%userprofile%\.m2\settings.xml`.
-1. Replace the repository url with `https://maven.pkg.github.com/dqualizer/dqlang`.
-1. Create a [personal access token (PAT)](https://github.com/settings/tokens) with `read:packages` permissions.
+1. Replace the repository url with `https://maven.pkg.github.com/dqualizer/dqlang`. **Do not use uppercase letters here!**
+1. Create a [(classic) personal access token (PAT) ](https://github.com/settings/tokens) with `read:packages` permissions.
 1. Enter your GitHub user name and PAT (as password) for the 'github' server.
 
 Then you can use:

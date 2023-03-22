@@ -11,6 +11,9 @@ if __name__ == '__main__':
     else:
         files = glob("*.json")
 
+    print("Searching for JSON files in: " + str(files) + "\n")
+    print("Found " + str(len(files)) + " files.")
+
     schemata = []
 
     for file in files:
@@ -23,6 +26,7 @@ if __name__ == '__main__':
                 data["title"] = uri
 
             schemata.append({'title': data["title"], 'uri': uri})
+            print("Found schema: " + data["title"]+ "\nwhich schould generate to:\t" + uri)
 
     templateLoader = jinja2.FileSystemLoader(searchpath="site")
     environment = jinja2.Environment(loader=templateLoader, autoescape=True)

@@ -120,6 +120,170 @@
     "name",
     "baseURL",
     "loadTests"
+  ],
+  "examples": [
+    {
+      "name": "kinokasse",
+      "baseURL": "http://127.0.0.1:8080/books",
+      "loadTests": [
+        {
+          "repetition": 5,
+          "options": {
+            "scenarios": {
+              "scenario": {
+                "executor": "constant-vus",
+                "vus": 10,
+                "duration": 30000
+              }
+            }
+          },
+          "request": {
+            "type": "GET",
+            "path": "/kinoapp/${version}/open",
+            "path_variables": {
+              "version": "kinokasse/version.json"
+            },
+            "query_params": {},
+            "params": {
+              "headers": "kinokasse/headers.json"
+            },
+            "payload": {
+              "valid_nutzer": "kinokasse/valid_nutzer.json"
+            },
+            "checks": {
+              "status_codes": [200, 404],
+              "duration": 200
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "werkstattauftrag",
+      "baseURL": "http://127.0.0.1:9000",
+      "loadTests": [
+          {
+              "repetition": 8,
+              "options": {
+                  "scenarios": {
+                      "scenario": {
+                          "executor": "ramping-vus",
+                          "startVUs": 0,
+                          "stages": [
+                              {
+                                  "duration": "5m",
+                                  "target": 0
+                              },
+                              {
+                                  "duration": "2m",
+                                  "target": 40
+                              }
+                          ]
+                      }
+                  }
+              },
+              "request": {
+                  "type": "GET",
+                  "path": "/auftrag/${auftragsnummer}",
+                  "query_params": {},
+                  "params": {},
+                  "payload": {},
+                  "checks": {
+                      "status_codes": [
+                          200
+                      ],
+                      "duration": 1200
+                  },
+                  "path_variables": {
+                      "auftragsnummer": "auftrag/auftragsnummern/angelegt.json"
+                  }
+              }
+          },
+          {
+              "repetition": 7,
+              "options": {
+                  "scenarios": {
+                      "scenario": {
+                          "executor": "ramping-vus",
+                          "startVUs": 0,
+                          "stages": [
+                              {
+                                  "duration": "1m",
+                                  "target": 10
+                              },
+                              {
+                                  "duration": "1m",
+                                  "target": 40
+                              },
+                              {
+                                  "duration": "1m",
+                                  "target": 90
+                              },
+                              {
+                                  "duration": "1m",
+                                  "target": 160
+                              },
+                              {
+                                  "duration": "1m",
+                                  "target": 0
+                              }
+                          ]
+                      }
+                  }
+              },
+              "request": {
+                  "type": "POST",
+                  "path": "/auftrag/new",
+                  "query_params": {},
+                  "params": {
+                      "headers": "auftrag/allgemein/headers.json"
+                  },
+                  "payload": {
+                      "auftraggeber_2022": "auftrag/auftraggeber/2022/auftraggeber.json"
+                  },
+                  "checks": {
+                      "status_codes": [
+                          201
+                      ],
+                      "duration": 1200
+                  },
+                  "path_variables": {}
+              }
+          },
+          {
+              "repetition": 1,
+              "options": {
+                  "scenarios": {
+                      "scenario": {
+                          "executor": "constant-vus",
+                          "vus": 20,
+                          "duration": 360000
+                      }
+                  }
+              },
+              "request": {
+                  "type": "PUT",
+                  "path": "/auftrag/${auftragsnummer}",
+                  "query_params": {},
+                  "params": {
+                      "headers": "auftrag/allgemein/headers.json"
+                  },
+                  "payload": {
+                      "auftragstatus": "auftrag/auftragsstatus/auftragsstatus.json"
+                  },
+                  "checks": {
+                      "status_codes": [
+                          200
+                      ],
+                      "duration": 2400
+                  },
+                  "path_variables": {
+                      "auftragsnummer": "auftrag/auftragsnummern/angelegt.json"
+                  }
+              }
+          }
+      ]
+  }
   ]
 }
 
