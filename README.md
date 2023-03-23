@@ -1,5 +1,5 @@
 [![](https://img.shields.io/badge/-Documentation-blue)](https://dqualizer.github.io/dqlang/)
-[![](https://img.shields.io/github/v/release/dqualizer/dqlang?label=version&logo=Apache)](https://github.com/dqualizer/dqlang/packages/1816902)
+[![](https://img.shields.io/github/v/tag/dqualizer/dqlang?label=version&logo=Apache)](https://github.com/dqualizer/dqlang/packages/1816902)
 
 # dqlang
 
