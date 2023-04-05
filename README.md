@@ -35,6 +35,36 @@ Then you can use:
 </dependency>
 ```
 
+### Gradle
+
+The gradle setup is very similar to the maven setup:
+
+1. Create a `init.gradle` file in `~/.gradle/` or `%userprofile%\.gradle\`.
+1. Create a [(classic) personal access token (PAT) ](https://github.com/settings/tokens) with `read:packages` permissions.
+1. Paste the following code into the `init.gradle` file:
+    ```groovy
+    allprojects {
+        repositories {
+            maven {
+                url = uri("https://maven.pkg.github.com/dqualizer/dqlang")
+                credentials {
+                    username = "<your github username>"
+                    password = "<your github personal access token with read:packages>"
+                }
+            }	
+        }
+    }
+    ```
+1. Replace the placeholders with your GitHub user name and PAT.
+
+Then you can use dqlang in your gradle build file:
+
+```groovy
+dependencies {
+    implementation("dqualizer:dqlang:${dqlangVersion}")
+}
+```
+
 ## Contribution
 
 Feel free to fork this repository and create pull requests towards the main branch.
