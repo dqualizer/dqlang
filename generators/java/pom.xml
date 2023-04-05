@@ -88,14 +88,9 @@
                     <removeOldOutput>true</removeOldOutput>
                     <useTitleAsClassname>true</useTitleAsClassname>
 
-                    <serializable>false</serializable>
-                    <useCommonsLang3>true</useCommonsLang3>
-
-                    <includeGetters>true</includeGetters>
                     <useOptionalForGetters>true</useOptionalForGetters>
                     <usePrimitives>true</usePrimitives>
 
-                    <includeAdditionalProperties>true</includeAdditionalProperties>
                     <includeSetters>false</includeSetters>
                     <includeGetters>false</includeGetters>
 
