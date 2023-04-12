@@ -1,0 +1,24 @@
+{
+  "type": "object",
+  "description": "Workload test definition",
+  "title": "LoadTest",
+  "properties": {
+    "repetition": {
+      "type": "integer",
+      "description": "How many times should this load test be executed"
+    },
+    "options": {
+      "type": "object",
+      "description": "Configuration for k6, for more info see here: https://k6.io/docs/using-k6/k6-options/reference/"
+    },
+    "request": {
+      "type": "object",
+      "$ref": "request.json"
+    }
+  },
+  "required": [
+    "repetition",
+    "options",
+    "request"
+  ]
+}
