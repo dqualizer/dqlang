@@ -4,7 +4,7 @@
 
     <groupId>dqualizer</groupId>
     <artifactId>dqlang</artifactId>
-    <version>0.2.1-SNAPSHOT</version>
+    <version>0.2.1</version>
 
     <name>dqlang</name>
 
@@ -29,7 +29,7 @@
 
     <scm>
         <developerConnection>scm:git:https://github.com/dqualizer/dqlang</developerConnection>
-        <tag>HEAD</tag>
+        <tag>v0.2.1</tag>
     </scm>
 
     <dependencies>
