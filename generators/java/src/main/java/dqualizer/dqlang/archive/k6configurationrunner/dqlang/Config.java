@@ -1,6 +1,5 @@
 package dqualizer.dqlang.archive.k6configurationrunner.dqlang;
 
-import dqualizer.dqlang.archive.k6adapter.dqlang.loadtest.LoadTest;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
