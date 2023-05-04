@@ -12,8 +12,10 @@ public class LoadIncrease {
     private int startTarget;
     @JsonProperty("end_target")
     private int endTarget;
-    @JsonProperty("stage_duration")
-    private String stageDuration;
+    @JsonProperty("stages")
+    private int stages;
+    @JsonProperty("test_duration")
+    private String testDuration;
     private int linear;
     private int quadratic;
     private int cubic;

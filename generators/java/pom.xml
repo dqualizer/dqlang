@@ -4,7 +4,7 @@
 
     <groupId>dqualizer</groupId>
     <artifactId>dqlang</artifactId>
-    <version>0.2.2-SNAPSHOT</version>
+    <version>0.3.0-SNAPSHOT</version>
 
     <name>dqlang</name>
 
