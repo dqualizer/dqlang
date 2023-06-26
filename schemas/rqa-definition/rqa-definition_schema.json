@@ -3,6 +3,16 @@
     "type": "object",
     "title": "Runtime Quality Analysis Definition",
     "properties": {
+      "id": {
+        "type": "integer",
+        "description": "A unique identifier for the rqa definition",
+        "examples": [1,2,3,4,5]
+      },
+      "name": {
+        "type": "string",
+        "description": "Every Rqa-Definition has a unique name",
+        "examples": ["Vergleich von hoher Last zu Monitoring-Daten der letzten zwei Wochen"]
+      },
       "version": {
           "type": "integer",
           "description": "Version of this modeling representation",
@@ -44,6 +54,11 @@
           "items": {
             "type": "object",
             "properties": {
+              "name": {
+                "type": "string",
+                "description": "An identifier for a Loadtest.",
+                "examples": ["Constant Load on Happy Path of the Domain-Story \"Auftrag anlegen\""]
+              },
               "artifact": {
                 "type": "object",
                 "properties": {
