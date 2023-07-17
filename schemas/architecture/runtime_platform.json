@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Runtime Platform",
+  "type": "object",
+  "properties": {
+    "platform_id": {
+      "type": "string",
+      "description": "Identifier of a platform instance on which a service is running on. This indicator is needed when multiple instances of the same platform are used."
+    },
+    "platform_name": {
+      "type": "string",
+      "examples": [
+        "Docker",
+        "Kubernetes",
+        "OpenShift",
+        "Cloud Foundry",
+        "AWS",
+        "Azure",
+        "GCP",
+        "IBM Cloud",
+        "VMWare",
+        "Bare Metal",
+        "Other"
+      ]
+    },
+    "platform_uri": {
+      "type": "string",
+      "examples": [
+        "https://api.cloudfoundry.com"
+      ]
+    }
+  },
+  "required": [
+    "Platform ID",
+    "Platform Name",
+    "Platform URI"
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Service",
+  "description": "A generic description of a service.",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "URI": {
+      "type": "string",
+      "description": "Route to access the service. e.g. via ssh"
+    },
+    "service_framework": {
+      "type": "string",
+      "description": "Framework used to run the service.",
+      "examples": [
+        "Spring",
+        "ASP.NET Core",
+        "Flask",
+        "NodeJS"
+      ]
+    },
+    "instrumentation_framework": {
+      "$ref": "../instrumentation/instrumentation_framework.json#"
+    },
+    "instruments": {
+      "type": "array",
+      "items": {
+        "$ref": "../instrumentation/instrument.json#"
+      }
+    },
+    "runtime_platform_id": {
+      "type": "string",
+      "description": "The id of the runtime platform that the service is running on. May be empty if its run locally."
+    }
+  },
+  "required": [
+    "name",
+    "URI",
+    "service_framework",
+    "instrumentation_framework",
+    "instruments"
+  ]
+}

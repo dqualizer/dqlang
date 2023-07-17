@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "metric_labels": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "metric_name": {
+      "type": "string"
+    },
+    "instrument_name": {
+      "type": "string"
+    },
+    "instrument_type": {
+      "type": "string",
+      "enum": [
+        "gauge",
+        "counter",
+        "histogram"
+      ]
+    },
+    "location": {
+      "$ref": "instrument_location.json"
+    }
+  }
+}
