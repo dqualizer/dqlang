@@ -30,10 +30,11 @@ eclipse {
 }
 
 release {
-    //no config needed, see https://github.com/researchgate/gradle-release for options
+    //see https://github.com/researchgate/gradle-release for options
+    git { requireBranch.set("") }
 }
 
-publishing{
+publishing {
     repositories {
         maven {
             name = "GitHubPackages"

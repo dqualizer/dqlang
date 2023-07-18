@@ -50,5 +50,4 @@ jobs:
         if: github.ref != 'refs/heads/main'
         run: |
           echo "Performing snapshot release of version ${{ env.ARTIFACT_VERSION }}-${{ github.ref_name }}-SNAPSHOT"
-          ./gradlew clean release:update-versions -DdevelopmentVersion=${{ env.ARTIFACT_VERSION }}-${{ github.ref_name }}-SNAPSHOT
-          ./gradlew publish
+          ./gradlew --no-daemon -q clean release publish -Prelease.releaseVersion=${{ env.ARTIFACT_VERSION }}-${{ github.ref_name }}-SNAPSHOT
