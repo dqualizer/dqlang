@@ -10,7 +10,8 @@
             "examples": [
                 "OpenTelemetry",
                 "OpenCensus",
-                "inspectIT"
+                "inspectIT",
+                "AppDynamics"
             ]
         },
         "existing" :{         

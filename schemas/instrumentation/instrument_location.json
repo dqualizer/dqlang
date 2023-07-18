@@ -12,7 +12,8 @@
     "location": {
       "type": "string",
       "description": "Method or class Name.",
-      "examples": ["com.example.Main","com.example.Main#main", "DataClass::getData"]
+      "examples": ["com.example.Main", "com.example.Main#main", "DataClass::getData"]
     }
-  }
+  },
+  "additionalProperties": true
 }

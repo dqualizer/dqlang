@@ -26,13 +26,14 @@
     "platform_uri": {
       "type": "string",
       "examples": [
-        "https://api.cloudfoundry.com"
+        "https://api.cloudfoundry.com",
+        "npipe://./pipe/docker_engine"
       ]
     }
   },
   "required": [
-    "Platform ID",
-    "Platform Name",
-    "Platform URI"
+    "platform_name",
+    "platform_uri",
+    "platform_id"
   ]
 }
