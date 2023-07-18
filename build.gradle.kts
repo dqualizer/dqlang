@@ -87,8 +87,3 @@ tasks.withType<KotlinCompile> {
 tasks.withType<Test> {
     useJUnitPlatform()
 }
-
-// Disable generation of "-plain" jar by the Spring Boot plugin
-tasks.getByName<Jar>("jar") {
-    enabled = false
-}
