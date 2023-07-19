@@ -3,7 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 val springBootVersion = "3.1.1"
 val lombokVersion = "1.18.28"
 
-group = "dqualizer"
+group = "io.github.dqualizer"
 
 java.sourceCompatibility = JavaVersion.VERSION_17
 java.targetCompatibility = JavaVersion.VERSION_17
