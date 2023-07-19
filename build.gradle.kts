@@ -12,6 +12,7 @@ plugins {
     kotlin("jvm") version "1.9.0"
     kotlin("plugin.spring") version "1.9.0"
     kotlin("plugin.lombok") version "1.9.0"
+    kotlin("plugin.serialization") version "1.9.0"
 
     id("io.freefair.lombok") version "8.1.0"
     id("net.researchgate.release") version "3.0.2"
@@ -75,7 +76,8 @@ dependencies {
     implementation("org.springframework.boot:spring-boot:$springBootVersion")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.15.2")
     implementation("javax.validation:validation-api:2.0.1.Final")
-
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.2")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json-jvm:1.5.1")
 
     annotationProcessor("org.projectlombok:lombok:$lombokVersion")
 }
