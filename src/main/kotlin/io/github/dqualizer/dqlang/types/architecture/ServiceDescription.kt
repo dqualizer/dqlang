@@ -5,10 +5,6 @@ import io.github.dqualizer.dqlang.types.instrumentation.Instrument
 import io.github.dqualizer.dqlang.types.instrumentation.InstrumentationFrameworkDescription
 import lombok.AllArgsConstructor
 import lombok.Builder
-import org.springframework.lang.Nullable
-import java.beans.ConstructorProperties
-import javax.annotation.processing.Generated
-import javax.validation.Valid
 import javax.validation.constraints.NotNull
 
 /**
@@ -36,10 +32,10 @@ data class ServiceDescription(
 
     @JsonProperty("instrumentation_framework")
     @JsonPropertyDescription("A generic description of an instrumentation framework. ")
-    val instrumentationFramework:  InstrumentationFrameworkDescription,
+    val instrumentationFramework: InstrumentationFrameworkDescription,
 
 
-    val instruments:  @NotNull MutableList<Instrument>? = ArrayList(),
+    val instruments: @NotNull MutableList<Instrument>? = ArrayList(),
 
     @JsonProperty("runtime_platform_id")
     @JsonPropertyDescription("The id of the runtime platform that the service is running on. May be empty if its run locally.")

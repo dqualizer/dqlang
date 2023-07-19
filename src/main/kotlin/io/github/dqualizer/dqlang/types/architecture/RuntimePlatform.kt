@@ -1,8 +1,6 @@
 package io.github.dqualizer.dqlang.types.architecture
 
 import com.fasterxml.jackson.annotation.*
-import kotlinx.serialization.*
-import kotlinx.serialization.json.*
 import lombok.AllArgsConstructor
 
 /**

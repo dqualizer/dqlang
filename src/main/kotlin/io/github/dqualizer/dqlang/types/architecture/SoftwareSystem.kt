@@ -2,9 +2,6 @@ package io.github.dqualizer.dqlang.types.architecture
 
 import com.fasterxml.jackson.annotation.*
 import lombok.AllArgsConstructor
-import javax.annotation.processing.Generated
-import javax.validation.Valid
-import javax.validation.constraints.NotNull
 
 /**
  * SoftwareSystem
@@ -27,12 +24,12 @@ data class SoftwareSystem(
      */
     @JsonProperty("services")
     @JsonPropertyDescription("The services that the software system provides.")
-    val services:  List<ServiceDescription> = ArrayList(),
+    val services: List<ServiceDescription> = ArrayList(),
 
     /**
      * The runtime platforms that the valious parts of the software system run on. An empty array should indicate that the software system runs on a local runtime platform.
      */
     @JsonProperty("runtime_platforms")
-    @JsonPropertyDescription("The runtime platforms that the valious parts of the software system run on. An empty array should indicate that the software system runs on a local runtime platform.") 
-    val runtimePlatforms:  List<RuntimePlatform> = ArrayList()
+    @JsonPropertyDescription("The runtime platforms that the valious parts of the software system run on. An empty array should indicate that the software system runs on a local runtime platform.")
+    val runtimePlatforms: List<RuntimePlatform> = ArrayList()
 ) 
