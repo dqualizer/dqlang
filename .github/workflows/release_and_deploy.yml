@@ -44,10 +44,12 @@ jobs:
 
       - name: Perform Release
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        run: ./gradlew --no-daemon release publish -Prelease.useAutomaticVersion=true
+        run: |
+          echo "Performing release of version ${{ env.ARTIFACT_VERSION }}"
+          ./gradlew --no-daemon release publish -Prelease.useAutomaticVersion=true
 
       - name: Perform Snapshot Release
         if: github.ref != 'refs/heads/main'
         run: |
           echo "Performing snapshot release of version ${{ env.ARTIFACT_VERSION }}-${{ github.ref_name }}-SNAPSHOT"
-          ./gradlew --no-daemon -q release -x createReleaseTag -x updateVersion -x commitNewVersion  publish -Prelease.releaseVersion=${{ env.ARTIFACT_VERSION }}-${{ github.ref_name }}-SNAPSHOT   
+          ./gradlew --no-daemon -q release publish -x preTagCommit -x createReleaseTag -x updateVersion -x commitNewVersion -Prelease.releaseVersion=${{ env.ARTIFACT_VERSION }}-${{ github.ref_name }}-SNAPSHOT   
