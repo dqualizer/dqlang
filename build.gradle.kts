@@ -73,6 +73,9 @@ repositories {
 
 dependencies {
     implementation("org.springframework.boot:spring-boot:$springBootVersion")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.15.2")
+    implementation("javax.validation:validation-api:2.0.1.Final")
+
 
     annotationProcessor("org.projectlombok:lombok:$lombokVersion")
 }

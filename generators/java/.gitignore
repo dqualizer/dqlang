@@ -1,6 +1,0 @@
-*.iml
-.idea
-target/
-
-#generated type sources
-src/main/java/dqualizer/dqlang/types/
