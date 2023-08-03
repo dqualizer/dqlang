@@ -12,7 +12,7 @@ import lombok.ToString
 @NoArgsConstructor
 @JsonTypeName("constant-vus")
 class ConstantScenario : io.github.dqualizer.dqlang.archive.k6adapter.dqlang.k6.options.Scenario() {
-    private val executor = "constant-vus"
-    private val vus = 0
-    private val duration = 0
+    val executor = "constant-vus"
+    val vus = 0
+    val duration = 0
 }

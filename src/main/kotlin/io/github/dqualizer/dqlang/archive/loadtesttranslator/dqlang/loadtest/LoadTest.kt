@@ -15,11 +15,11 @@ import lombok.ToString
 @AllArgsConstructor
 @NoArgsConstructor
 class LoadTest {
-    private val artifact: io.github.dqualizer.dqlang.archive.loadtesttranslator.dqlang.modeling.Artifact? = null
-    private val description: String? = null
-    private val stimulus: io.github.dqualizer.dqlang.archive.loadtesttranslator.dqlang.modeling.Stimulus? = null
+    val artifact: io.github.dqualizer.dqlang.archive.loadtesttranslator.dqlang.modeling.Artifact? = null
+    val description: String? = null
+    val stimulus: io.github.dqualizer.dqlang.archive.loadtesttranslator.dqlang.modeling.Stimulus? = null
 
     @JsonProperty("response_measure")
-    private val responseMeasure: io.github.dqualizer.dqlang.archive.loadtesttranslator.dqlang.modeling.ResponseMeasure? = null
-    private val endpoint: io.github.dqualizer.dqlang.archive.loadtesttranslator.dqlang.domainarchitecturemapping.Endpoint? = null
+    val responseMeasure: io.github.dqualizer.dqlang.archive.loadtesttranslator.dqlang.modeling.ResponseMeasure? = null
+    val endpoint: io.github.dqualizer.dqlang.archive.loadtesttranslator.dqlang.domainarchitecturemapping.Endpoint? = null
 }

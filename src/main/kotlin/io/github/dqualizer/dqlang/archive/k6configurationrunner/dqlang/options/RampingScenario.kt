@@ -14,7 +14,7 @@ import lombok.ToString
 @NoArgsConstructor
 @JsonTypeName("ramping-vus")
 class RampingScenario : io.github.dqualizer.dqlang.archive.k6adapter.dqlang.k6.options.Scenario() {
-    private val executor = "ramping-vus"
-    private val startVUs = 0
-    private val stages: LinkedHashSet<io.github.dqualizer.dqlang.archive.k6adapter.dqlang.k6.Stage>? = null
+    val executor = "ramping-vus"
+    val startVUs = 0
+    val stages: LinkedHashSet<io.github.dqualizer.dqlang.archive.k6adapter.dqlang.k6.Stage>? = null
 }

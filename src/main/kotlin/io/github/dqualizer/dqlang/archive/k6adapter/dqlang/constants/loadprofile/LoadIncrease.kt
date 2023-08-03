@@ -8,17 +8,17 @@ import lombok.ToString
 @ToString
 class LoadIncrease {
     @JsonProperty("start_target")
-    private val startTarget = 0
+    val startTarget = 0
 
     @JsonProperty("end_target")
-    private val endTarget = 0
+    val endTarget = 0
 
     @JsonProperty("stages")
-    private val stages = 0
+    val stages = 0
 
     @JsonProperty("test_duration")
-    private val testDuration: String? = null
-    private val linear = 0
-    private val quadratic = 0
-    private val cubic = 0
+    val testDuration: String? = null
+    val linear = 0
+    val quadratic = 0
+    val cubic = 0
 }

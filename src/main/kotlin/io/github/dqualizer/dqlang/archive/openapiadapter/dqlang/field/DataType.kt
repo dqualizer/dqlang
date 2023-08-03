@@ -10,5 +10,5 @@ import lombok.ToString
 @AllArgsConstructor
 @NoArgsConstructor
 class DataType {
-    private val type: String? = null
+    val type: String? = null
 }

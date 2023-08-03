@@ -10,6 +10,6 @@ import lombok.ToString
 @AllArgsConstructor
 @NoArgsConstructor
 class ServerInfo {
-    private val host: String? = null
-    private val environment: String? = null
+    val host: String? = null
+    val environment: String? = null
 }

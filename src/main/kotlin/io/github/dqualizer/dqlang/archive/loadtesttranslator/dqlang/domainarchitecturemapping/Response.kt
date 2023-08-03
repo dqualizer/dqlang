@@ -8,6 +8,6 @@ import lombok.ToString
 @ToString
 class Response {
     @JsonProperty("expected_code")
-    private val expectedCode = 0
-    private val type: String? = null
+    val expectedCode = 0
+    val type: String? = null
 }

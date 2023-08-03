@@ -8,12 +8,12 @@ import lombok.ToString
 @ToString
 class Parametrization {
     @JsonProperty("path_variables")
-    private val pathVariables: Map<String, String>? = null
+    val pathVariables: Map<String, String>? = null
 
     @JsonProperty("url_parameter")
-    private val urlParameter: Map<String, String>? = null //Size should be 1
+    val urlParameter: Map<String, String>? = null //Size should be 1
 
     @JsonProperty("request_parameter")
-    private val requestParameter: Map<String, String>? = null //Size should be 1
-    private val payload: Map<String, String>? = null //Size should be 1
+    val requestParameter: Map<String, String>? = null //Size should be 1
+    val payload: Map<String, String>? = null //Size should be 1
 }

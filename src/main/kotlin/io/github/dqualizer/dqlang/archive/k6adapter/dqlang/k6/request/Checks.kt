@@ -12,8 +12,8 @@ import lombok.ToString
 @NoArgsConstructor
 class Checks {
     @JsonProperty("status_codes")
-    private val statusCodes: LinkedHashSet<Int>? = null
+    val statusCodes: LinkedHashSet<Int>? = null
 
     @JsonProperty("duration")
-    private val duration = 0
+    val duration = 0
 }

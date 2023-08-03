@@ -8,15 +8,15 @@ import lombok.ToString
 @ToString
 class DomainArchitectureMappingObject {
     @JsonProperty("dq_id")
-    private val dqID: String? = null
-    private val name: String? = null
+    val dqID: String? = null
+    val name: String? = null
 
     @JsonProperty("operation_id")
-    private val operationID: String? = null
-    private val type: String? = null
+    val operationID: String? = null
+    val type: String? = null
 
     @JsonProperty("implements")
-    private val implementations: LinkedHashSet<String>? = null
-    private val objects: LinkedHashSet<String>? = null
-    private val activities: LinkedHashSet<io.github.dqualizer.dqlang.archive.loadtesttranslator.dqlang.domainarchitecturemapping.Activity>? = null
+    val implementations: LinkedHashSet<String>? = null
+    val objects: LinkedHashSet<String>? = null
+    val activities: LinkedHashSet<io.github.dqualizer.dqlang.archive.loadtesttranslator.dqlang.domainarchitecturemapping.Activity>? = null
 }

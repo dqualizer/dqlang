@@ -12,7 +12,7 @@ import lombok.ToString
 @AllArgsConstructor
 @NoArgsConstructor
 class K6LoadTest {
-    private val repetition = 0
-    private val options: io.github.dqualizer.dqlang.archive.k6adapter.dqlang.k6.options.Options? = null
-    private val request: io.github.dqualizer.dqlang.archive.k6adapter.dqlang.k6.request.Request? = null
+    val repetition = 0
+    val options: io.github.dqualizer.dqlang.archive.k6adapter.dqlang.k6.options.Options? = null
+    val request: io.github.dqualizer.dqlang.archive.k6adapter.dqlang.k6.request.Request? = null
 }

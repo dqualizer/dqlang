@@ -12,11 +12,11 @@ import lombok.ToString
 @Getter
 @ToString
 class LoadTestConstants {
-    private val accuracy: io.github.dqualizer.dqlang.archive.k6adapter.dqlang.constants.accuracy.Accuracy? = null
+    val accuracy: io.github.dqualizer.dqlang.archive.k6adapter.dqlang.constants.accuracy.Accuracy? = null
 
     @JsonProperty("load_profile")
-    private val loadProfile: io.github.dqualizer.dqlang.archive.k6adapter.dqlang.constants.loadprofile.LoadProfile? = null
+    val loadProfile: io.github.dqualizer.dqlang.archive.k6adapter.dqlang.constants.loadprofile.LoadProfile? = null
 
     @JsonProperty("response_time")
-    private val responseTime: io.github.dqualizer.dqlang.archive.k6adapter.dqlang.constants.ResponseTime? = null
+    val responseTime: io.github.dqualizer.dqlang.archive.k6adapter.dqlang.constants.ResponseTime? = null
 }

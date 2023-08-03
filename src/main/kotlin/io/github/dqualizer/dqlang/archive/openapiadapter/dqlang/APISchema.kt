@@ -16,14 +16,14 @@ import lombok.ToString
 @AllArgsConstructor
 @NoArgsConstructor
 class APISchema {
-    private val version = 1
-    private val context: String? = null
-    private val api: String? = null
+    val version = 1
+    val context: String? = null
+    val api: String? = null
 
     @JsonProperty("server_info")
-    private val serverInfo: LinkedHashSet<io.github.dqualizer.dqlang.archive.openapiadapter.dqlang.ServerInfo>? = null
-    private val field: LinkedHashSet<io.github.dqualizer.dqlang.archive.openapiadapter.dqlang.field.FieldItem>? = null
+    val serverInfo: LinkedHashSet<io.github.dqualizer.dqlang.archive.openapiadapter.dqlang.ServerInfo>? = null
+    val field: LinkedHashSet<io.github.dqualizer.dqlang.archive.openapiadapter.dqlang.field.FieldItem>? = null
 
     @JsonProperty("data_schemas")
-    private val dataSchemas: Map<String, io.github.dqualizer.dqlang.archive.openapiadapter.dqlang.data.DataSchema>? = null
+    val dataSchemas: Map<String, io.github.dqualizer.dqlang.archive.openapiadapter.dqlang.data.DataSchema>? = null
 }

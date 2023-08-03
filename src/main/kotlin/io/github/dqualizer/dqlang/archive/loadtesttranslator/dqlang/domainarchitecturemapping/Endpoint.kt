@@ -11,17 +11,17 @@ import lombok.ToString
 @AllArgsConstructor
 @NoArgsConstructor
 class Endpoint {
-    private val field: String? = null
-    private val operation: String? = null
+    val field: String? = null
+    val operation: String? = null
 
     @JsonProperty("path_variables")
-    private val pathVariables: Map<String, String>? = null
+    val pathVariables: Map<String, String>? = null
 
     @JsonProperty("url_parameter")
-    private val urlParameter: Map<String, String>? = null
+    val urlParameter: Map<String, String>? = null
 
     @JsonProperty("request_parameter")
-    private val requestParameter: Map<String, String>? = null
-    private val payload: Map<String, String>? = null
-    private val responses: LinkedHashSet<io.github.dqualizer.dqlang.archive.loadtesttranslator.dqlang.domainarchitecturemapping.Response>? = null
+    val requestParameter: Map<String, String>? = null
+    val payload: Map<String, String>? = null
+    val responses: LinkedHashSet<io.github.dqualizer.dqlang.archive.loadtesttranslator.dqlang.domainarchitecturemapping.Response>? = null
 }

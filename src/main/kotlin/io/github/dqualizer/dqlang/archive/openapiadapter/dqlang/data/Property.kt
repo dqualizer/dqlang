@@ -10,6 +10,6 @@ import lombok.ToString
 @AllArgsConstructor
 @NoArgsConstructor
 class Property {
-    private val name: String? = null
-    private val type: String? = null
+    val name: String? = null
+    val type: String? = null
 }

@@ -6,6 +6,6 @@ import lombok.ToString
 @Getter
 @ToString
 class Repetition {
-    private val min = 0
-    private val max = 0
+    val min = 0
+    val max = 0
 }

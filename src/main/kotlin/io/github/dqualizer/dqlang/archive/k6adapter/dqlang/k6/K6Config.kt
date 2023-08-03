@@ -13,7 +13,7 @@ import lombok.ToString
 @AllArgsConstructor
 @NoArgsConstructor
 class K6Config {
-    private val name: String? = null
-    private val baseURL: String? = null
-    private val loadTests: LinkedHashSet<io.github.dqualizer.dqlang.archive.k6adapter.dqlang.k6.K6LoadTest>? = null
+    val name: String? = null
+    val baseURL: String? = null
+    val loadTests: LinkedHashSet<io.github.dqualizer.dqlang.archive.k6adapter.dqlang.k6.K6LoadTest>? = null
 }
