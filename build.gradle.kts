@@ -82,6 +82,10 @@ dependencies {
     annotationProcessor("org.projectlombok:lombok:$lombokVersion")
 }
 
+sourceSets.main {
+    java.srcDirs("src/main/java", "src/main/kotlin")
+}
+
 tasks.withType<KotlinCompile> {
     kotlinOptions {
         freeCompilerArgs = listOf("-Xjsr305=strict")
