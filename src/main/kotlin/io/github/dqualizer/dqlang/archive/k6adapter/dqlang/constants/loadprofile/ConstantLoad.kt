@@ -8,15 +8,15 @@ import lombok.ToString
 @Getter
 @ToString
 class ConstantLoad {
-    private val low = 0
-    private val medium = 0
-    private val high = 0
+    val low = 0
+    val medium = 0
+    val high = 0
 
     @JsonProperty("min_duration")
     @JsonPropertyDescription("min duration in seconds")
-    private val minDuration = 0
+    val minDuration = 0
 
     @JsonProperty("max_duration")
     @JsonPropertyDescription("max duration in seconds")
-    private val maxDuration = 0
+    val maxDuration = 0
 }

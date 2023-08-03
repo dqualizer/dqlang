@@ -8,18 +8,18 @@ import lombok.ToString
 @ToString
 class Stimulus {
     @JsonProperty("load_profile")
-    private val loadProfile: String? = null
+    val loadProfile: String? = null
 
     @JsonProperty("highest_load")
-    private val highestLoad: String? = null
+    val highestLoad: String? = null
 
     @JsonProperty("time_to_highest_load")
-    private val timeToHighestLoad: String? = null
+    val timeToHighestLoad: String? = null
 
     @JsonProperty("type_of_increase")
-    private val typeOfIncrease: String? = null
+    val typeOfIncrease: String? = null
 
     @JsonProperty("base_load")
-    private val baseLoad: String? = null
-    private val accuracy = 0
+    val baseLoad: String? = null
+    val accuracy = 0
 }

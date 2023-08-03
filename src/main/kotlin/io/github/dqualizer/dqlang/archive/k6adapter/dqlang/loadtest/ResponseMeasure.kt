@@ -8,5 +8,5 @@ import lombok.ToString
 @ToString
 class ResponseMeasure {
     @JsonProperty("response_time")
-    private val responseTime: String? = null
+    val responseTime: String? = null
 }

@@ -6,5 +6,5 @@ import lombok.ToString
 @Getter
 @ToString
 class Accuracy {
-    private val repetition: io.github.dqualizer.dqlang.archive.k6adapter.dqlang.constants.accuracy.Repetition? = null
+    val repetition: io.github.dqualizer.dqlang.archive.k6adapter.dqlang.constants.accuracy.Repetition? = null
 }

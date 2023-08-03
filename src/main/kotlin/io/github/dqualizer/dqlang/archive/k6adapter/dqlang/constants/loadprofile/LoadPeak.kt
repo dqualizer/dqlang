@@ -8,23 +8,23 @@ import lombok.ToString
 @ToString
 class LoadPeak {
     @JsonProperty("min_repetitions")
-    private val minRepetition = 0
+    val minRepetition = 0
 
     @JsonProperty("max_repetitions")
-    private val maxRepetition = 0
-    private val high = 0
+    val maxRepetition = 0
+    val high = 0
 
     @JsonProperty("very_high")
-    private val veryHigh = 0
+    val veryHigh = 0
 
     @JsonProperty("extremely_high")
-    private val extremelyHigh = 0
-    private val slow: String? = null
-    private val fast: String? = null
+    val extremelyHigh = 0
+    val slow: String? = null
+    val fast: String? = null
 
     @JsonProperty("very_fast")
-    private val veryFast: String? = null
+    val veryFast: String? = null
 
     @JsonProperty("cool_down_duration")
-    private val coolDownDuration: String? = null
+    val coolDownDuration: String? = null
 }

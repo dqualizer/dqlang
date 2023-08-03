@@ -10,6 +10,6 @@ import lombok.ToString
 @AllArgsConstructor
 @NoArgsConstructor
 class Stage {
-    private val duration: String? = null
-    private val target = 0
+    val duration: String? = null
+    val target = 0
 }

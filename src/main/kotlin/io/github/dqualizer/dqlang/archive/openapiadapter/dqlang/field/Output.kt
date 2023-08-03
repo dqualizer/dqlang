@@ -11,8 +11,8 @@ import lombok.ToString
 @AllArgsConstructor
 @NoArgsConstructor
 class Output {
-    private val type: String? = null
+    val type: String? = null
 
     @JsonProperty("expected_code")
-    private val expectedCode: String? = null
+    val expectedCode: String? = null
 }

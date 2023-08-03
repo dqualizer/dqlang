@@ -14,13 +14,13 @@ import lombok.ToString
 @AllArgsConstructor
 @NoArgsConstructor
 class LoadTestConfig {
-    private val version = 0
-    private val context: String? = null
-    private val environment: String? = null
+    val version = 0
+    val context: String? = null
+    val environment: String? = null
 
     @JsonProperty("base_url")
-    private val baseURL: String? = null
+    val baseURL: String? = null
 
     @JsonProperty("load_tests")
-    private val loadTests: LinkedHashSet<io.github.dqualizer.dqlang.archive.k6adapter.dqlang.loadtest.LoadTest>? = null
+    val loadTests: LinkedHashSet<io.github.dqualizer.dqlang.archive.k6adapter.dqlang.loadtest.LoadTest>? = null
 }

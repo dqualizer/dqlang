@@ -6,6 +6,6 @@ import lombok.ToString
 @Getter
 @ToString
 class Artifact {
-    private val `object`: String? = null
-    private val activity: String? = null
+    val `object`: String? = null
+    val activity: String? = null
 }

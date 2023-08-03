@@ -10,10 +10,10 @@ import lombok.ToString
 @Getter
 @ToString
 class DomainArchitectureMapping {
-    private val version: Long = 0
-    private val context: String? = null
+    val version: Long = 0
+    val context: String? = null
 
     @JsonProperty("server_info")
-    private val serverInfo: LinkedHashSet<io.github.dqualizer.dqlang.archive.loadtesttranslator.dqlang.domainarchitecturemapping.ServerInfo>? = null
-    private val objects: LinkedHashSet<io.github.dqualizer.dqlang.archive.loadtesttranslator.dqlang.domainarchitecturemapping.DomainArchitectureMappingObject>? = null
+    val serverInfo: LinkedHashSet<io.github.dqualizer.dqlang.archive.loadtesttranslator.dqlang.domainarchitecturemapping.ServerInfo>? = null
+    val objects: LinkedHashSet<io.github.dqualizer.dqlang.archive.loadtesttranslator.dqlang.domainarchitecturemapping.DomainArchitectureMappingObject>? = null
 }

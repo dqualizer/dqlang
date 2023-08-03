@@ -11,5 +11,5 @@ import lombok.ToString
 @AllArgsConstructor
 @NoArgsConstructor
 class Scenarios {
-    private val scenario: io.github.dqualizer.dqlang.archive.k6adapter.dqlang.k6.options.Scenario? = null
+    val scenario: io.github.dqualizer.dqlang.archive.k6adapter.dqlang.k6.options.Scenario? = null
 }

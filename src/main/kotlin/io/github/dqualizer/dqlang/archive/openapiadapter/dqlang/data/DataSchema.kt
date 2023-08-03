@@ -10,6 +10,6 @@ import lombok.ToString
 @AllArgsConstructor
 @NoArgsConstructor
 class DataSchema {
-    private val type: String? = null
-    private val properties: LinkedHashSet<io.github.dqualizer.dqlang.archive.openapiadapter.dqlang.data.Property>? = null
+    val type: String? = null
+    val properties: LinkedHashSet<io.github.dqualizer.dqlang.archive.openapiadapter.dqlang.data.Property>? = null
 }

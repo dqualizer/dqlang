@@ -6,7 +6,7 @@ import lombok.ToString
 @Getter
 @ToString
 class ResponseTime {
-    private val satisfied = 0
-    private val tolerated = 0
-    private val frustrated = 0
+    val satisfied = 0
+    val tolerated = 0
+    val frustrated = 0
 }

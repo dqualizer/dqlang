@@ -11,12 +11,12 @@ import lombok.ToString
 @AllArgsConstructor
 @NoArgsConstructor
 class FieldItem {
-    private val path: String? = null
+    val path: String? = null
 
     @JsonProperty("operation_id")
-    private val operationID: String? = null
-    private val operation: String? = null
-    private val input: LinkedHashSet<io.github.dqualizer.dqlang.archive.openapiadapter.dqlang.field.Input>? = null
-    private val body: Map<String, io.github.dqualizer.dqlang.archive.openapiadapter.dqlang.field.DataType>? = null
-    private val output: LinkedHashSet<Map<String, io.github.dqualizer.dqlang.archive.openapiadapter.dqlang.field.Output>>? = null
+    val operationID: String? = null
+    val operation: String? = null
+    val input: LinkedHashSet<io.github.dqualizer.dqlang.archive.openapiadapter.dqlang.field.Input>? = null
+    val body: Map<String, io.github.dqualizer.dqlang.archive.openapiadapter.dqlang.field.DataType>? = null
+    val output: LinkedHashSet<Map<String, io.github.dqualizer.dqlang.archive.openapiadapter.dqlang.field.Output>>? = null
 }
