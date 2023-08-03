@@ -1,7 +1,6 @@
 package io.github.dqualizer.dqlang.types.architecture
 
 import com.fasterxml.jackson.annotation.*
-import lombok.AllArgsConstructor
 
 /**
  * SoftwareSystem
@@ -10,7 +9,7 @@ import lombok.AllArgsConstructor
  * A generic description of a software system.
  *
  */
-@AllArgsConstructor
+
 data class SoftwareSystem(
     /**
      * The name of the software system.

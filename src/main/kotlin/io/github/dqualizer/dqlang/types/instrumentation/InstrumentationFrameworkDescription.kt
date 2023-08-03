@@ -1,7 +1,6 @@
 package io.github.dqualizer.dqlang.types.instrumentation
 
 import com.fasterxml.jackson.annotation.*
-import lombok.AllArgsConstructor
 
 /**
  * InstrumentationFrameworkDescription
@@ -10,7 +9,7 @@ import lombok.AllArgsConstructor
  * A generic description of an instrumentation framework.
  *
  */
-@AllArgsConstructor
+
 data class InstrumentationFrameworkDescription(
     /**
      * The name of the instrumentation framework

@@ -1,7 +1,6 @@
 package io.github.dqualizer.dqlang.types.instrumentation
 
 import com.fasterxml.jackson.annotation.*
-import lombok.AllArgsConstructor
 
 /**
  * Instrumentation Location
@@ -10,7 +9,7 @@ import lombok.AllArgsConstructor
  * Location where an instrument should be placed. The location can specify a file and a method or class name.
  *
  */
-@AllArgsConstructor
+
 data class InstrumentationLocation(
     /**
      * File that should be instrumented.
