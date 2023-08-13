@@ -10,7 +10,7 @@ import com.fasterxml.jackson.annotation.*
  *
  */
 
-data class InstrumentationFrameworkDescription(
+data class InstrumentationFramework(
     /**
      * The name of the instrumentation framework
      */

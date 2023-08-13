@@ -1,10 +1,8 @@
 package io.github.dqualizer.dqlang.types.architecture
 
 import com.fasterxml.jackson.annotation.*
-import io.github.dqualizer.dqlang.types.instrumentation.Instrument
-import io.github.dqualizer.dqlang.types.instrumentation.InstrumentationFrameworkDescription
+import io.github.dqualizer.dqlang.types.instrumentation.InstrumentationFramework
 import lombok.Builder
-import javax.validation.constraints.NotNull
 
 /**
  * Service Description
@@ -20,7 +18,7 @@ data class ServiceDescription(
 
     @JsonProperty("deployment_name")
     @JsonPropertyDescription("Name under which the service is deployed. e.g. the name of the docker container. Can be empty then the name is used.")
-    val deploymentName: String,
+    private val deploymentName: String? = null,
 
     @JsonPropertyDescription("Route to access the service. e.g. via ssh")
     val uri: String,
@@ -31,12 +29,13 @@ data class ServiceDescription(
 
     @JsonProperty("instrumentation_framework")
     @JsonPropertyDescription("A generic description of an instrumentation framework. ")
-    val instrumentationFramework: InstrumentationFrameworkDescription,
-
-
-    val instruments: @NotNull MutableList<Instrument>? = ArrayList(),
+    val instrumentationFramework: InstrumentationFramework,
 
     @JsonProperty("runtime_platform_id")
     @JsonPropertyDescription("The id of the runtime platform that the service is running on. May be empty if its run locally.")
-    val runtimePlatformId: String = null
-)
+    val runtimePlatformId: String
+) {
+    fun getDeploymentName(): String {
+        return deploymentName ?: name
+    }
+}

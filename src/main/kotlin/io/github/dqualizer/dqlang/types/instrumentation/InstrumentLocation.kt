@@ -10,7 +10,7 @@ import com.fasterxml.jackson.annotation.*
  *
  */
 
-data class InstrumentationLocation(
+data class InstrumentLocation(
     /**
      * File that should be instrumented.
      */
