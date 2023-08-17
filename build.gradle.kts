@@ -79,6 +79,7 @@ dependencies {
     implementation("javax.validation:validation-api:2.0.1.Final")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.2")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json-jvm:1.5.1")
+    implementation("com.google.code.findbugs:jsr305:3.0.2")
 
     annotationProcessor("org.projectlombok:lombok:$lombokVersion")
 }
