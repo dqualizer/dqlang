@@ -25,7 +25,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
     "responses"
 })
 @Generated("jsonschema2pojo")
-public class Endpoint {
+public class LoadTestTargetEndpoint {
 
     /**
      * Location of this endpoint
@@ -108,7 +108,7 @@ public class Endpoint {
      * No args constructor for use in serialization
      * 
      */
-    public Endpoint() {
+    public LoadTestTargetEndpoint() {
     }
 
     /**
@@ -116,7 +116,7 @@ public class Endpoint {
      * @param source
      *     the object being copied
      */
-    public Endpoint(Endpoint source) {
+    public LoadTestTargetEndpoint(LoadTestTargetEndpoint source) {
         super();
         this.field = source.field;
         this.operation = source.operation;
@@ -153,7 +153,7 @@ public class Endpoint {
         "payload",
         "responses"
     })
-    public Endpoint(String field, String operation, PathVariables pathVariables, UrlParameter urlParameter, RequestParameter requestParameter, Payload payload, Set<Response> responses) {
+    public LoadTestTargetEndpoint(String field, String operation, PathVariables pathVariables, UrlParameter urlParameter, RequestParameter requestParameter, Payload payload, Set<Response> responses) {
         super();
         this.field = field;
         this.operation = operation;
@@ -167,7 +167,7 @@ public class Endpoint {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(Endpoint.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
+        sb.append(LoadTestTargetEndpoint.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
         sb.append("field");
         sb.append('=');
         sb.append(((this.field == null)?"<null>":this.field));
@@ -222,10 +222,10 @@ public class Endpoint {
         if (other == this) {
             return true;
         }
-        if ((other instanceof Endpoint) == false) {
+        if ((other instanceof LoadTestTargetEndpoint) == false) {
             return false;
         }
-        Endpoint rhs = ((Endpoint) other);
+        LoadTestTargetEndpoint rhs = ((LoadTestTargetEndpoint) other);
         return ((((((((this.requestParameter == rhs.requestParameter)||((this.requestParameter!= null)&&this.requestParameter.equals(rhs.requestParameter)))&&((this.pathVariables == rhs.pathVariables)||((this.pathVariables!= null)&&this.pathVariables.equals(rhs.pathVariables))))&&((this.field == rhs.field)||((this.field!= null)&&this.field.equals(rhs.field))))&&((this.payload == rhs.payload)||((this.payload!= null)&&this.payload.equals(rhs.payload))))&&((this.responses == rhs.responses)||((this.responses!= null)&&this.responses.equals(rhs.responses))))&&((this.operation == rhs.operation)||((this.operation!= null)&&this.operation.equals(rhs.operation))))&&((this.urlParameter == rhs.urlParameter)||((this.urlParameter!= null)&&this.urlParameter.equals(rhs.urlParameter))));
     }
 

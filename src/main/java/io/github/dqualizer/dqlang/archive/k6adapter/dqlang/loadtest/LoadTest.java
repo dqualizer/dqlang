@@ -1,6 +1,7 @@
 package io.github.dqualizer.dqlang.archive.k6adapter.dqlang.loadtest;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.dqualizer.dqlang.types.domain_architecture_mapping.Endpoint;
 import io.github.dqualizer.dqlang.types.rqa_definition.Artifact;
 import io.github.dqualizer.dqlang.types.rqa_definition.ResponseMeasure;
 import lombok.*;

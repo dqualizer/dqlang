@@ -82,7 +82,7 @@ public class LoadTest {
     @Valid
     @NotNull
     @Nonnull
-    public Endpoint endpoint;
+    public LoadTestTargetEndpoint loadTestTargetEndpoint;
     @JsonIgnore
     @Valid
     private Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
@@ -105,7 +105,7 @@ public class LoadTest {
         this.description = source.description;
         this.stimulus = source.stimulus;
         this.responseMeasure = source.responseMeasure;
-        this.endpoint = source.endpoint;
+        this.loadTestTargetEndpoint = source.loadTestTargetEndpoint;
     }
 
     /**
@@ -120,13 +120,13 @@ public class LoadTest {
         "responseMeasure",
         "endpoint"
     })
-    public LoadTest(Artifact artifact, String description, Object stimulus, ResponseMeasure responseMeasure, Endpoint endpoint) {
+    public LoadTest(Artifact artifact, String description, Object stimulus, ResponseMeasure responseMeasure, LoadTestTargetEndpoint loadTestTargetEndpoint) {
         super();
         this.artifact = artifact;
         this.description = description;
         this.stimulus = stimulus;
         this.responseMeasure = responseMeasure;
-        this.endpoint = endpoint;
+        this.loadTestTargetEndpoint = loadTestTargetEndpoint;
     }
 
     @JsonAnyGetter
@@ -161,7 +161,7 @@ public class LoadTest {
         sb.append(',');
         sb.append("endpoint");
         sb.append('=');
-        sb.append(((this.endpoint == null)?"<null>":this.endpoint));
+        sb.append(((this.loadTestTargetEndpoint == null) ? "<null>" : this.loadTestTargetEndpoint));
         sb.append(',');
         sb.append("additionalProperties");
         sb.append('=');
@@ -180,7 +180,7 @@ public class LoadTest {
         int result = 1;
         result = ((result* 31)+((this.artifact == null)? 0 :this.artifact.hashCode()));
         result = ((result* 31)+((this.responseMeasure == null)? 0 :this.responseMeasure.hashCode()));
-        result = ((result* 31)+((this.endpoint == null)? 0 :this.endpoint.hashCode()));
+        result = ((result* 31)+((this.loadTestTargetEndpoint == null) ? 0 : this.loadTestTargetEndpoint.hashCode()));
         result = ((result* 31)+((this.stimulus == null)? 0 :this.stimulus.hashCode()));
         result = ((result* 31)+((this.description == null)? 0 :this.description.hashCode()));
         result = ((result* 31)+((this.additionalProperties == null)? 0 :this.additionalProperties.hashCode()));
@@ -196,7 +196,7 @@ public class LoadTest {
             return false;
         }
         LoadTest rhs = ((LoadTest) other);
-        return (((((((this.artifact == rhs.artifact)||((this.artifact!= null)&&this.artifact.equals(rhs.artifact)))&&((this.responseMeasure == rhs.responseMeasure)||((this.responseMeasure!= null)&&this.responseMeasure.equals(rhs.responseMeasure))))&&((this.endpoint == rhs.endpoint)||((this.endpoint!= null)&&this.endpoint.equals(rhs.endpoint))))&&((this.stimulus == rhs.stimulus)||((this.stimulus!= null)&&this.stimulus.equals(rhs.stimulus))))&&((this.description == rhs.description)||((this.description!= null)&&this.description.equals(rhs.description))))&&((this.additionalProperties == rhs.additionalProperties)||((this.additionalProperties!= null)&&this.additionalProperties.equals(rhs.additionalProperties))));
+        return (((((((this.artifact == rhs.artifact)||((this.artifact!= null)&&this.artifact.equals(rhs.artifact)))&&((this.responseMeasure == rhs.responseMeasure)||((this.responseMeasure!= null)&&this.responseMeasure.equals(rhs.responseMeasure))))&&((this.loadTestTargetEndpoint == rhs.loadTestTargetEndpoint) || ((this.loadTestTargetEndpoint != null) && this.loadTestTargetEndpoint.equals(rhs.loadTestTargetEndpoint)))) && ((this.stimulus == rhs.stimulus) || ((this.stimulus != null) && this.stimulus.equals(rhs.stimulus)))) && ((this.description == rhs.description) || ((this.description != null) && this.description.equals(rhs.description)))) && ((this.additionalProperties == rhs.additionalProperties) || ((this.additionalProperties != null) && this.additionalProperties.equals(rhs.additionalProperties))));
     }
 
 }
