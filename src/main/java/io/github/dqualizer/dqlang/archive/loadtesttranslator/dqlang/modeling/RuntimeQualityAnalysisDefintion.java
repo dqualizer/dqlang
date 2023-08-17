@@ -16,4 +16,6 @@ public class RuntimeQualityAnalysisDefintion {
     private String environment;
     @JsonProperty("runtime_quality_analysis")
     private RuntimeQualityAnalysis rqa;
+    @JsonProperty("domain_id")
+    private String domainId;
 }
