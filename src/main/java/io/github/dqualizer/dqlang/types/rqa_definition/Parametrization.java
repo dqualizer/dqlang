@@ -1,4 +1,4 @@
-package io.github.dqualizer.dqlang.archive.loadtesttranslator.dqlang.modeling;
+package io.github.dqualizer.dqlang.types.rqa_definition;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
@@ -13,8 +13,8 @@ public class Parametrization {
     @JsonProperty("path_variables")
     private Map<String, String> pathVariables;
     @JsonProperty("url_parameter")
-    private Map<String, String> urlParameter; //Size should be 1
+    private Map<String, String> urlParameter;
     @JsonProperty("request_parameter")
-    private Map<String, String> requestParameter;  //Size should be 1
-    private Map<String, String> payload;    //Size should be 1
+    private Map<String, String> requestParameter;
+    private String payload;
 }

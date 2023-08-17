@@ -1,4 +1,4 @@
-package io.github.dqualizer.dqlang.archive.loadtesttranslator.dqlang.loadtest;
+package io.github.dqualizer.dqlang.types.load_test_configuration;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.util.LinkedHashSet;
+import java.util.Set;
 
 /**
  * Java class for the general dqualizer loadtest configuration
@@ -15,7 +16,7 @@ import java.util.LinkedHashSet;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class LoadTestConfig {
+public class LoadTestConfiguration {
 
     private int version;
     private String context;
@@ -23,5 +24,5 @@ public class LoadTestConfig {
     @JsonProperty("base_url")
     private String baseURL;
     @JsonProperty("load_tests")
-    private LinkedHashSet<LoadTest> loadTests;
+    private Set<LoadTest> loadTests;
 }

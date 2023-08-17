@@ -2,7 +2,9 @@ package io.github.dqualizer.dqlang.types.rqa
 
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonPropertyDescription
+import io.github.dqualizer.dqlang.types.instrumentation.InstrumentationFramework
 import io.github.dqualizer.dqlang.types.instrumentation.MonitoringConfiguration
+import io.github.dqualizer.dqlang.types.instrumentation.ServiceMonitoringConfiguration
 import io.github.dqualizer.dqlang.types.load_test_configuration.LoadTestConfiguration
 
 /**
@@ -26,7 +28,7 @@ class RQAConfiguration {
 
     lateinit var loadConfiguration: LoadTestConfiguration
 
-    lateinit var monitoringConfiguration: MonitoringConfiguration
+   lateinit var monitoringConfiguration: MonitoringConfiguration
 
     //private lateinit var chaosConfiguration : ChaosConfiguration
 }
