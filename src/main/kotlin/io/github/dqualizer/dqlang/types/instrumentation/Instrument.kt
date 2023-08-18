@@ -14,7 +14,7 @@ import io.github.dqualizer.dqlang.types.runtimequalityanalysisdefinition.Measure
 
 class Instrument(
     @JsonProperty("metric_labels")
-    val metricLabels: MutableList<String> = ArrayList(),
+    val metricLabels: List<String> = ArrayList(),
 
     @JsonProperty("metric_name")
     val metricName: String,

@@ -1,6 +1,9 @@
 package io.github.dqualizer.dqlang.archive.loadtesttranslator.dqlang.modeling;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.dqualizer.dqlang.types.rqa_definition.Artifact;
+import io.github.dqualizer.dqlang.types.rqa_definition.Parametrization;
+import io.github.dqualizer.dqlang.types.rqa_definition.ResponseMeasure;
 import lombok.Getter;
 import lombok.ToString;
 

@@ -1,6 +1,7 @@
 package io.github.dqualizer.dqlang.archive.loadtesttranslator.dqlang.domainarchitecturemapping;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.dqualizer.dqlang.types.domain_architecture_mapping.Endpoint;
 import lombok.Getter;
 import lombok.ToString;
 

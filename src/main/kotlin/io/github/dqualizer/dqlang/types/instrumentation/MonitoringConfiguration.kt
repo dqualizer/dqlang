@@ -1,6 +1,6 @@
 package io.github.dqualizer.dqlang.types.instrumentation
 
 data class MonitoringConfiguration(
-    val instrumentations: List<Instrument>,
-    val framework: InstrumentationFramework
+    val serviceMonitoringConfigurations: Collection<ServiceMonitoringConfiguration>,
+    val serviceMonitoringFrameworks: Map<String, InstrumentationFramework>
 )
