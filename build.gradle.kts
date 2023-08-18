@@ -80,6 +80,10 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json-jvm:1.5.1")
 
     annotationProcessor("org.projectlombok:lombok:$lombokVersion")
+
+    implementation("org.springframework.data:spring-data-mongodb:4.1.2")
+
+
 }
 
 sourceSets.main {
