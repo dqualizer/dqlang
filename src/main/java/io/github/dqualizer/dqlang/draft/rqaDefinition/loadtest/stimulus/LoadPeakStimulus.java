@@ -1,9 +1,9 @@
-package io.github.dqualizer.dqlang.draft.rqa.loadtest.stimulus;
+package io.github.dqualizer.dqlang.draft.rqaDefinition.loadtest.stimulus;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import io.github.dqualizer.dqlang.draft.rqa.enums.HighestLoad;
-import io.github.dqualizer.dqlang.draft.rqa.enums.TimeToHighestLoad;
+import io.github.dqualizer.dqlang.draft.rqaDefinition.enums.HighestLoad;
+import io.github.dqualizer.dqlang.draft.rqaDefinition.enums.TimeToHighestLoad;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

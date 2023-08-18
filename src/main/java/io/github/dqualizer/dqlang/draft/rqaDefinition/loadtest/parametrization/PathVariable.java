@@ -1,4 +1,4 @@
-package io.github.dqualizer.dqlang.draft.rqa.loadtest.parametrization;
+package io.github.dqualizer.dqlang.draft.rqaDefinition.loadtest.parametrization;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

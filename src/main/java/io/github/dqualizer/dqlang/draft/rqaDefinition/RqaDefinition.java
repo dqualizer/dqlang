@@ -1,7 +1,7 @@
-package io.github.dqualizer.dqlang.draft.rqa;
+package io.github.dqualizer.dqlang.draft.rqaDefinition;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.github.dqualizer.dqlang.draft.rqa.enums.Environment;
+import io.github.dqualizer.dqlang.draft.rqaDefinition.enums.Environment;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;

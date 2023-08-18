@@ -1,9 +1,9 @@
-package io.github.dqualizer.dqlang.draft.rqa;
+package io.github.dqualizer.dqlang.draft.rqaDefinition;
 
 
-import io.github.dqualizer.dqlang.draft.rqa.loadtest.Loadtest;
-import io.github.dqualizer.dqlang.draft.rqa.monitoring.Monitoring;
-import io.github.dqualizer.dqlang.draft.rqa.resilience.Resilience;
+import io.github.dqualizer.dqlang.draft.rqaDefinition.loadtest.Loadtest;
+import io.github.dqualizer.dqlang.draft.rqaDefinition.monitoring.Monitoring;
+import io.github.dqualizer.dqlang.draft.rqaDefinition.resilience.Resilience;
 import lombok.Data;
 
 import java.util.ArrayList;

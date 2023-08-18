@@ -1,7 +1,7 @@
-package io.github.dqualizer.dqlang.draft.rqa.loadtest.stimulus;
+package io.github.dqualizer.dqlang.draft.rqaDefinition.loadtest.stimulus;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.github.dqualizer.dqlang.draft.rqa.enums.LoadProfile;
+import io.github.dqualizer.dqlang.draft.rqaDefinition.enums.LoadProfile;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

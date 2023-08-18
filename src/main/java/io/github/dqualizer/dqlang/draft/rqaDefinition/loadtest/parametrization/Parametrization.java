@@ -1,4 +1,4 @@
-package io.github.dqualizer.dqlang.draft.rqa.loadtest.parametrization;
+package io.github.dqualizer.dqlang.draft.rqaDefinition.loadtest.parametrization;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;

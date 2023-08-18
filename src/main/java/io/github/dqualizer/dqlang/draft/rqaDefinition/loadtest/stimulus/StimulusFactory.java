@@ -1,10 +1,10 @@
-package io.github.dqualizer.dqlang.draft.rqa.loadtest.stimulus;
+package io.github.dqualizer.dqlang.draft.rqaDefinition.loadtest.stimulus;
 
 
-import io.github.dqualizer.dqlang.draft.rqa.enums.HighestLoad;
-import io.github.dqualizer.dqlang.draft.rqa.enums.LoadProfile;
-import io.github.dqualizer.dqlang.draft.rqa.enums.TimeToHighestLoad;
-import io.github.dqualizer.dqlang.draft.rqa.enums.TypeOfIncrease;
+import io.github.dqualizer.dqlang.draft.rqaDefinition.enums.HighestLoad;
+import io.github.dqualizer.dqlang.draft.rqaDefinition.enums.LoadProfile;
+import io.github.dqualizer.dqlang.draft.rqaDefinition.enums.TimeToHighestLoad;
+import io.github.dqualizer.dqlang.draft.rqaDefinition.enums.TypeOfIncrease;
 
 import java.util.Map;
 

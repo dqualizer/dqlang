@@ -1,11 +1,11 @@
-package io.github.dqualizer.dqlang.draft.rqa.loadtest;
+package io.github.dqualizer.dqlang.draft.rqaDefinition.loadtest;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import io.github.dqualizer.dqlang.draft.rqa.enums.ResultMetrics;
-import io.github.dqualizer.dqlang.draft.rqa.loadtest.parametrization.Parametrization;
-import io.github.dqualizer.dqlang.draft.rqa.loadtest.parametrization.ResponseMeasures;
-import io.github.dqualizer.dqlang.draft.rqa.loadtest.stimulus.Stimulus;
+import io.github.dqualizer.dqlang.draft.rqaDefinition.enums.ResultMetrics;
+import io.github.dqualizer.dqlang.draft.rqaDefinition.loadtest.parametrization.Parametrization;
+import io.github.dqualizer.dqlang.draft.rqaDefinition.loadtest.parametrization.ResponseMeasures;
+import io.github.dqualizer.dqlang.draft.rqaDefinition.loadtest.stimulus.Stimulus;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.mongodb.core.index.Indexed;
