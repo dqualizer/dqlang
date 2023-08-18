@@ -10,6 +10,7 @@ class QueueConfiguration {
     data class QueueConfiguration(
         val name: Optional<String>,
         val durable: Boolean = false,
+        val exchange: String = ""
     )
 
     var queues: Map<String, QueueConfiguration> = mapOf()

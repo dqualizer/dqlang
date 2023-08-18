@@ -1,5 +1,5 @@
 
-package dqualizer.dqlang.types.domain_architecture_mapping;
+package types_blueprints.domain_architecture_mapping;
 
 import java.beans.ConstructorProperties;
 import java.util.LinkedHashMap;

@@ -1,5 +1,5 @@
 
-package dqualizer.dqlang.types.rqa_definition;
+package types_blueprints.rqa_definition;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

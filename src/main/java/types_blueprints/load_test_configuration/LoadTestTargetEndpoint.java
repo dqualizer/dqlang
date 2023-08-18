@@ -1,5 +1,5 @@
 
-package dqualizer.dqlang.types.load_test_configuration;
+package types_blueprints.load_test_configuration;
 
 import java.beans.ConstructorProperties;
 import java.util.LinkedHashSet;

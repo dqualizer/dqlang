@@ -1,5 +1,5 @@
 
-package dqualizer.dqlang.types.api_schema;
+package types_blueprints.api_schema;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

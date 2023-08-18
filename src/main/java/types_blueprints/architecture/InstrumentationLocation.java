@@ -1,5 +1,5 @@
 
-package dqualizer.dqlang.types.architecture;
+package types_blueprints.architecture;
 
 import java.beans.ConstructorProperties;
 import java.util.LinkedHashMap;

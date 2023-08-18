@@ -73,8 +73,9 @@ repositories {
 }
 
 dependencies {
-    implementation("org.springframework.boot:spring-boot:$springBootVersion")
+    implementation("org.springframework.boot:spring-boot-starter:$springBootVersion")
     implementation("org.springframework.boot:spring-boot-starter-amqp:$springBootVersion")
+    implementation("org.springframework:spring-web:6.0.11")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.15.2")
     implementation("javax.validation:validation-api:2.0.1.Final")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.2")

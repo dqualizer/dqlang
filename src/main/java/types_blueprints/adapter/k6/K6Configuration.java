@@ -1,5 +1,5 @@
 
-package dqualizer.dqlang.types.adapter.k6;
+package types_blueprints.adapter.k6;
 
 import java.beans.ConstructorProperties;
 import java.util.ArrayList;

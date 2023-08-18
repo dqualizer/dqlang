@@ -1,5 +1,5 @@
 
-package dqualizer.dqlang.types.domain_architecture_mapping;
+package types_blueprints.domain_architecture_mapping;
 
 import java.beans.ConstructorProperties;
 import java.util.LinkedHashSet;
@@ -76,7 +76,7 @@ public class DomainArchitectureMapping {
     @Valid
     @NotNull
     @Nonnull
-    public Set<dqualizer.dqlang.types.domain_architecture_mapping.Object> objects = new LinkedHashSet<dqualizer.dqlang.types.domain_architecture_mapping.Object>();
+    public Set<Object> objects = new LinkedHashSet<Object>();
 
     /**
      * No args constructor for use in serialization
@@ -115,7 +115,7 @@ public class DomainArchitectureMapping {
         "serverInfo",
         "objects"
     })
-    public DomainArchitectureMapping(int version, String context, Set<ServerInfo> serverInfo, Set<dqualizer.dqlang.types.domain_architecture_mapping.Object> objects) {
+    public DomainArchitectureMapping(int version, String context, Set<ServerInfo> serverInfo, Set<Object> objects) {
         super();
         this.version = version;
         this.context = context;
