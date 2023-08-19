@@ -28,7 +28,7 @@ class RQAConfiguration {
 
     lateinit var loadConfiguration: LoadTestConfiguration
 
-   lateinit var monitoringConfiguration: MonitoringConfiguration
+    lateinit var monitoringConfiguration: MonitoringConfiguration
 
     //private lateinit var chaosConfiguration : ChaosConfiguration
 }
