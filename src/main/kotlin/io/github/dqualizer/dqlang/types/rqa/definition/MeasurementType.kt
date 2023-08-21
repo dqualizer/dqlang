@@ -1,4 +1,4 @@
-package io.github.dqualizer.dqlang.types.runtimequalityanalysisdefinition
+package io.github.dqualizer.dqlang.types.rqa.definition
 
 enum class MeasurementType {
     EXECUTION_TIME,

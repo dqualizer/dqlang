@@ -1,7 +1,7 @@
 package io.github.dqualizer.dqlang.types.instrumentation
 
 import com.fasterxml.jackson.annotation.*
-import io.github.dqualizer.dqlang.types.runtimequalityanalysisdefinition.MeasurementType
+import io.github.dqualizer.dqlang.types.rqa.definition.MeasurementType
 
 
 /**

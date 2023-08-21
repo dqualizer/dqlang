@@ -1,6 +1,6 @@
 package io.github.dqualizer.dqlang.archive.loadtesttranslator.dqlang.modeling;
 
-import io.github.dqualizer.dqlang.types.runtimequalityanalysisdefinition.Monitoring;
+import io.github.dqualizer.dqlang.types.rqa.definition.Monitoring;
 import lombok.Getter;
 import lombok.ToString;
 

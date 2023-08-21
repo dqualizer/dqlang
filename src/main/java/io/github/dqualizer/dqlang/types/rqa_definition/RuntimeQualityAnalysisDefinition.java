@@ -1,4 +1,4 @@
-package io.github.dqualizer.dqlang.types.rqa_definition;
+package io.github.dqualizer.dqlang.types.rqa.definition;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;

@@ -1,11 +1,11 @@
-package io.github.dqualizer.dqlang.types.rqa_definition;
+package io.github.dqualizer.dqlang.types.rqa.definition;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyDescription;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import io.github.dqualizer.dqlang.types.runtimequalityanalysisdefinition.Monitoring;
+import io.github.dqualizer.dqlang.types.rqa.definition.Monitoring;
 
 import javax.annotation.processing.Generated;
 import javax.validation.Valid;

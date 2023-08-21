@@ -1,4 +1,4 @@
-package io.github.dqualizer.dqlang.types.runtimequalityanalysisdefinition
+package io.github.dqualizer.dqlang.types.rqa.definition
 
 
 data class Monitoring(
