@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyDescription;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import io.github.dqualizer.dqlang.types.adapter.k6.loadprofile.LoadProfile;
 
 import javax.annotation.processing.Generated;
 import javax.validation.Valid;

@@ -3,7 +3,6 @@ package io.github.dqualizer.dqlang.types.rqa.configuration
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonPropertyDescription
 import io.github.dqualizer.dqlang.types.instrumentation.MonitoringConfiguration
-import io.github.dqualizer.dqlang.types.load_test_configuration.LoadTestConfiguration
 
 /**
  * @author Lion Wagner
