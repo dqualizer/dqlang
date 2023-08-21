@@ -1,4 +1,4 @@
-package io.github.dqualizer.dqlang.archive.k6adapter.dqlang.k6.options;
+package io.github.dqualizer.dqlang.types_new.adapter.options;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;

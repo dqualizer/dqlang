@@ -1,4 +1,4 @@
-package io.github.dqualizer.dqlang.archive.k6adapter.dqlang.k6.options;
+package io.github.dqualizer.dqlang.types_new.adapter.options;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,7 +9,7 @@ import lombok.ToString;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class Options {
+public class Scenarios {
 
-    private Scenarios scenarios;
+    private Scenario scenario;
 }

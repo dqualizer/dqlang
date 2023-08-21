@@ -1,4 +1,4 @@
-package io.github.dqualizer.dqlang.types.adapter.k6;
+package io.github.dqualizer.dqlang.types_new.adapter.k6;
 
 import com.fasterxml.jackson.annotation.*;
 
@@ -21,7 +21,7 @@ import java.util.Map;
         "request"
 })
 @Generated("jsonschema2pojo")
-public class LoadTest {
+public class K6LoadTest {
 
     /**
      * How many times should this load test be executed (Required)
@@ -56,13 +56,13 @@ public class LoadTest {
     /**
      * No args constructor for use in serialization
      */
-    public LoadTest() {
+    public K6LoadTest() {
     }
 
     /**
      * @param source the object being copied
      */
-    public LoadTest(LoadTest source) {
+    public K6LoadTest(K6LoadTest source) {
         super();
         this.repetition = source.repetition;
         this.options = source.options;
@@ -79,7 +79,7 @@ public class LoadTest {
             "options",
             "request"
     })
-    public LoadTest(int repetition, Options options, Request request) {
+    public K6LoadTest(int repetition, Options options, Request request) {
         super();
         this.repetition = repetition;
         this.options = options;
@@ -99,7 +99,7 @@ public class LoadTest {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(LoadTest.class.getName())
+        sb.append(K6LoadTest.class.getName())
           .append('@')
           .append(Integer.toHexString(System.identityHashCode(this)))
           .append('[');
@@ -142,10 +142,10 @@ public class LoadTest {
         if (other == this) {
             return true;
         }
-        if ((other instanceof LoadTest) == false) {
+        if ((other instanceof K6LoadTest) == false) {
             return false;
         }
-        LoadTest rhs = ((LoadTest) other);
+        K6LoadTest rhs = ((K6LoadTest) other);
         return (((((this.options == rhs.options) || ((this.options != null) && this.options.equals(rhs.options))) && ((this.request == rhs.request) || ((this.request != null) && this.request.equals(
                 rhs.request)))) && ((this.additionalProperties == rhs.additionalProperties) || ((this.additionalProperties != null) && this.additionalProperties.equals(
                 rhs.additionalProperties)))) && (this.repetition == rhs.repetition));

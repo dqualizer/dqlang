@@ -1,4 +1,4 @@
-package io.github.dqualizer.dqlang.types.adapter.k6;
+package io.github.dqualizer.dqlang.types_new.adapter.k6;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;

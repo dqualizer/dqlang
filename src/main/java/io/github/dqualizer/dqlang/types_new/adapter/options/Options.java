@@ -1,4 +1,4 @@
-package io.github.dqualizer.dqlang.archive.k6adapter.dqlang.k6;
+package io.github.dqualizer.dqlang.types_new.adapter.options;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,8 +9,7 @@ import lombok.ToString;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class Stage {
+public class Options {
 
-    private String duration;
-    private int target;
+    private Scenarios scenarios;
 }

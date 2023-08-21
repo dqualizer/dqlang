@@ -1,4 +1,4 @@
-package io.github.dqualizer.dqlang.archive.k6adapter.dqlang.k6;
+package io.github.dqualizer.dqlang.types_new.adapter.k6;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
