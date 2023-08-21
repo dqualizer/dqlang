@@ -1,4 +1,4 @@
-package io.github.dqualizer.dqlang.archive.loadtesttranslator.dqlang.domainarchitecturemapping;
+package io.github.dqualizer.dqlang.types_new.dam;
 
 import lombok.Getter;
 import lombok.ToString;

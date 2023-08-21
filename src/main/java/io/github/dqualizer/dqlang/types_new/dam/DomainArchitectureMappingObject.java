@@ -1,7 +1,6 @@
-package io.github.dqualizer.dqlang.archive.loadtesttranslator.dqlang.domainarchitecturemapping;
+package io.github.dqualizer.dqlang.types_new.dam;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.github.dqualizer.dqlang.types.domain_architecture_mapping.Endpoint;
 import lombok.Getter;
 import lombok.ToString;
 
@@ -9,7 +8,7 @@ import java.util.LinkedHashSet;
 
 @Getter
 @ToString
-public class Activity {
+public class DomainArchitectureMappingObject {
 
     @JsonProperty("dq_id")
     private String dqID;
@@ -17,6 +16,8 @@ public class Activity {
     @JsonProperty("operation_id")
     private String operationID;
     private String type;
-    private LinkedHashSet<String> parameter;
-    private Endpoint endpoint;
+    @JsonProperty("implements")
+    private Set<String> implementations;
+    private Set<String> objects;
+    private Set<Activity> activities;
 }

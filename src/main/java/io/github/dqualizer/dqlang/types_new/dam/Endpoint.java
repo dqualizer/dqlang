@@ -1,7 +1,6 @@
-package io.github.dqualizer.dqlang.types.domain_architecture_mapping;
+package io.github.dqualizer.dqlang.types_new.dam;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.github.dqualizer.dqlang.archive.loadtesttranslator.dqlang.domainarchitecturemapping.Response;
 import lombok.*;
 
 import java.util.LinkedHashSet;
