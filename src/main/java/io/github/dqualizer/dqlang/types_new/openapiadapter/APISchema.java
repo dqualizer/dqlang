@@ -20,7 +20,7 @@ import java.util.Map;
 @NoArgsConstructor
 public class APISchema {
 
-    private final int version = 1;
+    private final int version;
     private String context;
     private String api;
     @JsonProperty("server_info")
