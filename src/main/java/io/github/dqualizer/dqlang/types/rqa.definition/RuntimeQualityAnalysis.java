@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyDescription;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import io.github.dqualizer.dqlang.types.rqa.definition.Monitoring;
 
 import javax.annotation.processing.Generated;
 import javax.validation.Valid;
@@ -48,7 +47,7 @@ public class RuntimeQualityAnalysis {
     @JsonPropertyDescription("Configurations for specified load tests")
     @Valid
 
-    public Set<Loadtest> loadtests = new LinkedHashSet<Loadtest>();
+    public Set<ModeledLoadTest> loadtests = new LinkedHashSet<ModeledLoadTest>();
 
     /**
      * No args constructor for use in serialization
@@ -76,7 +75,7 @@ public class RuntimeQualityAnalysis {
             "resilience",
             "loadtests"
     })
-    public RuntimeQualityAnalysis(Set<Monitoring> monitoring, Set<Resilience> resilience, Set<Loadtest> loadtests) {
+    public RuntimeQualityAnalysis(Set<Monitoring> monitoring, Set<Resilience> resilience, Set<ModeledLoadTest> loadtests) {
         super();
         this.monitoring = monitoring;
         this.resilience = resilience;

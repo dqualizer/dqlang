@@ -1,4 +1,4 @@
-package io.github.dqualizer.dqlang.archive.loadtesttranslator.dqlang.modeling;
+package io.github.dqualizer.dqlang.types.rqa.definition;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.dqualizer.dqlang.types.rqa.definition.Artifact;
