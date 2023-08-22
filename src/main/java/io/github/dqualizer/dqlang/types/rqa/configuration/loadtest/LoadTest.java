@@ -14,7 +14,8 @@ import lombok.*;
 public class LoadTest {
 
     private Artifact artifact;
-    @NonNull private String description;
+    @NonNull
+    private String description;
     private Stimulus stimulus;
     @JsonProperty("response_measure")
     private ResponseMeasures responseMeasure;

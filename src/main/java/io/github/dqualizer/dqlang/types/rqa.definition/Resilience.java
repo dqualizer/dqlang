@@ -32,9 +32,9 @@ public class Resilience {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(Resilience.class.getName())
-          .append('@')
-          .append(Integer.toHexString(System.identityHashCode(this)))
-          .append('[');
+                .append('@')
+                .append(Integer.toHexString(System.identityHashCode(this)))
+                .append('[');
         sb.append("additionalProperties");
         sb.append('=');
         sb.append(((this.additionalProperties == null) ? "<null>" : this.additionalProperties));

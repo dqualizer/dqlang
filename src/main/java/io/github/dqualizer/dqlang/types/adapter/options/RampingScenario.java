@@ -7,7 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Getter
 @ToString
@@ -18,5 +18,5 @@ public class RampingScenario extends Scenario {
 
     private final String executor = "ramping-vus";
     private final int startVUs = 0;
-    private LinkedHashSet<Stage> stages;
+    private Set<Stage> stages;
 }

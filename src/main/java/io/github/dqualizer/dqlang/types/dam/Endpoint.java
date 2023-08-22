@@ -1,5 +1,6 @@
 package io.github.dqualizer.dqlang.types.dam;
 
+import io.github.dqualizer.dqlang.types.rqa.definition.loadtest.PathVariable;
 import lombok.Data;
 
 import java.util.List;

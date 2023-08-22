@@ -1,4 +1,4 @@
-package io.github.dqualizer.dqlang.archive.openapiadapter.dqlang;
+package io.github.dqualizer.dqlang.types.openapiadapter;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,11 +1,8 @@
 package io.github.dqualizer.dqlang.types.rqa.definition.loadtest;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import io.github.dqualizer.dqlang.types.rqa.definition.Artifact;
 import io.github.dqualizer.dqlang.types.rqa.definition.enums.ResultMetrics;
-import io.github.dqualizer.dqlang.types.rqa.definition.loadtest.Parametrization;
-import io.github.dqualizer.dqlang.types.rqa.definition.loadtest.ResponseMeasures;
 import io.github.dqualizer.dqlang.types.rqa.definition.stimulus.Stimulus;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,7 +12,7 @@ import java.util.Set;
 
 @Data
 @NoArgsConstructor
-public class Loadtest {
+public class ModeledLoadTest {
     @Indexed(unique = true)
     private String name;
     private Artifact artifact;
@@ -27,7 +24,7 @@ public class Loadtest {
     @JsonProperty("result_metrics")
     private Set<ResultMetrics> resultMetrics;
 
-    public Loadtest(String name, Artifact artifact, String description, Stimulus stimulus, Parametrization parametrization, ResponseMeasures responseMeasures, Set<ResultMetrics> resultMetrics) {
+    public ModeledLoadTest(String name, Artifact artifact, String description, Stimulus stimulus, Parametrization parametrization, ResponseMeasures responseMeasures, Set<ResultMetrics> resultMetrics) {
         this.name = name;
         this.artifact = artifact;
         this.description = description;

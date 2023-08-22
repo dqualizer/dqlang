@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import java.util.LinkedHashSet;
+import java.util.Set;
 
 /**
  * Java class for k6 loadtest configurations
@@ -19,5 +19,5 @@ public class K6Configuration {
 
     private String name;
     private String baseURL;
-    private LinkedHashSet<LoadTest> loadTests;
+    private Set<LoadTest> loadTests;
 }

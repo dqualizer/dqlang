@@ -1,7 +1,6 @@
 package io.github.dqualizer.dqlang.types.rqa.definition.stimulus;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import io.github.dqualizer.dqlang.types.rqa.definition.enums.HighestLoad;
 import io.github.dqualizer.dqlang.types.rqa.definition.enums.TimeToHighestLoad;
 import lombok.AllArgsConstructor;

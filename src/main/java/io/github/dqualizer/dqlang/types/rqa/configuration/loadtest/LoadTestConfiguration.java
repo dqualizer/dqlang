@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import java.util.LinkedHashSet;
 import java.util.Set;
 
 /**
@@ -18,7 +17,7 @@ import java.util.Set;
 @NoArgsConstructor
 public class LoadTestConfiguration {
 
-    private int version;
+    private String version;
     private String context;
     private String environment;
     @JsonProperty("base_url")

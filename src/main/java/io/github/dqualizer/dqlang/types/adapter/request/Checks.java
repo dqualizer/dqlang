@@ -1,4 +1,4 @@
-package io.github.dqualizer.dqlang.archive.k6adapter.dqlang.k6.request;
+package io.github.dqualizer.dqlang.types.adapter.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Getter
 @ToString
@@ -15,7 +15,7 @@ import java.util.LinkedHashSet;
 public class Checks {
 
     @JsonProperty("status_codes")
-    private LinkedHashSet<Integer> statusCodes;
+    private Set<Integer> statusCodes;
     @JsonProperty("duration")
     private int duration;
 }

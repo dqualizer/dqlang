@@ -1,11 +1,11 @@
-package io.github.dqualizer.dqlang.archive.openapiadapter.dqlang.data;
+package io.github.dqualizer.dqlang.types.openapiadapter.data;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Getter
 @ToString
@@ -14,5 +14,5 @@ import java.util.LinkedHashSet;
 public class DataSchema {
 
     private String type;
-    private LinkedHashSet<Property> properties;
+    private Set<Property> properties;
 }

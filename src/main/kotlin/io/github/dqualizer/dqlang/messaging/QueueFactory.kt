@@ -20,7 +20,7 @@ class QueueFactory(
     val log: Logger = LoggerFactory.getLogger(QueueFactory::class.java)
 
     override fun afterPropertiesSet() {
-        val factory = applicationContext.autowireCapableBeanFactory;
+        val factory = applicationContext.autowireCapableBeanFactory
 
         for (queueConfig in queueConfiguration.queues) {
             val queueName = queueConfig.value.name.orElse(queueConfig.key)
