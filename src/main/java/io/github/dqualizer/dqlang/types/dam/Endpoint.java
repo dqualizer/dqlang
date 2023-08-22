@@ -1,26 +1,16 @@
 package io.github.dqualizer.dqlang.types.dam;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.*;
+import lombok.Data;
 
-import java.util.LinkedHashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.List;
 
-@Getter
-@ToString
-@AllArgsConstructor
-@NoArgsConstructor
+@Data
 public class Endpoint {
-
     private String field;
     private String operation;
-    @JsonProperty("path_variables")
-    private Map<String, String> pathVariables;
-    @JsonProperty("url_parameter")
-    private Map<String, String> urlParameter;
-    @JsonProperty("request_parameter")
-    private Map<String, String> requestParameter;
-    private Map<String, String> payload;
-    private Set<Response> responses;
+    private List<PathVariable> path_variables;
+    private List<Object> url_parameter;
+    private List<RequestParameter> request_parameter;
+    private List<Payload> payload;
+    private List<Response> responses;
 }

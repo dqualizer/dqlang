@@ -8,20 +8,19 @@ import org.springframework.data.annotation.Id;
 import java.util.List;
 
 @Data
-public class Activity {
+public class System {
     @Id
     private String id;
     private String name;
-    @JsonProperty("operation_id")
-    private String operationId;
-    private String initiator;
-    private String workObject;
-    private String action;
+    private String operation_id;
     private String type;
-    private List<String> parameter;
-    private Endpoint endpoint;
+    @JsonProperty("implements")
+    private List<Object> myimplements;
+    private List<String> objects;
 
-    public Activity() {
+    private List<Activity> activities;
+
+    public System() {
         this.id = new ObjectId().toHexString();
     }
 }

@@ -2,15 +2,16 @@ package io.github.dqualizer.dqlang.types.dam;
 
 import lombok.Data;
 import org.bson.types.ObjectId;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 
 @Data
-public class ServerInfo {
-
+@Document
+public class Actor {
     private String id;
-    private String host;
-    private String environment;
+    private String actor_name;
 
-    public ServerInfo() {
+    public Actor() {
         this.id = new ObjectId().toHexString();
     }
 }

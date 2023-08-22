@@ -1,14 +1,9 @@
 package io.github.dqualizer.dqlang.types.dam;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.Data;
 
-@Getter
-@ToString
+@Data
 public class Response {
-
-    @JsonProperty("expected_code")
-    private int expectedCode;
+    private int expected_code;
     private String type;
 }

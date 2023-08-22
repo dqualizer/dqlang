@@ -3,8 +3,8 @@ package io.github.dqualizer.dqlang.types.rqa.configuration.loadtest;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.dqualizer.dqlang.types.dam.Endpoint;
 import io.github.dqualizer.dqlang.types.rqa.definition.Artifact;
-import io.github.dqualizer.dqlang.types.rqa.definition.ResponseMeasure;
 import io.github.dqualizer.dqlang.types.rqa.definition.Stimulus;
+import io.github.dqualizer.dqlang.types.rqa.definition.loadtest.ResponseMeasures;
 import lombok.*;
 
 @Getter
@@ -17,6 +17,6 @@ public class LoadTest {
     @NonNull private String description;
     private Stimulus stimulus;
     @JsonProperty("response_measure")
-    private ResponseMeasure responseMeasure;
+    private ResponseMeasures responseMeasure;
     private Endpoint endpoint;
 }
