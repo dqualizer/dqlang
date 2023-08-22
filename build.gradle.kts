@@ -83,6 +83,10 @@ dependencies {
     implementation("com.google.code.findbugs:jsr305:3.0.2")
 
     annotationProcessor("org.projectlombok:lombok:$lombokVersion")
+
+    implementation("org.springframework.data:spring-data-mongodb:4.1.2")
+
+
 }
 
 sourceSets.main {
