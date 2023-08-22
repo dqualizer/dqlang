@@ -1,6 +1,7 @@
 package io.github.dqualizer.dqlang.types.rqa.definition;
 
 import com.fasterxml.jackson.annotation.*;
+import io.github.dqualizer.dqlang.types.adapter.constants.ResponseTime;
 
 import javax.annotation.processing.Generated;
 import javax.validation.Valid;
@@ -22,7 +23,7 @@ public class ResponseMeasure {
     @JsonProperty("response_time")
     @JsonPropertyDescription("")
 
-    public ResponseMeasure.ResponseTime responseTime;
+    public ResponseTime responseTime;
     @JsonIgnore
     @Valid
     private Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
@@ -102,50 +103,4 @@ public class ResponseMeasure {
         return (((this.responseTime == rhs.responseTime) || ((this.responseTime != null) && this.responseTime.equals(rhs.responseTime))) && ((this.additionalProperties == rhs.additionalProperties) || ((this.additionalProperties != null) && this.additionalProperties.equals(
                 rhs.additionalProperties))));
     }
-
-
-    /**
-     *
-     */
-    @Generated("jsonschema2pojo")
-    public enum ResponseTime {
-
-        SATISFIED("SATISFIED"),
-        TOLERATED("TOLERATED"),
-        FRUSTRATED("FRUSTRATED");
-        private final String value;
-        private final static Map<String, ResponseMeasure.ResponseTime> CONSTANTS = new HashMap<String, ResponseMeasure.ResponseTime>();
-
-        static {
-            for (ResponseMeasure.ResponseTime c : values()) {
-                CONSTANTS.put(c.value, c);
-            }
-        }
-
-        ResponseTime(String value) {
-            this.value = value;
-        }
-
-        @Override
-        public String toString() {
-            return this.value;
-        }
-
-        @JsonValue
-        public String value() {
-            return this.value;
-        }
-
-        @JsonCreator
-        public static ResponseMeasure.ResponseTime fromValue(String value) {
-            ResponseMeasure.ResponseTime constant = CONSTANTS.get(value);
-            if (constant == null) {
-                throw new IllegalArgumentException(value);
-            } else {
-                return constant;
-            }
-        }
-
-    }
-
 }

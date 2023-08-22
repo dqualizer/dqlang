@@ -1,5 +1,6 @@
 package io.github.dqualizer.dqlang.types.adapter.k6;
 
+import io.github.dqualizer.dqlang.types.rqa.configuration.loadtest.LoadTest;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

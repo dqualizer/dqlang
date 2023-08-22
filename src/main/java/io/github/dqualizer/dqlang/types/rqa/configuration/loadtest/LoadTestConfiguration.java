@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.util.LinkedHashSet;
+import java.util.Set;
 
 /**
  * Java class for the general dqualizer loadtest configuration
