@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.*;
 
 import javax.annotation.processing.Generated;
 import javax.validation.Valid;
-import java.util.LinkedHashMap;
+import java.util.HashMap;
 import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -16,7 +16,7 @@ public class Resilience {
 
     @JsonIgnore
     @Valid
-    private Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
+    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     @JsonAnyGetter
     public Map<String, Object> getAdditionalProperties() {

@@ -1,4 +1,4 @@
-package io.github.dqualizer.dqlang.types.architecture
+package io.github.dqualizer.dqlang.types.dam.architecture
 
 import com.fasterxml.jackson.annotation.*
 

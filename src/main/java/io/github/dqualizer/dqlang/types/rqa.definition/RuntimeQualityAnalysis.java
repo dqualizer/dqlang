@@ -7,11 +7,13 @@ import io.github.dqualizer.dqlang.types.rqa.definition.resilience.Resilience;
 import lombok.Data;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Data
 public class RuntimeQualityAnalysis {
-    public List<ModeledLoadTest> loadtests = new ArrayList<>();
-    public List<Monitoring> monitoring = new ArrayList<>();
-    public List<Resilience> resilience = new ArrayList<>();
+    public Set<ModeledLoadTest> loadtests = new HashSet<>();
+    public Set<Monitoring> monitoring = new HashSet<>();
+    public Set<Resilience> resilience = new HashSet<>();
 }

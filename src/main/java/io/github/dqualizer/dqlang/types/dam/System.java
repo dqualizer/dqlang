@@ -12,7 +12,8 @@ public class System {
     @Id
     private String id;
     private String name;
-    private String operation_id;
+    @JsonProperty("operation_id")
+    private String operationId;
     private String type;
     @JsonProperty("implements")
     private List<Object> myimplements;

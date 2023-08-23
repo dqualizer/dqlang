@@ -7,7 +7,7 @@ import io.github.dqualizer.dqlang.types.adapter.request.Request;
 import javax.annotation.processing.Generated;
 import javax.validation.Valid;
 import java.beans.ConstructorProperties;
-import java.util.LinkedHashMap;
+import java.util.HashMap;
 import java.util.Map;
 
 
@@ -53,7 +53,7 @@ public class K6LoadTest {
     public Request request;
     @JsonIgnore
     @Valid
-    private Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
+    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     /**
      * No args constructor for use in serialization

@@ -1,27 +1,29 @@
 package io.github.dqualizer.dqlang.types.dam;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.dqualizer.dqlang.types.dam.architecture.SoftwareSystem;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.List;
+import java.util.Set;
 
 @Document
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class DomainArchitectureMapping {
     @Id
     private String id;
     private int version;
     private String context;
-    private List<ServerInfo> server_info;
-    private List<Actor> actors;
-    private List<System> systems;
+    @JsonProperty("server_infos")
+    private Set<ServerInfo> serverInfos;
+    private Set<Actor> actors;
+    private Set<System> systems;
 
-    public DomainArchitectureMapping(int version, String context, List<ServerInfo> server_info, List<Actor> actors, List<System> systems) {
-        this.version = version;
-        this.context = context;
-        this.server_info = server_info;
-        this.actors = actors;
-        this.systems = systems;
-    }
+    private SoftwareSystem softwareSystem = null;
+
 }
