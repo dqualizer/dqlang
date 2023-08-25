@@ -1,0 +1,39 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "InstrumentationFrameworkDescription",
+    "description": "A generic description of an instrumentation framework. ",
+    "type": "object",
+    "properties": {
+        "name": {
+            "description": "The name of the instrumentation framework",
+            "type": "string",
+            "examples": [
+                "OpenTelemetry",
+                "OpenCensus",
+                "inspectIT",
+                "AppDynamics"
+            ]
+        },
+        "existing" :{         
+            "description": "Whether the instrumentation framework is already installed",   
+            "type": "boolean"
+        },
+        "enabled_metrics": {
+            "description": "Whether metrics export is enabled for the instrumentation framework",
+            "type": "boolean"
+        },
+        "enabled_traces": {
+            "description": "Whether traces export is enabled for the instrumentation framework",
+            "type": "boolean"
+        },
+        "enabled_logs": {
+            "description": "Whether log export is enabled for the instrumentation framework",
+            "type": "boolean"
+        },
+        "framework_options" : {
+            "description": "Map of options, specific to the instrumentation framework, which should be passed to the agent.",
+            "type": "object",
+            "existingJavaType": "java.util.Map<String, String>"
+        }
+    }
+}

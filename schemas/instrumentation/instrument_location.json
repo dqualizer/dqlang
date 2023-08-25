@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Instrumentation Location",
+  "description": "Location where an instrument should be placed. The location can specify a file and a method or class name.",
+  "type": "object",  
+  "properties": {
+    "file": {
+      "type": "string",
+      "description": "File that should be instrumented.",
+      "examples": ["src/main/java/Main.java", "DataClass.cs"]
+    },
+    "location": {
+      "type": "string",
+      "description": "Method or class Name.",
+      "examples": ["com.example.Main", "com.example.Main#main", "DataClass::getData"]
+    }
+  },
+  "additionalProperties": true
+}

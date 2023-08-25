@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "title": "SoftwareSystem",
+  "description": "A generic description of a software system.",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the software system."
+    },
+    "services": {
+      "type": "array",
+      "description": "The services that the software system provides.",
+      "items": {
+        "$ref": "service.json"
+      }
+    },
+    "runtime_platforms": {
+      "type": "array",
+      "description": "The runtime platforms that the various parts of the software system run on. An empty array should indicate that the software system runs on a local runtime platform.",
+      "items": {
+        "$ref": "runtime_platform.json"
+      }
+    }
+  },
+  "required": [
+    "name",
+    "services"
+  ]
+}
