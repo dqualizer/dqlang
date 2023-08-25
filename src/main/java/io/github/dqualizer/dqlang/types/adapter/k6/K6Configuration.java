@@ -1,6 +1,6 @@
 package io.github.dqualizer.dqlang.types.adapter.k6;
 
-import io.github.dqualizer.dqlang.types.rqa.configuration.loadtest.LoadTest;
+import io.github.dqualizer.dqlang.types.rqa.configuration.loadtest.LoadTestArtifact;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,5 +19,5 @@ public class K6Configuration {
 
     private String name;
     private String baseURL;
-    private Set<LoadTest> loadTests;
+    private Set<LoadTestArtifact> loadTestArtifacts;
 }

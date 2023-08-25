@@ -23,5 +23,5 @@ public class LoadTestConfiguration {
     @JsonProperty("base_url")
     private String baseURL;
     @JsonProperty("load_tests")
-    private Set<LoadTest> loadTests;
+    private Set<LoadTestArtifact> loadTestArtifacts;
 }

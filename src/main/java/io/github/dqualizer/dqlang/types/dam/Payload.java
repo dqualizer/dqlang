@@ -7,6 +7,6 @@ import java.util.List;
 @Data
 public class Payload {
     private String name;
-    private List<Scenario> szenarios;
+    private List<Scenario> scenarios;
 
 }

@@ -1,7 +1,7 @@
 package io.github.dqualizer.dqlang.types.dam.architecture
 
 import com.fasterxml.jackson.annotation.*
-import io.github.dqualizer.dqlang.types.instrumentation.InstrumentationFramework
+import io.github.dqualizer.dqlang.types.dam.instrumentation.InstrumentationFramework
 import lombok.Builder
 
 /**
@@ -24,7 +24,7 @@ data class ServiceDescription(
     val uri: String,
 
     @JsonProperty("service_framework")
-    @JsonPropertyDescription("Framework used to run the service.")
+    @JsonPropertyDescription("Framework used to run the service. Spring, ASP.NET Core, ...")
     val serviceFramework: String,
 
     @JsonProperty("instrumentation_framework")

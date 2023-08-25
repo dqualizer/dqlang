@@ -1,4 +1,4 @@
-package io.github.dqualizer.dqlang.types.instrumentation
+package io.github.dqualizer.dqlang.types.dam.instrumentation
 
 /**
  * Instrument Types. Based on the opentelmetry spec.

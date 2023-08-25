@@ -12,7 +12,7 @@ import java.util.Set;
 
 @Data
 @NoArgsConstructor
-public class ModeledLoadTest {
+public class LoadTestDefinition {
     @Indexed(unique = true)
     private String name;
     private Artifact artifact;
@@ -24,7 +24,7 @@ public class ModeledLoadTest {
     @JsonProperty("result_metrics")
     private Set<ResultMetrics> resultMetrics;
 
-    public ModeledLoadTest(String name, Artifact artifact, String description, Stimulus stimulus, Parametrization parametrization, ResponseMeasures responseMeasures, Set<ResultMetrics> resultMetrics) {
+    public LoadTestDefinition(String name, Artifact artifact, String description, Stimulus stimulus, Parametrization parametrization, ResponseMeasures responseMeasures, Set<ResultMetrics> resultMetrics) {
         this.name = name;
         this.artifact = artifact;
         this.description = description;

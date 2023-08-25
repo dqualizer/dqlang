@@ -11,7 +11,7 @@ import lombok.*;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class LoadTest {
+public class LoadTestArtifact {
 
     private Artifact artifact;
     @NonNull

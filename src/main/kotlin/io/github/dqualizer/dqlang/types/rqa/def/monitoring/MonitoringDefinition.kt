@@ -3,7 +3,7 @@ package io.github.dqualizer.dqlang.types.rqa.def.monitoring
 import io.github.dqualizer.dqlang.types.rqa.def.MeasurementType
 
 
-data class Monitoring(
+data class MonitoringDefinition(
     /**
      * dq_id of the target work_object
      */
