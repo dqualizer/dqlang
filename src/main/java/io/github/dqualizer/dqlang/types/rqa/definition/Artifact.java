@@ -9,8 +9,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Artifact {
+
+
     @JsonProperty("system_id")
     private String systemId;
+
+
     @JsonProperty("activity_id")
     private String activityId;
 
