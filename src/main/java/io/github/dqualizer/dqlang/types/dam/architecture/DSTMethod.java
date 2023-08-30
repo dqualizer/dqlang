@@ -1,15 +1,18 @@
 package io.github.dqualizer.dqlang.types.dam.architecture;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.github.dqualizer.dqlang.types.dam.domain.Activity;
+import io.github.dqualizer.dqlang.types.dam.domainstory.Activity;
 import lombok.Data;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 
 import java.util.List;
 
+/**
+ * former "System" class
+ */
 @Data
-public class System {
+public class DSTMethod {
     @Id
     private String id;
     private String name;
@@ -22,7 +25,7 @@ public class System {
 
     private List<Activity> activities;
 
-    public System() {
+    public DSTMethod() {
         this.id = new ObjectId().toHexString();
     }
 }

@@ -2,9 +2,8 @@ package io.github.dqualizer.dqlang.types.dam;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.dqualizer.dqlang.types.dam.architecture.ServerInfo;
-import io.github.dqualizer.dqlang.types.dam.architecture.SoftwareSystem;
-import io.github.dqualizer.dqlang.types.dam.architecture.System;
-import io.github.dqualizer.dqlang.types.dam.domain.Actor;
+import io.github.dqualizer.dqlang.types.dam.architecture.DSTMethod;
+import io.github.dqualizer.dqlang.types.dam.domainstory.Actor;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,8 +24,8 @@ public class DomainArchitectureMapping {
     @JsonProperty("server_infos")
     private Set<ServerInfo> serverInfos;
     private Set<Actor> actors;
-    private Set<System> systems;
+    private Set<DSTMethod> systems;
 
-    private SoftwareSystem softwareSystem = null;
+    private DSTMethod aDSTMethod = null;
 
 }
