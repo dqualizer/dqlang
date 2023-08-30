@@ -1,4 +1,4 @@
-package io.github.dqualizer.dqlang.types.dam;
+package io.github.dqualizer.dqlang.types.dam.domain;
 
 import lombok.Data;
 

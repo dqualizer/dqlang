@@ -1,5 +1,6 @@
-package io.github.dqualizer.dqlang.types.dam;
+package io.github.dqualizer.dqlang.types.dam.architecture;
 
+import io.github.dqualizer.dqlang.types.dam.domain.Scenario;
 import lombok.Data;
 
 import java.util.List;

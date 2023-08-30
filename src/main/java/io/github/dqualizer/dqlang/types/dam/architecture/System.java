@@ -1,6 +1,7 @@
-package io.github.dqualizer.dqlang.types.dam;
+package io.github.dqualizer.dqlang.types.dam.architecture;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.dqualizer.dqlang.types.dam.domain.Activity;
 import lombok.Data;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;

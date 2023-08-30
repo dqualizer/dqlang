@@ -1,7 +1,6 @@
 package io.github.dqualizer.dqlang.types.dam.architecture
 
 import com.fasterxml.jackson.annotation.*
-import io.github.dqualizer.dqlang.types.dam.instrumentation.InstrumentationFramework
 import lombok.Builder
 
 /**

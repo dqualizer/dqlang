@@ -1,7 +1,10 @@
 package io.github.dqualizer.dqlang.types.dam;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.dqualizer.dqlang.types.dam.architecture.ServerInfo;
 import io.github.dqualizer.dqlang.types.dam.architecture.SoftwareSystem;
+import io.github.dqualizer.dqlang.types.dam.architecture.System;
+import io.github.dqualizer.dqlang.types.dam.domain.Actor;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

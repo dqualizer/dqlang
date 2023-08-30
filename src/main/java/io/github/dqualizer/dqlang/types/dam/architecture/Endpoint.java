@@ -1,4 +1,4 @@
-package io.github.dqualizer.dqlang.types.dam;
+package io.github.dqualizer.dqlang.types.dam.architecture;
 
 import io.github.dqualizer.dqlang.types.rqa.definition.loadtest.PathVariable;
 import lombok.Data;

@@ -1,4 +1,4 @@
-package io.github.dqualizer.dqlang.types.dam.instrumentation
+package io.github.dqualizer.dqlang.types.rqa.configuration.instrumentation
 
 import com.fasterxml.jackson.annotation.*
 import io.github.dqualizer.dqlang.types.rqa.def.MeasurementType

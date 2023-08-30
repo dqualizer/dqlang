@@ -1,4 +1,4 @@
-package io.github.dqualizer.dqlang.types.dam.instrumentation
+package io.github.dqualizer.dqlang.types.dam.architecture
 
 import com.fasterxml.jackson.annotation.*
 
@@ -32,17 +32,17 @@ data class InstrumentationFramework(
      */
     @JsonProperty("enabled_traces")
     @JsonPropertyDescription("Whether traces export is enabled for the instrumentation framework")
-    val enabledTraces: Boolean,
+    val enabledTraces: Boolean = false,
     /**
      * Whether log export is enabled for the instrumentation framework
      */
     @JsonProperty("enabled_logs")
     @JsonPropertyDescription("Whether log export is enabled for the instrumentation framework")
-    val enabledLogs: Boolean,
+    val enabledLogs: Boolean = false,
     /**
      * Map of options, specific to the instrumentation framework, which should be passed to the agent.
      */
     @JsonProperty("framework_options")
     @JsonPropertyDescription("Map of options, specific to the instrumentation framework, which should be passed to the agent.")
-    val frameworkOptions: Map<String, String>
+    val frameworkOptions: Map<String, String> = mutableMapOf()
 )
