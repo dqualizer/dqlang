@@ -32,7 +32,11 @@ data class ServiceDescription(
 
     @JsonProperty("runtime_platform_id")
     @JsonPropertyDescription("The id of the runtime platform that the service is running on. May be empty if its run locally.")
-    val runtimePlatformId: String
+    val runtimePlatformId: String,
+
+    @JsonProperty("endpoints")
+    @JsonPropertyDescription("The technical Endpoints that this service has.")
+    val endpoints: Collection<RESTEndpoint>
 ) {
     fun getDeploymentName(): String {
         return deploymentName ?: name

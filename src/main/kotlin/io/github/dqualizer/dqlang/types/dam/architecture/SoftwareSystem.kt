@@ -1,6 +1,7 @@
 package io.github.dqualizer.dqlang.types.dam.architecture
 
 import com.fasterxml.jackson.annotation.*
+import io.github.dqualizer.dqlang.types.rqa.definition.enums.Environment
 
 /**
  * SoftwareSystem
@@ -17,6 +18,8 @@ data class SoftwareSystem(
     @JsonProperty("name")
     @JsonPropertyDescription("The name of the software system.")
     val name: String,
+
+    val environment: Environment,
 
     /**
      * The services that the software system provides.
