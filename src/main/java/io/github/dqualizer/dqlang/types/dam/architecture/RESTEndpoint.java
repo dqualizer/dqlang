@@ -1,5 +1,6 @@
 package io.github.dqualizer.dqlang.types.dam.architecture;
 
+import io.github.dqualizer.dqlang.types.dam.Identifiable;
 import kotlin.text.Regex;
 import lombok.Data;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -9,7 +10,7 @@ import java.util.*;
 
 @Data
 @Document
-public class RESTEndpoint {
+public class RESTEndpoint extends Identifiable {
 
     public enum EndpointComponentType {
         PathVariable,
@@ -29,8 +30,6 @@ public class RESTEndpoint {
         }
 
     }
-
-    private String id;
 
     private String name;
     private String route;

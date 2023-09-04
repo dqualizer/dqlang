@@ -1,10 +1,10 @@
 package io.github.dqualizer.dqlang.types.dam.domainstory;
 
-public interface WorkObject {
+import io.github.dqualizer.dqlang.types.dam.Identifiable;
+import org.jetbrains.annotations.NotNull;
 
-        String getId();
-
-        String getName();
-
-        WorkObjectType getType();
+public abstract class WorkObject extends DSTEntity {
+        public WorkObject(@NotNull String name, @NotNull WorkObjectType type) {
+                super(name);
+        }
 }

@@ -1,28 +1,31 @@
 package io.github.dqualizer.dqlang.types.dam.mapping;
 
-import io.github.dqualizer.dqlang.types.dam.architecture.Endpoint;
-import io.github.dqualizer.dqlang.types.dam.domainstory.Activity;
+import io.github.dqualizer.dqlang.types.dam.architecture.RESTEndpoint;
 import io.github.dqualizer.dqlang.types.dam.domainstory.Actor;
 import lombok.Data;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
-
-import java.util.Map;
+import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
 /**
  * @author Lion Wagner
  */
 @Data
 @Document
-public class EndpointMapping {
+public class EndpointMapping extends Mapping<Actor, RESTEndpoint> {
 
-    @Id
-    private final String id;
-
-    @DBRef
+    @DocumentReference
     private final Actor actor;
 
-    private final Endpoint endpoint;
+    @DocumentReference
+    private final RESTEndpoint endpoint;
 
+    @Override
+    public Actor getSource() {
+        return getActor();
+    }
+
+    @Override
+    public RESTEndpoint getDestination() {
+        return getEndpoint();
+    }
 }
