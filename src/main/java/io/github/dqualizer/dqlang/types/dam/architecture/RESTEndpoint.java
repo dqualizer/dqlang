@@ -10,7 +10,7 @@ import java.util.*;
 
 @Data
 @Document
-public class RESTEndpoint extends Identifiable {
+public class RESTEndpoint extends ArchitectureEntity {
 
     public enum EndpointComponentType {
         PathVariable,

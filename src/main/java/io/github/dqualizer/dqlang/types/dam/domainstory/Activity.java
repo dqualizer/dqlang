@@ -1,8 +1,6 @@
 package io.github.dqualizer.dqlang.types.dam.domainstory;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.dqualizer.dqlang.types.dam.mapping.EndpointMapping;
-import lombok.Builder;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
@@ -13,7 +11,7 @@ import java.util.Set;
 public final class Activity extends DSTEntity {
 
     @DocumentReference
-    private Actor initiator;
+    private Set<Actor> initiator;
 
     /**
      * Endpoints that the activity reaches. Have to be filled out by a technical expert.

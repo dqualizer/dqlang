@@ -13,6 +13,9 @@ import org.springframework.data.mongodb.core.mapping.DocumentReference;
 @Data
 public class DomainArchitectureMapping extends Identifiable {
 
+    /**
+     * technical system description
+     */
     @DocumentReference
     private final SoftwareSystem softwareSystem;
 
@@ -21,6 +24,4 @@ public class DomainArchitectureMapping extends Identifiable {
 
     @DocumentReference
     private final MappingCollection mappingCollection;
-
-
 }

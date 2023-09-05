@@ -34,4 +34,4 @@ data class SoftwareSystem(
     @JsonProperty("runtime_platforms")
     @JsonPropertyDescription("The runtime platforms that the valious parts of the software system run on. An empty array should indicate that the software system runs on a local runtime platform.")
     val runtimePlatforms: List<RuntimePlatform> = ArrayList()
-) 
+) : ArchitectureEntity()

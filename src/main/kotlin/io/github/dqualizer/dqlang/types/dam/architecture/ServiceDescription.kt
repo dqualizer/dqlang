@@ -37,7 +37,7 @@ data class ServiceDescription(
     @JsonProperty("endpoints")
     @JsonPropertyDescription("The technical Endpoints that this service has.")
     val endpoints: Collection<RESTEndpoint>
-) {
+) : ArchitectureEntity() {
     fun getDeploymentName(): String {
         return deploymentName ?: name
     }

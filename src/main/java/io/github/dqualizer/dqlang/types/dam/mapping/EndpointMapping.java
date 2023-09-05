@@ -1,15 +1,15 @@
 package io.github.dqualizer.dqlang.types.dam.mapping;
 
 import io.github.dqualizer.dqlang.types.dam.architecture.RESTEndpoint;
+import io.github.dqualizer.dqlang.types.dam.architecture.SoftwareSystem;
 import io.github.dqualizer.dqlang.types.dam.domainstory.Actor;
-import lombok.Data;
+import io.github.dqualizer.dqlang.types.dam.domainstory.DomainStory;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
 /**
  * @author Lion Wagner
  */
-@Data
 @Document
 public class EndpointMapping extends Mapping<Actor, RESTEndpoint> {
 
@@ -19,13 +19,18 @@ public class EndpointMapping extends Mapping<Actor, RESTEndpoint> {
     @DocumentReference
     private final RESTEndpoint endpoint;
 
-    @Override
-    public Actor getSource() {
-        return getActor();
+    public EndpointMapping(Actor actor, RESTEndpoint endpoint) {
+        this.actor = actor;
+        this.endpoint = endpoint;
     }
 
     @Override
-    public RESTEndpoint getDestination() {
-        return getEndpoint();
+    public Actor getSource() {
+        return actor;
+    }
+
+    @Override
+    public RESTEndpoint getDestination(DomainStory story, SoftwareSystem system) {
+        return endpoint;
     }
 }
