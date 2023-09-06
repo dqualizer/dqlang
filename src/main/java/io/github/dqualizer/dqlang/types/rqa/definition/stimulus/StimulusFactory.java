@@ -1,10 +1,7 @@
 package io.github.dqualizer.dqlang.types.rqa.definition.stimulus;
 
 
-import io.github.dqualizer.dqlang.types.rqa.definition.enums.HighestLoad;
-import io.github.dqualizer.dqlang.types.rqa.definition.enums.LoadProfile;
-import io.github.dqualizer.dqlang.types.rqa.definition.enums.TimeToHighestLoad;
-import io.github.dqualizer.dqlang.types.rqa.definition.enums.TypeOfIncrease;
+import io.github.dqualizer.dqlang.types.rqa.definition.enums.*;
 
 import java.util.Map;
 
@@ -28,6 +25,13 @@ public class StimulusFactory {
                 loadIncrease.setLoadProfile(loadProfile);
                 loadIncrease.setTypeOfIncrease(typeOfIncrease);
                 return loadIncrease;
+            case CONSTANT_LOAD:
+                BaseLoad baseLoad = BaseLoad.valueOf(parameters.get("base_load"));
+                ConstantLoadStimulus constantLoad = new ConstantLoadStimulus();
+                constantLoad.setLoadProfile(loadProfile);
+                constantLoad.setAccuracy(accuracy);
+                constantLoad.setBaseLoad(baseLoad);
+                return constantLoad;
             default:
                 throw new IllegalArgumentException("Invalid load profile: " + loadProfile);
         }
