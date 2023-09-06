@@ -22,6 +22,8 @@ public class RuntimeQualityAnalysisDefinition {
     @JsonProperty("domain_id")
     @NotNull
     private String domainId;
+    @NotNull
+    private String context;
     private Environment environment;
     @JsonProperty("runtime_quality_analysis")
     private RuntimeQualityAnalysis runtimeQualityAnalysis;
