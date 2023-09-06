@@ -1,6 +1,7 @@
 package io.github.dqualizer.dqlang.messaging
 
 import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.databind.DeserializationFeature
 import org.springframework.amqp.core.AmqpAdmin
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter
 import org.springframework.amqp.support.converter.MessageConverter
