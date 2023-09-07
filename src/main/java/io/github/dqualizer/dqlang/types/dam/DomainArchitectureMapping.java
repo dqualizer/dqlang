@@ -24,6 +24,7 @@ public class DomainArchitectureMapping {
     private Set<Actor> actors;
     private Set<System> systems;
 
-    private SoftwareSystem softwareSystem = null;
+    // Deserialization not working cause of Jackson Annotations in the Packages... Commented for now
+    // private SoftwareSystem softwareSystem = null;
 
 }
