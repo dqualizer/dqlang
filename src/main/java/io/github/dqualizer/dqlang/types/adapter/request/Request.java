@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import java.util.Map;
+import java.util.List;
 
 @Getter
 @ToString
@@ -17,10 +17,10 @@ public class Request {
     private String type;
     private String path;
     @JsonProperty("path_variables")
-    private Map<String, String> pathVariables;
+    private List<String> pathVariables;
     @JsonProperty("query_params")
-    private Map<String, String> queryParams;
-    private Map<String, String> params;
-    private Map<String, String> payload;
+    private List<String> queryParams;
+    private List<String> params;
+    private List<String> payload;
     private Checks checks;
 }
