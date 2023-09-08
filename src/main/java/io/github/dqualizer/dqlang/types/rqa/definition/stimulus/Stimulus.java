@@ -20,7 +20,6 @@ import lombok.NoArgsConstructor;
 })    
 public abstract class Stimulus {
 
-    @JsonIgnore
     private String type;
     @JsonProperty("load_profile")
     private LoadProfile loadProfile;
