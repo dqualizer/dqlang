@@ -2,14 +2,15 @@ package io.github.dqualizer.dqlang.types.dam;
 
 import io.github.dqualizer.dqlang.types.dam.architecture.SoftwareSystem;
 import io.github.dqualizer.dqlang.types.dam.domainstory.DomainStory;
-import io.github.dqualizer.dqlang.types.dam.mapping.MappingCollection;
+import io.github.dqualizer.dqlang.types.dam.mapping.DAMapping;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @EqualsAndHashCode(callSuper = true)
-@Document
 @Data
 public class DomainArchitectureMapping extends Identifiable {
 
@@ -23,5 +24,5 @@ public class DomainArchitectureMapping extends Identifiable {
     private final DomainStory domainStory;
 
     @DocumentReference
-    private final MappingCollection mappingCollection;
+    private final Set<DAMapping<?, ?>> DAMappings = new HashSet<>();
 }

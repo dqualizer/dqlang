@@ -81,6 +81,8 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.2")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json-jvm:1.5.1")
     implementation("com.google.code.findbugs:jsr305:3.0.2")
+    implementation("org.junit.jupiter:junit-jupiter-engine:5.10.0")
+    implementation("org.mockito.kotlin:mockito-kotlin:5.0.0")
 
     annotationProcessor("org.projectlombok:lombok:$lombokVersion")
 

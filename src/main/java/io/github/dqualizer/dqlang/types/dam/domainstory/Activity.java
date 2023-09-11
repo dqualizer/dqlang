@@ -1,13 +1,11 @@
 package io.github.dqualizer.dqlang.types.dam.domainstory;
 
-import io.github.dqualizer.dqlang.types.dam.mapping.EndpointMapping;
+import io.github.dqualizer.dqlang.types.dam.mapping.EndpointDAMapping;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
 import java.util.Set;
 
-
-@Document
 public final class Activity extends DSTEntity {
 
     @DocumentReference
@@ -17,7 +15,7 @@ public final class Activity extends DSTEntity {
      * Endpoints that the activity reaches. Have to be filled out by a technical expert.
      */
     @DocumentReference
-    private Set<EndpointMapping> endpoints;
+    private Set<EndpointDAMapping> endpoints;
 
     /**
      * Work objects that are along the path.

@@ -2,6 +2,7 @@ package io.github.dqualizer.dqlang.types.dam.architecture
 
 import com.fasterxml.jackson.annotation.*
 import io.github.dqualizer.dqlang.types.rqa.definition.enums.Environment
+import org.springframework.data.mongodb.core.mapping.DocumentReference
 
 /**
  * SoftwareSystem
@@ -26,6 +27,7 @@ data class SoftwareSystem(
      */
     @JsonProperty("services")
     @JsonPropertyDescription("The services that the software system provides.")
+    @DocumentReference
     val services: List<ServiceDescription> = ArrayList(),
 
     /**

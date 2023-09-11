@@ -9,7 +9,7 @@ import org.springframework.data.annotation.Id;
 import java.util.List;
 
 /**
- * former "System" class
+ * former "Object" class
  */
 @Data
 public class DSTMethod {
