@@ -11,6 +11,6 @@ public class Endpoint {
     private List<PathVariable> path_variables;
     private List<UrlParameter> url_parameter;
     private List<RequestParameter> request_parameter;
-    private Payload payload;
+    private List<Payload> payloads;
     private List<Response> responses;
 }
