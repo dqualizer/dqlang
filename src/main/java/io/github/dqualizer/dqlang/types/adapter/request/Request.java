@@ -10,6 +10,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -21,11 +22,11 @@ public class Request {
     private String type;
     private String path;
     @JsonProperty("path_variables")
-    private List<PathVariable> pathVariables = new ArrayList<PathVariables>();
+    private List<PathVariable> pathVariables = new ArrayList<>();
     @JsonProperty("query_params")
-    private List<Object> queryParams = new ArrayList<queryParams>();
+    private List<Object> queryParams = new ArrayList<>();
     @JsonProperty("request_params")
-    private List<RequestParameter> requestParameters = new ArrayList<requestParams>();
-    private List<Payload> payload = new ArrayList<Payload>();
+    private List<RequestParameter> requestParameters = new ArrayList<>();
+    private List<Payload> payload = new ArrayList<>();
     private Checks checks;
 }
