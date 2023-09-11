@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.github.dqualizer.dqlang.types.dam.Payload;
 import io.github.dqualizer.dqlang.types.dam.RequestParameter;
-import io.github.dqualizer.dqlang.types.rqa.definition.loadtest.PathVariable;
+import io.github.dqualizer.dqlang.types.dam.PathVariable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
