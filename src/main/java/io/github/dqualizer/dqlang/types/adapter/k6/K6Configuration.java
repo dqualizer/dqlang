@@ -19,5 +19,5 @@ public class K6Configuration {
 
     private String name;
     private String baseURL;
-    private Set<LoadTestArtifact> loadTestArtifacts;
+    private Set<K6Configuration> k6Configurations;
 }
