@@ -21,11 +21,11 @@ public class Request {
     private String type;
     private String path;
     @JsonProperty("path_variables")
-    private List<PathVariable> pathVariables;
+    private List<PathVariable> pathVariables = new ArrayList<PathVariables>();
     @JsonProperty("query_params")
-    private List<Object> queryParams;
+    private List<Object> queryParams = new ArrayList<queryParams>();
     @JsonProperty("request_params")
-    private List<RequestParameter> requestParameters;
-    private List<Payload> payload;
+    private List<RequestParameter> requestParameters = new ArrayList<requestParams>();
+    private List<Payload> payload = new ArrayList<Payload>();
     private Checks checks;
 }
