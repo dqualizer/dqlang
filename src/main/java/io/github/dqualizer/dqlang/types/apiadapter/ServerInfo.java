@@ -1,4 +1,4 @@
-package io.github.dqualizer.dqlang.types.openapiadapter.data;
+package io.github.dqualizer.dqlang.types.apiadapter;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,8 +9,8 @@ import lombok.ToString;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class Property {
+public class ServerInfo {
 
-    private String name;
-    private String type;
+    private String host;
+    private String environment;
 }

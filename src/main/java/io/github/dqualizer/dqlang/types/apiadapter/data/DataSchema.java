@@ -1,15 +1,18 @@
-package io.github.dqualizer.dqlang.types.openapiadapter.field;
+package io.github.dqualizer.dqlang.types.apiadapter.data;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.util.Set;
+
 @Getter
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class DataType {
+public class DataSchema {
 
     private String type;
+    private Set<Property> properties;
 }

@@ -1,8 +1,8 @@
-package io.github.dqualizer.dqlang.types.openapiadapter;
+package io.github.dqualizer.dqlang.types.apiadapter;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.github.dqualizer.dqlang.types.openapiadapter.data.DataSchema;
-import io.github.dqualizer.dqlang.types.openapiadapter.field.FieldItem;
+import io.github.dqualizer.dqlang.types.apiadapter.data.DataSchema;
+import io.github.dqualizer.dqlang.types.apiadapter.field.FieldItem;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

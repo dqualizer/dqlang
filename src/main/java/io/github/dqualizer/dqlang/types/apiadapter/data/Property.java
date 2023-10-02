@@ -1,4 +1,4 @@
-package io.github.dqualizer.dqlang.types.openapiadapter.field;
+package io.github.dqualizer.dqlang.types.apiadapter.data;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,10 +9,8 @@ import lombok.ToString;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class Input {
+public class Property {
 
     private String name;
-    private String in;
-    private boolean required;
     private String type;
 }
