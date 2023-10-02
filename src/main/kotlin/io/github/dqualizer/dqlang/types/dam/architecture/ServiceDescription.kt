@@ -24,7 +24,7 @@ data class ServiceDescription(
 
     @JsonProperty("service_framework")
     @JsonPropertyDescription("Framework used to run the service. Spring, ASP.NET Core, ...")
-    val serviceFramework: ProgrammingFrameworkType,
+    val serviceFramework: ProgrammingFramework,
 
     @JsonProperty("instrumentation_framework")
     @JsonPropertyDescription("A generic description of an instrumentation framework. ")
@@ -36,7 +36,13 @@ data class ServiceDescription(
 
     @JsonProperty("endpoints")
     @JsonPropertyDescription("The technical Endpoints that this service has.")
-    val endpoints: Collection<RESTEndpoint>
+    val endpoints: Collection<RESTEndpoint>,
+
+
+    @JsonProperty("controllers")
+    @JsonPropertyDescription("The controllers that this service provides. Legacy class to keep compatibilty to the first iteration of dqualizer.")
+    val controllers: Collection<CodeComponent>
+
 ) : ArchitectureEntity() {
     fun getDeploymentName(): String {
         return deploymentName ?: name
