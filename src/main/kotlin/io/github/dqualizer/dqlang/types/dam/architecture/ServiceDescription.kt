@@ -24,7 +24,7 @@ data class ServiceDescription(
 
     @JsonProperty("service_framework")
     @JsonPropertyDescription("Framework used to run the service. Spring, ASP.NET Core, ...")
-    val serviceFramework: ProgrammingFramework,
+    val programmingFramework: ProgrammingFramework,
 
     @JsonProperty("instrumentation_framework")
     @JsonPropertyDescription("A generic description of an instrumentation framework. ")

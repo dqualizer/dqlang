@@ -31,7 +31,7 @@ data class SoftwareSystem(
     val services: List<ServiceDescription> = ArrayList(),
 
     /**
-     * The runtime platforms that the valious parts of the software system run on. An empty array should indicate that the software system runs on a local runtime platform.
+     * The runtime platforms that the various parts of the software system run on. An empty array should indicate that the software system runs on a local runtime platform.
      */
     @JsonProperty("runtime_platforms")
     @JsonPropertyDescription("The runtime platforms that the valious parts of the software system run on. An empty array should indicate that the software system runs on a local runtime platform.")

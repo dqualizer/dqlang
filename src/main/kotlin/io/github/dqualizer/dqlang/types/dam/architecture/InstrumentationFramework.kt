@@ -1,6 +1,7 @@
 package io.github.dqualizer.dqlang.types.dam.architecture
 
-import com.fasterxml.jackson.annotation.*
+import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.annotation.JsonPropertyDescription
 
 /**
  * InstrumentationFrameworkDescription
@@ -16,33 +17,38 @@ data class InstrumentationFramework(
      */
     @JsonPropertyDescription("The name of the instrumentation framework")
     val name: String,
+
     /**
      * Whether the instrumentation framework is already installed
      */
     @JsonPropertyDescription("Whether the instrumentation framework is already installed")
-    val existing: Boolean,
+    val existing: Boolean = false,
+
     /**
      * Whether metrics export is enabled for the instrumentation framework
      */
-    @JsonProperty("enabled_metrics")
+    @JsonProperty("has_metrics")
     @JsonPropertyDescription("Whether metrics export is enabled for the instrumentation framework")
-    val enabledMetrics: Boolean,
+    val hasMetrics: Boolean = false,
+
     /**
      * Whether traces export is enabled for the instrumentation framework
      */
-    @JsonProperty("enabled_traces")
+    @JsonProperty("has_traces")
     @JsonPropertyDescription("Whether traces export is enabled for the instrumentation framework")
-    val enabledTraces: Boolean = false,
+    val hasTraces: Boolean = false,
+
     /**
      * Whether log export is enabled for the instrumentation framework
      */
-    @JsonProperty("enabled_logs")
+    @JsonProperty("has_logging")
     @JsonPropertyDescription("Whether log export is enabled for the instrumentation framework")
-    val enabledLogs: Boolean = false,
+    val hasLogging: Boolean = false,
+
     /**
      * Map of options, specific to the instrumentation framework, which should be passed to the agent.
      */
-    @JsonProperty("framework_options")
+    @JsonProperty("options")
     @JsonPropertyDescription("Map of options, specific to the instrumentation framework, which should be passed to the agent.")
-    val frameworkOptions: Map<String, String> = mutableMapOf()
+    val options: Map<String, String> = mutableMapOf()
 )
