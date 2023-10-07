@@ -1,14 +1,9 @@
-package io.github.dqualizer.dqlang.types.rqa.definition.loadtest;
+package io.github.dqualizer.dqlang.types.rqa.definition.loadtest.parametrization;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.github.dqualizer.dqlang.types.dam.PathVariable;
-import io.github.dqualizer.dqlang.types.dam.Payload;
-import io.github.dqualizer.dqlang.types.dam.RequestParameter;
-import io.github.dqualizer.dqlang.types.dam.UrlParameter;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.bson.json.JsonObject;
 
 import java.util.Set;
 
