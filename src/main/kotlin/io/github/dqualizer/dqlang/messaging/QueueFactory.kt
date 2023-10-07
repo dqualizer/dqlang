@@ -29,7 +29,6 @@ class QueueFactory(
         createAndBindQueues(factory)
     }
 
-
     private fun createExchanges(factory: AutowireCapableBeanFactory) {
         for (exchangeEntry in messagingConfiguration.exchanges) {
             val exchangeConfig = exchangeEntry.value
@@ -90,6 +89,4 @@ class QueueFactory(
             }
         }
     }
-
-
 }

@@ -29,8 +29,6 @@ class QueueFactoryTest {
         Mockito.reset(beanFactory, applicationContext, amqpAdmin)
 
         applicationContext = mock<ApplicationContext> { on { autowireCapableBeanFactory } doReturn beanFactory }
-
-
     }
 
     private fun verifyCounts(queues: Int, exchanges: Int, bindings: Int) {
@@ -235,7 +233,6 @@ class QueueFactoryTest {
 
         verify(amqpAdmin).declareExchange(exchangeArgument.capture())
         assertEquals(exchangeName, exchangeArgument.value.name)
-
     }
 
     @Test

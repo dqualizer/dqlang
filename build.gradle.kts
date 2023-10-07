@@ -19,10 +19,7 @@ plugins {
     id("maven-publish")
     id("idea")
     id("eclipse")
-
 }
-
-
 
 idea { //allows downloading sources and javadoc for IntelliJ with gradle cleanIdea idea
     module {
@@ -99,12 +96,10 @@ dependencies {
     testImplementation("org.testcontainers:junit-jupiter")
 }
 
-
 sourceSets.main {
     java.srcDirs("src/main/java", "src/main/kotlin")
     kotlin.srcDirs("src/main/java", "src/main/kotlin")
 }
-
 
 tasks.withType<KotlinCompile> {
     kotlinOptions {

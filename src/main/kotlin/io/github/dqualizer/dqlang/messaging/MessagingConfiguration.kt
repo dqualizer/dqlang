@@ -32,8 +32,3 @@ data class MessagingConfiguration(
         val autoDelete: Boolean = false
     )
 }
-
-
-
-
-
