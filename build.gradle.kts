@@ -58,6 +58,7 @@ publishing {
                 }
             }
         }
+        mavenLocal()
     }
 }
 
@@ -73,9 +74,14 @@ repositories {
 }
 
 dependencies {
-    implementation("org.springframework.boot:spring-boot-starter:$springBootVersion")
-    implementation("org.springframework.boot:spring-boot-starter-amqp:$springBootVersion")
+    //spring boot bom
+    implementation(platform("org.springframework.boot:spring-boot-dependencies:3.1.3"))
+
+    implementation("org.springframework.boot:spring-boot-starter")
+    implementation("org.springframework.boot:spring-boot-starter-amqp")
     implementation("org.springframework:spring-web:6.0.11")
+    implementation("org.springframework.data:spring-data-mongodb:4.1.2")
+
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.15.2")
     implementation("javax.validation:validation-api:2.0.1.Final")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.2")
@@ -84,15 +90,17 @@ dependencies {
     implementation("org.junit.jupiter:junit-jupiter-engine:5.10.0")
     implementation("org.mockito.kotlin:mockito-kotlin:5.0.0")
 
-    annotationProcessor("org.projectlombok:lombok:$lombokVersion")
+    annotationProcessor("org.projectlombok:lombok")
 
-    implementation("org.springframework.data:spring-data-mongodb:4.1.2")
-
-
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("org.mockito.kotlin:mockito-kotlin:5.1.0")
+    testImplementation("org.junit.jupiter:junit-jupiter")
+    testImplementation("org.testcontainers:junit-jupiter")
 }
 
 sourceSets.main {
     java.srcDirs("src/main/java", "src/main/kotlin")
+    kotlin.srcDirs("src/main/java", "src/main/kotlin")
 }
 
 tasks.withType<KotlinCompile> {

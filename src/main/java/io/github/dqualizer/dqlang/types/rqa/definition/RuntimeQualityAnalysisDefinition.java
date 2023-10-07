@@ -1,15 +1,19 @@
 package io.github.dqualizer.dqlang.types.rqa.definition;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.dqualizer.dqlang.types.rqa.definition.enums.Environment;
-import lombok.Data;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotNull;
 
-@Data
+@Getter
+@ToString
+@AllArgsConstructor
+@NoArgsConstructor
 @Document
 public class RuntimeQualityAnalysisDefinition {
 
@@ -22,11 +26,20 @@ public class RuntimeQualityAnalysisDefinition {
     @JsonProperty("domain_id")
     @NotNull
     private String domainId;
+    @NotNull
+    private String context;
     private Environment environment;
     @JsonProperty("runtime_quality_analysis")
     private RuntimeQualityAnalysis runtimeQualityAnalysis;
 
-    public RuntimeQualityAnalysisDefinition(String name, String version, Environment environment, String domainId, RuntimeQualityAnalysis runtimeQualityAnalysis) {
+    @JsonCreator
+    public RuntimeQualityAnalysisDefinition(  
+        @JsonProperty("name") String name,
+        @JsonProperty("version") String version,
+        @JsonProperty("environment") Environment environment,
+        @JsonProperty("domain_id") String domainId,
+        @JsonProperty("context") String context,
+        @JsonProperty("runtime_quality_analysis") RuntimeQualityAnalysis runtimeQualityAnalysis) {
         this.name = name;
         this.version = version;
         this.environment = environment;
