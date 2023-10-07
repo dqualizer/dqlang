@@ -1,0 +1,23 @@
+dqualizer:
+  messaging:
+    exchanges:
+      exchange1:
+        exchange-type: "fanout"
+        name: "testExchange1"
+        durable: false
+        autoDelete: true
+      exchange2:
+        exchange-type: "TOPIC"
+      exchange3:
+        exchange-type: "headers"
+      exchange4:
+        exchange-type: "DIRECT"
+      exchange5:
+    queues:
+      queue1:
+        name: "named-queue"
+        durable: false
+        bindings:
+          - exchange: "testExchange1"
+            routing-key: "42"
+      queue2:
