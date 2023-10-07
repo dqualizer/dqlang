@@ -11,7 +11,7 @@ import org.springframework.boot.test.context.TestConfiguration
 import org.springframework.context.annotation.Bean
 
 @TestConfiguration
-class MessagingConfiguration {
+class MessagingTestConfiguration {
 
     /**
      * Creates a dummy connection factory, so that rabbitmq thinks it would successfully connect to a rabbitmq server

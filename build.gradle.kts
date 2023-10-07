@@ -1,8 +1,5 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
-val springBootVersion = "3.1.2"
-val lombokVersion = "1.18.28"
-
 group = "io.github.dqualizer"
 
 java.sourceCompatibility = JavaVersion.VERSION_17
@@ -96,6 +93,7 @@ dependencies {
     testImplementation("org.mockito.kotlin:mockito-kotlin:5.1.0")
     testImplementation("org.junit.jupiter:junit-jupiter")
     testImplementation("org.testcontainers:junit-jupiter")
+    testImplementation("org.jeasy:easy-random-core:5.0.0")
 }
 
 sourceSets.main {
