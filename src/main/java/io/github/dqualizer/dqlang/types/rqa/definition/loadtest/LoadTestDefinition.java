@@ -1,7 +1,6 @@
 package io.github.dqualizer.dqlang.types.rqa.definition.loadtest;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.github.dqualizer.dqlang.types.rqa.definition.Artifact;
 import io.github.dqualizer.dqlang.types.rqa.definition.enums.ResultMetrics;
 import io.github.dqualizer.dqlang.types.rqa.definition.loadtest.parametrization.Parametrization;
 import io.github.dqualizer.dqlang.types.rqa.definition.stimulus.Stimulus;
