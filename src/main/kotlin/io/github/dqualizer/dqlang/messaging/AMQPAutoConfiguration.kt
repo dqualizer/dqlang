@@ -2,6 +2,7 @@ package io.github.dqualizer.dqlang.messaging
 
 import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.databind.module.SimpleModule
 import io.github.dqualizer.dqlang.messaging.MessagingConfiguration.ExchangeConfiguration
 import io.github.dqualizer.dqlang.messaging.MessagingConfiguration.QueueConfiguration
 import org.springframework.amqp.core.AmqpAdmin
@@ -13,24 +14,27 @@ import org.springframework.context.ApplicationContext
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.core.convert.converter.Converter
+import java.lang.module.ModuleDescriptor
 
 
 @Configuration
 class AMQPAutoConfiguration {
+
     @Bean
     fun objectMapper(): ObjectMapper {
         val convertModule = SimpleModule("dqlang_converter")
-        convertModule.addDeserializer(Version::class.java, VersionDeserializer())
-        convertModule.addSerializer(Version::class.java, VersionSerializer())
+            .addSerializer(ModuleDescriptor.Version::class.java, VersionSerializer())
+            .addDeserializer(ModuleDescriptor.Version::class.java, VersionDeserializer())
 
-        return ObjectMapper()
-    }
-
-    @Bean
-    fun objectMapper(): ObjectMapper {
         return ObjectMapper()
             .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
             .configure(DeserializationFeature.FAIL_ON_MISSING_CREATOR_PROPERTIES, false)
+            .registerModule(convertModule);
+    }
+
+    @Bean
+    fun messageConverter(mapper: ObjectMapper): MessageConverter {
+        return Jackson2JsonMessageConverter(mapper)
     }
 
     @Bean
