@@ -1,6 +1,4 @@
-package io.github.dqualizer.dqlang.types.rqa.def.monitoring
-
-import io.github.dqualizer.dqlang.types.rqa.def.MeasurementType
+package io.github.dqualizer.dqlang.types.rqa.definition.monitoring
 
 
 data class MonitoringDefinition(

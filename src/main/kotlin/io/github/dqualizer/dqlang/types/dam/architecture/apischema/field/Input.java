@@ -1,18 +1,18 @@
-package io.github.dqualizer.dqlang.types.apiadapter.data;
+package io.github.dqualizer.dqlang.types.dam.architecture.apischema.field;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import java.util.Set;
-
 @Getter
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class DataSchema {
+public class Input {
 
+    private String name;
+    private String in;
+    private boolean required;
     private String type;
-    private Set<Property> properties;
 }

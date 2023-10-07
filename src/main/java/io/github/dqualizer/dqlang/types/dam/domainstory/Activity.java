@@ -1,7 +1,6 @@
 package io.github.dqualizer.dqlang.types.dam.domainstory;
 
 import io.github.dqualizer.dqlang.types.dam.mapping.EndpointDAMapping;
-import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
 import java.util.Set;
@@ -9,7 +8,7 @@ import java.util.Set;
 public final class Activity extends DSTEntity {
 
     @DocumentReference
-    private Set<Actor> initiator;
+    private Set<Actor> initiators;
 
     /**
      * Endpoints that the activity reaches. Have to be filled out by a technical expert.
@@ -35,6 +34,6 @@ public final class Activity extends DSTEntity {
     @Override
     public String toString() {
         return "Activity %s: %s %s %s to/for %s"
-                .formatted(getId(), initiator, action.isBlank() ? "?" : action, workObjects, endpoints);
+                .formatted(getId(), initiators, action.isBlank() ? "?" : action, workObjects, endpoints);
     }
 }

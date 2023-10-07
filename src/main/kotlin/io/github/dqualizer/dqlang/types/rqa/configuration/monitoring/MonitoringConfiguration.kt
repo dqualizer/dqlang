@@ -4,5 +4,4 @@ import io.github.dqualizer.dqlang.types.dam.architecture.InstrumentationFramewor
 
 data class MonitoringConfiguration(
     val serviceMonitoringConfigurations: Collection<ServiceMonitoringConfiguration>,
-    val serviceMonitoringFrameworks: Map<String, InstrumentationFramework>
 )

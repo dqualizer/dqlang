@@ -1,6 +1,7 @@
 package io.github.dqualizer.dqlang.types.dam.architecture
 
 import com.fasterxml.jackson.annotation.*
+import io.github.dqualizer.dqlang.types.dam.architecture.apischema.APISchema
 import lombok.Builder
 import java.net.URI
 
@@ -38,6 +39,9 @@ data class ServiceDescription(
     @JsonPropertyDescription("The technical Endpoints that this service has.")
     val endpoints: Collection<RESTEndpoint>,
 
+
+    @JsonPropertyDescription("The API Schema that this service provides.")
+    val apiSchema: APISchema,
 
     @JsonProperty("controllers")
     @JsonPropertyDescription("The controllers that this service provides. Legacy class to keep compatibilty to the first iteration of dqualizer.")

@@ -1,7 +1,7 @@
 package io.github.dqualizer.dqlang.types.rqa.configuration.instrumentation
 
 import com.fasterxml.jackson.annotation.*
-import io.github.dqualizer.dqlang.types.rqa.def.MeasurementType
+import io.github.dqualizer.dqlang.types.rqa.definition.monitoring.MeasurementType
 
 
 /**
@@ -14,7 +14,7 @@ import io.github.dqualizer.dqlang.types.rqa.def.MeasurementType
 
 class Instrument(
     @JsonProperty("metric_labels")
-    val metricLabels: Set<String> = mutableSetOf(),
+    val metricTags: Map<String,String> = mutableMapOf(),
 
     @JsonProperty("metric_name")
     val metricName: String,
@@ -27,6 +27,10 @@ class Instrument(
 
     @JsonProperty("measurement_type")
     val measurementType: MeasurementType,
+
+
+    @JsonProperty("measurement_unit")
+    val measurementUnit: String,
 
     /**
      * Instrumentation Location

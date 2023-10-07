@@ -1,8 +1,8 @@
-package io.github.dqualizer.dqlang.types.apiadapter;
+package io.github.dqualizer.dqlang.types.dam.architecture.apischema;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.github.dqualizer.dqlang.types.apiadapter.data.DataSchema;
-import io.github.dqualizer.dqlang.types.apiadapter.field.FieldItem;
+import io.github.dqualizer.dqlang.types.dam.architecture.apischema.data.DataSchema;
+import io.github.dqualizer.dqlang.types.dam.architecture.apischema.field.FieldItem;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,7 +12,7 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Java class for the dqlang API-schema
+ * General API-schema description
  */
 @Getter
 @ToString

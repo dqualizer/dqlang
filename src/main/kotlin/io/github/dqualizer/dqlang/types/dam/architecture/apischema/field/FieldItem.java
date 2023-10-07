@@ -1,4 +1,4 @@
-package io.github.dqualizer.dqlang.types.apiadapter.field;
+package io.github.dqualizer.dqlang.types.dam.architecture.apischema.field;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;

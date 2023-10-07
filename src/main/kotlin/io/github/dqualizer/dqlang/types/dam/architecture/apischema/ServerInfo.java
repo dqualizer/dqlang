@@ -1,4 +1,4 @@
-package io.github.dqualizer.dqlang.types.apiadapter;
+package io.github.dqualizer.dqlang.types.dam.architecture.apischema;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
