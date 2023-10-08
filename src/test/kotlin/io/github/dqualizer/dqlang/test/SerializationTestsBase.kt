@@ -7,7 +7,6 @@ import io.github.dqualizer.dqlang.types.dam.domainstory.Actor
 import io.github.dqualizer.dqlang.types.dam.domainstory.Group
 import io.github.dqualizer.dqlang.types.dam.domainstory.Person
 import io.github.dqualizer.dqlang.types.dam.domainstory.System
-import io.github.dqualizer.dqlang.types.dam.domainstory.WorkObject
 import io.github.dqualizer.dqlang.types.rqa.definition.loadtest.LoadTestDefinition
 import io.github.dqualizer.dqlang.types.rqa.definition.monitoring.MonitoringDefinition
 import io.github.dqualizer.dqlang.types.rqa.definition.resilience.ResilienceDefinition
@@ -25,6 +24,7 @@ import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.http.HttpMethod
 import java.lang.module.ModuleDescriptor
 import java.lang.reflect.Modifier
+import java.util.function.Predicate
 
 @SpringBootTest(classes = [AMQPAutoConfiguration::class, RabbitAutoConfiguration::class])
 open class SerializationTestsBase {
@@ -56,25 +56,34 @@ open class SerializationTestsBase {
             return@randomize ModuleDescriptor.Version.parse("${rng.nextInt(100)}.${rng.nextInt(100)}.${rng.nextInt(100)}")
         }.randomize(HttpMethod::class.java) {
             return@randomize HttpMethod.values().random()
+        }.randomize({
+            it.name == "_class"
+        }) {
+            return@randomize "not-known";
         }
     )
 
     companion object {
-        @JvmStatic
-        fun getSerializableClasses(): List<Class<*>> {
 
+        private val instantiatableIdentifiableTypes : List<Class<*>>
+
+        init {
             val reflection = Reflections("io.github.dqualizer.dqlang.types")
             val identifiableTypes = reflection.getSubTypesOf(Identifiable::class.java)
-            val instanceableTypes = identifiableTypes
+            instantiatableIdentifiableTypes = identifiableTypes
                 .filter { !Modifier.isInterface(it.modifiers) && !Modifier.isAbstract(it.modifiers) }
+        }
 
+
+        @JvmStatic
+        fun getSerializableClasses(): List<Class<*>> {
 
 
             return listOf(
                 MonitoringDefinition::class.java,
                 LoadTestDefinition::class.java,
                 ResilienceDefinition::class.java,
-                *instanceableTypes.toTypedArray()
+                *instantiatableIdentifiableTypes.toTypedArray()
             )
         }
     }

@@ -1,17 +1,18 @@
 package io.github.dqualizer.dqlang.types.dam.architecture
 
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 
 /**
  * former "Object" class. Now represents a code component.
  */
-data class CodeComponent(
-    private val name: String,
+data class CodeComponent @JsonCreator constructor(
+    val name: String,
     @JsonProperty("operation_id")
-    private val operationId: String,
-    private val type: String,
+    val operationId: String,
+    val type: String,
     @JsonProperty("implements")
-    private val myimplements: Set<String> = emptySet(),
-    private val objects: Set<String> = emptySet(),
-    private val activities: Set<String> = emptySet()
+    val myimplements: Set<String> = emptySet(),
+    val objects: Set<String> = emptySet(),
+    val activities: Set<String> = emptySet()
 ) : ArchitectureEntity()

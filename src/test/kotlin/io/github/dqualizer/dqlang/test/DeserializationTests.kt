@@ -1,5 +1,6 @@
 package io.github.dqualizer.dqlang.test
 
+import io.github.dqualizer.dqlang.types.dam.domainstory.Group
 import io.github.dqualizer.dqlang.types.rqa.definition.monitoring.MonitoringDefinition
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.params.ParameterizedTest
