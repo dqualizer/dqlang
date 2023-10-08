@@ -1,0 +1,14 @@
+{
+  "name" : "eOMtThyhVNLWUZNRcBaQKxI",
+  "version" : "yedUsFwdkelQbxeTeQOvaScfqIOOmaa",
+  "environment" : "DEV",
+  "domain_id" : "JxkyvRnL",
+  "context" : "RYtGKbgicZaHCBRQDSx",
+  "runtime_quality_analysis" : {
+    "loadtests" : [ ],
+    "monitoringDefinition" : [ ],
+    "resilienceDefinition" : [ ]
+  },
+  "id" : "VLhpfQGTMDYpsBZxvfBoeygjb",
+  "serializationClass" : "io.github.dqualizer.dqlang.types.rqa.definition.RuntimeQualityAnalysisDefinition"
+}

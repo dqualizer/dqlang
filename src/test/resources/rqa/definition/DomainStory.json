@@ -1,0 +1,261 @@
+{
+  "actors" : [ {
+    "@type" : "System",
+    "systemName" : "eOMtThyhVNLWUZNRcBaQKxI",
+    "id" : "JxkyvRnL",
+    "name" : "yedUsFwdkelQbxeTeQOvaScfqIOOmaa",
+    "serializationClass" : "io.github.dqualizer.dqlang.types.dam.domainstory.System"
+  }, {
+    "@type" : "System",
+    "systemName" : "eOMtThyhVNLWUZNRcBaQKxI",
+    "id" : "JxkyvRnL",
+    "name" : "yedUsFwdkelQbxeTeQOvaScfqIOOmaa",
+    "serializationClass" : "io.github.dqualizer.dqlang.types.dam.domainstory.System"
+  }, {
+    "@type" : "Group",
+    "groupName" : "eOMtThyhVNLWUZNRcBaQKxI",
+    "id" : "JxkyvRnL",
+    "name" : "yedUsFwdkelQbxeTeQOvaScfqIOOmaa",
+    "serializationClass" : "io.github.dqualizer.dqlang.types.dam.domainstory.Group"
+  }, {
+    "@type" : "Group",
+    "groupName" : "eOMtThyhVNLWUZNRcBaQKxI",
+    "id" : "JxkyvRnL",
+    "name" : "yedUsFwdkelQbxeTeQOvaScfqIOOmaa",
+    "serializationClass" : "io.github.dqualizer.dqlang.types.dam.domainstory.Group"
+  }, {
+    "@type" : "Group",
+    "groupName" : "eOMtThyhVNLWUZNRcBaQKxI",
+    "id" : "JxkyvRnL",
+    "name" : "yedUsFwdkelQbxeTeQOvaScfqIOOmaa",
+    "serializationClass" : "io.github.dqualizer.dqlang.types.dam.domainstory.Group"
+  } ],
+  "workObjects" : [ {
+    "@type" : "WorkObject",
+    "name" : "eOMtThyhVNLWUZNRcBaQKxI",
+    "type" : "FOLDER",
+    "id" : "yedUsFwdkelQbxeTeQOvaScfqIOOmaa",
+    "serializationClass" : "io.github.dqualizer.dqlang.types.dam.domainstory.WorkObject"
+  }, {
+    "@type" : "WorkObject",
+    "name" : "JxkyvRnL",
+    "type" : "FOLDER",
+    "id" : "RYtGKbgicZaHCBRQDSx",
+    "serializationClass" : "io.github.dqualizer.dqlang.types.dam.domainstory.WorkObject"
+  }, {
+    "@type" : "WorkObject",
+    "name" : "VLhpfQGTMDYpsBZxvfBoeygjb",
+    "type" : "FOLDER",
+    "id" : "UMaAIKKIkknjWEXJUfPxxQHeWKEJ",
+    "serializationClass" : "io.github.dqualizer.dqlang.types.dam.domainstory.WorkObject"
+  }, {
+    "@type" : "WorkObject",
+    "name" : "dpHYZGhtgdntugzvvKAXLhM",
+    "type" : "DATA",
+    "id" : "LlN",
+    "serializationClass" : "io.github.dqualizer.dqlang.types.dam.domainstory.WorkObject"
+  }, {
+    "@type" : "WorkObject",
+    "name" : "gNfZBdyFGRajVfJNonEnOinZj",
+    "type" : "CALL",
+    "id" : "UfzQhdgLLfDTDGspDb",
+    "serializationClass" : "io.github.dqualizer.dqlang.types.dam.domainstory.WorkObject"
+  }, {
+    "@type" : "WorkObject",
+    "name" : "QvBQYuxiXXVytGCxzVllpgTJKhRQq",
+    "type" : "DATA",
+    "id" : "qszYL",
+    "serializationClass" : "io.github.dqualizer.dqlang.types.dam.domainstory.WorkObject"
+  }, {
+    "@type" : "WorkObject",
+    "name" : "YdvDhtAsLghPXAgtbprXPZkhnfLTBSX",
+    "type" : "MISC",
+    "id" : "sPB",
+    "serializationClass" : "io.github.dqualizer.dqlang.types.dam.domainstory.WorkObject"
+  }, {
+    "@type" : "WorkObject",
+    "name" : "Oxm",
+    "type" : "DOCUMENT",
+    "id" : "QIn",
+    "serializationClass" : "io.github.dqualizer.dqlang.types.dam.domainstory.WorkObject"
+  }, {
+    "@type" : "WorkObject",
+    "name" : "yIvpRgmgQsYEKk",
+    "type" : "DATA",
+    "id" : "AAAryjCRhLTuhnTodUewZQqaZErU",
+    "serializationClass" : "io.github.dqualizer.dqlang.types.dam.domainstory.WorkObject"
+  }, {
+    "@type" : "WorkObject",
+    "name" : "aofGvthLoyPLDADYzx",
+    "type" : "DOCUMENT",
+    "id" : "WoaMAzEEplqjJ",
+    "serializationClass" : "io.github.dqualizer.dqlang.types.dam.domainstory.WorkObject"
+  }, {
+    "@type" : "WorkObject",
+    "name" : "VLhpfQGTMDYpsBZxvfBoeygjb",
+    "type" : "FOLDER",
+    "id" : "UMaAIKKIkknjWEXJUfPxxQHeWKEJ",
+    "serializationClass" : "io.github.dqualizer.dqlang.types.dam.domainstory.WorkObject"
+  }, {
+    "@type" : "WorkObject",
+    "name" : "eOMtThyhVNLWUZNRcBaQKxI",
+    "type" : "FOLDER",
+    "id" : "yedUsFwdkelQbxeTeQOvaScfqIOOmaa",
+    "serializationClass" : "io.github.dqualizer.dqlang.types.dam.domainstory.WorkObject"
+  }, {
+    "@type" : "WorkObject",
+    "name" : "YdvDhtAsLghPXAgtbprXPZkhnfLTBSX",
+    "type" : "MISC",
+    "id" : "sPB",
+    "serializationClass" : "io.github.dqualizer.dqlang.types.dam.domainstory.WorkObject"
+  }, {
+    "@type" : "WorkObject",
+    "name" : "aofGvthLoyPLDADYzx",
+    "type" : "DOCUMENT",
+    "id" : "WoaMAzEEplqjJ",
+    "serializationClass" : "io.github.dqualizer.dqlang.types.dam.domainstory.WorkObject"
+  }, {
+    "@type" : "WorkObject",
+    "name" : "QvBQYuxiXXVytGCxzVllpgTJKhRQq",
+    "type" : "DATA",
+    "id" : "qszYL",
+    "serializationClass" : "io.github.dqualizer.dqlang.types.dam.domainstory.WorkObject"
+  }, {
+    "@type" : "WorkObject",
+    "name" : "Oxm",
+    "type" : "DOCUMENT",
+    "id" : "QIn",
+    "serializationClass" : "io.github.dqualizer.dqlang.types.dam.domainstory.WorkObject"
+  }, {
+    "@type" : "WorkObject",
+    "name" : "gNfZBdyFGRajVfJNonEnOinZj",
+    "type" : "CALL",
+    "id" : "UfzQhdgLLfDTDGspDb",
+    "serializationClass" : "io.github.dqualizer.dqlang.types.dam.domainstory.WorkObject"
+  }, {
+    "@type" : "WorkObject",
+    "name" : "Oxm",
+    "type" : "DOCUMENT",
+    "id" : "QIn",
+    "serializationClass" : "io.github.dqualizer.dqlang.types.dam.domainstory.WorkObject"
+  } ],
+  "activities" : [ {
+    "name" : "GGiDYDmCRViOaAXNumPGEBX",
+    "id" : "O",
+    "serializationClass" : "io.github.dqualizer.dqlang.types.dam.domainstory.Activity"
+  }, {
+    "name" : "PAgcjtZAOBahwMGwNikIaKuxYYVASJc",
+    "id" : "IaSPolvldIfZTciudeieeoLVjkmgvz",
+    "serializationClass" : "io.github.dqualizer.dqlang.types.dam.domainstory.Activity"
+  }, {
+    "name" : "YIvewgAhbiAslSgvGJGPPEpl",
+    "id" : "FkG",
+    "serializationClass" : "io.github.dqualizer.dqlang.types.dam.domainstory.Activity"
+  }, {
+    "name" : "oDLDPR",
+    "id" : "JuhuUTlSCYdTVoSsJGyClHNnCWZGwZ",
+    "serializationClass" : "io.github.dqualizer.dqlang.types.dam.domainstory.Activity"
+  }, {
+    "name" : "ToPMiWqHMXgOUxQpXiGHHqr",
+    "id" : "JUt",
+    "serializationClass" : "io.github.dqualizer.dqlang.types.dam.domainstory.Activity"
+  }, {
+    "name" : "BIJtaer",
+    "id" : "QEskqEWDSDObmCGpVd",
+    "serializationClass" : "io.github.dqualizer.dqlang.types.dam.domainstory.Activity"
+  }, {
+    "name" : "tOXr",
+    "id" : "rDetIVodUvethundXqBJQ",
+    "serializationClass" : "io.github.dqualizer.dqlang.types.dam.domainstory.Activity"
+  }, {
+    "name" : "ZfevGGIyInuRGUCg",
+    "id" : "GcGUaENkutTuUTC",
+    "serializationClass" : "io.github.dqualizer.dqlang.types.dam.domainstory.Activity"
+  }, {
+    "name" : "VaNvgPNPNdoDlMXoAwSuSKKPcTH",
+    "id" : "ZBzhTZzyzEYLAEhIrdjvCmERMl",
+    "serializationClass" : "io.github.dqualizer.dqlang.types.dam.domainstory.Activity"
+  }, {
+    "name" : "IVsRIMiVnPwvmkahoHdVyCizi",
+    "id" : "hprfcQEahQopqOKigBgIR",
+    "serializationClass" : "io.github.dqualizer.dqlang.types.dam.domainstory.Activity"
+  }, {
+    "name" : "ZfevGGIyInuRGUCg",
+    "id" : "GcGUaENkutTuUTC",
+    "serializationClass" : "io.github.dqualizer.dqlang.types.dam.domainstory.Activity"
+  }, {
+    "name" : "IVsRIMiVnPwvmkahoHdVyCizi",
+    "id" : "hprfcQEahQopqOKigBgIR",
+    "serializationClass" : "io.github.dqualizer.dqlang.types.dam.domainstory.Activity"
+  }, {
+    "name" : "VaNvgPNPNdoDlMXoAwSuSKKPcTH",
+    "id" : "ZBzhTZzyzEYLAEhIrdjvCmERMl",
+    "serializationClass" : "io.github.dqualizer.dqlang.types.dam.domainstory.Activity"
+  }, {
+    "name" : "GGiDYDmCRViOaAXNumPGEBX",
+    "id" : "O",
+    "serializationClass" : "io.github.dqualizer.dqlang.types.dam.domainstory.Activity"
+  }, {
+    "name" : "GGiDYDmCRViOaAXNumPGEBX",
+    "id" : "O",
+    "serializationClass" : "io.github.dqualizer.dqlang.types.dam.domainstory.Activity"
+  }, {
+    "name" : "PAgcjtZAOBahwMGwNikIaKuxYYVASJc",
+    "id" : "IaSPolvldIfZTciudeieeoLVjkmgvz",
+    "serializationClass" : "io.github.dqualizer.dqlang.types.dam.domainstory.Activity"
+  }, {
+    "name" : "oDLDPR",
+    "id" : "JuhuUTlSCYdTVoSsJGyClHNnCWZGwZ",
+    "serializationClass" : "io.github.dqualizer.dqlang.types.dam.domainstory.Activity"
+  }, {
+    "name" : "YIvewgAhbiAslSgvGJGPPEpl",
+    "id" : "FkG",
+    "serializationClass" : "io.github.dqualizer.dqlang.types.dam.domainstory.Activity"
+  }, {
+    "name" : "ZfevGGIyInuRGUCg",
+    "id" : "GcGUaENkutTuUTC",
+    "serializationClass" : "io.github.dqualizer.dqlang.types.dam.domainstory.Activity"
+  }, {
+    "name" : "oDLDPR",
+    "id" : "JuhuUTlSCYdTVoSsJGyClHNnCWZGwZ",
+    "serializationClass" : "io.github.dqualizer.dqlang.types.dam.domainstory.Activity"
+  }, {
+    "name" : "BIJtaer",
+    "id" : "QEskqEWDSDObmCGpVd",
+    "serializationClass" : "io.github.dqualizer.dqlang.types.dam.domainstory.Activity"
+  }, {
+    "name" : "tOXr",
+    "id" : "rDetIVodUvethundXqBJQ",
+    "serializationClass" : "io.github.dqualizer.dqlang.types.dam.domainstory.Activity"
+  }, {
+    "name" : "ZfevGGIyInuRGUCg",
+    "id" : "GcGUaENkutTuUTC",
+    "serializationClass" : "io.github.dqualizer.dqlang.types.dam.domainstory.Activity"
+  }, {
+    "name" : "tOXr",
+    "id" : "rDetIVodUvethundXqBJQ",
+    "serializationClass" : "io.github.dqualizer.dqlang.types.dam.domainstory.Activity"
+  }, {
+    "name" : "IVsRIMiVnPwvmkahoHdVyCizi",
+    "id" : "hprfcQEahQopqOKigBgIR",
+    "serializationClass" : "io.github.dqualizer.dqlang.types.dam.domainstory.Activity"
+  }, {
+    "name" : "oDLDPR",
+    "id" : "JuhuUTlSCYdTVoSsJGyClHNnCWZGwZ",
+    "serializationClass" : "io.github.dqualizer.dqlang.types.dam.domainstory.Activity"
+  }, {
+    "name" : "GGiDYDmCRViOaAXNumPGEBX",
+    "id" : "O",
+    "serializationClass" : "io.github.dqualizer.dqlang.types.dam.domainstory.Activity"
+  }, {
+    "name" : "PAgcjtZAOBahwMGwNikIaKuxYYVASJc",
+    "id" : "IaSPolvldIfZTciudeieeoLVjkmgvz",
+    "serializationClass" : "io.github.dqualizer.dqlang.types.dam.domainstory.Activity"
+  }, {
+    "name" : "IVsRIMiVnPwvmkahoHdVyCizi",
+    "id" : "hprfcQEahQopqOKigBgIR",
+    "serializationClass" : "io.github.dqualizer.dqlang.types.dam.domainstory.Activity"
+  } ],
+  "id" : "bVxIKizEZqcOHAtUBCLrP",
+  "serializationClass" : "io.github.dqualizer.dqlang.types.dam.domainstory.DomainStory"
+}

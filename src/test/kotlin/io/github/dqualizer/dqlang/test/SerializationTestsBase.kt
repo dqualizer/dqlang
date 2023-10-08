@@ -24,7 +24,9 @@ import org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.http.HttpMethod
 import java.lang.module.ModuleDescriptor
+import java.lang.reflect.InaccessibleObjectException
 import java.lang.reflect.Modifier
+import java.util.*
 
 
 @SpringBootTest(classes = [AMQPAutoConfiguration::class, RabbitAutoConfiguration::class])
@@ -64,6 +66,44 @@ class SerializationTestsBase {
         })
     )
 
+    fun <T : Any> generateObjectWithCorrectSerializationClass(clazz: Class<T>): T {
+        val obj = generator.nextObject(clazz) as T
+
+        val list = LinkedList<Any>()
+        list.add(obj)
+
+        while (list.isNotEmpty()) {
+            val current = list.removeFirst()
+
+            if (current is Identifiable) {
+                _classField.set(current, current::class.java.name)
+            }
+
+            current.javaClass.declaredFields.forEach {
+                if (!Modifier.isStatic(it.modifiers)) {
+                    try {
+                        it.isAccessible = true
+                        val value = it.get(current)
+                        if (value != null) {
+                            if (it.type.isArray) {
+                                list.addAll(value as Array<Any>)
+                            } else if(value is Collection<*>){
+                                list.addAll(value as Collection<Any>)
+                            } else if(value is Map<*, *>){
+                                list.addAll(value.values as Collection<Any>)
+                            } else {
+                                list.add(value)
+                            }
+                        }
+                    } catch (_: InaccessibleObjectException) {
+                    }
+                }
+            }
+        }
+
+        return obj
+    }
+
 
     companion object {
 
@@ -71,7 +111,11 @@ class SerializationTestsBase {
 
         private val serializableClasses: Set<Class<*>>
 
+        private val _classField = Identifiable::class.java.getDeclaredField("_class")
+
         init {
+            _classField.isAccessible = true
+
             val reflection = Reflections("io.github.dqualizer.dqlang.types")
             val identifiableTypes = reflection.getSubTypesOf(Identifiable::class.java)
             instantiatableIdentifiableTypes = identifiableTypes

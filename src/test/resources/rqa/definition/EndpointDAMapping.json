@@ -1,0 +1,12 @@
+{
+  "@type" : "EndpointDAMapping",
+  "id" : "VLhpfQGTMDYpsBZxvfBoeygjb",
+  "source" : {
+    "@type" : "Person",
+    "personName" : "eOMtThyhVNLWUZNRcBaQKxI",
+    "id" : "JxkyvRnL",
+    "name" : "yedUsFwdkelQbxeTeQOvaScfqIOOmaa",
+    "serializationClass" : "io.github.dqualizer.dqlang.types.dam.domainstory.Person"
+  },
+  "serializationClass" : "io.github.dqualizer.dqlang.types.dam.mapping.EndpointDAMapping"
+}
