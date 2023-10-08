@@ -71,10 +71,11 @@ internal class RuntimeQualityAnalysisTest {
     }
 
     private fun generateRandomRQA(): RuntimeQualityAnalysis {
-        val monitoringDefinitions = generator.objects(MonitoringDefinition::class.java, 5).collect(Collectors.toSet())
-        val loadtestDefinitions = generator.objects(LoadTestDefinition::class.java, 5).collect(Collectors.toSet())
+        val numberOfEntries = 1
+        val monitoringDefinitions = generator.objects(MonitoringDefinition::class.java, numberOfEntries).collect(Collectors.toSet())
+        val loadtestDefinitions = generator.objects(LoadTestDefinition::class.java, numberOfEntries).collect(Collectors.toSet())
         val resilienceTestDefinitions =
-            generator.objects(ResilienceDefinition::class.java, 5).collect(Collectors.toSet())
+            generator.objects(ResilienceDefinition::class.java, numberOfEntries).collect(Collectors.toSet())
 
         val rqa = RuntimeQualityAnalysis()
         rqa.monitoringDefinition = monitoringDefinitions

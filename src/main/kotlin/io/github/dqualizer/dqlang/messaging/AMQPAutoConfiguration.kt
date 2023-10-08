@@ -1,8 +1,10 @@
 package io.github.dqualizer.dqlang.messaging
 
 import com.fasterxml.jackson.databind.DeserializationFeature
+import com.fasterxml.jackson.databind.MapperFeature
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.module.SimpleModule
+import com.fasterxml.jackson.module.kotlin.registerKotlinModule
 import io.github.dqualizer.dqlang.messaging.MessagingConfiguration.ExchangeConfiguration
 import io.github.dqualizer.dqlang.messaging.MessagingConfiguration.QueueConfiguration
 import org.springframework.amqp.core.AmqpAdmin
@@ -29,7 +31,8 @@ class AMQPAutoConfiguration {
         return ObjectMapper()
             .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
             .configure(DeserializationFeature.FAIL_ON_MISSING_CREATOR_PROPERTIES, false)
-            .registerModule(convertModule);
+            .registerModule(convertModule)
+            .registerKotlinModule()
     }
 
     @Bean
