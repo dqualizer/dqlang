@@ -2,11 +2,13 @@ package io.github.dqualizer.dqlang.types.dam.domainstory;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import io.github.dqualizer.dqlang.types.dam.Identifiable;
 import lombok.Getter;
 import lombok.Setter;
 import org.jetbrains.annotations.NotNull;
 
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY)
 @Getter
 public class WorkObject extends DSTEntity {
 
