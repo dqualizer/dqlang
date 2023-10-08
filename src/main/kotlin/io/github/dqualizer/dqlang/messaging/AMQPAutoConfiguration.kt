@@ -1,7 +1,6 @@
 package io.github.dqualizer.dqlang.messaging
 
 import com.fasterxml.jackson.databind.DeserializationFeature
-import com.fasterxml.jackson.databind.MapperFeature
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.module.SimpleModule
 import com.fasterxml.jackson.module.kotlin.registerKotlinModule
@@ -16,6 +15,7 @@ import org.springframework.context.ApplicationContext
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.core.convert.converter.Converter
+import org.springframework.http.HttpMethod
 import java.lang.module.ModuleDescriptor
 
 
@@ -24,14 +24,17 @@ class AMQPAutoConfiguration {
 
     @Bean
     fun objectMapper(): ObjectMapper {
-        val convertModule = SimpleModule("dqlang_converter")
+        val converterModule = SimpleModule("dqlang_converters")
             .addSerializer(ModuleDescriptor.Version::class.java, VersionSerializer())
             .addDeserializer(ModuleDescriptor.Version::class.java, VersionDeserializer())
+            .addSerializer(HttpMethod::class.java, HTTPMethodSerializer())
+            .addDeserializer(HttpMethod::class.java, HTTPMethodDeserializer())
+
 
         return ObjectMapper()
             .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
             .configure(DeserializationFeature.FAIL_ON_MISSING_CREATOR_PROPERTIES, false)
-            .registerModule(convertModule)
+            .registerModule(converterModule)
             .registerKotlinModule()
     }
 
