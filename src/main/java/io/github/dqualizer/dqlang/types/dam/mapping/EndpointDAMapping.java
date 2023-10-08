@@ -1,5 +1,7 @@
 package io.github.dqualizer.dqlang.types.dam.mapping;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.dqualizer.dqlang.types.dam.architecture.RESTEndpoint;
 import io.github.dqualizer.dqlang.types.dam.architecture.SoftwareSystem;
 import io.github.dqualizer.dqlang.types.dam.domainstory.Actor;
@@ -17,7 +19,9 @@ public class EndpointDAMapping extends DAMapping<Actor, RESTEndpoint> {
     @DocumentReference
     private final RESTEndpoint endpoint;
 
-    public EndpointDAMapping(Actor actor, RESTEndpoint endpoint) {
+    @JsonCreator
+    public EndpointDAMapping(@JsonProperty("actor") Actor actor,
+                             @JsonProperty("endpoint") RESTEndpoint endpoint) {
         this.actor = actor;
         this.endpoint = endpoint;
     }

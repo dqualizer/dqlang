@@ -3,12 +3,10 @@ package io.github.dqualizer.dqlang.types.dam.architecture.apischema;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.dqualizer.dqlang.types.dam.architecture.apischema.data.DataSchema;
 import io.github.dqualizer.dqlang.types.dam.architecture.apischema.field.FieldItem;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -18,6 +16,7 @@ import java.util.Set;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
+@Data
 public class APISchema {
 
     private int version;

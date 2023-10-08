@@ -3,6 +3,7 @@ package io.github.dqualizer.dqlang.test
 import com.fasterxml.jackson.databind.ObjectMapper
 import io.github.dqualizer.dqlang.messaging.AMQPAutoConfiguration
 import io.github.dqualizer.dqlang.types.dam.Identifiable
+import io.github.dqualizer.dqlang.types.dam.architecture.apischema.APISchema
 import io.github.dqualizer.dqlang.types.dam.domainstory.Actor
 import io.github.dqualizer.dqlang.types.dam.domainstory.Group
 import io.github.dqualizer.dqlang.types.dam.domainstory.Person
@@ -14,6 +15,7 @@ import io.github.dqualizer.dqlang.types.rqa.definition.stimulus.ConstantLoadStim
 import io.github.dqualizer.dqlang.types.rqa.definition.stimulus.LoadIncreaseStimulus
 import io.github.dqualizer.dqlang.types.rqa.definition.stimulus.LoadPeakStimulus
 import io.github.dqualizer.dqlang.types.rqa.definition.stimulus.Stimulus
+import lombok.Data
 import org.jeasy.random.EasyRandom
 import org.jeasy.random.EasyRandomParameters
 import org.reflections.Reflections
@@ -24,7 +26,6 @@ import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.http.HttpMethod
 import java.lang.module.ModuleDescriptor
 import java.lang.reflect.Modifier
-import java.util.function.Predicate
 
 @SpringBootTest(classes = [AMQPAutoConfiguration::class, RabbitAutoConfiguration::class])
 open class SerializationTestsBase {
@@ -67,24 +68,28 @@ open class SerializationTestsBase {
 
         private val instantiatableIdentifiableTypes : List<Class<*>>
 
+        private val serializableClasses : Set<Class<*>>
+
         init {
             val reflection = Reflections("io.github.dqualizer.dqlang.types")
             val identifiableTypes = reflection.getSubTypesOf(Identifiable::class.java)
             instantiatableIdentifiableTypes = identifiableTypes
                 .filter { !Modifier.isInterface(it.modifiers) && !Modifier.isAbstract(it.modifiers) }
+
+
+            serializableClasses = setOf(
+                MonitoringDefinition::class.java,
+                LoadTestDefinition::class.java,
+                ResilienceDefinition::class.java,
+                APISchema::class.java,
+                *instantiatableIdentifiableTypes.toTypedArray()
+            )
         }
 
 
         @JvmStatic
-        fun getSerializableClasses(): List<Class<*>> {
-
-
-            return listOf(
-                MonitoringDefinition::class.java,
-                LoadTestDefinition::class.java,
-                ResilienceDefinition::class.java,
-                *instantiatableIdentifiableTypes.toTypedArray()
-            )
+        fun getSerializableClasses(): Set<Class<*>> {
+            return serializableClasses
         }
     }
 }

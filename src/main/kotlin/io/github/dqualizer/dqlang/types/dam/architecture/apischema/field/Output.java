@@ -1,15 +1,13 @@
 package io.github.dqualizer.dqlang.types.dam.architecture.apischema.field;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 @Getter
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
+@Data
 public class Output {
 
     private String type;

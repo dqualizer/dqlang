@@ -40,8 +40,8 @@ data class ServiceDescription(
     val endpoints: Collection<RESTEndpoint>,
 
 
-    @JsonPropertyDescription("The API Schema that this service provides.")
-    val apiSchema: APISchema,
+//    @JsonPropertyDescription("The API Schema that this service provides.")
+//    val apiSchema: APISchema,
 
     @JsonProperty("controllers")
     @JsonPropertyDescription("The controllers that this service provides. Legacy class to keep compatibilty to the first iteration of dqualizer.")
@@ -51,4 +51,7 @@ data class ServiceDescription(
     fun getDeploymentName(): String {
         return deploymentName ?: name
     }
+
+
+
 }

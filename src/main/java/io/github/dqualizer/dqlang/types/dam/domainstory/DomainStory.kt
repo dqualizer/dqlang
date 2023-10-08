@@ -1,5 +1,6 @@
 package io.github.dqualizer.dqlang.types.dam.domainstory
 
+import io.github.dqualizer.dqlang.types.dam.Identifiable
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
 import org.springframework.data.mongodb.core.mapping.DocumentReference
@@ -10,9 +11,6 @@ import org.springframework.data.mongodb.core.mapping.DocumentReference
 @Document
 data class DomainStory(
 
-    @Id
-    val id: String? = null,
-
     @DocumentReference
     val actors: List<Actor>,
 
@@ -21,4 +19,4 @@ data class DomainStory(
 
     @DocumentReference
     val activities: List<Activity>
-)
+) : Identifiable()

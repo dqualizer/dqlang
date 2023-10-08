@@ -97,6 +97,7 @@ dependencies {
     testImplementation("org.jeasy:easy-random-core:5.0.0")
     testImplementation("org.mockito.kotlin:mockito-kotlin:5.1.0")
     testImplementation("org.reflections:reflections:0.10.2")
+    testImplementation("org.projectlombok:lombok")
 
 }
 
