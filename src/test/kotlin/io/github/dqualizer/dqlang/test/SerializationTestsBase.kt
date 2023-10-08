@@ -59,16 +59,17 @@ open class SerializationTestsBase {
             return@randomize HttpMethod.values().random()
         }.randomize({
             it.name == "_class"
-        }) {
-            return@randomize "not-known";
-        }
+        }, {
+            return@randomize "";
+        })
     )
+
 
     companion object {
 
-        private val instantiatableIdentifiableTypes : List<Class<*>>
+        private val instantiatableIdentifiableTypes: List<Class<*>>
 
-        private val serializableClasses : Set<Class<*>>
+        private val serializableClasses: Set<Class<*>>
 
         init {
             val reflection = Reflections("io.github.dqualizer.dqlang.types")
