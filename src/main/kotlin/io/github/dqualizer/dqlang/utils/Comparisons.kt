@@ -12,4 +12,4 @@ object Comparisons {
             false
         } else a.containsAll(b)
     }
-    }
+}

@@ -15,7 +15,6 @@ import io.github.dqualizer.dqlang.types.rqa.definition.stimulus.ConstantLoadStim
 import io.github.dqualizer.dqlang.types.rqa.definition.stimulus.LoadIncreaseStimulus
 import io.github.dqualizer.dqlang.types.rqa.definition.stimulus.LoadPeakStimulus
 import io.github.dqualizer.dqlang.types.rqa.definition.stimulus.Stimulus
-import lombok.Data
 import org.jeasy.random.EasyRandom
 import org.jeasy.random.EasyRandomParameters
 import org.reflections.Reflections
@@ -27,8 +26,9 @@ import org.springframework.http.HttpMethod
 import java.lang.module.ModuleDescriptor
 import java.lang.reflect.Modifier
 
+
 @SpringBootTest(classes = [AMQPAutoConfiguration::class, RabbitAutoConfiguration::class])
-open class SerializationTestsBase {
+class SerializationTestsBase {
     @Autowired
     lateinit var messageConverter: MessageConverter
 
@@ -60,7 +60,7 @@ open class SerializationTestsBase {
         }.randomize({
             it.name == "_class"
         }, {
-            return@randomize "";
+            return@randomize ""
         })
     )
 
@@ -77,7 +77,6 @@ open class SerializationTestsBase {
             instantiatableIdentifiableTypes = identifiableTypes
                 .filter { !Modifier.isInterface(it.modifiers) && !Modifier.isAbstract(it.modifiers) }
 
-
             serializableClasses = setOf(
                 MonitoringDefinition::class.java,
                 LoadTestDefinition::class.java,
@@ -86,7 +85,6 @@ open class SerializationTestsBase {
                 *instantiatableIdentifiableTypes.toTypedArray()
             )
         }
-
 
         @JvmStatic
         fun getSerializableClasses(): Set<Class<*>> {

@@ -1,6 +1,7 @@
 package io.github.dqualizer.dqlang.types.dam.architecture
 
-import com.fasterxml.jackson.annotation.*
+import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.annotation.JsonPropertyDescription
 import io.github.dqualizer.dqlang.types.rqa.definition.enums.Environment
 import org.springframework.data.mongodb.core.mapping.DocumentReference
 

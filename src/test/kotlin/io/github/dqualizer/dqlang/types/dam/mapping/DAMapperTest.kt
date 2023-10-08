@@ -25,7 +25,7 @@ class DAMapperTest {
 
         val mappedEndpoint = mapper.map<RESTEndpoint>(person)
 
-        assertEquals(restEndpoint, mappedEndpoint);
+        assertEquals(restEndpoint, mappedEndpoint)
     }
 
 

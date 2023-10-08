@@ -3,8 +3,8 @@ package io.github.dqualizer.dqlang.types.dam.architecture.apischema.field;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
-import java.util.Set;
 import java.util.Map;
+import java.util.Set;
 
 @Getter
 @ToString

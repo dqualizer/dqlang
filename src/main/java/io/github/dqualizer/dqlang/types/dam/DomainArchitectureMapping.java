@@ -2,7 +2,6 @@ package io.github.dqualizer.dqlang.types.dam;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonSetter;
 import io.github.dqualizer.dqlang.types.dam.architecture.SoftwareSystem;
 import io.github.dqualizer.dqlang.types.dam.domainstory.DomainStory;
 import io.github.dqualizer.dqlang.types.dam.mapping.DAMapping;

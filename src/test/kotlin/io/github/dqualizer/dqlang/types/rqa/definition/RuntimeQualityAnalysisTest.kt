@@ -20,7 +20,6 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.context.annotation.Import
-import java.util.*
 import java.util.stream.Collectors
 
 @SpringBootTest(classes = [AMQPAutoConfiguration::class, RabbitAutoConfiguration::class])
@@ -35,7 +34,8 @@ internal class RuntimeQualityAnalysisTest {
 
 
     var generator = EasyRandom(
-        EasyRandomParameters().randomize(Stimulus::class.java
+        EasyRandomParameters().randomize(
+            Stimulus::class.java
         ) {
             return@randomize EasyRandom().nextObject(
                 listOf(
@@ -58,7 +58,7 @@ internal class RuntimeQualityAnalysisTest {
     }
 
     @Test
-    fun canDeserializeFromJson(){
+    fun canDeserializeFromJson() {
         val rqa = generateRandomRQA()
 
         val msg = messageConverter.toMessage(rqa, MessageProperties())
@@ -72,8 +72,10 @@ internal class RuntimeQualityAnalysisTest {
 
     private fun generateRandomRQA(): RuntimeQualityAnalysis {
         val numberOfEntries = 1
-        val monitoringDefinitions = generator.objects(MonitoringDefinition::class.java, numberOfEntries).collect(Collectors.toSet())
-        val loadtestDefinitions = generator.objects(LoadTestDefinition::class.java, numberOfEntries).collect(Collectors.toSet())
+        val monitoringDefinitions =
+            generator.objects(MonitoringDefinition::class.java, numberOfEntries).collect(Collectors.toSet())
+        val loadtestDefinitions =
+            generator.objects(LoadTestDefinition::class.java, numberOfEntries).collect(Collectors.toSet())
         val resilienceTestDefinitions =
             generator.objects(ResilienceDefinition::class.java, numberOfEntries).collect(Collectors.toSet())
 

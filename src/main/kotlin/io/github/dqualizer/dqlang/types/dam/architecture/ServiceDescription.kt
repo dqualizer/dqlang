@@ -1,7 +1,7 @@
 package io.github.dqualizer.dqlang.types.dam.architecture
 
-import com.fasterxml.jackson.annotation.*
-import io.github.dqualizer.dqlang.types.dam.architecture.apischema.APISchema
+import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.annotation.JsonPropertyDescription
 import lombok.Builder
 import java.net.URI
 
@@ -51,7 +51,6 @@ data class ServiceDescription(
     fun getDeploymentName(): String {
         return deploymentName ?: name
     }
-
 
 
 }

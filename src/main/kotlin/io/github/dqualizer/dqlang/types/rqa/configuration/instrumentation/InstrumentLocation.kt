@@ -1,6 +1,6 @@
 package io.github.dqualizer.dqlang.types.rqa.configuration.instrumentation
 
-import com.fasterxml.jackson.annotation.*
+import com.fasterxml.jackson.annotation.JsonPropertyDescription
 
 /**
  * Instrumentation Location

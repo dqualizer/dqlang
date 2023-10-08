@@ -90,9 +90,9 @@ public class K6Constants {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(K6Constants.class.getName())
-                .append('@')
-                .append(Integer.toHexString(System.identityHashCode(this)))
-                .append('[');
+          .append('@')
+          .append(Integer.toHexString(System.identityHashCode(this)))
+          .append('[');
         sb.append("accuracy");
         sb.append('=');
         sb.append(((this.accuracy == null) ? "<null>" : this.accuracy));

@@ -16,7 +16,7 @@ import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.context.annotation.Import
 
 
-@SpringBootTest(classes = [AMQPAutoConfiguration::class,  RabbitAutoConfiguration::class])
+@SpringBootTest(classes = [AMQPAutoConfiguration::class, RabbitAutoConfiguration::class])
 @Import(MessagingConfiguration::class)
 class RuntimeQualityAnalysisDefinitionTest {
 
@@ -45,7 +45,7 @@ class RuntimeQualityAnalysisDefinitionTest {
     }
 
     @Test
-    fun canBeDeserializedFromJson(){
+    fun canBeDeserializedFromJson() {
         val rawRQAD = RuntimeQualityAnalysisDefinition(
             "testRQA",
             "1.0",

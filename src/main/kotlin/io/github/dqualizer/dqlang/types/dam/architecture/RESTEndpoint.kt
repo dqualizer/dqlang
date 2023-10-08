@@ -2,7 +2,6 @@ package io.github.dqualizer.dqlang.types.dam.architecture
 
 import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
-import lombok.Data
 import org.springframework.data.mongodb.core.mapping.Document
 import org.springframework.http.HttpMethod
 import java.util.*

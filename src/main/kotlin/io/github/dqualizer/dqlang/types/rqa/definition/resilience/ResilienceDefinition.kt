@@ -3,7 +3,7 @@ package io.github.dqualizer.dqlang.types.rqa.definition.resilience
 import lombok.Data
 
 @Data
-class ResilienceDefinition{
+class ResilienceDefinition {
 
     //Dummy equals for now
     override fun equals(other: Any?): Boolean {
