@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.SerializerProvider
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer
 import com.fasterxml.jackson.databind.ser.std.StdSerializer
+import io.github.dqualizer.dqlang.types.dam.Identifiable
 import org.springframework.http.HttpMethod
 import java.lang.module.ModuleDescriptor.Version
 
@@ -34,6 +35,12 @@ class HTTPMethodDeserializer : StdDeserializer<HttpMethod>(HttpMethod::class.jav
     }
 }
 
+
+class IdentifiableSerializer: StdSerializer<Identifiable>(Identifiable::class.java) {
+    override fun serialize(value: Identifiable?, gen: JsonGenerator?, provider: SerializerProvider?) {
+        gen?.writeString(value?.id)
+    }
+}
 
 class JsonSubTypeDeserializer(private val mapper: ObjectMapper) {
     fun <T> createDeserializer(clazz: Class<T>): StdDeserializer<T> {

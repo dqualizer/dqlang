@@ -4,19 +4,14 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.dqualizer.dqlang.types.dam.Identifiable;
 import io.github.dqualizer.dqlang.types.rqa.definition.enums.Environment;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotNull;
 
 @Getter
-@ToString
-@AllArgsConstructor
-@NoArgsConstructor
+@Builder
 @Document
 public class RuntimeQualityAnalysisDefinition extends Identifiable {
 
@@ -36,9 +31,9 @@ public class RuntimeQualityAnalysisDefinition extends Identifiable {
     public RuntimeQualityAnalysisDefinition(
             @JsonProperty("name") String name,
             @JsonProperty("version") String version,
-            @JsonProperty("environment") Environment environment,
             @JsonProperty("domain_id") String domainId,
             @JsonProperty("context") String context,
+            @JsonProperty("environment") Environment environment,
             @JsonProperty("runtime_quality_analysis") RuntimeQualityAnalysis runtimeQualityAnalysis) {
         this.name = name;
         this.version = version;

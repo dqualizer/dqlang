@@ -1,48 +1,55 @@
 package io.github.dqualizer.dqlang.types.dam.mapping
 
 import io.github.dqualizer.dqlang.messaging.QueueFactory
+import io.github.dqualizer.dqlang.types.dam.DomainArchitectureMapping
 import io.github.dqualizer.dqlang.types.dam.architecture.ArchitectureEntity
-import io.github.dqualizer.dqlang.types.dam.architecture.SoftwareSystem
-import io.github.dqualizer.dqlang.types.dam.domainstory.DSTEntity
+import io.github.dqualizer.dqlang.types.dam.domainstory.DSTElement
 import io.github.dqualizer.dqlang.types.dam.domainstory.DomainStory
 import org.slf4j.LoggerFactory
+import java.util.NoSuchElementException
 
 
 /**
  * Mapper that can apply
+ *
+ * @param lazy if true, the mapper will only map elements when they are requested otherwise it will build a cache upon creation
  */
-class DAMapper(
-    private val DAMappings: Set<DAMapping<*, *>>,
-    private val domainStory: DomainStory,
-    private val softwareSystem: SoftwareSystem
+class DAMapper @JvmOverloads constructor(
+    private val mappings: Set<DAMapping>,
+    private val domainArchitectureMapping: DomainArchitectureMapping,
+    private val lazy: Boolean = false
 ) {
 
     private val logger = LoggerFactory.getLogger(QueueFactory::class.java)
 
-    private val mappingCache: MutableMap<DSTEntity, ArchitectureEntity> = mutableMapOf()
+    private val mappingCache = mutableMapOf<String, ArchitectureEntity>()
+    private val backMappingCache = mutableMapOf<String, DSTElement>()
 
-    fun map(source: DSTEntity): ArchitectureEntity? {
-        logger.debug("Trying to map {}", source)
-
-        if (mappingCache.containsKey(source))
-            return mappingCache[source]
-
-        val resolved = DAMappings.firstOrNull { it.source.equals(source) }?.getDestination(domainStory, softwareSystem)
-
-        if (resolved != null)
-            mappingCache[source] = resolved
-
-        logger.debug("Mapped {} to {}", source, resolved)
-
-        return resolved
+    init {
+        mappings.forEach { mapping ->
+            logger.debug("Mapping ${mapping.dstElementId} to ${mapping.architectureElementId}")
+            mappingCache[mapping.dstElementId] =
+                mapping.getArchitectureEntity(domainArchitectureMapping.softwareSystem)
+            backMappingCache[mapping.architectureElementId] =
+                mapping.getDSTEntity(domainArchitectureMapping.domainStory)
+        }
     }
 
-    @JvmName("mapToType")
-    fun <T : ArchitectureEntity> map(entity: DSTEntity): T? {
-        val mapped = map(entity)
+    fun mapToArchitecturalEntity(dstElementId: String): ArchitectureEntity {
+        return mappingCache.computeIfAbsent(dstElementId) {
+            val mapping = mappings.find { it.dstElementId == dstElementId }
+                ?: throw NoSuchElementException("No mapping for DST element $dstElementId found.")
 
-        return if (mapped != null) {
-            mapped as T
-        } else null
+            mapping.getArchitectureEntity(domainArchitectureMapping.softwareSystem)
+        }
+    }
+
+    fun mapToDSTEntity(architectureElementId: String): DSTElement {
+        return backMappingCache.computeIfAbsent(architectureElementId) {
+            val mapping = mappings.find { it.architectureElementId == architectureElementId }
+                ?: throw NoSuchElementException("No mapping for architecture element $architectureElementId found.")
+
+            mapping.getDSTEntity(domainArchitectureMapping.domainStory)
+        }
     }
 }

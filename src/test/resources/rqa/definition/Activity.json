@@ -1,5 +1,10 @@
 {
-  "name" : "GGiDYDmCRViOaAXNumPGEBX",
-  "id" : "O",
+  "name" : "ExoLZAnxWro",
+  "action" : "eOMtThyhVNLWUZNRcBaQKxI",
+  "number" : 11,
+  "initiators" : [ "RYtGKbgicZaHCBRQDSx", "UMaAIKKIkknjWEXJUfPxxQHeWKEJ", "yedUsFwdkelQbxeTeQOvaScfqIOOmaa", "VLhpfQGTMDYpsBZxvfBoeygjb", "JxkyvRnL" ],
+  "targets" : [ "jNBgpTmxx", "sPB", "qszYL", "Oxm", "ODRhfGEfX", "IoTtOmcBeivNUYv", "AAAryjCRhLTuhnTodUewZQqaZErU", "yIvpRgmgQsYEKk", "LlN", "aofGvthLoyPLDADYzx", "dpHYZGhtgdntugzvvKAXLhM", "QIn", "gNfZBdyFGRajVfJNonEnOinZj", "YdvDhtAsLghPXAgtbprXPZkhnfLTBSX", "UfzQhdgLLfDTDGspDb", "WoaMAzEEplqjJ", "QvBQYuxiXXVytGCxzVllpgTJKhRQq", "pIoQM" ],
+  "id" : "zQeAydAJIwkGuKWiVZLRcElhreuxvw",
+  "workObjects" : [ "wXgwbUXmExZAqY", "DiACnbEKIFidn", "LcdeWTdXPlQgjMVXbpRYzBT", "M", "O", "dJStFJtVTQqOCjYYKFPwjvFKLQnmKD", "JkjHewSlMWOIVYZjIEB", "xlpKnXmsjfwUTYgfExSOnq", "Wru", "AzTaco", "teOlrImKiDpJbLDnvK", "yLUuEMaNwExpndMYYptSXZv", "WtKhlfZzDZ", "oBeMdQkAoYZDjfWhbzkmA", "yybxVLsNlAeLWVhnIULZAyLBms", "veErKUBEqCrhrtgx", "zGVyIdgFUYNdkFYkkjNIeENlreqFLC", "PBzMiJFouxILNv", "HuubOREhRXJoDCVcLCRmll", "OV", "jzlglRKAeamYUmWJtnJZLqwakeYcea", "NBaxYoMSiMNxLXFLxIok", "TiQaUNWftniOAotnzWvkQt", "FthRIkE", "dwprLNbgNvZUMpqAXLJbjE", "gEYzhlSTPkcSUyTSbBkU", "MFOPluIOMfSnzX", "YFBlWcoVdFXlfhbUilkMpiHDMU", "etqguztl" ],
   "serializationClass" : "io.github.dqualizer.dqlang.types.dam.domainstory.Activity"
 }

@@ -4444,5 +4444,5 @@
   "response_measure" : {
     "response_time" : "FRUSTRATED"
   },
-  "result_metrics" : [ "RESPONSE_TIME", "NINETY_FIVE_PERCENTILE", "NINETY_PERCENTILE" ]
+  "result_metrics" : [ "NINETY_FIVE_PERCENTILE", "RESPONSE_TIME", "NINETY_PERCENTILE" ]
 }

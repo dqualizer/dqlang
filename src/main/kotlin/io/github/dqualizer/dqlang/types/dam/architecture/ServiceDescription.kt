@@ -2,7 +2,9 @@ package io.github.dqualizer.dqlang.types.dam.architecture
 
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonPropertyDescription
+import io.github.dqualizer.dqlang.types.dam.architecture.apischema.APISchema
 import lombok.Builder
+import org.springframework.data.mongodb.core.mapping.Document
 import java.net.URI
 
 /**
@@ -13,6 +15,7 @@ import java.net.URI
  */
 
 @Builder(toBuilder = true)
+@Document
 data class ServiceDescription(
     val name: String,
 
@@ -23,9 +26,12 @@ data class ServiceDescription(
     @JsonPropertyDescription("Route to access the service. e.g. ssh address, ")
     val uri: URI,
 
-    @JsonProperty("service_framework")
+    @JsonProperty("programming_framework")
     @JsonPropertyDescription("Framework used to run the service. Spring, ASP.NET Core, ...")
     val programmingFramework: ProgrammingFramework,
+
+    @JsonPropertyDescription("Language used to run the service. Java, C#, ...")
+    val programmingLanguage: String = "",
 
     @JsonProperty("instrumentation_framework")
     @JsonPropertyDescription("A generic description of an instrumentation framework. ")
@@ -40,12 +46,12 @@ data class ServiceDescription(
     val endpoints: Collection<RESTEndpoint>,
 
 
-//    @JsonPropertyDescription("The API Schema that this service provides.")
-//    val apiSchema: APISchema,
+    @JsonPropertyDescription("The API Schema that this service provides.")
+    val apiSchema: APISchema,
 
     @JsonProperty("controllers")
     @JsonPropertyDescription("The controllers that this service provides. Legacy class to keep compatibilty to the first iteration of dqualizer.")
-    val controllers: Collection<CodeComponent>
+    val codeComponents: Collection<CodeComponent>
 
 ) : ArchitectureEntity() {
     fun getDeploymentName(): String {

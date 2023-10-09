@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty
 /**
  * former "Object" class. Now represents a code component.
  */
-data class CodeComponent @JsonCreator constructor(
+data class CodeComponent(
     val name: String,
     @JsonProperty("operation_id")
     val operationId: String,

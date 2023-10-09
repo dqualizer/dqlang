@@ -2,11 +2,14 @@ package io.github.dqualizer.dqlang.types.rqa.definition.monitoring
 
 import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
+import lombok.Builder
 
+
+@Builder
 data class MonitoringDefinition @JsonCreator constructor(
 
     @JsonProperty("id")
-    var id: String,
+    val id: String,
 
     /**
      * dq_id of the target work_object

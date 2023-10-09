@@ -1,8 +1,10 @@
 package io.github.dqualizer.dqlang.types.rqa.definition.resilience
 
+import lombok.Builder
 import lombok.Data
 
 @Data
+@Builder
 class ResilienceDefinition {
 
     //Dummy equals for now

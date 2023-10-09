@@ -1,6 +1,7 @@
 package io.github.dqualizer.dqlang.types.dam.domainstory
 
 import io.github.dqualizer.dqlang.types.dam.Identifiable
+import lombok.Builder
 import org.springframework.data.mongodb.core.mapping.Document
 import org.springframework.data.mongodb.core.mapping.DocumentReference
 
@@ -8,19 +9,14 @@ import org.springframework.data.mongodb.core.mapping.DocumentReference
  * @author Lion Wagner
  */
 @Document
+@Builder
 data class DomainStory(
-
-    @DocumentReference
     val actors: List<Actor>,
-
-    @DocumentReference
     val workObjects: List<WorkObject>,
-
-    @DocumentReference
     val activities: List<Activity>
 ) : Identifiable(){
 
-    fun findEntityById(id: String): DSTEntity {
+    fun findElementById(id: String): DSTElement {
         return actors.find { it.id == id }
             ?: workObjects.find { it.id == id }
             ?: activities.find { it.id == id }

@@ -1,12 +1,14 @@
 package io.github.dqualizer.dqlang.types.dam.domainstory
 
 import io.github.dqualizer.dqlang.types.dam.Identifiable
+import lombok.experimental.SuperBuilder
 
-open class DSTEntity(val name: String) : Identifiable() {
+
+abstract class DSTElement(val name: String) : Identifiable() {
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
-        if (other !is DSTEntity) return false
+        if (other !is DSTElement) return false
 
         return (id != null && id == other.id) || (id == null && other.id == null && name == other.name)
     }

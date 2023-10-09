@@ -1,13 +1,13 @@
 package io.github.dqualizer.dqlang.types.dam;
 
+import lombok.experimental.SuperBuilder;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Objects;
 
-@Document
-public abstract class Identifiable {
 
+public abstract class Identifiable {
     @Id
     private String id;
 

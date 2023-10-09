@@ -7,7 +7,6 @@ import org.springframework.http.HttpMethod
 import java.util.*
 
 
-@Document
 data class RESTEndpoint @JsonCreator constructor(
     val name: String,
     val route: String,

@@ -4,10 +4,12 @@ import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonPropertyDescription
 import io.github.dqualizer.dqlang.types.rqa.configuration.loadtest.LoadTestConfiguration
 import io.github.dqualizer.dqlang.types.rqa.configuration.monitoring.MonitoringConfiguration
+import lombok.Builder
 
 /**
  * @author Lion Wagner
  */
+@Builder
 class RQAConfiguration {
 
     /**

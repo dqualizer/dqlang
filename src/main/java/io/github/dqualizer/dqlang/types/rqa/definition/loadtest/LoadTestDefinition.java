@@ -1,6 +1,7 @@
 package io.github.dqualizer.dqlang.types.rqa.definition.loadtest;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.dqualizer.dqlang.types.dam.Identifiable;
 import io.github.dqualizer.dqlang.types.rqa.definition.enums.ResultMetrics;
 import io.github.dqualizer.dqlang.types.rqa.definition.loadtest.parametrization.Parametrization;
 import io.github.dqualizer.dqlang.types.rqa.definition.stimulus.Stimulus;
@@ -12,7 +13,7 @@ import java.util.Set;
 
 @Data
 @NoArgsConstructor
-public class LoadTestDefinition {
+public class LoadTestDefinition extends Identifiable {
     @Indexed(unique = true)
     private String name;
     private Artifact artifact;

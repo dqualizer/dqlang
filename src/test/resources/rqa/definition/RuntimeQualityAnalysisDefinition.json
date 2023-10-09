@@ -1,9 +1,9 @@
 {
   "name" : "eOMtThyhVNLWUZNRcBaQKxI",
   "version" : "yedUsFwdkelQbxeTeQOvaScfqIOOmaa",
-  "environment" : "DEV",
   "domain_id" : "JxkyvRnL",
   "context" : "RYtGKbgicZaHCBRQDSx",
+  "environment" : "DEV",
   "runtime_quality_analysis" : {
     "loadtests" : [ ],
     "monitoringDefinition" : [ ],

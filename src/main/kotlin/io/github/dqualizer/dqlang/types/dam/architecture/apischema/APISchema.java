@@ -1,10 +1,12 @@
 package io.github.dqualizer.dqlang.types.dam.architecture.apischema;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.dqualizer.dqlang.types.dam.Identifiable;
 import io.github.dqualizer.dqlang.types.dam.architecture.apischema.data.DataSchema;
 import io.github.dqualizer.dqlang.types.dam.architecture.apischema.field.FieldItem;
 import lombok.*;
 
+import java.lang.module.ModuleDescriptor;
 import java.util.Map;
 import java.util.Set;
 
@@ -16,9 +18,10 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class APISchema {
+@Builder
+public class APISchema extends Identifiable {
 
-    private int version;
+    private ModuleDescriptor.Version version;
     private String context;
     private String api;
     @JsonProperty("server_info")

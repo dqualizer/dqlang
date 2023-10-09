@@ -8,7 +8,7 @@ import org.jetbrains.annotations.NotNull;
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY)
 @Getter
-public class WorkObject extends DSTEntity {
+public class WorkObject extends DSTElement {
 
     protected final WorkObjectType type;
 

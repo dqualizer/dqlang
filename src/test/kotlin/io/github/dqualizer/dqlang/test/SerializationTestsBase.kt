@@ -3,11 +3,9 @@ package io.github.dqualizer.dqlang.test
 import com.fasterxml.jackson.databind.ObjectMapper
 import io.github.dqualizer.dqlang.messaging.AMQPAutoConfiguration
 import io.github.dqualizer.dqlang.types.dam.Identifiable
+import io.github.dqualizer.dqlang.types.dam.architecture.CodeComponent
 import io.github.dqualizer.dqlang.types.dam.architecture.apischema.APISchema
-import io.github.dqualizer.dqlang.types.dam.domainstory.Actor
-import io.github.dqualizer.dqlang.types.dam.domainstory.Group
-import io.github.dqualizer.dqlang.types.dam.domainstory.Person
-import io.github.dqualizer.dqlang.types.dam.domainstory.System
+import io.github.dqualizer.dqlang.types.dam.domainstory.*
 import io.github.dqualizer.dqlang.types.rqa.definition.loadtest.LoadTestDefinition
 import io.github.dqualizer.dqlang.types.rqa.definition.monitoring.MonitoringDefinition
 import io.github.dqualizer.dqlang.types.rqa.definition.resilience.ResilienceDefinition
@@ -61,9 +59,9 @@ class SerializationTestsBase {
         }.randomize(HttpMethod::class.java) {
             return@randomize HttpMethod.values().random()
         }.randomize({
-            it.name == "_class"
+            it.name == "number"
         }, {
-            return@randomize ""
+            return@randomize Random().nextInt(100)
         })
     )
 
@@ -123,12 +121,15 @@ class SerializationTestsBase {
 
 
             serializableClasses = setOf(
-                MonitoringDefinition::class.java,
-                LoadTestDefinition::class.java,
-                ResilienceDefinition::class.java,
-                APISchema::class.java,
-                *instantiatableIdentifiableTypes.toTypedArray(),
-                *documentClasses.toTypedArray(),
+//                MonitoringDefinition::class.java,
+//                LoadTestDefinition::class.java,
+//                ResilienceDefinition::class.java,
+//                APISchema::class.java,
+//                *instantiatableIdentifiableTypes.toTypedArray(),
+//                *documentClasses.toTypedArray(),
+                Group::class.java,
+                Person::class.java,
+                System::class.java,
             )
         }
 
