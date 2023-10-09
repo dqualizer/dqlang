@@ -4,6 +4,10 @@ import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 
 data class MonitoringDefinition @JsonCreator constructor(
+
+    @JsonProperty("id")
+    var id: String,
+
     /**
      * dq_id of the target work_object
      */

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.dqualizer.dqlang.types.dam.architecture.SoftwareSystem;
 import io.github.dqualizer.dqlang.types.dam.domainstory.DomainStory;
+import io.github.dqualizer.dqlang.types.dam.mapping.DAMapper;
 import io.github.dqualizer.dqlang.types.dam.mapping.DAMapping;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -39,5 +40,9 @@ public class DomainArchitectureMapping extends Identifiable {
         this.softwareSystem = softwareSystem;
         this.domainStory = domainStory;
         this.DAMappings = DAMappings;
+    }
+
+    public DAMapper getMapper(){
+        return new DAMapper(DAMappings, domainStory, softwareSystem);
     }
 }

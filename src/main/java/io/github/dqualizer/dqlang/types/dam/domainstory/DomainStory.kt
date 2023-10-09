@@ -18,4 +18,12 @@ data class DomainStory(
 
     @DocumentReference
     val activities: List<Activity>
-) : Identifiable()
+) : Identifiable(){
+
+    fun findEntityById(id: String): DSTEntity {
+        return actors.find { it.id == id }
+            ?: workObjects.find { it.id == id }
+            ?: activities.find { it.id == id }
+            ?: throw IllegalArgumentException("No element with id $id found")
+    }
+}
