@@ -22,7 +22,7 @@ internal class SerializationTests : SerializationTestsBase() {
         assertDoesNotThrow { objectMapper.readTree(msg.body) }
 
 
-        if (clazz != Any::class.java) { //use this to generate new template test data, by replacing "Any" with the class you want to generate
+        if (clazz == Any::class.java) { //use this to generate new template test data, by replacing "Any" with the class you want to generate
             val prettyBody = objectMapper.writerWithDefaultPrettyPrinter()
                 .writeValueAsString(objectMapper.readValue(msg.body, Any::class.java))
 
