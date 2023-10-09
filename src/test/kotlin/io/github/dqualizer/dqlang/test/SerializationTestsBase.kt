@@ -22,6 +22,7 @@ import org.springframework.amqp.support.converter.MessageConverter
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration
 import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.data.mongodb.core.mapping.Document
 import org.springframework.http.HttpMethod
 import java.lang.module.ModuleDescriptor
 import java.lang.reflect.InaccessibleObjectException
@@ -107,8 +108,6 @@ class SerializationTestsBase {
 
     companion object {
 
-        private val instantiatableIdentifiableTypes: List<Class<*>>
-
         private val serializableClasses: Set<Class<*>>
 
         private val _classField = Identifiable::class.java.getDeclaredField("_class")
@@ -117,16 +116,19 @@ class SerializationTestsBase {
             _classField.isAccessible = true
 
             val reflection = Reflections("io.github.dqualizer.dqlang.types")
-            val identifiableTypes = reflection.getSubTypesOf(Identifiable::class.java)
-            instantiatableIdentifiableTypes = identifiableTypes
+            val instantiatableIdentifiableTypes = reflection.getSubTypesOf(Identifiable::class.java)
                 .filter { !Modifier.isInterface(it.modifiers) && !Modifier.isAbstract(it.modifiers) }
+            val documentClasses = reflection.getTypesAnnotatedWith(Document::class.java)
+                .filter { !Modifier.isInterface(it.modifiers) && !Modifier.isAbstract(it.modifiers) }
+
 
             serializableClasses = setOf(
                 MonitoringDefinition::class.java,
                 LoadTestDefinition::class.java,
                 ResilienceDefinition::class.java,
                 APISchema::class.java,
-                *instantiatableIdentifiableTypes.toTypedArray()
+                *instantiatableIdentifiableTypes.toTypedArray(),
+                *documentClasses.toTypedArray(),
             )
         }
 
