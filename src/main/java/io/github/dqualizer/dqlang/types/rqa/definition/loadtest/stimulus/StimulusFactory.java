@@ -1,4 +1,4 @@
-package io.github.dqualizer.dqlang.types.rqa.definition.stimulus;
+package io.github.dqualizer.dqlang.types.rqa.definition.loadtest.stimulus;
 
 
 import io.github.dqualizer.dqlang.types.rqa.definition.enums.*;
@@ -6,7 +6,7 @@ import io.github.dqualizer.dqlang.types.rqa.definition.enums.*;
 import java.util.Map;
 
 public class StimulusFactory {
-    public static Stimulus createStimulus(String loadProfileStr, Map<String, String> parameters, int accuracy) {
+    public static LoadStimulus createStimulus(String loadProfileStr, Map<String, String> parameters, int accuracy) {
         LoadProfile loadProfile = LoadProfile.valueOf(loadProfileStr);
         switch (loadProfile) {
             case LOAD_PEAK:

@@ -1,4 +1,4 @@
-package io.github.dqualizer.dqlang.types.rqa.definition.stimulus;
+package io.github.dqualizer.dqlang.types.rqa.definition.loadtest.stimulus;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.dqualizer.dqlang.types.rqa.definition.enums.TypeOfIncrease;
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class LoadIncreaseStimulus extends Stimulus {
+public class LoadIncreaseStimulus extends LoadStimulus {
     @JsonProperty("type_of_increase")
     private TypeOfIncrease typeOfIncrease;
 }

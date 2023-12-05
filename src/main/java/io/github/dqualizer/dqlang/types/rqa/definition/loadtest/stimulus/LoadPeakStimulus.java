@@ -1,4 +1,4 @@
-package io.github.dqualizer.dqlang.types.rqa.definition.stimulus;
+package io.github.dqualizer.dqlang.types.rqa.definition.loadtest.stimulus;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.dqualizer.dqlang.types.rqa.definition.enums.HighestLoad;
@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class LoadPeakStimulus extends Stimulus {
+public class LoadPeakStimulus extends LoadStimulus {
 
     @JsonProperty("highest_load")
     private HighestLoad highestLoad;

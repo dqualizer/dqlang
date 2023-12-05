@@ -1,4 +1,4 @@
-package io.github.dqualizer.dqlang.types.rqa.definition.stimulus;
+package io.github.dqualizer.dqlang.types.rqa.definition.loadtest.stimulus;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
