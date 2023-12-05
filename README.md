@@ -5,7 +5,7 @@
 
 The dqlang is a collection of languages utilized by [dqualizer](https://dqualizer.github.io/) e.g., the DST extension for domain-level RQA specification or the language for defining mappings in dqedit. This repository contains the domain specific language (DSL) in the from of json-schema files, which describe the exchange objects' structure used by the components of dqualizer.
 
-A more detailed description of this component's architecture is provided in the [arc42 document](https://github.com/dqualizer/dqualizer/tree/main/docs/asciidoc). 
+A more detailed description of this component's architecture is provided in the [arc42 document](https://dqualizer.github.io/dqualizer). 
 
 Feel free to have a look at the [documentation](https://dqualizer.github.io/dqlang/) which includes examples.
 
