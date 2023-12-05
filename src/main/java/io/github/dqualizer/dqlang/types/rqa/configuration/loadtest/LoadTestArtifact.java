@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.dqualizer.dqlang.types.dam.Endpoint;
 import io.github.dqualizer.dqlang.types.rqa.definition.Artifact;
 import io.github.dqualizer.dqlang.types.rqa.definition.loadtest.ResponseMeasures;
-import io.github.dqualizer.dqlang.types.rqa.definition.stimulus.Stimulus;
+import io.github.dqualizer.dqlang.types.rqa.definition.loadtest.stimulus.LoadStimulus;
 import lombok.*;
 
 @Getter
@@ -16,7 +16,7 @@ public class LoadTestArtifact {
     private Artifact artifact;
     @NonNull
     private String description;
-    private Stimulus stimulus;
+    private LoadStimulus stimulus;
     @JsonProperty("response_measure")
     private ResponseMeasures responseMeasure;
     private Endpoint endpoint;
