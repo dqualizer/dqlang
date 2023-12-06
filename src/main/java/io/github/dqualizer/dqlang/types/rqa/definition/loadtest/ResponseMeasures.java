@@ -1,7 +1,7 @@
 package io.github.dqualizer.dqlang.types.rqa.definition.loadtest;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.github.dqualizer.dqlang.types.rqa.definition.enums.ResponseTime;
+import io.github.dqualizer.dqlang.types.rqa.definition.enums.Satisfaction;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,5 +11,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ResponseMeasures {
     @JsonProperty("response_time")
-    private ResponseTime responseTime;
+    private Satisfaction responseTime;
 }
