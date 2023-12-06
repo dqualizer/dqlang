@@ -1,6 +1,6 @@
 package io.github.dqualizer.dqlang.types.rqa.definition.enums;
 
-public enum ResponseTime {
+public enum Satisfaction {
     SATISFIED, TOLERATED, FRUSTRATED
 
 }
