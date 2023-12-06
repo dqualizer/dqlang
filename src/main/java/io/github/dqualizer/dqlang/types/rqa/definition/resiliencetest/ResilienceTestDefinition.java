@@ -17,7 +17,7 @@ public class ResilienceTestDefinition {
     private String name;
     private Artifact artifact;
     private String description;
-    // TODO adapt
+
     private ResilienceStimulus stimulus;
 
     // TODO adapt / needed?

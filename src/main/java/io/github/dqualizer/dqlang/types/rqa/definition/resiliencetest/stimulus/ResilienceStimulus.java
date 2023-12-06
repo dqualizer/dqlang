@@ -16,23 +16,25 @@ import lombok.NoArgsConstructor;
 @Data
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({
-        @JsonSubTypes.Type(value = LoadPeakStimulus.class, name = "LOAD_PEAK"),
-        @JsonSubTypes.Type(value = LoadIncreaseStimulus.class, name = "LOAD_INCREASE"),
-        @JsonSubTypes.Type(value = ConstantLoadStimulus.class, name = "CONSTANT_LOAD")
+        @JsonSubTypes.Type(value = UnavailabilityStimulus.class, name = "UNAVAILABILITY"),
+       // @JsonSubTypes.Type(value = LoadIncreaseStimulus.class, name = "LOAD_INCREASE"),
+       // @JsonSubTypes.Type(value = ConstantLoadStimulus.class, name = "CONSTANT_LOAD")
 })    
 public abstract class ResilienceStimulus {
 
     private String type;
 
     // TODO adapt
-    @JsonProperty("load_profile")
-    private LoadProfile loadProfile;
+/*    @JsonProperty("load_profile")
+    private LoadProfile loadProfile;*/
 
     private int accuracy;
 
-    public void setLoadProfile(LoadProfile loadProfile) {
+    /*public void setLoadProfile(LoadProfile loadProfile) {
         this.loadProfile = loadProfile;
         this.type = loadProfile.name();
-    }
+    }*/
+
+
 
 }
