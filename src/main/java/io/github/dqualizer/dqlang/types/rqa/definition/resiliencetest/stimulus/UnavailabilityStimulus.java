@@ -18,4 +18,10 @@ public class UnavailabilityStimulus extends ResilienceStimulus {
     @JsonProperty("time_to_highest_load")
 
     private TimeToHighestLoad timeToHighestLoad;*/
+
+    // TODO To what extend makes field "type" sense if already a subtype ResilienceStimulus?
+    public UnavailabilityStimulus(String type, int accuracy){
+        this.setType(type);
+        this.setAccuracy(accuracy);
+    }
 }
