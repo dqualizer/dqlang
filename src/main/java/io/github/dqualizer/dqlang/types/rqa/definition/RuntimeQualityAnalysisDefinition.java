@@ -44,6 +44,7 @@ public class RuntimeQualityAnalysisDefinition {
         this.version = version;
         this.environment = environment;
         this.domainId = domainId;
+        this.context = context;
         this.runtimeQualityAnalysis = runtimeQualityAnalysis;
     }
 }
