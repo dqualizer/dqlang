@@ -6,11 +6,11 @@ import io.github.dqualizer.dqlang.types.rqa.definition.enums.TimeToHighestLoad;
 import io.github.dqualizer.dqlang.types.rqa.definition.loadtest.stimulus.LoadStimulus;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-@AllArgsConstructor
-@NoArgsConstructor
 @Data
+@EqualsAndHashCode(callSuper = false)
 public class UnavailabilityStimulus extends ResilienceStimulus {
 
     /*@JsonProperty("highest_load")

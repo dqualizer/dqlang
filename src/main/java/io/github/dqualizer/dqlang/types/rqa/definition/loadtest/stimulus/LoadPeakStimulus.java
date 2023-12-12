@@ -5,11 +5,13 @@ import io.github.dqualizer.dqlang.types.rqa.definition.enums.HighestLoad;
 import io.github.dqualizer.dqlang.types.rqa.definition.enums.TimeToHighestLoad;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@EqualsAndHashCode(callSuper = false)
 public class LoadPeakStimulus extends LoadStimulus {
 
     @JsonProperty("highest_load")

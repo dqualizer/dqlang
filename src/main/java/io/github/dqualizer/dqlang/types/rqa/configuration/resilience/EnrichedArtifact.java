@@ -4,9 +4,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.dqualizer.dqlang.types.rqa.definition.Artifact;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Data
+@EqualsAndHashCode(callSuper = false)
 @AllArgsConstructor
 @NoArgsConstructor
 
