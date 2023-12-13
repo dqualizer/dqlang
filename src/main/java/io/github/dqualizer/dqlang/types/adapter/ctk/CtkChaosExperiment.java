@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyDescription;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import lombok.EqualsAndHashCode;
 
 import javax.annotation.processing.Generated;
 import javax.validation.Valid;
@@ -23,6 +24,7 @@ import java.util.List;
         "rollbacks"
 })
 @Generated("jsonschema2pojo")
+@EqualsAndHashCode
 public class CtkChaosExperiment {
 
     @JsonProperty("title")
