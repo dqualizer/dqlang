@@ -1,6 +1,7 @@
 package io.github.dqualizer.dqlang.types.adapter.ctk;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.JsonNode;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,5 +25,5 @@ public class Provider {
     String function;
 
     @JsonProperty("arguments")
-    Map<String, String> arguments;
+    Map<String, Object> arguments;
 }
