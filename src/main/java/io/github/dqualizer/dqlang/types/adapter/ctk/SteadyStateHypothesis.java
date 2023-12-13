@@ -17,6 +17,6 @@ public class SteadyStateHypothesis {
 
     @JsonProperty("title")
     private String title;
-    @JsonProperty("duration")
+    @JsonProperty("probes")
     private List<Probe> probes;
 }

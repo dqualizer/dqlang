@@ -13,7 +13,7 @@ import lombok.ToString;
 public class Action extends Probe{
 
     @JsonProperty("type")
-    String type = "Action";
+    String type = "action";
 
     public Action(String name, Provider provider) {
         super(name, provider);

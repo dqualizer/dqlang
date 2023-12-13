@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import javax.annotation.processing.Generated;
 import javax.validation.Valid;
 import java.beans.ConstructorProperties;
+import java.util.List;
 
 
 /**
@@ -39,11 +40,11 @@ public class CtkChaosExperiment {
 
     @JsonProperty("method")
     @Valid
-    public Method method;
+    public List<Probe> method;
 
     @JsonProperty("rollbacks")
     @Valid
-    public Rollbacks rollbacks;
+    public List<Action> rollbacks;
 
 
     /**
@@ -72,7 +73,7 @@ public class CtkChaosExperiment {
             "method",
             "rollbacks"
     })
-    public CtkChaosExperiment(String title, String description, SteadyStateHypothesis steadyStateHypothesis, Method method, Rollbacks rollbacks) {
+    public CtkChaosExperiment(String title, String description, SteadyStateHypothesis steadyStateHypothesis, List<Probe> method, List<Action> rollbacks) {
         super();
         this.title = title;
         this.description = description;
