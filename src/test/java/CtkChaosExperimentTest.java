@@ -34,7 +34,7 @@ public class CtkChaosExperimentTest {
         List<Probe> method = List.of(action, probe) ;
         List<Action> rollbacks = List.of(action);
 
-        CtkChaosExperiment ctkChaosExperiment = new CtkChaosExperiment(title, description, steadyStateHypothesis, method, rollbacks);
+        CtkChaosExperiment ctkChaosExperiment = new CtkChaosExperiment(title, description, steadyStateHypothesis, method, rollbacks, 1);
 
 
         // act

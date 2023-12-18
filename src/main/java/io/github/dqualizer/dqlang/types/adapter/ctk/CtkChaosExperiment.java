@@ -1,5 +1,6 @@
 package io.github.dqualizer.dqlang.types.adapter.ctk;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyDescription;
@@ -48,6 +49,10 @@ public class CtkChaosExperiment {
     @Valid
     public List<Action> rollbacks;
 
+    @JsonIgnore
+    @Valid
+    public int repetitions;
+
 
     /**
      * No args constructor for use in serialization
@@ -65,6 +70,7 @@ public class CtkChaosExperiment {
         this.steadyStateHypothesis = source.steadyStateHypothesis;
         this.method = source.method;
         this.rollbacks = source.rollbacks;
+        this.repetitions = source.repetitions;
     }
 
 
@@ -73,15 +79,17 @@ public class CtkChaosExperiment {
             "description",
             "steadyStateHypothesis",
             "method",
-            "rollbacks"
+            "rollbacks",
+            "repitions"
     })
-    public CtkChaosExperiment(String title, String description, SteadyStateHypothesis steadyStateHypothesis, List<Probe> method, List<Action> rollbacks) {
+    public CtkChaosExperiment(String title, String description, SteadyStateHypothesis steadyStateHypothesis, List<Probe> method, List<Action> rollbacks, int repitions) {
         super();
         this.title = title;
         this.description = description;
         this.steadyStateHypothesis = steadyStateHypothesis;
         this.method = method;
         this.rollbacks = rollbacks;
+        this.repetitions = repitions;
     }
 
 
