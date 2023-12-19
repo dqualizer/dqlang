@@ -15,6 +15,7 @@ public class System {
     @JsonProperty("operation_id")
     private String operationId;
     private String type;
+    private String processPath;
     @JsonProperty("implements")
     private List<Object> myimplements;
     private List<String> objects;
