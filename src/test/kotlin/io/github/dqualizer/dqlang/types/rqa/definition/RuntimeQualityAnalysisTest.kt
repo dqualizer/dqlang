@@ -3,9 +3,6 @@ package io.github.dqualizer.dqlang.types.rqa.definition
 import com.fasterxml.jackson.databind.ObjectMapper
 import io.github.dqualizer.dqlang.messaging.AMQPAutoConfiguration
 import io.github.dqualizer.dqlang.test.MessagingTestConfiguration
-import io.github.dqualizer.dqlang.types.rqa.definition.loadtest.LoadTestDefinition
-import io.github.dqualizer.dqlang.types.rqa.definition.monitoring.MonitoringDefinition
-import io.github.dqualizer.dqlang.types.rqa.definition.resilience.ResilienceDefinition
 import io.github.dqualizer.dqlang.types.rqa.definition.stimulus.ConstantLoadStimulus
 import io.github.dqualizer.dqlang.types.rqa.definition.stimulus.LoadIncreaseStimulus
 import io.github.dqualizer.dqlang.types.rqa.definition.stimulus.LoadPeakStimulus
@@ -20,7 +17,6 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.context.annotation.Import
-import java.util.stream.Collectors
 
 @SpringBootTest(classes = [AMQPAutoConfiguration::class, RabbitAutoConfiguration::class])
 @Import(MessagingTestConfiguration::class)
