@@ -1,5 +1,6 @@
 package io.github.dqualizer.dqlang.types.rqa.definition.resiliencetest.stimulus;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -16,19 +17,17 @@ import lombok.NoArgsConstructor;
 @Data
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({
-        @JsonSubTypes.Type(value = UnavailabilityStimulus.class, name = "UNAVAILABILITY"),
-       // @JsonSubTypes.Type(value = LoadIncreaseStimulus.class, name = "LOAD_INCREASE"),
-       // @JsonSubTypes.Type(value = ConstantLoadStimulus.class, name = "CONSTANT_LOAD")
+        @JsonSubTypes.Type(value = UnavailabilityStimulus.class, name = "UNAVAILABILITY")
 })    
 public abstract class ResilienceStimulus {
 
-    private String type;
+    private int accuracy;
 
     // TODO adapt
 /*    @JsonProperty("load_profile")
     private LoadProfile loadProfile;*/
 
-    private int accuracy;
+
 
     /*public void setLoadProfile(LoadProfile loadProfile) {
         this.loadProfile = loadProfile;
