@@ -2,7 +2,7 @@ package io.github.dqualizer.dqlang.types.adapter.constants;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.dqualizer.dqlang.types.adapter.accuracy.Accuracy;
-import io.github.dqualizer.dqlang.types.adapter.constants.loadprofile.LoadProfile;
+import io.github.dqualizer.dqlang.types.adapter.symbolics.Symbolics;
 import lombok.Getter;
 import lombok.ToString;
 
@@ -14,8 +14,9 @@ import lombok.ToString;
 public class LoadTestConstants {
 
     private Accuracy accuracy;
-    @JsonProperty("load_profile")
-    private LoadProfile loadProfile;
+    @JsonProperty("technical_constants")
+    private TechnicalConstants technicalConstants;
+    private Symbolics symbolics;
     @JsonProperty("response_time")
     private ResponseTime responseTime;
 }
