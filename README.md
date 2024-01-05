@@ -39,29 +39,53 @@ Then you can use:
 
 The gradle setup is very similar to the maven setup:
 
-1. Create a `init.gradle` file in `~/.gradle/` or `%userprofile%\.gradle\`.
-1. Create a [(classic) personal access token (PAT) ](https://github.com/settings/tokens) with `read:packages` permissions.
-1. Paste the following code into the `init.gradle` file:
-    ```groovy
-    allprojects {
-        repositories {
-            maven {
-                url = uri("https://maven.pkg.github.com/dqualizer/dqlang")
-                credentials {
-                    username = "<your github username>"
-                    password = "<your github personal access token with read:packages>"
-                }
-            }	
-        }
-    }
+1. Create a `gradle.properties` file in `%userprofile%\.gradle\`.
+2. Create a [(classic) personal access token (PAT) ](https://github.com/settings/tokens) with `read:packages` permissions.
+3. Paste the following content into your gradle.properties:
+   ```
+   gprUsername=YOUR_GITHUB_USERNAME
+   gprPassword=YOUR_GITHUB_ACCESS_TOKEN
+   ```
+5. Paste the following code into your projects build.gradle or build.gradle.kts file:
+
+Groovy:
+ 
     ```
-1. Replace the placeholders with your GitHub user name and PAT.
+    repositories {
+     maven {
+         name = 'gpr'
+         credentials(PasswordCredentials)
+         url = uri("https://maven.pkg.github.com/dqualizer/dqlang")
+     }
+    }
+   
+    ```
 
-Then you can use dqlang in your gradle build file:
+ Kotlin:
+ ```
+repositories {
+	 maven {
+		 name="gpr"
+		url = uri("https://maven.pkg.github.com/dqualizer/dqlang")
+		credentials(PasswordCredentials::class)
+	 }
+}
+```
 
+Then you can use dqlang in your gradle dependency declaration:
+
+Groovy:
 ```groovy
 dependencies {
-    implementation("dqualizer:dqlang:${dqlangVersion}")
+    implementation("io.github.dqualizer:dqlang:{version}")
+}
+```
+
+Kotlin:
+```kotlin
+dependencies {
+	implementation("io.github.dqualizer:dqlang:2.0.16")
+
 }
 ```
 
