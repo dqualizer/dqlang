@@ -84,7 +84,7 @@ dependencies {
 Kotlin:
 ```kotlin
 dependencies {
-	implementation("io.github.dqualizer:dqlang:2.0.16")
+	implementation("io.github.dqualizer:dqlang:{version}")
 
 }
 ```
