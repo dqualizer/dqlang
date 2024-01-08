@@ -48,7 +48,7 @@ jobs:
           echo "Performing release of version ${{ env.ARTIFACT_VERSION }}"
           ./gradlew --no-daemon release -Prelease.useAutomaticVersion=true -Prelease.releaseVersion=${{ env.ARTIFACT_VERSION }}
           git checkout tags/${{ env.ARTIFACT_VERSION }}
-          ./gradlew --no-daemon publish -Ptag=latest
+          ./gradlew --no-daemon publish
 
       - name: Perform Snapshot Release
         if: github.ref != 'refs/heads/main'
@@ -56,4 +56,4 @@ jobs:
           echo "Performing snapshot release of version ${{ env.ARTIFACT_VERSION }}-${{ github.ref_name }}-SNAPSHOT"
           ./gradlew --no-daemon release -Prelease.useAutomaticVersion=true -Prelease.releaseVersion=${{ env.ARTIFACT_VERSION }}-${{ github.ref_name }}-SNAPSHOT
            git checkout tags/${{ env.ARTIFACT_VERSION }}-${{ github.ref_name }}-SNAPSHOT
-          ./gradlew --no-daemon publish -Ptag=
+          ./gradlew --no-daemon publish
