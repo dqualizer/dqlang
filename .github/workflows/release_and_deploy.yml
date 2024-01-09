@@ -61,3 +61,7 @@ jobs:
             if [[ $SNAPSHOT_VERSION != *"-SNAPSHOT" ]]; then
               SNAPSHOT_VERSION="$SNAPSHOT_VERSION-SNAPSHOT"
             fi
+              
+             ./gradlew --no-daemon release -Prelease.useAutomaticVersion=true -Prelease.releaseVersion=$SNAPSHOT_VERSION
+             git checkout tags/$SNAPSHOT_VERSION
+             ./gradlew --no-daemon publish
