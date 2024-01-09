@@ -45,13 +45,19 @@ jobs:
       - name: Perform Snapshot Release
         if: github.ref != 'refs/heads/main'
         run: |
-            SNAPSHOT_VERSION="${{ env.ARTIFACT_VERSION }}-${{ github.ref_name }}"
-             echo "Performing snapshot release of version $SNAPSHOT_VERSION"
+            SNAPSHOT_VERSION="${{ env.ARTIFACT_VERSION }}"
+            echo "Performing snapshot release of version $SNAPSHOT_VERSION"
+
+            # Remove "SNAPSHOT" from the end and middle, if present
+            SNAPSHOT_VERSION="${SNAPSHOT_VERSION%"-SNAPSHOT"}"
+            SNAPSHOT_VERSION="${SNAPSHOT_VERSION//"-SNAPSHOT"/}"
             
-             # Ensure SNAPSHOT_VERSION does end with '-SNAPSHOT'
-             if [[ $SNAPSHOT_VERSION != *"-SNAPSHOT" ]]; then
-               SNAPSHOT_VERSION="$SNAPSHOT_VERSION-SNAPSHOT"
-               fi
-             ./gradlew --no-daemon release -Prelease.useAutomaticVersion=true -Prelease.releaseVersion=$SNAPSHOT_VERSION
-             git checkout tags/$SNAPSHOT_VERSION
-             ./gradlew --no-daemon publish
+            # Ensure SNAPSHOT_VERSION includes branch name
+            if [[ $SNAPSHOT_VERSION != *${{ github.ref_name }}* ]]; then
+              SNAPSHOT_VERSION="$SNAPSHOT_VERSION-${{ github.ref_name }}"
+            fi
+            
+            # Ensure SNAPSHOT_VERSION does end with '-SNAPSHOT'
+            if [[ $SNAPSHOT_VERSION != *"-SNAPSHOT" ]]; then
+              SNAPSHOT_VERSION="$SNAPSHOT_VERSION-SNAPSHOT"
+            fi
