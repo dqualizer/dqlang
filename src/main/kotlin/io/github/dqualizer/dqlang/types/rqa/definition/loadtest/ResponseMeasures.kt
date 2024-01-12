@@ -1,0 +1,9 @@
+package io.github.dqualizer.dqlang.types.rqa.definition.loadtest
+
+import com.fasterxml.jackson.annotation.JsonProperty
+import io.github.dqualizer.dqlang.types.rqa.definition.enums.ResponseTime
+
+data class ResponseMeasures (
+    @JsonProperty("response_time")
+    val responseTime: ResponseTime? = null
+)
