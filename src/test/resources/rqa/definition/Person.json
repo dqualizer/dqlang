@@ -2,6 +2,6 @@
   "@type" : "Person",
   "personName" : "eOMtThyhVNLWUZNRcBaQKxI",
   "id" : "JxkyvRnL",
-  "name" : "yedUsFwdkelQbxeTeQOvaScfqIOOmaa",
-  "serializationClass" : "io.github.dqualizer.dqlang.types.dam.domainstory.Person"
+  "_class" : "io.github.dqualizer.dqlang.types.dam.domainstory.Person",
+  "name" : "yedUsFwdkelQbxeTeQOvaScfqIOOmaa"
 }

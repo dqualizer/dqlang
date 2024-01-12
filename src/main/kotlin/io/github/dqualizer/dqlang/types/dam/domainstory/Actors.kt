@@ -1,6 +1,5 @@
 package io.github.dqualizer.dqlang.types.dam.domainstory
 
-import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonSubTypes
 import com.fasterxml.jackson.annotation.JsonTypeInfo
 
