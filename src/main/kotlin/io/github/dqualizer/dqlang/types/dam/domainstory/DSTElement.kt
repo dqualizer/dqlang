@@ -3,7 +3,6 @@ package io.github.dqualizer.dqlang.types.dam.domainstory
 import io.github.dqualizer.dqlang.types.dam.Identifiable
 import lombok.experimental.SuperBuilder
 
-
 abstract class DSTElement(
     open val name: String
 ) : Identifiable() {
