@@ -8,13 +8,13 @@ import java.util.*
 
 
 data class RESTEndpoint @JsonCreator constructor(
-    val name: String,
+    override var name: String,
     val route: String,
     val components: Map<EndpointComponentType, Set<EndpointComponent>> = EnumMap(EndpointComponentType::class.java),
     val methods: Set<HttpMethod> = HashSet(),
     @JsonProperty("response_description")
     val responseDescription: ResponseDescription? = null
-) : ArchitectureEntity() {
+) : CodeComponent(name,name, "REST Endpoint") {
     enum class EndpointComponentType {
         PathVariable,
         QueryParameter,

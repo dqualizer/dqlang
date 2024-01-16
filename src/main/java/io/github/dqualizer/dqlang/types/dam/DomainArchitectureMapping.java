@@ -49,11 +49,11 @@ public class DomainArchitectureMapping extends Identifiable {
 
     @JsonIgnore
     public DAMapper getMapper() {
-        return new DAMapper(DAMappings, this);
+        return new DAMapper(this, false);
     }
 
     @JsonIgnore
     public DAMapper getMapper(boolean lazy) {
-        return new DAMapper(DAMappings, this, lazy);
+        return new DAMapper(this, lazy);
     }
 }

@@ -1,5 +1,7 @@
 package io.github.dqualizer.dqlang.types.dam;
 
+import lombok.Getter;
+import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -9,6 +11,8 @@ import java.util.Objects;
 
 public abstract class Identifiable {
     @Id
+    @Getter
+    @Setter
     private String id;
 
     /**
@@ -16,9 +20,9 @@ public abstract class Identifiable {
      */
     private String _class;
 
-    public final String getId() {
-        return id;
-    }
+//    public final String getId() {
+//        return id;
+//    }
 
     public final String getSerializationClass() {
         return _class;

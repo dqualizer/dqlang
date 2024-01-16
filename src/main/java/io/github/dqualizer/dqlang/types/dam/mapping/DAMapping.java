@@ -2,12 +2,13 @@ package io.github.dqualizer.dqlang.types.dam.mapping;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import io.github.dqualizer.dqlang.types.dam.architecture.ArchitectureEntity;
 import io.github.dqualizer.dqlang.types.dam.architecture.SoftwareSystem;
 import io.github.dqualizer.dqlang.types.dam.domainstory.DSTElement;
 import io.github.dqualizer.dqlang.types.dam.domainstory.DomainStory;
 
-public final class DAMapping {
+public class DAMapping {
     private final String dst_element_id;
 
     private final String architecture_element_id;

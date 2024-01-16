@@ -27,9 +27,10 @@ public final class Activity extends DSTElement {
     private Set<String> targets;
 
     /**
-     * Work objects that are along the path.
+     * Work objects that are used along the path.
      */
     private Set<String> workObjects;
+
 
     private Activity(String name) {
         super(name);

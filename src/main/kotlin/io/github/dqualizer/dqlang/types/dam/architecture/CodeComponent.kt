@@ -1,16 +1,16 @@
 package io.github.dqualizer.dqlang.types.dam.architecture
 
-import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 
 /**
  * former "Object" class. Now represents a code component.
  */
-data class CodeComponent(
-    val name: String,
+open class CodeComponent(
+    open val name: String,
     @JsonProperty("operation_id")
-    val operationId: String,
-    val type: String,
+    val identifier: String,
+    val file: String,
+    val type: String = "none",
     @JsonProperty("implements")
     val myimplements: Set<String> = emptySet(),
     val objects: Set<String> = emptySet(),

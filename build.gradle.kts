@@ -87,6 +87,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json-jvm")
     implementation("com.google.code.findbugs:jsr305:3.0.2")
     implementation("javax.validation:validation-api:2.0.1.Final")
+    implementation("io.github.oshai:kotlin-logging:6.0.1")
 
     annotationProcessor("org.projectlombok:lombok:1.18.30")
 
@@ -98,7 +99,6 @@ dependencies {
     testImplementation("org.mockito.kotlin:mockito-kotlin:5.1.0")
     testImplementation("org.reflections:reflections:0.10.2")
     testImplementation("org.projectlombok:lombok")
-
 }
 
 sourceSets.main {
