@@ -5,16 +5,14 @@ import io.github.dqualizer.dqlang.types.dam.DomainArchitectureMapping
 import io.github.dqualizer.dqlang.types.dam.architecture.ArchitectureEntity
 import io.github.dqualizer.dqlang.types.dam.domainstory.DSTElement
 import org.slf4j.LoggerFactory
-import java.util.NoSuchElementException
-
 
 /**
  * Mapper that can apply
  *
  * @param lazy if true, the mapper will only map elements when they are requested otherwise it will build a cache upon creation
  */
+
 class DAMapper @JvmOverloads constructor(
-    private val mappings: Set<DAMapping>,
     private val domainArchitectureMapping: DomainArchitectureMapping,
     private val lazy: Boolean = false
 ) {
@@ -24,14 +22,34 @@ class DAMapper @JvmOverloads constructor(
     private val mappingCache = mutableMapOf<String, ArchitectureEntity>()
     private val backMappingCache = mutableMapOf<String, DSTElement>()
 
+    private val mappings: Set<DAMapping> = domainArchitectureMapping.daMappings
+
     init {
-        mappings.forEach { mapping ->
+        this.mappings.forEach { mapping ->
             logger.debug("Mapping ${mapping.dstElementId} to ${mapping.architectureElementId}")
             mappingCache[mapping.dstElementId] =
                 mapping.getArchitectureEntity(domainArchitectureMapping.softwareSystem)
             backMappingCache[mapping.architectureElementId] =
                 mapping.getDSTEntity(domainArchitectureMapping.domainStory)
         }
+    }
+
+    fun getMappings(dstElement: DSTElement): Set<DAMapping> {
+        val id = dstElement.id!!
+        return getMappings(id)
+    }
+
+    fun getMappings(elementId: String): Set<DAMapping> {
+        return mappings.filter { it.dstElementId == elementId || it.architectureElementId == elementId }.toSet()
+    }
+
+    fun getMappings(architectureEntity: ArchitectureEntity): Set<DAMapping> {
+        return mappings.filter { it.architectureElementId == architectureEntity.id }.toSet()
+    }
+
+    fun mapToArchitecturalEntity(dstElement: DSTElement): ArchitectureEntity {
+        val id = dstElement.id!!
+        return mapToArchitecturalEntity(id)
     }
 
     fun mapToArchitecturalEntity(dstElementId: String): ArchitectureEntity {

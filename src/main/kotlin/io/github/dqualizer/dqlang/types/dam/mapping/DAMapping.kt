@@ -7,7 +7,7 @@ import io.github.dqualizer.dqlang.types.dam.architecture.SoftwareSystem
 import io.github.dqualizer.dqlang.types.dam.domainstory.DSTElement
 import io.github.dqualizer.dqlang.types.dam.domainstory.DomainStory
 
-data class DAMapping @JsonCreator constructor(
+open class DAMapping @JsonCreator constructor(
     @JsonProperty("dst_element_id")
     val dstElementId: String,
 
@@ -23,4 +23,3 @@ data class DAMapping @JsonCreator constructor(
         return softwareSystem.findEntityById(architectureElementId)
     }
 }
-

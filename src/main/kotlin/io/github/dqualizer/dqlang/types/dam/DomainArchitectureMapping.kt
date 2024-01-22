@@ -24,17 +24,17 @@ data class DomainArchitectureMapping @JsonCreator constructor(
     val domainStory: DomainStory,
 
     @JsonProperty("mappings")
-    val DAMappings: Set<DAMapping>
+    val daMappings: Set<DAMapping>
 ) : Identifiable() {
 
     @JsonIgnore
     fun getMapper(): DAMapper {
-        return DAMapper(DAMappings, this)
+        return DAMapper(this, false)
     }
 
     @JsonIgnore
     fun getMapper(lazy: Boolean): DAMapper {
-        return DAMapper(DAMappings, this, lazy)
+        return DAMapper(this, lazy)
     }
 }
 

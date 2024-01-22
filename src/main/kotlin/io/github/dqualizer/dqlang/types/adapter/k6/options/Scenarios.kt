@@ -1,5 +1,5 @@
 package io.github.dqualizer.dqlang.types.adapter.k6.options
 
 data class Scenarios (
-    val scenario: Scenario? = null
+    val scenario: K6Scenario? = null
 )

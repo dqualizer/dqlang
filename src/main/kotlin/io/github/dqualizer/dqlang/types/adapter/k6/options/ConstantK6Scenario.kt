@@ -4,10 +4,10 @@ import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonTypeName
 
 @JsonTypeName("constant-vus")
-data class ConstantScenario @JsonCreator constructor(
+data class ConstantK6Scenario @JsonCreator constructor(
     val executor: String = "constant-vus",
 
     val vus: Int? = 0,
 
     val duration: String? = null
-) : Scenario()
+) : K6Scenario()

@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "executor")
 @JsonSubTypes(
-    JsonSubTypes.Type(value = ConstantScenario::class, name = "constant-vus"),
-    JsonSubTypes.Type(value = RampingScenario::class, name = "ramping-vus")
+    JsonSubTypes.Type(value = ConstantK6Scenario::class, name = "constant-vus"),
+    JsonSubTypes.Type(value = RampingK6Scenario::class, name = "ramping-vus")
 )
-sealed class Scenario
+sealed class K6Scenario
