@@ -5,7 +5,7 @@
 
 The dqlang is a collection of languages utilized by [dqualizer](https://dqualizer.github.io/) e.g., the DST extension for domain-level RQA specification or the language for defining mappings in dqedit. This repository contains the domain specific language (DSL) in the from of json-schema files, which describe the exchange objects' structure used by the components of dqualizer.
 
-A more detailed description of this component's architecture is provided in the [arc42 document](https://dqualizer.github.io/dqualizer). 
+A more detailed description of this component's architecture is provided in the [arc42 document](https://dqualizer.github.io/dqualizer).
 
 Feel free to have a look at the [documentation](https://dqualizer.github.io/dqlang/) which includes examples.
 
@@ -15,7 +15,7 @@ This package is published via [Github Packages](https://github.com/features/pack
 
 ### Maven
 
-To setup your maven for using this package, have a look the 
+To setup your maven for using this package, have a look the
 "[Authenticating to GitHub Packages](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-apache-maven-registry)" guide.
 
 
@@ -49,26 +49,26 @@ The gradle setup is very similar to the maven setup:
 5. Paste the following code into your projects build.gradle or build.gradle.kts file:
 
 Groovy:
- 
-    ```
-    repositories {
-     maven {
-         name = 'gpr'
-         credentials(PasswordCredentials)
-         url = uri("https://maven.pkg.github.com/dqualizer/dqlang")
-     }
-    }
-   
+
+```
+repositories {
+	maven {
+       	name = 'gpr'
+       	credentials(PasswordCredentials)
+       	url = uri("https://maven.pkg.github.com/dqualizer/dqlang")
+	}
+}
+
     ```
 
  Kotlin:
  ```
 repositories {
-	 maven {
-		 name="gpr"
+	maven {
+		name="gpr"
 		url = uri("https://maven.pkg.github.com/dqualizer/dqlang")
 		credentials(PasswordCredentials::class)
-	 }
+	}
 }
 ```
 
@@ -85,9 +85,17 @@ Kotlin:
 ```kotlin
 dependencies {
 	implementation("io.github.dqualizer:dqlang:{version}")
-
 }
 ```
+
+## How to build
+### Locally
+* Set your credentials `gprUsername=YOUR_GITHUB_USERNAME` and `gprPassword=YOUR_GITHUB_ACCESS_TOKEN` in either `$GRADLE_USER_HOME/gradle.properties` or `gradle.properties` (be careful not to publish your GitHub Token to Git)
+* If you set the credentials build with `./gradlew build -x test`
+* If you didn't set your credentials build with `./gradlew build -x test -PgprUsername=YOUR_GITHUB_USERNAME -PgprPassword=YOUR_GITHUB_ACCESS_TOKEN`
+
+### Deploy to Packages
+* There is a GitHub action set up, that automatically pushes the dqlang-package to [Github Packages](https://github.com/orgs/dqualizer/packages)
 
 ## Contribution
 
