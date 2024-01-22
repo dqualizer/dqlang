@@ -42,10 +42,10 @@ The gradle setup is very similar to the maven setup:
 1. Create a `gradle.properties` file in `%userprofile%\.gradle\`.
 2. Create a [(classic) personal access token (PAT) ](https://github.com/settings/tokens) with `read:packages` permissions.
 3. Paste the following content into your gradle.properties:
-   ```
-   gprUsername=YOUR_GITHUB_USERNAME
-   gprPassword=YOUR_GITHUB_ACCESS_TOKEN
-   ```
+```
+gprUsername=YOUR_GITHUB_USERNAME
+gprPassword=YOUR_GITHUB_ACCESS_TOKEN
+```
 5. Paste the following code into your projects build.gradle or build.gradle.kts file:
 
 Groovy:
@@ -58,11 +58,10 @@ repositories {
        	url = uri("https://maven.pkg.github.com/dqualizer/dqlang")
 	}
 }
+```
 
-    ```
-
- Kotlin:
- ```
+Kotlin:
+```
 repositories {
 	maven {
 		name="gpr"
