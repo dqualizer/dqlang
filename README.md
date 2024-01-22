@@ -50,25 +50,25 @@ The gradle setup is very similar to the maven setup:
 
 Groovy:
 
-    ```
-    repositories {
-     maven {
-        name = 'gpr'
-        credentials(PasswordCredentials)
-        url = uri("https://maven.pkg.github.com/dqualizer/dqlang")
-     }
-    }
+```
+repositories {
+	maven {
+       	name = 'gpr'
+       	credentials(PasswordCredentials)
+       	url = uri("https://maven.pkg.github.com/dqualizer/dqlang")
+	}
+}
 
     ```
 
  Kotlin:
  ```
 repositories {
-	 maven {
-        name="gpr"
+	maven {
+		name="gpr"
 		url = uri("https://maven.pkg.github.com/dqualizer/dqlang")
 		credentials(PasswordCredentials::class)
-	 }
+	}
 }
 ```
 
@@ -85,7 +85,6 @@ Kotlin:
 ```kotlin
 dependencies {
 	implementation("io.github.dqualizer:dqlang:{version}")
-
 }
 ```
 
