@@ -1,0 +1,12 @@
+{
+  "name" : "eOMtThyhVNLWUZNRcBaQKxI",
+  "route" : "yedUsFwdkelQbxeTeQOvaScfqIOOmaa",
+  "components" : { },
+  "methods" : [ "TRACE", "HEAD", "DELETE", "POST", "GET" ],
+  "response_description" : {
+    "format" : "JxkyvRnL",
+    "expected_status_codes" : [ -1366603797, 1087885590, -1935747844, -535098017, 1149563170, -1829099982, 1018954901, -833784125, -875052456, 308881275, 1295249578, -1621910390, -39088943, -1188957731, 1111887674, 696711130, -1219562352, -1680189627 ]
+  },
+  "id" : "RYtGKbgicZaHCBRQDSx",
+  "serializationClass" : "io.github.dqualizer.dqlang.types.dam.architecture.RESTEndpoint"
+}

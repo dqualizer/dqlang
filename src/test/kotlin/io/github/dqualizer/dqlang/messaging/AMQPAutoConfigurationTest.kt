@@ -1,6 +1,6 @@
 package io.github.dqualizer.dqlang.messaging
 
-import io.github.dqualizer.dqlang.test.MessagingConfiguration
+import io.github.dqualizer.dqlang.test.MessagingTestConfiguration
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Nested
@@ -18,7 +18,7 @@ import org.springframework.test.context.ActiveProfiles
 
 
 @SpringBootTest(classes = [AMQPAutoConfiguration::class, RabbitAutoConfiguration::class])//
-@Import(MessagingConfiguration::class)
+@Import(MessagingTestConfiguration::class)
 class AMQPAutoConfigurationTest {
     @Test
     fun loadsContextWithNoConfiguration() {

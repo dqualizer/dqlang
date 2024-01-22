@@ -102,9 +102,9 @@ public class K6LoadTest {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(K6LoadTest.class.getName())
-                .append('@')
-                .append(Integer.toHexString(System.identityHashCode(this)))
-                .append('[');
+          .append('@')
+          .append(Integer.toHexString(System.identityHashCode(this)))
+          .append('[');
         sb.append("repetition");
         sb.append('=');
         sb.append(this.repetition);
