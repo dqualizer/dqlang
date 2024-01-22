@@ -93,7 +93,10 @@ dependencies {
 ### Locally
 * Set your credentials `gprUsername=YOUR_GITHUB_USERNAME` and `gprPassword=YOUR_GITHUB_ACCESS_TOKEN` in either `$GRADLE_USER_HOME/gradle.properties` or `gradle.properties` (be careful not to publish your GitHub Token to Git)
 * If you set the credentials build with `./gradlew build -x test`
-* If you didn't set your credentials build with `./gradlew build -x test -PgprUsername=YOUR_GITHUB_USERNAME PgprPassword=YOUR_GITHUB_ACCESS_TOKEN`
+* If you didn't set your credentials build with `./gradlew build -x test -PgprUsername=YOUR_GITHUB_USERNAME -PgprPassword=YOUR_GITHUB_ACCESS_TOKEN`
+
+### Deploy to Packages
+* There is a GitHub action set up, that automatically pushes the dqlang-package to [Github Packages](https://github.com/orgs/dqualizer/packages)
 
 ## Contribution
 
