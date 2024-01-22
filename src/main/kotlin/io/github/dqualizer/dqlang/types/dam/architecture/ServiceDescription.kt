@@ -45,7 +45,7 @@ data class ServiceDescription(
     @JsonPropertyDescription("The technical Endpoints that this service has.")
     val endpoints: Collection<RESTEndpoint>,
 
-
+    @JsonProperty("api_schema")
     @JsonPropertyDescription("The API Schema that this service provides.")
     val apiSchema: APISchema,
 
