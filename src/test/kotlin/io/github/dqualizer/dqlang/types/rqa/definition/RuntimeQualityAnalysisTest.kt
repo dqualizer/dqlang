@@ -3,10 +3,10 @@ package io.github.dqualizer.dqlang.types.rqa.definition
 import com.fasterxml.jackson.databind.ObjectMapper
 import io.github.dqualizer.dqlang.messaging.AMQPAutoConfiguration
 import io.github.dqualizer.dqlang.test.MessagingTestConfiguration
-import io.github.dqualizer.dqlang.types.rqa.definition.stimulus.ConstantLoadStimulus
-import io.github.dqualizer.dqlang.types.rqa.definition.stimulus.LoadIncreaseStimulus
-import io.github.dqualizer.dqlang.types.rqa.definition.stimulus.LoadPeakStimulus
-import io.github.dqualizer.dqlang.types.rqa.definition.stimulus.Stimulus
+import io.github.dqualizer.dqlang.types.rqa.definition.stimulus.loadprofile.ConstantLoad
+import io.github.dqualizer.dqlang.types.rqa.definition.stimulus.loadprofile.LoadIncrease
+import io.github.dqualizer.dqlang.types.rqa.definition.stimulus.loadprofile.LoadPeak
+import io.github.dqualizer.dqlang.types.rqa.definition.stimulus.loadprofile.LoadProfile
 import org.jeasy.random.EasyRandom
 import org.jeasy.random.EasyRandomParameters
 import org.junit.jupiter.api.Assertions.*
@@ -31,13 +31,13 @@ internal class RuntimeQualityAnalysisTest {
 
     var generator = EasyRandom(
         EasyRandomParameters().randomize(
-            Stimulus::class.java
+            LoadProfile::class.java
         ) {
             return@randomize EasyRandom().nextObject(
                 listOf(
-                    LoadPeakStimulus::class.java,
-                    LoadIncreaseStimulus::class.java,
-                    ConstantLoadStimulus::class.java
+                    LoadIncrease::class.java,
+                    LoadPeak::class.java,
+                    ConstantLoad::class.java
                 ).random()
             )
         }
