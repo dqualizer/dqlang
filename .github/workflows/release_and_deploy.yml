@@ -40,7 +40,7 @@ jobs:
           echo "ARTIFACT_VERSION=$ARTIFACT_VERSION" >> $GITHUB_ENV
 
       - name: Build with Gradle
-        run: ./gradlew --no-daemon build
+        run: ./gradlew --no-daemon :spotlessApply build
 
       - name: Perform Release
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
