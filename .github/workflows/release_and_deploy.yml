@@ -48,8 +48,7 @@ jobs:
             SNAPSHOT_VERSION="${{ env.ARTIFACT_VERSION }}"
             echo "Performing snapshot release of version $SNAPSHOT_VERSION"
 
-            # Remove "SNAPSHOT" from the end and middle, if present
-            SNAPSHOT_VERSION="${SNAPSHOT_VERSION%"-SNAPSHOT"}"
+            # Remove "SNAPSHOT" from anywhere, if present
             SNAPSHOT_VERSION="${SNAPSHOT_VERSION//"-SNAPSHOT"/}"
             
             # Ensure SNAPSHOT_VERSION includes branch name
