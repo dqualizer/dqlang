@@ -6,7 +6,6 @@ import com.fasterxml.jackson.databind.module.SimpleModule
 import com.fasterxml.jackson.module.kotlin.registerKotlinModule
 import io.github.dqualizer.dqlang.messaging.MessagingConfiguration.ExchangeConfiguration
 import io.github.dqualizer.dqlang.messaging.MessagingConfiguration.QueueConfiguration
-import java.lang.module.ModuleDescriptor
 import org.springframework.amqp.core.AmqpAdmin
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter
 import org.springframework.amqp.support.converter.MessageConverter
@@ -17,6 +16,7 @@ import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.core.convert.converter.Converter
 import org.springframework.http.HttpMethod
+import java.lang.module.ModuleDescriptor
 
 @Configuration
 class AMQPAutoConfiguration {

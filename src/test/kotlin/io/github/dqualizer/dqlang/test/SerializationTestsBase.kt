@@ -11,11 +11,6 @@ import io.github.dqualizer.dqlang.types.rqa.definition.stimulus.loadprofile.Cons
 import io.github.dqualizer.dqlang.types.rqa.definition.stimulus.loadprofile.LoadIncrease
 import io.github.dqualizer.dqlang.types.rqa.definition.stimulus.loadprofile.LoadPeak
 import io.github.dqualizer.dqlang.types.rqa.definition.stimulus.loadprofile.LoadProfile
-import java.lang.module.ModuleDescriptor
-import java.lang.reflect.InaccessibleObjectException
-import java.lang.reflect.Modifier
-import java.util.LinkedList
-import java.util.Random
 import org.jeasy.random.EasyRandom
 import org.jeasy.random.EasyRandomParameters
 import org.reflections.Reflections
@@ -25,6 +20,11 @@ import org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.data.mongodb.core.mapping.Document
 import org.springframework.http.HttpMethod
+import java.lang.module.ModuleDescriptor
+import java.lang.reflect.InaccessibleObjectException
+import java.lang.reflect.Modifier
+import java.util.LinkedList
+import java.util.Random
 
 @SpringBootTest(classes = [AMQPAutoConfiguration::class, RabbitAutoConfiguration::class])
 class SerializationTestsBase {
@@ -39,10 +39,10 @@ class SerializationTestsBase {
           return@randomize EasyRandom()
             .nextObject(
               listOf(
-                  LoadIncrease::class.java,
-                  LoadPeak::class.java,
-                  ConstantLoad::class.java,
-                )
+                LoadIncrease::class.java,
+                LoadPeak::class.java,
+                ConstantLoad::class.java,
+              )
                 .random(),
             )
         }
@@ -50,10 +50,10 @@ class SerializationTestsBase {
           return@randomize EasyRandom()
             .nextObject(
               listOf(
-                  Person::class.java,
-                  Group::class.java,
-                  System::class.java,
-                )
+                Person::class.java,
+                Group::class.java,
+                System::class.java,
+              )
                 .random(),
             )
         }
@@ -104,7 +104,8 @@ class SerializationTestsBase {
                 list.add(value)
               }
             }
-          } catch (_: InaccessibleObjectException) {}
+          } catch (_: InaccessibleObjectException) {
+          }
         }
       }
     }

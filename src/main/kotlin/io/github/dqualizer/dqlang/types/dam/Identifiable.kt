@@ -6,7 +6,8 @@ abstract class Identifiable {
   @Id val id: String? = null
 
   /** Read the class information stored in Mongo */
-  @Suppress("ktlint:standard:property-naming") val _class: String? = null
+  @Suppress("ktlint:standard:property-naming")
+  val _class: String? = null
 
   override fun equals(o: Any?): Boolean {
     if (this === o) {

@@ -12,20 +12,20 @@ import org.springframework.data.mongodb.core.mapping.DocumentReference
 
 @Document
 data class DomainArchitectureMapping
-@JsonCreator
-constructor(
-  /** technical system description */
-  @DocumentReference @JsonProperty("software_system") val softwareSystem: SoftwareSystem,
-  @DocumentReference @JsonProperty("domain_story") val domainStory: DomainStory,
-  @JsonProperty("mappings") val daMappings: Set<DAMapping>,
-) : Identifiable() {
-  @JsonIgnore
-  fun getMapper(): DAMapper {
-    return DAMapper(this, false)
-  }
+  @JsonCreator
+  constructor(
+    /** technical system description */
+    @DocumentReference @JsonProperty("software_system") val softwareSystem: SoftwareSystem,
+    @DocumentReference @JsonProperty("domain_story") val domainStory: DomainStory,
+    @JsonProperty("mappings") val daMappings: Set<DAMapping>,
+  ) : Identifiable() {
+    @JsonIgnore
+    fun getMapper(): DAMapper {
+      return DAMapper(this, false)
+    }
 
-  @JsonIgnore
-  fun getMapper(lazy: Boolean): DAMapper {
-    return DAMapper(this, lazy)
+    @JsonIgnore
+    fun getMapper(lazy: Boolean): DAMapper {
+      return DAMapper(this, lazy)
+    }
   }
-}
