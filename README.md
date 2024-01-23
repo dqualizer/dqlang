@@ -95,6 +95,8 @@ dependencies {
 ### Deploy to Packages
 * There is a GitHub action set up, that automatically pushes the dqlang-package to [Github Packages](https://github.com/orgs/dqualizer/packages)
 
+
+
 ## Contribution
 
 Feel free to fork this repository and create pull requests towards the main branch.
@@ -111,6 +113,11 @@ And for Java code generation:
 
 
 If you plan on implementing additional generators, you can find inspiration [on the official json-schema website](https://json-schema.org/implementations.html#code-generators).
+
+### Linting
+* To check if there are linting errors run `./gradlew :spotless`
+* To apply the code styles proposed in ktlint use `./gradlew :spotlessApply`
+* To apply the code changes and build run `./gradlew :spotlessApply build`
 
 ## License
 
