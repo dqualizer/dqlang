@@ -24,14 +24,14 @@ class MessagingTestConfiguration {
         val mockChannel = Mockito.mock(Channel::class.java)
 
         Mockito.`when`(
-          mockChannel.queueDeclare(
-            Mockito.anyString(),
-            anyBoolean(),
-            anyBoolean(),
-            anyBoolean(),
-            Mockito.anyMap(),
-          ),
-        )
+            mockChannel.queueDeclare(
+              Mockito.anyString(),
+              anyBoolean(),
+              anyBoolean(),
+              anyBoolean(),
+              Mockito.anyMap(),
+            ),
+          )
           .thenReturn(DeclareOk("dummyName", 0, 0))
 
         Mockito.`when`(mockConnection.createChannel(anyBoolean())).thenReturn(mockChannel)

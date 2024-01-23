@@ -26,15 +26,16 @@ spotless {
     removeUnusedImports()
   }
   kotlin {
-    ktlint()
+    ktfmt().googleStyle()
   }
   kotlinGradle {
     target("*.gradle.kts")
-    ktlint().editorConfigOverride(
-      mapOf(
-        "indent_size" to 2,
-      ),
-    )
+    ktlint()
+      .editorConfigOverride(
+        mapOf(
+          "indent_size" to 2,
+        ),
+      )
   }
 }
 
