@@ -18,18 +18,16 @@ import org.springframework.core.convert.converter.Converter
 import org.springframework.http.HttpMethod
 import java.lang.module.ModuleDescriptor
 
-
 @Configuration
 class AMQPAutoConfiguration {
-
     @Bean
     fun objectMapper(): ObjectMapper {
-        val converterModule = SimpleModule("dqlang_converters")
-            .addSerializer(ModuleDescriptor.Version::class.java, VersionSerializer())
-            .addDeserializer(ModuleDescriptor.Version::class.java, VersionDeserializer())
-            .addSerializer(HttpMethod::class.java, HTTPMethodSerializer())
-            .addDeserializer(HttpMethod::class.java, HTTPMethodDeserializer())
-
+        val converterModule =
+            SimpleModule("dqlang_converters")
+                .addSerializer(ModuleDescriptor.Version::class.java, VersionSerializer())
+                .addDeserializer(ModuleDescriptor.Version::class.java, VersionDeserializer())
+                .addSerializer(HttpMethod::class.java, HTTPMethodSerializer())
+                .addDeserializer(HttpMethod::class.java, HTTPMethodDeserializer())
 
         return ObjectMapper()
             .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
@@ -53,14 +51,14 @@ class AMQPAutoConfiguration {
     fun queueFactory(
         applicationContext: ApplicationContext,
         messagingConfiguration: MessagingConfiguration,
-        rabbitAdmin: AmqpAdmin
+        rabbitAdmin: AmqpAdmin,
     ): QueueFactory {
         return QueueFactory(applicationContext, rabbitAdmin, messagingConfiguration)
     }
 
-    @Suppress("ObjectLiteralToLambda")
+    @Suppress("ObjectLiteralToLambda", "ktlint:standard:max-line-length")
     @Bean
-    @ConfigurationPropertiesBinding //tell Spring to load this bean before loading Properties
+    @ConfigurationPropertiesBinding // tell Spring to load this bean before loading Properties
     @ConditionalOnBean(MessagingConfiguration::class)
     fun queueConfigurationConverter(): Converter<String, QueueConfiguration> {
         // This has to be an explicit object. Otherwise, the generic type arguments get erased.
@@ -70,15 +68,17 @@ class AMQPAutoConfiguration {
                 if (propertyStr.isBlank()) {
                     return QueueConfiguration()
                 } else {
-                    throw IllegalArgumentException("$propertyStr is not a valid value for ${QueueConfiguration::class.qualifiedName}. Expected a blank string or a map with properties.")
+                    throw IllegalArgumentException(
+                        "$propertyStr is not a valid value for ${QueueConfiguration::class.qualifiedName}. Expected a blank string or a map with properties.",
+                    )
                 }
             }
         }
     }
 
-    @Suppress("ObjectLiteralToLambda")
+    @Suppress("ObjectLiteralToLambda", "ktlint:standard:max-line-length")
     @Bean
-    @ConfigurationPropertiesBinding //tell Spring to load this bean before loading Properties
+    @ConfigurationPropertiesBinding // tell Spring to load this bean before loading Properties
     @ConditionalOnBean(MessagingConfiguration::class)
     fun exchangeConfigurationConverter(): Converter<String, ExchangeConfiguration> {
         // This has to be an explicit object. Otherwise, the generic type arguments get erased.
@@ -88,7 +88,9 @@ class AMQPAutoConfiguration {
                 if (propertyStr.isBlank()) {
                     return ExchangeConfiguration()
                 } else {
-                    throw IllegalArgumentException("$propertyStr is not a valid value for ${ExchangeConfiguration::class.qualifiedName}. Expected a blank string or a map with properties.")
+                    throw IllegalArgumentException(
+                        "$propertyStr is not a valid value for ${ExchangeConfiguration::class.qualifiedName}. Expected a blank string or a map with properties.",
+                    )
                 }
             }
         }

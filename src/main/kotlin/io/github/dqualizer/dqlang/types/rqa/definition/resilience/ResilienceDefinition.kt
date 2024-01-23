@@ -6,8 +6,7 @@ import lombok.Data
 @Data
 @Builder
 class ResilienceDefinition {
-
-    //Dummy equals for now
+    // Dummy equals for now
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (other !is ResilienceDefinition) return false
@@ -18,4 +17,3 @@ class ResilienceDefinition {
         return javaClass.hashCode()
     }
 }
-

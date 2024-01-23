@@ -4,5 +4,5 @@ enum class Environment {
     PROD,
     TEST,
     DEV,
-    INT
+    INT,
 }

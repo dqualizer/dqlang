@@ -7,8 +7,5 @@ import io.github.dqualizer.dqlang.types.rqa.definition.resilience.ResilienceDefi
 data class RuntimeQualityAnalysis(
     val loadTestDefinition: Set<LoadTestDefinition> = HashSet(),
     val monitoringDefinition: Set<MonitoringDefinition> = HashSet(),
-    val resilienceDefinition: Set<ResilienceDefinition> = HashSet()
+    val resilienceDefinition: Set<ResilienceDefinition> = HashSet(),
 )
-
-
-

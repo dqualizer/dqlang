@@ -7,10 +7,8 @@ import io.github.dqualizer.dqlang.types.dam.domainstory.WorkObject
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY)
 class WorkObjectToTypeMapping(workObject: WorkObject, codeComponent: CodeComponent) :
-    DAMapping(workObject.id!!, codeComponent.id!!) {
-}
+    DAMapping(workObject.id!!, codeComponent.id!!)
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY)
 class ValueObjectToTypeMapping(workObject: ValueObject, codeComponent: CodeComponent) :
-    DAMapping(workObject.id!!, codeComponent.id!!) {
-}
+    DAMapping(workObject.id!!, codeComponent.id!!)

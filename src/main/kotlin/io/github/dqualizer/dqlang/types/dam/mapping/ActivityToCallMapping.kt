@@ -8,21 +8,22 @@ class ActivityToCallMapping : DAMapping {
     private var startCorrelationId: String? = null
     private var end: String? = null
 
-    /**Constructor for sync calls*/
-    constructor(dstElement: Activity, architectureEntity: CodeComponent) :
-            super(dstElement.id!!, architectureEntity.id!!)
+    /** Constructor for sync calls */
+    constructor(
+        dstElement: Activity,
+        architectureEntity: CodeComponent,
+    ) : super(dstElement.id!!, architectureEntity.id!!)
 
-
-    /**Constructor for async calls*/
+    /** Constructor for async calls */
     constructor(
         dstElement: Activity,
         start: CodeComponent,
         end: CodeComponent,
         startCorrelationId: String,
-        endCorrelationId: String
+        endCorrelationId: String,
     ) : super(
         dstElement.id!!,
-        start.id!!
+        start.id!!,
     ) {
         this.end = end.id
         this.startCorrelationId = startCorrelationId

@@ -6,22 +6,15 @@ import io.github.dqualizer.dqlang.types.rqa.configuration.loadtest.LoadTestConfi
 import io.github.dqualizer.dqlang.types.rqa.configuration.monitoring.MonitoringConfiguration
 import lombok.Builder
 
-/**
- * @author Lion Wagner
- */
+/** @author Lion Wagner */
 @Builder
 class RQAConfiguration {
-
-    /**
-     * Version of this load test configuration (Required)
-     */
+    /** Version of this load test configuration (Required) */
     @JsonProperty("version")
     @JsonPropertyDescription("Version of this load test configuration")
     var version: Int = -1
 
-    /**
-     * The name of the Bounded Context to which this load test belongs (Required)
-     */
+    /** The name of the Bounded Context to which this load test belongs (Required) */
     @JsonProperty("context_id")
     @JsonPropertyDescription("The id of the Bounded Context to which this load test belongs")
     lateinit var context: String
@@ -30,6 +23,5 @@ class RQAConfiguration {
 
     lateinit var monitoringConfiguration: MonitoringConfiguration
 
-    //private lateinit var chaosConfiguration : ChaosConfiguration
+    // private lateinit var chaosConfiguration : ChaosConfiguration
 }
-

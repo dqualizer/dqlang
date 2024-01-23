@@ -9,7 +9,9 @@ import io.github.dqualizer.dqlang.types.rqa.definition.stimulus.loadprofile.Load
 import io.github.dqualizer.dqlang.types.rqa.definition.stimulus.loadprofile.LoadProfile
 import org.jeasy.random.EasyRandom
 import org.jeasy.random.EasyRandomParameters
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assertions.assertDoesNotThrow
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Test
 import org.springframework.amqp.core.MessageProperties
 import org.springframework.amqp.support.converter.MessageConverter
@@ -21,27 +23,26 @@ import org.springframework.context.annotation.Import
 @SpringBootTest(classes = [AMQPAutoConfiguration::class, RabbitAutoConfiguration::class])
 @Import(MessagingTestConfiguration::class)
 internal class RuntimeQualityAnalysisTest {
+    @Autowired lateinit var messageConverter: MessageConverter
 
-    @Autowired
-    lateinit var messageConverter: MessageConverter
+    @Autowired lateinit var objectMapper: ObjectMapper
 
-    @Autowired
-    lateinit var objectMapper: ObjectMapper
-
-
-    var generator = EasyRandom(
-        EasyRandomParameters().randomize(
-            LoadProfile::class.java
-        ) {
-            return@randomize EasyRandom().nextObject(
-                listOf(
-                    LoadIncrease::class.java,
-                    LoadPeak::class.java,
-                    ConstantLoad::class.java
-                ).random()
-            )
-        }
-    )
+    var generator =
+        EasyRandom(
+            EasyRandomParameters().randomize(
+                LoadProfile::class.java,
+            ) {
+                return@randomize EasyRandom()
+                    .nextObject(
+                        listOf(
+                            LoadIncrease::class.java,
+                            LoadPeak::class.java,
+                            ConstantLoad::class.java,
+                        )
+                            .random(),
+                    )
+            },
+        )
 
     @Test
     fun canSerializeToJson() {

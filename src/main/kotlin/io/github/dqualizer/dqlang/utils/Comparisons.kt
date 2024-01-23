@@ -1,7 +1,10 @@
 package io.github.dqualizer.dqlang.utils
 
 object Comparisons {
-    fun setsEqual(a: Set<*>?, b: Set<*>?): Boolean {
+    fun setsEqual(
+        a: Set<*>?,
+        b: Set<*>?,
+    ): Boolean {
         if (a === b) {
             return true
         }
@@ -10,6 +13,8 @@ object Comparisons {
         }
         return if (a.size != b.size) {
             false
-        } else a.containsAll(b)
+        } else {
+            a.containsAll(b)
+        }
     }
 }

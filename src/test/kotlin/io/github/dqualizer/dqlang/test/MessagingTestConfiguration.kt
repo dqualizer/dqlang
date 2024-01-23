@@ -12,9 +12,9 @@ import org.springframework.context.annotation.Bean
 
 @TestConfiguration
 class MessagingTestConfiguration {
-
     /**
-     * Creates a dummy connection factory, so that rabbitmq thinks it would successfully connect to a rabbitmq server
+     * Creates a dummy connection factory, so that rabbitmq thinks it would successfully connect to a
+     * rabbitmq server
      */
     @Bean
     fun connectionFactory(): ConnectionFactory {
@@ -29,9 +29,10 @@ class MessagingTestConfiguration {
                         anyBoolean(),
                         anyBoolean(),
                         anyBoolean(),
-                        Mockito.anyMap()
-                    )
-                ).thenReturn(DeclareOk("dummyName", 0, 0))
+                        Mockito.anyMap(),
+                    ),
+                )
+                    .thenReturn(DeclareOk("dummyName", 0, 0))
 
                 Mockito.`when`(mockConnection.createChannel(anyBoolean())).thenReturn(mockChannel)
                 return mockConnection
@@ -53,17 +54,13 @@ class MessagingTestConfiguration {
                 return "testuser"
             }
 
-            override fun addConnectionListener(listener: ConnectionListener) {
-
-            }
+            override fun addConnectionListener(listener: ConnectionListener) {}
 
             override fun removeConnectionListener(listener: ConnectionListener): Boolean {
                 return true
             }
 
-            override fun clearConnectionListeners() {
-
-            }
+            override fun clearConnectionListeners() {}
         }
     }
 }

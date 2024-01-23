@@ -6,5 +6,5 @@ enum class WorkObjectType {
     FOLDER,
     CALL,
     MESSAGE,
-    DATA
+    DATA,
 }

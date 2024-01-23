@@ -3,7 +3,15 @@ package io.github.dqualizer.dqlang.messaging
 import lombok.extern.slf4j.Slf4j
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-import org.springframework.amqp.core.*
+import org.springframework.amqp.core.AmqpAdmin
+import org.springframework.amqp.core.BindingBuilder
+import org.springframework.amqp.core.DirectExchange
+import org.springframework.amqp.core.Exchange
+import org.springframework.amqp.core.ExchangeTypes
+import org.springframework.amqp.core.FanoutExchange
+import org.springframework.amqp.core.HeadersExchange
+import org.springframework.amqp.core.Queue
+import org.springframework.amqp.core.TopicExchange
 import org.springframework.beans.factory.InitializingBean
 import org.springframework.beans.factory.config.AutowireCapableBeanFactory
 import org.springframework.context.ApplicationContext
@@ -12,9 +20,8 @@ import org.springframework.context.ApplicationContext
 class QueueFactory(
     private val applicationContext: ApplicationContext,
     private val amqpAdmin: AmqpAdmin,
-    private val messagingConfiguration: MessagingConfiguration
+    private val messagingConfiguration: MessagingConfiguration,
 ) : InitializingBean {
-
     private val log: Logger = LoggerFactory.getLogger(QueueFactory::class.java)
 
     private val exchanges = mutableMapOf<String, Exchange>()
@@ -29,6 +36,7 @@ class QueueFactory(
         createAndBindQueues(factory)
     }
 
+    @Suppress("ktlint:standard:max-line-length")
     private fun createExchanges(factory: AutowireCapableBeanFactory) {
         for (exchangeEntry in messagingConfiguration.exchanges) {
             val exchangeConfig = exchangeEntry.value
@@ -40,15 +48,18 @@ class QueueFactory(
                 throw IllegalArgumentException("Exchange $exchangeName is defined at least twice.")
             }
 
-            val exchange = when (exchangeConfig.exchangeType.lowercase()) {
-                ExchangeTypes.DIRECT -> DirectExchange(exchangeName, durable, autoDelete)
-                ExchangeTypes.FANOUT -> FanoutExchange(exchangeName, durable, autoDelete)
-                ExchangeTypes.HEADERS -> HeadersExchange(exchangeName, durable, autoDelete)
-                ExchangeTypes.TOPIC -> TopicExchange(exchangeName, durable, autoDelete)
-                else -> throw IllegalArgumentException("${exchangeConfig.exchangeType} is not a viable exchange type. Allowed values are \"${ExchangeTypes.DIRECT}\", \"${ExchangeTypes.TOPIC}\", \"${ExchangeTypes.FANOUT}\", \"${ExchangeTypes.HEADERS}\".")
-            }
+            val exchange =
+                when (exchangeConfig.exchangeType.lowercase()) {
+                    ExchangeTypes.DIRECT -> DirectExchange(exchangeName, durable, autoDelete)
+                    ExchangeTypes.FANOUT -> FanoutExchange(exchangeName, durable, autoDelete)
+                    ExchangeTypes.HEADERS -> HeadersExchange(exchangeName, durable, autoDelete)
+                    ExchangeTypes.TOPIC -> TopicExchange(exchangeName, durable, autoDelete)
+                    else ->
+                        throw IllegalArgumentException(
+                            "${exchangeConfig.exchangeType} is not a viable exchange type. Allowed values are \"${ExchangeTypes.DIRECT}\", \"${ExchangeTypes.TOPIC}\", \"${ExchangeTypes.FANOUT}\", \"${ExchangeTypes.HEADERS}\".",
+                        )
+                }
             log.info("Declared exchange $exchange.")
-
 
             amqpAdmin.declareExchange(exchange)
             factory.autowireBean(exchange)
@@ -76,16 +87,19 @@ class QueueFactory(
             queues[queueName] = queue
 
             for (bindingConfig in queueConfig.bindings) {
-                val exchange = exchanges.getOrElse(bindingConfig.exchange) {
-                    throw IllegalArgumentException("Exchange ${bindingConfig.exchange} was not defined.")
-                }
+                val exchange =
+                    exchanges.getOrElse(bindingConfig.exchange) {
+                        throw IllegalArgumentException("Exchange ${bindingConfig.exchange} was not defined.")
+                    }
 
-                val binding = BindingBuilder.bind(queue).to(exchange)
-                    .with(bindingConfig.routingKey)
-                    .and(bindingConfig.arguments)
+                val binding =
+                    BindingBuilder.bind(queue)
+                        .to(exchange)
+                        .with(bindingConfig.routingKey)
+                        .and(bindingConfig.arguments)
                 amqpAdmin.declareBinding(binding)
                 factory.autowireBean(binding)
-                factory.initializeBean(binding, "binding_${bindingConfig.exchange}_${queueName}")
+                factory.initializeBean(binding, "binding_${bindingConfig.exchange}_$queueName")
             }
         }
     }

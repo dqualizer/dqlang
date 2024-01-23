@@ -4,6 +4,5 @@ import java.util.LinkedList
 
 data class UrlParameter(
     val name: String? = null,
-
-    val scenarios: List<Scenario>? = LinkedList()
+    val scenarios: List<Scenario>? = LinkedList(),
 )

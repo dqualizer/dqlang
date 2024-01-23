@@ -8,30 +8,37 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import org.mockito.ArgumentCaptor
 import org.mockito.Mockito
-import org.mockito.kotlin.*
+import org.mockito.kotlin.any
+import org.mockito.kotlin.doReturn
+import org.mockito.kotlin.mock
+import org.mockito.kotlin.times
+import org.mockito.kotlin.verify
 import org.springframework.amqp.core.AmqpAdmin
 import org.springframework.amqp.core.ExchangeTypes
 import org.springframework.amqp.core.Queue
 import org.springframework.beans.factory.config.AutowireCapableBeanFactory
 import org.springframework.context.ApplicationContext
-import java.util.*
+import java.util.Optional
 
 class QueueFactoryTest {
-
-    private var amqpAdmin: AmqpAdmin = mock<AmqpAdmin> { }
-    private var beanFactory: AutowireCapableBeanFactory = mock<AutowireCapableBeanFactory> { }
+    private var amqpAdmin: AmqpAdmin = mock<AmqpAdmin> {}
+    private var beanFactory: AutowireCapableBeanFactory = mock<AutowireCapableBeanFactory> {}
     private var applicationContext: ApplicationContext =
         mock<ApplicationContext> { on { autowireCapableBeanFactory } doReturn beanFactory }
-
 
     @BeforeEach
     fun setUp() {
         Mockito.reset(beanFactory, applicationContext, amqpAdmin)
 
-        applicationContext = mock<ApplicationContext> { on { autowireCapableBeanFactory } doReturn beanFactory }
+        applicationContext =
+            mock<ApplicationContext> { on { autowireCapableBeanFactory } doReturn beanFactory }
     }
 
-    private fun verifyCounts(queues: Int, exchanges: Int, bindings: Int) {
+    private fun verifyCounts(
+        queues: Int,
+        exchanges: Int,
+        bindings: Int,
+    ) {
         verify(amqpAdmin, times(queues)).declareQueue(any())
         verify(amqpAdmin, times(exchanges)).declareExchange(any())
         verify(amqpAdmin, times(bindings)).declareBinding(any())
@@ -42,31 +49,31 @@ class QueueFactoryTest {
 
     @Test
     fun acceptsEmptyConfiguration() {
-        QueueFactory(applicationContext, amqpAdmin, MessagingConfiguration())
-            .afterPropertiesSet()
+        QueueFactory(applicationContext, amqpAdmin, MessagingConfiguration()).afterPropertiesSet()
         verifyCounts(0, 0, 0)
     }
 
     @Test
     fun acceptsQueueWithoutExchange() {
-        val messagingConfig = MessagingConfiguration(queues = mapOf(Pair("queue", QueueConfiguration())))
+        val messagingConfig =
+            MessagingConfiguration(queues = mapOf(Pair("queue", QueueConfiguration())))
 
-        QueueFactory(applicationContext, amqpAdmin, messagingConfig)
-            .afterPropertiesSet()
+        QueueFactory(applicationContext, amqpAdmin, messagingConfig).afterPropertiesSet()
 
         verifyCounts(1, 0, 0)
     }
 
     @Test
     fun acceptsMultipleQueuesWithoutExchange() {
-        val messagingConfig = MessagingConfiguration(
-            queues = mapOf(
-                Pair("queue1", QueueConfiguration()),
-                Pair("queue2", QueueConfiguration())
+        val messagingConfig =
+            MessagingConfiguration(
+                queues =
+                    mapOf(
+                        Pair("queue1", QueueConfiguration()),
+                        Pair("queue2", QueueConfiguration()),
+                    ),
             )
-        )
-        QueueFactory(applicationContext, amqpAdmin, messagingConfig)
-            .afterPropertiesSet()
+        QueueFactory(applicationContext, amqpAdmin, messagingConfig).afterPropertiesSet()
         verifyCounts(2, 0, 0)
     }
 
@@ -75,14 +82,15 @@ class QueueFactoryTest {
         val keyArgument = ArgumentCaptor.forClass(String::class.java)
 
         val queueKey = "queue"
-        val messagingConfiguration = MessagingConfiguration(
-            queues = mapOf(
-                Pair(queueKey, QueueConfiguration(name = Optional.of("overwritten")))
+        val messagingConfiguration =
+            MessagingConfiguration(
+                queues =
+                    mapOf(
+                        Pair(queueKey, QueueConfiguration(name = Optional.of("overwritten"))),
+                    ),
             )
-        )
 
-        QueueFactory(applicationContext, amqpAdmin, messagingConfiguration)
-            .afterPropertiesSet()
+        QueueFactory(applicationContext, amqpAdmin, messagingConfiguration).afterPropertiesSet()
         verifyCounts(1, 0, 0)
 
         verify(beanFactory).initializeBean(any(), keyArgument.capture())
@@ -94,14 +102,15 @@ class QueueFactoryTest {
         val queueArgument = ArgumentCaptor.forClass(Queue::class.java)
 
         val queueName = "overwritten"
-        val messagingConfiguration = MessagingConfiguration(
-            queues = mapOf(
-                Pair("queue", QueueConfiguration(name = Optional.of(queueName)))
+        val messagingConfiguration =
+            MessagingConfiguration(
+                queues =
+                    mapOf(
+                        Pair("queue", QueueConfiguration(name = Optional.of(queueName))),
+                    ),
             )
-        )
 
-        QueueFactory(applicationContext, amqpAdmin, messagingConfiguration)
-            .afterPropertiesSet()
+        QueueFactory(applicationContext, amqpAdmin, messagingConfiguration).afterPropertiesSet()
         verifyCounts(1, 0, 0)
 
         verify(amqpAdmin).declareQueue(queueArgument.capture())
@@ -109,18 +118,18 @@ class QueueFactoryTest {
     }
 
     @Test
-
     fun throwsOnDuplicatedQueueNames() {
         assertThrows<IllegalArgumentException> {
             val queueName = "exists_twice"
-            val messagingConfiguration = MessagingConfiguration(
-                queues = mapOf(
-                    Pair("queue", QueueConfiguration(name = Optional.of(queueName))),
-                    Pair("queue2", QueueConfiguration(name = Optional.of(queueName)))
+            val messagingConfiguration =
+                MessagingConfiguration(
+                    queues =
+                        mapOf(
+                            Pair("queue", QueueConfiguration(name = Optional.of(queueName))),
+                            Pair("queue2", QueueConfiguration(name = Optional.of(queueName))),
+                        ),
                 )
-            )
-            QueueFactory(applicationContext, amqpAdmin, messagingConfiguration)
-                .afterPropertiesSet()
+            QueueFactory(applicationContext, amqpAdmin, messagingConfiguration).afterPropertiesSet()
             verifyCounts(2, 0, 0)
         }
     }
@@ -128,30 +137,33 @@ class QueueFactoryTest {
     @Test
     fun throwsOnNonExistingExchange() {
         assertThrows<IllegalArgumentException> {
-            val messagingConfiguration = MessagingConfiguration(
-                queues = mapOf(
-                    Pair(
-                        "queue", QueueConfiguration(
-                            bindings = listOf(
-                                MessagingConfiguration.BindingConfiguration(
-                                    routingKey = "key",
-                                    exchange = "non_existing_exchange"
-                                )
-                            )
-                        )
-                    )
-                ),
-            )
+            val messagingConfiguration =
+                MessagingConfiguration(
+                    queues =
+                        mapOf(
+                            Pair(
+                                "queue",
+                                QueueConfiguration(
+                                    bindings =
+                                        listOf(
+                                            MessagingConfiguration.BindingConfiguration(
+                                                routingKey = "key",
+                                                exchange = "non_existing_exchange",
+                                            ),
+                                        ),
+                                ),
+                            ),
+                        ),
+                )
 
-            QueueFactory(applicationContext, amqpAdmin, messagingConfiguration)
-                .afterPropertiesSet()
-
+            QueueFactory(applicationContext, amqpAdmin, messagingConfiguration).afterPropertiesSet()
         }
     }
 
     @Test
     fun acceptsExchange() {
-        val messagingConfig = MessagingConfiguration(exchanges = mapOf(Pair("exchange", ExchangeConfiguration())))
+        val messagingConfig =
+            MessagingConfiguration(exchanges = mapOf(Pair("exchange", ExchangeConfiguration())))
         val factory = QueueFactory(applicationContext, amqpAdmin, messagingConfig)
         factory.afterPropertiesSet()
         verifyCounts(0, 1, 0)
@@ -159,12 +171,14 @@ class QueueFactoryTest {
 
     @Test
     fun acceptsMultipleExchanges() {
-        val messagingConfig = MessagingConfiguration(
-            exchanges = mapOf(
-                Pair("exchange", ExchangeConfiguration()),
-                Pair("exchange2", ExchangeConfiguration())
+        val messagingConfig =
+            MessagingConfiguration(
+                exchanges =
+                    mapOf(
+                        Pair("exchange", ExchangeConfiguration()),
+                        Pair("exchange2", ExchangeConfiguration()),
+                    ),
             )
-        )
         val factory = QueueFactory(applicationContext, amqpAdmin, messagingConfig)
         factory.afterPropertiesSet()
         verifyCounts(0, 2, 0)
@@ -172,14 +186,16 @@ class QueueFactoryTest {
 
     @Test
     fun canCreateAllExchangeTypes() {
-        val messagingConfig = MessagingConfiguration(
-            exchanges = mapOf(
-                Pair("exchange", ExchangeConfiguration(exchangeType = ExchangeTypes.DIRECT)),
-                Pair("exchange2", ExchangeConfiguration(exchangeType = ExchangeTypes.FANOUT)),
-                Pair("exchange3", ExchangeConfiguration(exchangeType = ExchangeTypes.HEADERS)),
-                Pair("exchange4", ExchangeConfiguration(exchangeType = ExchangeTypes.TOPIC))
+        val messagingConfig =
+            MessagingConfiguration(
+                exchanges =
+                    mapOf(
+                        Pair("exchange", ExchangeConfiguration(exchangeType = ExchangeTypes.DIRECT)),
+                        Pair("exchange2", ExchangeConfiguration(exchangeType = ExchangeTypes.FANOUT)),
+                        Pair("exchange3", ExchangeConfiguration(exchangeType = ExchangeTypes.HEADERS)),
+                        Pair("exchange4", ExchangeConfiguration(exchangeType = ExchangeTypes.TOPIC)),
+                    ),
             )
-        )
         val factory = QueueFactory(applicationContext, amqpAdmin, messagingConfig)
         factory.afterPropertiesSet()
         verifyCounts(0, 4, 0)
@@ -188,9 +204,11 @@ class QueueFactoryTest {
     @Test
     fun throwsOnNonWrongExchangeType() {
         assertThrows<IllegalArgumentException> {
-            val messagingConfig = MessagingConfiguration(
-                exchanges = mapOf(Pair("exchange", ExchangeConfiguration(exchangeType = "i don't exist")))
-            )
+            val messagingConfig =
+                MessagingConfiguration(
+                    exchanges =
+                        mapOf(Pair("exchange", ExchangeConfiguration(exchangeType = "i don't exist"))),
+                )
             val factory = QueueFactory(applicationContext, amqpAdmin, messagingConfig)
             factory.afterPropertiesSet()
             verifyCounts(0, 1, 0)
@@ -202,14 +220,15 @@ class QueueFactoryTest {
         val keyArgument = ArgumentCaptor.forClass(String::class.java)
 
         val exchangeKey = "exchange"
-        val messagingConfiguration = MessagingConfiguration(
-            exchanges = mapOf(
-                Pair(exchangeKey, ExchangeConfiguration(name = Optional.of("overwritten")))
+        val messagingConfiguration =
+            MessagingConfiguration(
+                exchanges =
+                    mapOf(
+                        Pair(exchangeKey, ExchangeConfiguration(name = Optional.of("overwritten"))),
+                    ),
             )
-        )
 
-        QueueFactory(applicationContext, amqpAdmin, messagingConfiguration)
-            .afterPropertiesSet()
+        QueueFactory(applicationContext, amqpAdmin, messagingConfiguration).afterPropertiesSet()
         verifyCounts(0, 1, 0)
 
         verify(beanFactory).initializeBean(any(), keyArgument.capture())
@@ -218,17 +237,19 @@ class QueueFactoryTest {
 
     @Test
     fun acceptsOverwrittenExchangeName() {
-        val exchangeArgument = ArgumentCaptor.forClass(org.springframework.amqp.core.Exchange::class.java)
+        val exchangeArgument =
+            ArgumentCaptor.forClass(org.springframework.amqp.core.Exchange::class.java)
 
         val exchangeName = "overwritten"
-        val messagingConfiguration = MessagingConfiguration(
-            exchanges = mapOf(
-                Pair("exchange", ExchangeConfiguration(name = Optional.of(exchangeName)))
+        val messagingConfiguration =
+            MessagingConfiguration(
+                exchanges =
+                    mapOf(
+                        Pair("exchange", ExchangeConfiguration(name = Optional.of(exchangeName))),
+                    ),
             )
-        )
 
-        QueueFactory(applicationContext, amqpAdmin, messagingConfiguration)
-            .afterPropertiesSet()
+        QueueFactory(applicationContext, amqpAdmin, messagingConfiguration).afterPropertiesSet()
         verifyCounts(0, 1, 0)
 
         verify(amqpAdmin).declareExchange(exchangeArgument.capture())
@@ -239,14 +260,15 @@ class QueueFactoryTest {
     fun throwsOnDuplicatedExchangeNames() {
         assertThrows<IllegalArgumentException> {
             val exchangeName = "exists_twice"
-            val messagingConfiguration = MessagingConfiguration(
-                exchanges = mapOf(
-                    Pair("exchange", ExchangeConfiguration(name = Optional.of(exchangeName))),
-                    Pair("exchange2", ExchangeConfiguration(name = Optional.of(exchangeName)))
+            val messagingConfiguration =
+                MessagingConfiguration(
+                    exchanges =
+                        mapOf(
+                            Pair("exchange", ExchangeConfiguration(name = Optional.of(exchangeName))),
+                            Pair("exchange2", ExchangeConfiguration(name = Optional.of(exchangeName))),
+                        ),
                 )
-            )
-            QueueFactory(applicationContext, amqpAdmin, messagingConfiguration)
-                .afterPropertiesSet()
+            QueueFactory(applicationContext, amqpAdmin, messagingConfiguration).afterPropertiesSet()
             verifyCounts(0, 2, 0)
         }
     }

@@ -3,12 +3,10 @@ package io.github.dqualizer.dqlang.types.dam
 import org.springframework.data.annotation.Id
 
 abstract class Identifiable {
-    @Id
-    val id: String? = null
+    @Id val id: String? = null
 
-    /**
-     * Read the class information stored in Mongo
-     */
+    /** Read the class information stored in Mongo */
+    @Suppress("ktlint:standard:property-naming")
     val _class: String? = null
 
     override fun equals(o: Any?): Boolean {
@@ -20,11 +18,12 @@ abstract class Identifiable {
         }
         return if (id == null) {
             false
-        } else id == o.id
+        } else {
+            id == o.id
+        }
     }
 
     override fun hashCode(): Int {
         return id?.hashCode() ?: System.identityHashCode(this)
     }
 }
-

@@ -10,7 +10,6 @@ import java.io.File
 
 @Import(MessagingTestConfiguration::class)
 internal class SerializationTests : SerializationTestsBase() {
-
     @ParameterizedTest(name = "Can serialize {0} to json")
     @MethodSource("getSerializableClasses")
     fun canSerializeToJson(clazz: Class<*>) {
@@ -21,10 +20,14 @@ internal class SerializationTests : SerializationTestsBase() {
         assertNotNull(msg.body)
         assertDoesNotThrow { objectMapper.readTree(msg.body) }
 
-
-        if (clazz != Any::class.java) { //use this to generate new template test data, by replacing "Any" with the class you want to generate
-            val prettyBody = objectMapper.writerWithDefaultPrettyPrinter()
-                .writeValueAsString(objectMapper.readValue(msg.body, Any::class.java))
+        if (
+            clazz != Any::class.java
+        ) { // use this to generate new template test data, by replacing "Any" with the class you want
+            // to generate
+            val prettyBody =
+                objectMapper
+                    .writerWithDefaultPrettyPrinter()
+                    .writeValueAsString(objectMapper.readValue(msg.body, Any::class.java))
 
             val file = File("src/test/resources/rqa/definition/${clazz.simpleName}.json")
             file.parentFile.mkdirs()

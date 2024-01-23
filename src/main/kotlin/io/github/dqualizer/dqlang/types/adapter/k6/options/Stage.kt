@@ -1,7 +1,6 @@
 package io.github.dqualizer.dqlang.types.adapter.k6.options
 
-data class Stage (
+data class Stage(
     val duration: String? = null,
-
-    val target: Int? = 0
+    val target: Int? = 0,
 )

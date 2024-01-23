@@ -8,7 +8,7 @@ import io.github.dqualizer.dqlang.types.rqa.definition.stimulus.symbolic.Symboli
 @JsonSubTypes(
     JsonSubTypes.Type(name = LoadIncrease.TYPE_IDENTIFIER, value = LoadIncrease::class),
     JsonSubTypes.Type(name = LoadPeak.TYPE_IDENTIFIER, value = LoadPeak::class),
-    JsonSubTypes.Type(name = ConstantLoad.TYPE_IDENTIFIER, value = ConstantLoad::class)
+    JsonSubTypes.Type(name = ConstantLoad.TYPE_IDENTIFIER, value = ConstantLoad::class),
 )
 sealed class LoadProfile {
     abstract val baseLoad: SymbolicValue?

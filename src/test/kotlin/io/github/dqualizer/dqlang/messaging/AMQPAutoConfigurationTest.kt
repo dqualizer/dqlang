@@ -5,7 +5,9 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
-import org.mockito.Mockito.*
+import org.mockito.Mockito.any
+import org.mockito.Mockito.times
+import org.mockito.Mockito.verify
 import org.mockito.kotlin.argumentCaptor
 import org.springframework.amqp.core.AmqpAdmin
 import org.springframework.amqp.core.Exchange
@@ -16,20 +18,15 @@ import org.springframework.boot.test.mock.mockito.SpyBean
 import org.springframework.context.annotation.Import
 import org.springframework.test.context.ActiveProfiles
 
-
-@SpringBootTest(classes = [AMQPAutoConfiguration::class, RabbitAutoConfiguration::class])//
+@SpringBootTest(classes = [AMQPAutoConfiguration::class, RabbitAutoConfiguration::class]) //
 @Import(MessagingTestConfiguration::class)
 class AMQPAutoConfigurationTest {
-    @Test
-    fun loadsContextWithNoConfiguration() {
-    }
+    @Test fun loadsContextWithNoConfiguration() {}
 
     @Nested
     @ActiveProfiles("messaging")
     inner class FullyConfiguredTests {
-
-        @SpyBean
-        lateinit var amqpAdmin: AmqpAdmin
+        @SpyBean lateinit var amqpAdmin: AmqpAdmin
 
         @Test
         fun loadsConfigurationCorrectly() {
@@ -37,7 +34,7 @@ class AMQPAutoConfigurationTest {
             verify(amqpAdmin, times(2)).declareQueue(any())
             verify(amqpAdmin, times(1)).declareBinding(any())
 
-            //check names
+            // check names
             val nameCaptor = argumentCaptor<Exchange>()
             verify(amqpAdmin, times(5)).declareExchange(nameCaptor.capture())
             val names = nameCaptor.allValues.map { it.name }
