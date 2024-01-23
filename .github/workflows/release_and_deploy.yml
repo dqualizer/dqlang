@@ -23,9 +23,9 @@ jobs:
       - name: Set up Java 17
         uses: actions/setup-java@v3
         with:
-          java-version: '17'
-          distribution: 'adopt'
-          cache: 'gradle'
+          java-version: "17"
+          distribution: "adopt"
+          cache: "gradle"
 
       - name: Validate Gradle wrapper
         uses: gradle/wrapper-validation-action@v1
@@ -40,7 +40,7 @@ jobs:
           echo "ARTIFACT_VERSION=$ARTIFACT_VERSION" >> $GITHUB_ENV
 
       - name: Build with Gradle
-        run: ./gradlew --no-daemon :spotlessApply build
+        run: ./gradlew --no-daemon build
 
       - name: Perform Release
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
@@ -54,4 +54,4 @@ jobs:
         if: github.ref != 'refs/heads/main'
         run: |
           echo "Performing snapshot release of version ${{ env.ARTIFACT_VERSION }}-${{ github.ref_name }}-SNAPSHOT"
-          ./gradlew --no-daemon -q release publish -x preTagCommit -x createReleaseTag -x updateVersion -x commitNewVersion -Prelease.releaseVersion=${{ env.ARTIFACT_VERSION }}-${{ github.ref_name }}-SNAPSHOT   
+          ./gradlew --no-daemon -q release publish -x preTagCommit -x createReleaseTag -x updateVersion -x commitNewVersion -Prelease.releaseVersion=${{ env.ARTIFACT_VERSION }}-${{ github.ref_name }}-SNAPSHOT
