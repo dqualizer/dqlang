@@ -16,9 +16,26 @@ plugins {
     id("maven-publish")
     id("idea")
     id("eclipse")
+    id("com.diffplug.spotless") version "6.24.0"
 }
 
-idea { //allows downloading sources and javadoc for IntelliJ with gradle cleanIdea idea
+spotless {
+    java {
+        googleJavaFormat()
+        formatAnnotations()
+        removeUnusedImports()
+    }
+    kotlin {
+        ktlint()
+        ktfmt().googleStyle()
+    }
+    kotlinGradle {
+        target("*.gradle.kts")
+        ktlint()
+    }
+}
+
+idea { // allows downloading sources and javadoc for IntelliJ with gradle cleanIdea idea
     module {
         isDownloadJavadoc = true
         isDownloadSources = true
@@ -33,7 +50,7 @@ eclipse {
 }
 
 release {
-    //see https://github.com/researchgate/gradle-release for options
+    // see https://github.com/researchgate/gradle-release for options
     git { requireBranch.set("") }
 }
 
@@ -59,7 +76,6 @@ publishing {
     }
 }
 
-
 configurations {
     compileOnly {
         extendsFrom(configurations.annotationProcessor.get())
@@ -71,7 +87,7 @@ repositories {
 }
 
 dependencies {
-    //spring boot bom
+    // spring boot bom
     implementation(platform("org.springframework.boot:spring-boot-dependencies:3.1.4"))
     implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.9.10"))
     implementation(platform("org.jetbrains.kotlinx:kotlinx-coroutines-bom:1.7.3"))
