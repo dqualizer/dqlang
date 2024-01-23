@@ -1,10 +1,10 @@
 package io.github.dqualizer.dqlang.messaging
 
-import java.util.Optional
 import org.springframework.amqp.core.ExchangeTypes
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
 import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.context.annotation.Configuration
+import java.util.Optional
 
 @Configuration
 @ConfigurationProperties(prefix = "dqualizer.messaging")

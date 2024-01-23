@@ -41,11 +41,13 @@ data class SoftwareSystem(
       return this
     }
 
-    return (services.find { it.id == architectureElementId }
-      ?: services
-        .flatMap { it.codeComponents }
-        .union(services.flatMap { it.endpoints })
-        .find { it.id == architectureElementId })
+    return (
+      services.find { it.id == architectureElementId }
+        ?: services
+          .flatMap { it.codeComponents }
+          .union(services.flatMap { it.endpoints })
+          .find { it.id == architectureElementId }
+    )
       ?: throw NoSuchElementException("No element with id $architectureElementId found")
   }
 }

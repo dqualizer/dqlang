@@ -1,12 +1,12 @@
 package io.github.dqualizer.dqlang.test
 
-import java.io.File
 import org.junit.jupiter.api.Assertions.assertDoesNotThrow
 import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.MethodSource
 import org.springframework.amqp.core.MessageProperties
 import org.springframework.context.annotation.Import
+import java.io.File
 
 @Import(MessagingTestConfiguration::class)
 internal class SerializationTests : SerializationTestsBase() {

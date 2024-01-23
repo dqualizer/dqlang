@@ -35,10 +35,10 @@ internal class RuntimeQualityAnalysisTest {
         return@randomize EasyRandom()
           .nextObject(
             listOf(
-                LoadIncrease::class.java,
-                LoadPeak::class.java,
-                ConstantLoad::class.java,
-              )
+              LoadIncrease::class.java,
+              LoadPeak::class.java,
+              ConstantLoad::class.java,
+            )
               .random(),
           )
       },

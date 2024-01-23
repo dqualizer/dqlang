@@ -3,4 +3,4 @@ root = true
 [*.{kt,kts}]
 ij_kotlin_imports_layout = *,java.**,javax.**,kotlin.**,^
 indent_style = space
-indent_size = 4
+indent_size = 2

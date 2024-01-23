@@ -8,8 +8,8 @@ import com.fasterxml.jackson.databind.SerializerProvider
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer
 import com.fasterxml.jackson.databind.ser.std.StdSerializer
 import io.github.dqualizer.dqlang.types.dam.Identifiable
-import java.lang.module.ModuleDescriptor.Version
 import org.springframework.http.HttpMethod
+import java.lang.module.ModuleDescriptor.Version
 
 class VersionSerializer : StdSerializer<Version>(Version::class.java) {
   override fun serialize(
