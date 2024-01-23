@@ -20,9 +20,9 @@ data class LoadTestDefinition (
     val parametrization: Parametrization? = null,
 
     @JsonProperty("response_measure")
-    private val responseMeasures: ResponseMeasures? = null,
+    val responseMeasures: ResponseMeasures? = null,
 
     @JsonProperty("result_metrics")
-    private val resultMetrics: Set<ResultMetrics>? = null
+    val resultMetrics: Set<ResultMetrics>? = null
 ): Identifiable()
 
