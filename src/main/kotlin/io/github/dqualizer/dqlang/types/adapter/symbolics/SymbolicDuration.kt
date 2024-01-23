@@ -7,5 +7,5 @@ import java.util.concurrent.TimeUnit
 data class SymbolicDuration(
   val integer: SymbolicDurationType<Int>,
   val decimal: SymbolicDurationType<Double>,
-  @JsonProperty("time_unit") private val timeUnit: TimeUnit,
+  @JsonProperty("time_unit") val timeUnit: TimeUnit,
 )
