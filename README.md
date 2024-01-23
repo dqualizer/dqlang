@@ -15,7 +15,7 @@ This package is published via [Github Packages](https://github.com/features/pack
 
 ### Maven
 
-To setup your maven for using this package, have a look the
+To set up your maven for using this package, have a look the
 "[Authenticating to GitHub Packages](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-apache-maven-registry)" guide.
 
 
@@ -23,12 +23,12 @@ In short:
 1. Copy the template from the guide to your `~/.m2/settings.xml` or `%userprofile%\.m2\settings.xml`.
 1. Replace the repository url with `https://maven.pkg.github.com/dqualizer/dqlang`. **Do not use uppercase letters here!**
 1. Create a [(classic) personal access token (PAT) ](https://github.com/settings/tokens) with `read:packages` permissions.
-1. Enter your GitHub user name and PAT (as password) for the 'github' server.
+1. Enter your GitHub username and PAT (as password) for the 'GitHub' server.
 
 Then you can use:
 
 ```
- <dependency>
+<dependency>
     <groupId>dqualizer</groupId>
     <artifactId>dqlang</artifactId>
     <version>${dqlang.version}</version>
@@ -42,26 +42,25 @@ The gradle setup is very similar to the maven setup:
 1. Create a `gradle.properties` file in `%userprofile%\.gradle\`.
 2. Create a [(classic) personal access token (PAT) ](https://github.com/settings/tokens) with `read:packages` permissions.
 3. Paste the following content into your gradle.properties:
-```
-gprUsername=YOUR_GITHUB_USERNAME
-gprPassword=YOUR_GITHUB_ACCESS_TOKEN
-```
+   ```
+   gprUsername=YOUR_GITHUB_USERNAME
+   gprPassword=YOUR_GITHUB_ACCESS_TOKEN
+   ```
 5. Paste the following code into your projects build.gradle or build.gradle.kts file:
 
 Groovy:
-
-```
+```groovy
 repositories {
 	maven {
-       	name = 'gpr'
-       	credentials(PasswordCredentials)
-       	url = uri("https://maven.pkg.github.com/dqualizer/dqlang")
+		name = 'gpr'
+		credentials(PasswordCredentials)
+		url = uri("https://maven.pkg.github.com/dqualizer/dqlang")
 	}
 }
 ```
 
 Kotlin:
-```
+```kotlin
 repositories {
 	maven {
 		name="gpr"
@@ -76,7 +75,7 @@ Then you can use dqlang in your gradle dependency declaration:
 Groovy:
 ```groovy
 dependencies {
-    implementation("io.github.dqualizer:dqlang:{version}")
+	implementation("io.github.dqualizer:dqlang:{version}")
 }
 ```
 
@@ -111,9 +110,8 @@ And for Java code generation:
 - jsonschema2pojo (as maven plugin)
 
 
-If you plan on implementing additional generators, you can finde inspiration [on the official json-schema website](https://json-schema.org/implementations.html#code-generators).
+If you plan on implementing additional generators, you can find inspiration [on the official json-schema website](https://json-schema.org/implementations.html#code-generators).
 
 ## License
 
 See [LICENSE](LICENSE).
-
