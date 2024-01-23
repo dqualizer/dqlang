@@ -14,5 +14,5 @@ data class SymbolicLoad(
      * @example users per SECONDS, users per MINUTES
      */
     @JsonProperty("time_unit")
-    private val timeUnit: TimeUnit
+    val timeUnit: TimeUnit
 )
