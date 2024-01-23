@@ -2,6 +2,7 @@ package io.github.dqualizer.dqlang.messaging
 
 import io.github.dqualizer.dqlang.messaging.MessagingConfiguration.ExchangeConfiguration
 import io.github.dqualizer.dqlang.messaging.MessagingConfiguration.QueueConfiguration
+import java.util.Optional
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -18,7 +19,6 @@ import org.springframework.amqp.core.ExchangeTypes
 import org.springframework.amqp.core.Queue
 import org.springframework.beans.factory.config.AutowireCapableBeanFactory
 import org.springframework.context.ApplicationContext
-import java.util.Optional
 
 class QueueFactoryTest {
   private var amqpAdmin: AmqpAdmin = mock<AmqpAdmin> {}

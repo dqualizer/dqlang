@@ -3,9 +3,9 @@ package io.github.dqualizer.dqlang.types.dam.architecture
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonPropertyDescription
 import io.github.dqualizer.dqlang.types.dam.architecture.apischema.APISchema
+import java.net.URI
 import lombok.Builder
 import org.springframework.data.mongodb.core.mapping.Document
-import java.net.URI
 
 /**
  * Service Description
