@@ -8,14 +8,14 @@ import org.springframework.data.mongodb.core.mapping.Document
 @Document
 @Builder
 data class DomainStory(
-    val actors: List<Actor>,
-    val workObjects: List<WorkObject>,
-    val activities: List<Activity>,
+  val actors: List<Actor>,
+  val workObjects: List<WorkObject>,
+  val activities: List<Activity>,
 ) : Identifiable() {
-    fun findElementById(id: String): DSTElement {
-        return actors.find { it.id == id }
-            ?: workObjects.find { it.id == id }
-            ?: activities.find { it.id == id }
-            ?: throw IllegalArgumentException("No element with id $id found")
-    }
+  fun findElementById(id: String): DSTElement {
+    return actors.find { it.id == id }
+      ?: workObjects.find { it.id == id }
+      ?: activities.find { it.id == id }
+      ?: throw IllegalArgumentException("No element with id $id found")
+  }
 }

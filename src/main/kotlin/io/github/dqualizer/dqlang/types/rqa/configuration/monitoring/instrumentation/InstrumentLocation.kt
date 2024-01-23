@@ -9,8 +9,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyDescription
  * class name.
  */
 data class InstrumentLocation(
-    /** File that should be instrumented. */
-    @JsonPropertyDescription("File that should be instrumented.") val file: String,
-    /** Method or class Name. */
-    @JsonPropertyDescription("Method or class Name.") val location: String,
+  /** File that should be instrumented. */
+  @JsonPropertyDescription("File that should be instrumented.") val file: String,
+  /** Method or class Name. */
+  @JsonPropertyDescription("Method or class Name.") val location: String,
 )

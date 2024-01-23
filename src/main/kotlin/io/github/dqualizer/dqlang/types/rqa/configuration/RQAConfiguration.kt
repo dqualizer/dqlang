@@ -9,19 +9,19 @@ import lombok.Builder
 /** @author Lion Wagner */
 @Builder
 class RQAConfiguration {
-    /** Version of this load test configuration (Required) */
-    @JsonProperty("version")
-    @JsonPropertyDescription("Version of this load test configuration")
-    var version: Int = -1
+  /** Version of this load test configuration (Required) */
+  @JsonProperty("version")
+  @JsonPropertyDescription("Version of this load test configuration")
+  var version: Int = -1
 
-    /** The name of the Bounded Context to which this load test belongs (Required) */
-    @JsonProperty("context_id")
-    @JsonPropertyDescription("The id of the Bounded Context to which this load test belongs")
-    lateinit var context: String
+  /** The name of the Bounded Context to which this load test belongs (Required) */
+  @JsonProperty("context_id")
+  @JsonPropertyDescription("The id of the Bounded Context to which this load test belongs")
+  lateinit var context: String
 
-    lateinit var loadConfiguration: LoadTestConfiguration
+  lateinit var loadConfiguration: LoadTestConfiguration
 
-    lateinit var monitoringConfiguration: MonitoringConfiguration
+  lateinit var monitoringConfiguration: MonitoringConfiguration
 
-    // private lateinit var chaosConfiguration : ChaosConfiguration
+  // private lateinit var chaosConfiguration : ChaosConfiguration
 }

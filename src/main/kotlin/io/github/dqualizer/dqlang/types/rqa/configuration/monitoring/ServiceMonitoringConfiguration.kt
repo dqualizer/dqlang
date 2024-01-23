@@ -7,7 +7,7 @@ import lombok.Builder
 
 @Builder
 data class ServiceMonitoringConfiguration(
-    @JsonProperty("service_id") val serviceID: String,
-    @JsonProperty("instruments") val instruments: Set<Instrument>,
-    @JsonProperty("instrumentation_framework") val instrumentationFramework: InstrumentationFramework,
+  @JsonProperty("service_id") val serviceID: String,
+  @JsonProperty("instruments") val instruments: Set<Instrument>,
+  @JsonProperty("instrumentation_framework") val instrumentationFramework: InstrumentationFramework,
 )

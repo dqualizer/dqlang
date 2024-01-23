@@ -7,10 +7,10 @@ import io.github.dqualizer.dqlang.types.dam.architecture.apischema.field.FieldIt
 import java.lang.module.ModuleDescriptor
 
 data class APISchema(
-    val version: ModuleDescriptor.Version? = null,
-    val context: String? = null,
-    val api: String? = null,
-    @JsonProperty("server_info") val serverInfo: Set<ServerInfo>? = HashSet(),
-    val field: Set<FieldItem>? = HashSet(),
-    @JsonProperty("data_schemas") private val dataSchemas: Map<String, DataSchema>? = HashMap(),
+  val version: ModuleDescriptor.Version? = null,
+  val context: String? = null,
+  val api: String? = null,
+  @JsonProperty("server_info") val serverInfo: Set<ServerInfo>? = HashSet(),
+  val field: Set<FieldItem>? = HashSet(),
+  @JsonProperty("data_schemas") private val dataSchemas: Map<String, DataSchema>? = HashMap(),
 ) : Identifiable()

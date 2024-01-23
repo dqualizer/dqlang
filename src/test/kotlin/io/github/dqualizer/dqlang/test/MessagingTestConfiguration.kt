@@ -12,55 +12,55 @@ import org.springframework.context.annotation.Bean
 
 @TestConfiguration
 class MessagingTestConfiguration {
-    /**
-     * Creates a dummy connection factory, so that rabbitmq thinks it would successfully connect to a
-     * rabbitmq server
-     */
-    @Bean
-    fun connectionFactory(): ConnectionFactory {
-        return object : ConnectionFactory {
-            override fun createConnection(): Connection {
-                val mockConnection = Mockito.mock(Connection::class.java)
-                val mockChannel = Mockito.mock(Channel::class.java)
+  /**
+   * Creates a dummy connection factory, so that rabbitmq thinks it would successfully connect to a
+   * rabbitmq server
+   */
+  @Bean
+  fun connectionFactory(): ConnectionFactory {
+    return object : ConnectionFactory {
+      override fun createConnection(): Connection {
+        val mockConnection = Mockito.mock(Connection::class.java)
+        val mockChannel = Mockito.mock(Channel::class.java)
 
-                Mockito.`when`(
-                    mockChannel.queueDeclare(
-                        Mockito.anyString(),
-                        anyBoolean(),
-                        anyBoolean(),
-                        anyBoolean(),
-                        Mockito.anyMap(),
-                    ),
-                )
-                    .thenReturn(DeclareOk("dummyName", 0, 0))
+        Mockito.`when`(
+            mockChannel.queueDeclare(
+              Mockito.anyString(),
+              anyBoolean(),
+              anyBoolean(),
+              anyBoolean(),
+              Mockito.anyMap(),
+            ),
+          )
+          .thenReturn(DeclareOk("dummyName", 0, 0))
 
-                Mockito.`when`(mockConnection.createChannel(anyBoolean())).thenReturn(mockChannel)
-                return mockConnection
-            }
+        Mockito.`when`(mockConnection.createChannel(anyBoolean())).thenReturn(mockChannel)
+        return mockConnection
+      }
 
-            override fun getHost(): String? {
-                return null
-            }
+      override fun getHost(): String? {
+        return null
+      }
 
-            override fun getPort(): Int {
-                return 5672
-            }
+      override fun getPort(): Int {
+        return 5672
+      }
 
-            override fun getVirtualHost(): String {
-                return "localhost"
-            }
+      override fun getVirtualHost(): String {
+        return "localhost"
+      }
 
-            override fun getUsername(): String {
-                return "testuser"
-            }
+      override fun getUsername(): String {
+        return "testuser"
+      }
 
-            override fun addConnectionListener(listener: ConnectionListener) {}
+      override fun addConnectionListener(listener: ConnectionListener) {}
 
-            override fun removeConnectionListener(listener: ConnectionListener): Boolean {
-                return true
-            }
+      override fun removeConnectionListener(listener: ConnectionListener): Boolean {
+        return true
+      }
 
-            override fun clearConnectionListeners() {}
-        }
+      override fun clearConnectionListeners() {}
     }
+  }
 }

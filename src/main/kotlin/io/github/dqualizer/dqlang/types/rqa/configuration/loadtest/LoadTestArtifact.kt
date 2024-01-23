@@ -7,9 +7,9 @@ import io.github.dqualizer.dqlang.types.rqa.definition.loadtest.ResponseMeasures
 import io.github.dqualizer.dqlang.types.rqa.definition.stimulus.Stimulus
 
 data class LoadTestArtifact(
-    val artifact: Artifact? = null,
-    val description: String? = null,
-    val stimulus: Stimulus? = null,
-    @JsonProperty("response_measure") val responseMeasure: ResponseMeasures? = null,
-    val httpEndpoint: RESTEndpoint? = null,
+  val artifact: Artifact? = null,
+  val description: String? = null,
+  val stimulus: Stimulus? = null,
+  @JsonProperty("response_measure") val responseMeasure: ResponseMeasures? = null,
+  val httpEndpoint: RESTEndpoint? = null,
 )
