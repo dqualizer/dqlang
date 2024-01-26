@@ -69,6 +69,10 @@ configurations {
     }
 }
 
+java {
+  withSourcesJar()
+}
+
 repositories {
     mavenCentral()
 }
@@ -86,8 +90,6 @@ dependencies {
     annotationProcessor("org.projectlombok:lombok:$lombokVersion")
 
     implementation("org.springframework.data:spring-data-mongodb:4.1.2")
-
-
 }
 
 sourceSets.main {
