@@ -20,7 +20,8 @@ import java.util.Map;
 @JsonPropertyOrder({
         "repetition",
         "options",
-        "request"
+        "request",
+        "back_mapping"
 })
 @Generated("jsonschema2pojo")
 public class K6LoadTest {
@@ -51,6 +52,12 @@ public class K6LoadTest {
     @Valid
 
     public Request request;
+
+    @JsonProperty("back_mapping")
+    @JsonPropertyDescription("The back-mapping configuration to use with this k6 load test")
+
+    public String backMapping;
+
     @JsonIgnore
     @Valid
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
@@ -69,6 +76,7 @@ public class K6LoadTest {
         this.repetition = source.repetition;
         this.options = source.options;
         this.request = source.request;
+        this.backMapping = source.backMapping;
     }
 
     /**
@@ -79,13 +87,15 @@ public class K6LoadTest {
     @ConstructorProperties({
             "repetition",
             "options",
-            "request"
+            "request",
+            "back_mapping"
     })
-    public K6LoadTest(int repetition, Options options, Request request) {
+    public K6LoadTest(int repetition, Options options, Request request, String backMapping) {
         super();
         this.repetition = repetition;
         this.options = options;
         this.request = request;
+        this.backMapping = backMapping;
     }
 
     @JsonAnyGetter

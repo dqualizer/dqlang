@@ -46,8 +46,8 @@ publishing {
             name = "GitHubPackages"
             url = uri("https://maven.pkg.github.com/dqualizer/dqlang")
             credentials {
-                username = System.getenv("GITHUB_ACTOR")
-                password = System.getenv("GITHUB_TOKEN")
+                username = project.findProperty("gprActor") as String? ?: System.getenv("GITHUB_ACTOR")
+                password = project.findProperty("gprToken") as String? ?: System.getenv("GITHUB_TOKEN")
             }
         }
         publications {
