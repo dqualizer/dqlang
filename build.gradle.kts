@@ -51,11 +51,8 @@ publishing {
             }
         }
         publications {
-            register("jar", MavenPublication::class) {
+            register<MavenPublication>("gpr") {
                 from(components["java"])
-                pom {
-                    url.set("https://github.com/dqualizer/dqlang.git")
-                }
             }
         }
         mavenLocal()
