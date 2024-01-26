@@ -58,4 +58,4 @@ jobs:
           PACKAGE_VERSION: ${{ env.ARTIFACT_VERSION }}-${{ github.ref_name }}-SNAPSHOT
         run: |
           echo "Performing snapshot release of version $PACKAGE_VERSION"
-          ./gradlew release -x preTagCommit -x createReleaseTag -x updateVersion -x commitNewVersion -Prelease.releaseVersion=$PACKAGE_VERSION
+          ./gradlew release publish -x preTagCommit -x createReleaseTag -x updateVersion -x commitNewVersion -Prelease.releaseVersion=$PACKAGE_VERSION
