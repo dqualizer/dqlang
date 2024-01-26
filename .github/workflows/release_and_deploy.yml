@@ -35,12 +35,12 @@ jobs:
 
       - name: Get Artifact version
         run: |
-          export ARTIFACT_VERSION=$( ./gradlew properties --no-daemon --console=plain -q | grep "^version:" | awk '{printf $2}' | sed "s/-SNAPSHOT$//" )
+          export ARTIFACT_VERSION=$( ./gradlew properties --console=plain -q | grep "^version:" | awk '{printf $2}' | sed "s/-SNAPSHOT$//" )
           echo "Retrieved Artifact Version: $ARTIFACT_VERSION"
           echo "ARTIFACT_VERSION=$ARTIFACT_VERSION" >> $GITHUB_ENV
 
       - name: Build with Gradle
-        run: ./gradlew --no-daemon build
+        run: ./gradlew build
 
       - name: Perform Release
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
@@ -48,9 +48,9 @@ jobs:
           PACKAGE_VERSION: ${{ env.ARTIFACT_VERSION }}
         run: |
           echo "Performing release of version $PACKAGE_VERSION"
-          ./gradlew --no-daemon release -Prelease.useAutomaticVersion=true -Prelease.releaseVersion=$PACKAGE_VERSION
+          ./gradlew release -Prelease.useAutomaticVersion=true -Prelease.releaseVersion=$PACKAGE_VERSION
           git checkout tags/$PACKAGE_VERSION
-          ./gradlew --no-daemon publish
+          ./gradlew publish
 
       - name: Perform Snapshot Release
         if: github.ref != 'refs/heads/main'
@@ -58,4 +58,4 @@ jobs:
           PACKAGE_VERSION: ${{ env.ARTIFACT_VERSION }}-${{ github.ref_name }}-SNAPSHOT
         run: |
           echo "Performing snapshot release of version $PACKAGE_VERSION"
-          ./gradlew --no-daemon publish -x preTagCommit -x createReleaseTag -x updateVersion -x commitNewVersion -Prelease.releaseVersion=$PACKAGE_VERSION
+          ./gradlew publish -x preTagCommit -x createReleaseTag -x updateVersion -x commitNewVersion -Prelease.releaseVersion=$PACKAGE_VERSION
