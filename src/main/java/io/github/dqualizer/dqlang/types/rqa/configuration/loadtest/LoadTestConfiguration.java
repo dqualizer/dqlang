@@ -19,7 +19,7 @@ public class LoadTestConfiguration {
     @JsonProperty("rqa_id")
     private String rqaId;
     @JsonProperty("rqa_id")
-    private String domain_id;
+    private String domainId;
     private String version;
     private String context;
     private String environment;
