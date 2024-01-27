@@ -1,5 +1,6 @@
 package io.github.dqualizer.dqlang.types.adapter.k6;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,7 +16,8 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 public class K6Configuration {
-
+    @JsonProperty("rqa_id")
+    private String rqaId;
     private String name;
     private String baseURL;
     private Set<K6LoadTest> k6LoadTests;
