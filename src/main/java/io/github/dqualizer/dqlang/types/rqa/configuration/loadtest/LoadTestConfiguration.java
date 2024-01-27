@@ -16,6 +16,8 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 public class LoadTestConfiguration {
+    @JsonProperty("rqa_id")
+    private String rqaId;
 
     private String version;
     private String context;
