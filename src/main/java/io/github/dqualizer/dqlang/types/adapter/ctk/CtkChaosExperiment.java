@@ -20,6 +20,7 @@ import java.util.List;
 @JsonPropertyOrder({
         "title",
         "description",
+        "secrets",
         "steady-state-hypothesis",
         "method",
         "rollbacks"
@@ -36,6 +37,10 @@ public class CtkChaosExperiment {
     @JsonPropertyDescription("Description for this CTK Chaos Experiment")
     @Valid
     public String description;
+
+    @JsonProperty("secrets")
+    @Valid
+    public Secrets secrets;
 
     @JsonProperty("steady-state-hypothesis")
     @Valid
@@ -77,15 +82,17 @@ public class CtkChaosExperiment {
     @ConstructorProperties({
             "title",
             "description",
+            "secrets",
             "steadyStateHypothesis",
             "method",
             "rollbacks",
             "repitions"
     })
-    public CtkChaosExperiment(String title, String description, SteadyStateHypothesis steadyStateHypothesis, List<Probe> method, List<Action> rollbacks, int repitions) {
+    public CtkChaosExperiment(String title, String description, Secrets secrets, SteadyStateHypothesis steadyStateHypothesis, List<Probe> method, List<Action> rollbacks, int repitions) {
         super();
         this.title = title;
         this.description = description;
+        this.secrets = secrets;
         this.steadyStateHypothesis = steadyStateHypothesis;
         this.method = method;
         this.rollbacks = rollbacks;
