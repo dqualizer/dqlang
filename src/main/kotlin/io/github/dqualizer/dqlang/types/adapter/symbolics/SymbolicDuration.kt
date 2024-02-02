@@ -10,5 +10,5 @@ data class SymbolicDuration(
     val decimal: SymbolicDurationType<Double>,
 
     @JsonProperty("time_unit")
-    private val timeUnit: TimeUnit
+    val timeUnit: TimeUnit
 )
