@@ -7,7 +7,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import java.util.List;
 
 @Getter
 @ToString
@@ -17,14 +16,14 @@ import java.util.List;
 public class AuthenticationSecret {
 
     @JsonProperty("username")
-    private Credential username;
+    private String username;
 
     @JsonProperty("password")
-    private Credential password;
+    private String password;
 
     @JsonProperty("db_username")
-    private Credential dbUsername;
+    private String dbUsername;
 
     @JsonProperty("db_password")
-    private Credential dbPassword;
+    private String dbPassword;
 }

@@ -3,7 +3,6 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.dqualizer.dqlang.types.adapter.ctk.Action;
 import io.github.dqualizer.dqlang.types.adapter.ctk.AuthenticationSecret;
-import io.github.dqualizer.dqlang.types.adapter.ctk.Credential;
 import io.github.dqualizer.dqlang.types.adapter.ctk.CtkChaosExperiment;
 import io.github.dqualizer.dqlang.types.adapter.ctk.Probe;
 import io.github.dqualizer.dqlang.types.adapter.ctk.Provider;
@@ -28,10 +27,10 @@ public class CtkChaosExperimentTest {
         String title = "CinemaBookingUnaivalabilty";
         String description = "This is a resilience RQA, testing how long it takes until the cinema booking service is reachable again, after it was shutdown.";
 
-        Credential username =  new Credential("env", "USERNAME");
-        Credential password = new Credential("env", "PASSWORD");
-        Credential dbUsername =  new Credential("env", "DB_USERNAME");
-        Credential dbPassword = new Credential("env", "DB_PASSWORD");
+        String username = "oneUsername";
+        String password = "onePasswort";
+        String dbUsername = "oneDBUsername";
+        String dbPassword = "oneDBPassword";
 
         AuthenticationSecret authenticationSecret = new AuthenticationSecret(username, password, dbUsername, dbPassword);
         Secrets secrets = new Secrets(authenticationSecret);
@@ -52,7 +51,7 @@ public class CtkChaosExperimentTest {
         String result = objectMapper.writeValueAsString(ctkChaosExperiment);
 
         // assert
-        String expectedJson = "{\"title\":\"CinemaBookingUnaivalabilty\",\"description\":\"This is a resilience RQA, testing how long it takes until the cinema booking service is reachable again, after it was shutdown.\",\"secrets\":{\"authentication\":{\"username\":{\"type\":\"env\",\"key\":\"USERNAME\"},\"password\":{\"type\":\"env\",\"key\":\"PASSWORD\"},\"db_username\":{\"type\":\"env\",\"key\":\"DB_USERNAME\"},\"db_password\":{\"type\":\"env\",\"key\":\"DB_PASSWORD\"}}},\"steady-state-hypothesis\":{\"title\":\"Application responds\",\"probes\":[{\"type\":\"probe\",\"name\":\"the-cinema-booking-service-must-be-running\",\"provider\":{\"type\":\"python\",\"module\":\"processMonitoring\",\"func\":\"check_process_exists\",\"arguments\":{\"process_name\":\"cinema-booking-Service.exe\"}},\"tolerance\":true}]},\"method\":[{\"type\":\"action\",\"name\":\"kill-cinema-booking-Service\",\"provider\":{\"type\":\"python\",\"module\":\"processMonitoring\",\"func\":\"check_process_exists\",\"arguments\":{\"process_name\":\"cinema-booking-Service.exe\"}}},{\"type\":\"probe\",\"name\":\"the-cinema-booking-service-must-be-running\",\"provider\":{\"type\":\"python\",\"module\":\"processMonitoring\",\"func\":\"check_process_exists\",\"arguments\":{\"process_name\":\"cinema-booking-Service.exe\"}}}],\"rollbacks\":[{\"type\":\"action\",\"name\":\"kill-cinema-booking-Service\",\"provider\":{\"type\":\"python\",\"module\":\"processMonitoring\",\"func\":\"check_process_exists\",\"arguments\":{\"process_name\":\"cinema-booking-Service.exe\"}}}]}";
+        String expectedJson = "{\"title\":\"CinemaBookingUnaivalabilty\",\"description\":\"This is a resilience RQA, testing how long it takes until the cinema booking service is reachable again, after it was shutdown.\",\"secrets\":{\"authentication\":{\"username\":\"oneUsername\",\"password\":\"onePasswort\",\"db_username\":\"oneDBUsername\",\"db_password\":\"oneDBPassword\"}},\"steady-state-hypothesis\":{\"title\":\"Application responds\",\"probes\":[{\"type\":\"probe\",\"name\":\"the-cinema-booking-service-must-be-running\",\"provider\":{\"type\":\"python\",\"module\":\"processMonitoring\",\"func\":\"check_process_exists\",\"arguments\":{\"process_name\":\"cinema-booking-Service.exe\"}},\"tolerance\":true}]},\"method\":[{\"type\":\"action\",\"name\":\"kill-cinema-booking-Service\",\"provider\":{\"type\":\"python\",\"module\":\"processMonitoring\",\"func\":\"check_process_exists\",\"arguments\":{\"process_name\":\"cinema-booking-Service.exe\"}}},{\"type\":\"probe\",\"name\":\"the-cinema-booking-service-must-be-running\",\"provider\":{\"type\":\"python\",\"module\":\"processMonitoring\",\"func\":\"check_process_exists\",\"arguments\":{\"process_name\":\"cinema-booking-Service.exe\"}}}],\"rollbacks\":[{\"type\":\"action\",\"name\":\"kill-cinema-booking-Service\",\"provider\":{\"type\":\"python\",\"module\":\"processMonitoring\",\"func\":\"check_process_exists\",\"arguments\":{\"process_name\":\"cinema-booking-Service.exe\"}}}]}";
         System.out.println(result);
         assertEquals(expectedJson, result);
 
