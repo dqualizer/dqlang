@@ -21,4 +21,10 @@ public class AuthenticationSecret {
 
     @JsonProperty("password")
     private Credential password;
+
+    @JsonProperty("db_username")
+    private Credential dbUsername;
+
+    @JsonProperty("db_password")
+    private Credential dbPassword;
 }
