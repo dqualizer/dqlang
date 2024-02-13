@@ -4,23 +4,23 @@ import org.springframework.data.annotation.Id
 
 abstract class Identifiable {
     @Id
-    val id: String? = null
+    var id: String? = null
 
     /**
      * Read the class information stored in Mongo
      */
     val _class: String? = null
 
-    override fun equals(o: Any?): Boolean {
-        if (this === o) {
+    override fun equals(other: Any?): Boolean {
+        if (this === other) {
             return true
         }
-        if (o !is Identifiable) {
+        if (other !is Identifiable) {
             return false
         }
         return if (id == null) {
             false
-        } else id == o.id
+        } else id == other.id
     }
 
     override fun hashCode(): Int {

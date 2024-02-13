@@ -17,11 +17,11 @@ data class RQAConfiguration(
      * The name of the Bounded Context to which this load test belongs (Required)
      */
     @JsonPropertyDescription("The id of the Bounded Context to which this load test belongs")
-    val context: String,
+    var context: String,
 
-    val loadConfiguration: LoadTestConfiguration,
+    var loadConfiguration: LoadTestConfiguration = LoadTestConfiguration(),
 
-    val monitoringConfiguration: MonitoringConfiguration,
+    var monitoringConfiguration: MonitoringConfiguration = MonitoringConfiguration(),
 
     //val chaosConfiguration : ChaosConfiguration
 )

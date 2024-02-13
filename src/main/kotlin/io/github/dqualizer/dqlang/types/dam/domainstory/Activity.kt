@@ -26,7 +26,7 @@ data class Activity @JsonCreator constructor(
 
     override fun toString(): String {
         return "Activity %s: %s %s %s to/for %s".format(
-            id, initiators, action?.takeIf { it.isNotBlank() } ?: "?", workObjects, targets
+            id, initiators, action.takeIf { it.isNotBlank() } ?: "?", workObjects, targets
         )
     }
 }
