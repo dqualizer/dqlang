@@ -101,6 +101,11 @@ dependencies {
     testImplementation("org.projectlombok:lombok")
 }
 
+java {
+    withSourcesJar()
+    // withJavadocJar()
+}
+
 sourceSets.main {
     java.srcDirs("src/main/java", "src/main/kotlin")
     kotlin.srcDirs("src/main/java", "src/main/kotlin")
