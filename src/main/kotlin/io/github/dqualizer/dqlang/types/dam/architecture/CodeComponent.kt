@@ -1,11 +1,13 @@
 package io.github.dqualizer.dqlang.types.dam.architecture
 
 import com.fasterxml.jackson.annotation.JsonProperty
+import org.springframework.data.mongodb.core.mapping.Field
 
 /**
  * former "Object" class. Now represents a code component.
  */
 open class CodeComponent(
+    @Field("componentName")
     open val name: String,
     @JsonProperty("operation_id")
     val identifier: String,

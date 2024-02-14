@@ -2,8 +2,10 @@ package io.github.dqualizer.dqlang.types.dam.domainstory
 
 import io.github.dqualizer.dqlang.types.dam.Identifiable
 import lombok.experimental.SuperBuilder
+import org.springframework.data.mongodb.core.mapping.Field
 
 abstract class DSTElement(
+    @Field("dstElementName")
     open val name: String
 ) : Identifiable() {
 
