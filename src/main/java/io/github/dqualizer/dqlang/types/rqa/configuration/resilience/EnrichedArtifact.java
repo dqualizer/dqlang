@@ -20,13 +20,17 @@ public class EnrichedArtifact extends Artifact {
     @JsonProperty("process_path")
     private String processPath;
 
+    @JsonProperty("base_url")
+    private String baseUrl;
+
     // nodeId
 
-    public EnrichedArtifact(Artifact artifact, String processId, String processPath){
+    public EnrichedArtifact(Artifact artifact, String processId, String processPath, String baseUrl){
 
         this.setSystemId(artifact.getSystemId());
         this.setActivityId(artifact.getActivityId());
         this.processId = processId;
         this.processPath = processPath;
+        this.baseUrl = baseUrl;
     }
 }

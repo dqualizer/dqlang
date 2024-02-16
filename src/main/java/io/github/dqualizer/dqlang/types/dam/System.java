@@ -12,6 +12,9 @@ public class System {
     @Id
     private String id;
     private String name;
+    // only used for resilience tests at the moment, load tests use top level base_url
+    @JsonProperty("base_url")
+    private String baseUrl;
     @JsonProperty("operation_id")
     private String operationId;
     private String type;
