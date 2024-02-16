@@ -12,16 +12,18 @@ public class System {
     @Id
     private String id;
     private String name;
+    private String type;
+    @JsonProperty("process_id")
+    private String processId;
+    @JsonProperty("process_path")
+    private String processPath;
+    @JsonProperty("package_member")
+    private String packageMember;
+    @JsonProperty("implements")
+    private List<Object> myimplements;
     // only used for resilience tests at the moment, load tests use top level base_url
     @JsonProperty("base_url")
     private String baseUrl;
-    @JsonProperty("operation_id")
-    private String operationId;
-    private String type;
-    @JsonProperty("process_path")
-    private String processPath;
-    @JsonProperty("implements")
-    private List<Object> myimplements;
     private List<String> objects;
 
     private List<Activity> activities;
