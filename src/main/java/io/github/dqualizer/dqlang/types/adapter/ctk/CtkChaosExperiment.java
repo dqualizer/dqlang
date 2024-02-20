@@ -29,28 +29,28 @@ import java.util.List;
 @EqualsAndHashCode
 public class CtkChaosExperiment {
 
-    @JsonProperty("title")
+    @JsonProperty(value = "title", required = true)
     @JsonPropertyDescription("Title for this CTK Chaos Experiment")
     public String title;
 
-    @JsonProperty("description")
+    @JsonProperty(value = "description", required = true)
     @JsonPropertyDescription("Description for this CTK Chaos Experiment")
     @Valid
     public String description;
 
-    @JsonProperty("secrets")
+    @JsonProperty(value = "secrets", required = false)
     @Valid
     public Secrets secrets;
 
-    @JsonProperty("steady-state-hypothesis")
+    @JsonProperty(value = "steady-state-hypothesis", required = false)
     @Valid
     public SteadyStateHypothesis steadyStateHypothesis;
 
-    @JsonProperty("method")
+    @JsonProperty(value = "method", required = true)
     @Valid
     public List<Probe> method;
 
-    @JsonProperty("rollbacks")
+    @JsonProperty(value = "rollbacks", required = false)
     @Valid
     public List<Action> rollbacks;
 
@@ -68,6 +68,7 @@ public class CtkChaosExperiment {
     /**
      * @param source the object being copied
      */
+    // TODO necessary?
     public CtkChaosExperiment(CtkChaosExperiment source) {
         super();
         this.title = source.title;
@@ -78,17 +79,7 @@ public class CtkChaosExperiment {
         this.repetitions = source.repetitions;
     }
 
-
-    @ConstructorProperties({
-            "title",
-            "description",
-            "secrets",
-            "steadyStateHypothesis",
-            "method",
-            "rollbacks",
-            "repitions"
-    })
-    public CtkChaosExperiment(String title, String description, Secrets secrets, SteadyStateHypothesis steadyStateHypothesis, List<Probe> method, List<Action> rollbacks, int repitions) {
+    public CtkChaosExperiment(String title, String description, List<Probe> method, int repetitions) {
         super();
         this.title = title;
         this.description = description;
@@ -96,12 +87,23 @@ public class CtkChaosExperiment {
         this.steadyStateHypothesis = steadyStateHypothesis;
         this.method = method;
         this.rollbacks = rollbacks;
-        this.repetitions = repitions;
+        this.repetitions = repetitions;
+    }
+
+    public void setSecrets(Secrets secrets) {
+        this.secrets = secrets;
+    }
+
+    public void setSteadyStateHypothesis(SteadyStateHypothesis steadyStateHypothesis) {
+        this.steadyStateHypothesis = steadyStateHypothesis;
+    }
+
+    public void setRollbacks(List<Action> rollbacks) {
+        this.rollbacks = rollbacks;
     }
 
 
-
-/*
+    /*
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
