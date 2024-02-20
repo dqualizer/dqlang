@@ -11,6 +11,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ResilienceResponseMeasures {
 
-    @JsonProperty("recovery_time")
+    //  Response measures not allowed for certain stimuli (e.g. Late Responses stimulus combined with recovery time response measure) should be disallowed in the dqAnalyzer
+    @JsonProperty(value = "recovery_time", required = false)
     private Satisfaction recoveryTime;
+    @JsonProperty(value = "error_rate", required = false)
+    private Satisfaction errorRate;
+    @JsonProperty(value = "response_time", required = false)
+    private Satisfaction responseTime;
 }
