@@ -5,7 +5,7 @@ import lombok.ToString;
 
 @Getter
 @ToString
-public class ResponseTime {
+public class ResponseMeasure {
 
     private int satisfied;
     private int tolerated;

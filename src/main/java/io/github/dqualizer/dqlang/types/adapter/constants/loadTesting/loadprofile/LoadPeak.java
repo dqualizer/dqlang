@@ -1,4 +1,4 @@
-package io.github.dqualizer.dqlang.types.adapter.constants.loadprofile;
+package io.github.dqualizer.dqlang.types.adapter.constants.loadTesting.loadprofile;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
