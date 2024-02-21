@@ -10,11 +10,11 @@ public class ResponseMeasuresExtension {
 
     @JsonProperty(value = "name", required = true)
     private String name;
-    @JsonProperty(value = "expected_recovery_time", required = false)
+    @JsonProperty(value = "expected_recovery_time_ms", required = false)
     private int expectedRecoveryTimeInMilliseconds;
-    @JsonProperty(value = "expected_error_rate", required = false)
+    @JsonProperty(value = "expected_error_rate_percent", required = false)
     private int expectedErrorRateInPercent;
-    @JsonProperty(value = "expected_response_time", required = false)
+    @JsonProperty(value = "expected_response_time_ms", required = false)
     private int expectedResponseTimeInMilliseconds;
 
     public void setName(String name) {
