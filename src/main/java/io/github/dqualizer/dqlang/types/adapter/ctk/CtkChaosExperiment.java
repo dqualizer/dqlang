@@ -29,6 +29,8 @@ import java.util.List;
 @EqualsAndHashCode
 public class CtkChaosExperiment {
 
+
+    // TODO public -> private
     @JsonProperty(value = "title", required = true)
     @JsonPropertyDescription("Title for this CTK Chaos Experiment")
     public String title;
