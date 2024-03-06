@@ -13,6 +13,7 @@ public class System {
     private String id;
     private String name;
     private String type;
+    // TODO change to "processName"
     @JsonProperty("process_id")
     private String processId;
     @JsonProperty("process_path")

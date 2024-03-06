@@ -23,19 +23,8 @@ import lombok.NoArgsConstructor;
 })
 public abstract class ResilienceStimulus {
 
+    // TODO remove? unused at the moment
     private int accuracy;
-
-    // TODO adapt
-/*    @JsonProperty("load_profile")
-    private LoadProfile loadProfile;*/
-
-
-
-    /*public void setLoadProfile(LoadProfile loadProfile) {
-        this.loadProfile = loadProfile;
-        this.type = loadProfile.name();
-    }*/
-
-
-
+    private int pauseBeforeTriggeringSeconds;
+    private int experimentDurationSeconds;
 }
