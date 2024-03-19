@@ -1,8 +1,8 @@
 package io.github.dqualizer.dqlang.types.dam.domainstory
 
-import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonSubTypes
 import com.fasterxml.jackson.annotation.JsonTypeInfo
+import org.springframework.data.mongodb.core.mapping.Field
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY)
 @JsonSubTypes(
@@ -10,10 +10,11 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo
     JsonSubTypes.Type(value = System::class, name = "System"),
     JsonSubTypes.Type(value = Group::class, name = "Group")
 )
-sealed class Actor(actorName: String) : DSTElement(actorName)
 
-data class Person(val personName: String) : Actor(personName)
+sealed class Actor(name: String) : DSTElement(name)
 
-data class System(val systemName: String) : Actor(systemName)
+class Person(name: String) : Actor(name)
 
-data class Group(val groupName: String) : Actor(groupName)
+class System(name: String) : Actor(name)
+
+class Group(name: String) : Actor(name)

@@ -7,7 +7,9 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.SuperBuilder;
+import org.springframework.data.annotation.PersistenceCreator;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -37,6 +39,7 @@ public final class Activity extends DSTElement {
     }
 
     @JsonCreator
+    @PersistenceCreator
     public Activity(@JsonProperty("name") String name,
                     @JsonProperty("action") String action,
                     @JsonProperty("number") Integer number,

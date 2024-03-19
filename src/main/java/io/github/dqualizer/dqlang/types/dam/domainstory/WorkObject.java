@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.Getter;
+import org.springframework.data.annotation.PersistenceCreator;
 
 import java.util.List;
 
@@ -15,6 +16,7 @@ public class WorkObject extends DSTElement {
     protected final List<ValueObject> valueObjects;
 
     @JsonCreator
+    @PersistenceCreator
     public WorkObject(@JsonProperty("name") String name,
                       @JsonProperty("type") WorkObjectType type,
                       @JsonProperty("value_objects") List<ValueObject> valueObjects) {

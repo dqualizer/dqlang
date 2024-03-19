@@ -1,9 +1,12 @@
 package io.github.dqualizer.dqlang.types.dam.domainstory
 
+import io.github.dqualizer.dqlang.data.ComplexStorable
+import io.github.dqualizer.dqlang.data.DqualizerRepositories
 import io.github.dqualizer.dqlang.types.dam.Identifiable
 import lombok.Builder
+import org.springframework.data.annotation.Transient
 import org.springframework.data.mongodb.core.mapping.Document
-import org.springframework.data.mongodb.core.mapping.DocumentReference
+import java.util.function.Predicate
 
 /**
  * @author Lion Wagner
@@ -14,12 +17,29 @@ data class DomainStory(
     val actors: List<Actor>,
     val workObjects: List<WorkObject>,
     val activities: List<Activity>
-) : Identifiable(){
+) : Identifiable(), ComplexStorable<DomainStory> {
 
-    fun findElementById(id: String): DSTElement {
-        return actors.find { it.id == id }
-            ?: workObjects.find { it.id == id }
-            ?: activities.find { it.id == id }
-            ?: throw IllegalArgumentException("No element with id $id found")
+    @Transient
+    private val valueObjects: List<ValueObject> =
+        workObjects.filter { it.valueObjects != null }.flatMap { it.valueObjects }
+
+    fun findElementById(id: String): DSTElement =
+        find { element: DSTElement -> element.id == id }
+
+    fun findElementByName(name: String): DSTElement =
+        find { element: DSTElement -> element.name == name }
+
+    private fun find(predicate: Predicate<DSTElement>) = (
+            actors.find { predicate.test(it) }
+                ?: workObjects.find { predicate.test(it) }
+                ?: activities.find { predicate.test(it) }
+                ?: valueObjects.find { predicate.test(it) }
+                ?: throw IllegalArgumentException("No domain story element with id $id was found!"))
+
+
+    override fun store(repository: DqualizerRepositories): DomainStory {
+        val saved = repository.domainStoryRepository.save(this)
+        this.id = saved.id
+        return this
     }
 }

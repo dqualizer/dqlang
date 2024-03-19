@@ -29,9 +29,12 @@ class DAMapper @JvmOverloads constructor(
         this.mappings.forEach { mapping ->
             logger.debug("Mapping ${mapping.dstElementId} to ${mapping.architectureElementId}")
             mappingCache[mapping.dstElementId] =
-                mapping.getArchitectureEntity(domainArchitectureMapping.softwareSystem)
+                domainArchitectureMapping.softwareSystem.findArchitectureEntity(mapping.architectureElementId)
+                    .orElseThrow {
+                        NoSuchElementException("No architecture element with id ${mapping.architectureElementId} found.")
+                    }
             backMappingCache[mapping.architectureElementId] =
-                mapping.getDSTEntity(domainArchitectureMapping.domainStory)
+                domainArchitectureMapping.domainStory.findElementById(mapping.dstElementId)
         }
     }
 
@@ -57,7 +60,7 @@ class DAMapper @JvmOverloads constructor(
             val mapping = mappings.find { it.dstElementId == dstElementId }
                 ?: throw NoSuchElementException("No mapping for DST element $dstElementId found.")
 
-            mapping.getArchitectureEntity(domainArchitectureMapping.softwareSystem)
+            mapping.getArchitectureEntity(domainArchitectureMapping.softwareSystem).get()
         }
     }
 

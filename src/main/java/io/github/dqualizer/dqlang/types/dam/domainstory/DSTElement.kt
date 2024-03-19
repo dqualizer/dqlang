@@ -4,7 +4,7 @@ import io.github.dqualizer.dqlang.types.dam.Identifiable
 import lombok.experimental.SuperBuilder
 
 
-abstract class DSTElement(val name: String) : Identifiable() {
+abstract class DSTElement(open val name: String) : Identifiable() {
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

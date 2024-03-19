@@ -72,10 +72,10 @@ repositories {
 
 dependencies {
     //spring boot bom
-    implementation(platform("org.springframework.boot:spring-boot-dependencies:3.1.4"))
-    implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.9.10"))
+    implementation(platform("org.springframework.boot:spring-boot-dependencies:3.2.3"))
+    implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.9.22"))
     implementation(platform("org.jetbrains.kotlinx:kotlinx-coroutines-bom:1.7.3"))
-    implementation(platform("org.jetbrains.kotlinx:kotlinx-serialization-bom:1.6.0"))
+    implementation(platform("org.jetbrains.kotlinx:kotlinx-serialization-bom:1.6.3"))
 
     implementation("org.springframework.boot:spring-boot-starter")
     implementation("org.springframework.boot:spring-boot-starter-amqp")
@@ -87,16 +87,16 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json-jvm")
     implementation("com.google.code.findbugs:jsr305:3.0.2")
     implementation("javax.validation:validation-api:2.0.1.Final")
-    implementation("io.github.oshai:kotlin-logging:6.0.1")
+    implementation("io.github.oshai:kotlin-logging:6.0.3")
 
-    annotationProcessor("org.projectlombok:lombok:1.18.30")
+    annotationProcessor("org.projectlombok:lombok")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.junit.jupiter:junit-jupiter")
     testImplementation("org.junit.jupiter:junit-jupiter-engine")
     testImplementation("org.testcontainers:junit-jupiter")
     testImplementation("org.jeasy:easy-random-core:5.0.0")
-    testImplementation("org.mockito.kotlin:mockito-kotlin:5.1.0")
+    testImplementation("org.mockito.kotlin:mockito-kotlin:5.2.0")
     testImplementation("org.reflections:reflections:0.10.2")
     testImplementation("org.projectlombok:lombok")
 }
@@ -115,4 +115,8 @@ tasks.withType<KotlinCompile> {
 
 tasks.withType<Test> {
     useJUnitPlatform()
+}
+
+tasks.withType<JavaCompile> {
+    options.compilerArgs.add("-parameters")
 }
