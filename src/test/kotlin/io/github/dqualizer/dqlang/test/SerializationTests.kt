@@ -6,7 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.MethodSource
 import org.springframework.amqp.core.MessageProperties
 import org.springframework.context.annotation.Import
-import java.io.File
+import java.nio.file.Files
 
 @Import(MessagingTestConfiguration::class)
 internal class SerializationTests : SerializationTestsBase() {
@@ -26,9 +26,13 @@ internal class SerializationTests : SerializationTestsBase() {
             val prettyBody = objectMapper.writerWithDefaultPrettyPrinter()
                 .writeValueAsString(objectMapper.readValue(msg.body, Any::class.java))
 
-            val file = File("src/test/resources/rqa/definition/${clazz.simpleName}.json")
-            file.parentFile.mkdirs()
-            file.writeText(prettyBody)
+            val file = Files.createTempFile("dqlang", "${clazz.simpleName}.json").toFile()
+            try {
+                file.parentFile.mkdirs()
+                file.writeText(prettyBody)
+            } finally {
+                file.delete()
+            }
         }
     }
 }
