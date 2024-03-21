@@ -6,5 +6,9 @@ package io.github.dqualizer.dqlang.types.rqa.configuration.monitoring.instrument
 enum class InstrumentType {
     GAUGE,
     COUNTER,
-    HISTOGRAM
+    HISTOGRAM;
+
+    override fun toString(): String {
+        return name
+    }
 }

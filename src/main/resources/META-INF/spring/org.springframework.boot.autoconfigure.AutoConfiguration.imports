@@ -1,2 +1,2 @@
 io.github.dqualizer.dqlang.messaging.AMQPAutoConfiguration
-io.github.dqualizer.dqlang.context.ContextAutoConfiguration
+io.github.dqualizer.dqlang.data.DataAutoConfiguration

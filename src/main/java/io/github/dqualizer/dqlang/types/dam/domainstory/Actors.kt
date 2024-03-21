@@ -2,6 +2,7 @@ package io.github.dqualizer.dqlang.types.dam.domainstory
 
 import com.fasterxml.jackson.annotation.JsonSubTypes
 import com.fasterxml.jackson.annotation.JsonTypeInfo
+import org.springframework.data.mongodb.core.mapping.Field
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY)
 @JsonSubTypes(
