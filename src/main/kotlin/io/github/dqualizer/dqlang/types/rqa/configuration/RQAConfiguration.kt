@@ -9,16 +9,16 @@ import io.github.dqualizer.dqlang.types.rqa.configuration.monitoring.MonitoringC
  */
 data class RQAConfiguration(
     /**
-     * Version of this load test configuration (Required)
-     */
-    @JsonPropertyDescription("Version of this load test configuration")
-    val version: Int = -1,
-
-    /**
      * The name of the Bounded Context to which this load test belongs (Required)
      */
     @JsonPropertyDescription("The id of the Bounded Context to which this load test belongs")
     var context: String,
+
+    /**
+     * Version of this load test configuration (Required)
+     */
+    @JsonPropertyDescription("Version of this load test configuration")
+    val version: Int = -1,
 
     var loadConfiguration: LoadTestConfiguration = LoadTestConfiguration(),
 
