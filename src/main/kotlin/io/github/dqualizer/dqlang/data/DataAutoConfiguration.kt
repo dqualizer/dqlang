@@ -10,10 +10,12 @@ import org.springframework.context.annotation.ComponentScan
 import org.springframework.context.annotation.Configuration
 import org.springframework.data.mongodb.config.AbstractMongoClientConfiguration
 import org.springframework.data.mongodb.core.convert.MongoCustomConversions
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories
 
 
 @Configuration
 @ComponentScan(basePackages = ["io.github.dqualizer.dqlang.data"])
+@EnableMongoRepositories(basePackages = ["io.github.dqualizer.dqlang.data"])
 class DataAutoConfiguration : AbstractMongoClientConfiguration() {
 
     @Value("\${spring.data.mongodb.database:dqualizer}")
