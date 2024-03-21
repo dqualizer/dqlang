@@ -18,6 +18,10 @@ plugins {
     id("eclipse")
 }
 
+java {
+    withSourcesJar()
+}
+
 idea { //allows downloading sources and javadoc for IntelliJ with gradle cleanIdea idea
     module {
         isDownloadJavadoc = true
