@@ -14,5 +14,5 @@ interface ComplexStorable<T> {
      * 4. return this
      *
      */
-    fun store(repository: DqualizerRepositories) : T
+    fun store(repositories: DqualizerRepositories) : T
 }

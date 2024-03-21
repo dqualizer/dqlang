@@ -26,5 +26,9 @@ abstract class Identifiable {
     override fun hashCode(): Int {
         return id?.hashCode() ?: System.identityHashCode(this)
     }
+
+    fun getSerializationClass(): String {
+        return _class!!
+    }
 }
 

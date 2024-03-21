@@ -2,8 +2,9 @@ package io.github.dqualizer.dqlang.types.dam.domainstory
 
 import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
+import org.springframework.data.annotation.PersistenceCreator
 
-data class Activity @JsonCreator constructor(
+data class Activity @JsonCreator @PersistenceCreator constructor(
     override val name: String,
 
     val action: String,

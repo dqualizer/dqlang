@@ -23,13 +23,13 @@ class DAMapper @JvmOverloads constructor(
     private val mappingCache = mutableMapOf<String, ArchitectureEntity>()
     private val backMappingCache = mutableMapOf<String, DSTElement>()
 
-    private val mappings: Set<DAMapping> = domainArchitectureMapping.daMappings
+    private val mappings: Set<DAMapping> = domainArchitectureMapping.DAMappings
 
     init {
         this.mappings.forEach { mapping ->
             logger.debug("Mapping ${mapping.dstElementId} to ${mapping.architectureElementId}")
-            mappingCache[mapping.dstElementId] =
-                domainArchitectureMapping.softwareSystem.findArchitectureEntity(mapping.architectureElementId)
+            mappingCache[mapping.dstElementId!!] =
+                domainArchitectureMapping.softwareSystem.findArchitectureEntity(mapping.architectureElementId!!)
                     .orElseThrow {
                         NoSuchElementException("No architecture element with id ${mapping.architectureElementId} found.")
                     }
@@ -40,7 +40,7 @@ class DAMapper @JvmOverloads constructor(
 
     fun getMappings(dstElement: DSTElement): Set<DAMapping> {
         val id = dstElement.id
-        return getMappings(id)
+        return getMappings(id!!)
     }
 
     fun getMappings(elementId: String): Set<DAMapping> {
@@ -52,7 +52,7 @@ class DAMapper @JvmOverloads constructor(
     }
 
     fun mapToArchitecturalEntity(dstElement: DSTElement): ArchitectureEntity {
-        return mapToArchitecturalEntity(dstElement.id)
+        return mapToArchitecturalEntity(dstElement.id!!)
     }
 
     fun mapToArchitecturalEntity(dstElementId: String): ArchitectureEntity {

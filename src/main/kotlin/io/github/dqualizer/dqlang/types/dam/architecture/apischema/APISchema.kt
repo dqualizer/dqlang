@@ -15,11 +15,11 @@ data class APISchema(
     val api: String? = null,
 
     @JsonProperty("server_info")
-    val serverInfo: Set<ServerInfo>? = HashSet(),
+    val serverInfo: Set<ServerInfo> = HashSet(),
 
-    val field: Set<FieldItem>? = HashSet(),
+    val field: Set<FieldItem> = HashSet(),
 
     @JsonProperty("data_schemas")
-    private val dataSchemas: Map<String, DataSchema>? = HashMap()
+    val dataSchemas: Map<String, DataSchema> = HashMap()
 ): Identifiable()
 
