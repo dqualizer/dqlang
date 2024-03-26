@@ -9,7 +9,7 @@ abstract class Identifiable {
     /**
      * Read the class information stored in Mongo
      */
-    val _class: String? = null
+    var _class: String? = null
 
     override fun equals(other: Any?): Boolean {
         if (this === other) {
