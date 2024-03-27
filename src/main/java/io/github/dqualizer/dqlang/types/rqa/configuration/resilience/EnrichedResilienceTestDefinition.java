@@ -10,6 +10,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 
+// TODO Rename ResilienceTestConfiguration
 public class EnrichedResilienceTestDefinition {
 
     private EnrichedArtifact artifact;
