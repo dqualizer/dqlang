@@ -10,9 +10,7 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = false)
 public class UnavailabilityStimulus extends ResilienceStimulus {
 
-    public UnavailabilityStimulus(int pauseBeforeTrigggeringSeconds, int experimentDurationSeconds){
-
-        this.setPauseBeforeTriggeringSeconds(pauseBeforeTrigggeringSeconds);
-        this.setExperimentDurationSeconds(experimentDurationSeconds);
+    public UnavailabilityStimulus(int pauseBeforeTriggeringSeconds, int experimentDurationSeconds) {
+        super(pauseBeforeTriggeringSeconds, experimentDurationSeconds);
     }
 }

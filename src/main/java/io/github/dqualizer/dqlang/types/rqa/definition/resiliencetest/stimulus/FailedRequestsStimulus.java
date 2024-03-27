@@ -8,7 +8,10 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = false)
 public class FailedRequestsStimulus extends ResilienceStimulus {
 
-    public FailedRequestsStimulus(int pauseBeforeTriggeringSeconds, int experimentDurationSeconds) {
+    private int injectionFrequency;
+
+    public FailedRequestsStimulus(int pauseBeforeTriggeringSeconds, int experimentDurationSeconds, int injectionFrequency) {
         super(pauseBeforeTriggeringSeconds, experimentDurationSeconds);
+        this.injectionFrequency = injectionFrequency;
     }
 }

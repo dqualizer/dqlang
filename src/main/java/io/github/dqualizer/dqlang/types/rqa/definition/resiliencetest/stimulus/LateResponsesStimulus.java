@@ -8,7 +8,14 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = false)
 public class LateResponsesStimulus extends ResilienceStimulus {
 
-    public LateResponsesStimulus(int pauseBeforeTriggeringSeconds, int experimentDurationSeconds) {
+    private int injectionFrequency;
+    private int minDelayMilliseconds;
+    private int maxDelayMilliseconds;
+
+    public LateResponsesStimulus(int pauseBeforeTriggeringSeconds, int experimentDurationSeconds, int injectionFrequency, int minDelayMilliseconds, int maxDelayMilliseconds) {
         super(pauseBeforeTriggeringSeconds, experimentDurationSeconds);
+        this.injectionFrequency = injectionFrequency;
+        this.minDelayMilliseconds = minDelayMilliseconds;
+        this.maxDelayMilliseconds = maxDelayMilliseconds;
     }
 }
