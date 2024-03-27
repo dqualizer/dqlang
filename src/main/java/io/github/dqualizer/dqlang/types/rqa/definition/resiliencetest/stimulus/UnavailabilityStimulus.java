@@ -10,13 +10,9 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = false)
 public class UnavailabilityStimulus extends ResilienceStimulus {
 
+    public UnavailabilityStimulus(int pauseBeforeTrigggeringSeconds, int experimentDurationSeconds){
 
-    // TODO To what extend makes field "type" sense if already a subtype ResilienceStimulus?
-    public UnavailabilityStimulus(int accuracy){
-        this.setAccuracy(accuracy);
-    }
-
-    public UnavailabilityStimulus(String type, int accuracy){
-        this.setAccuracy(accuracy);
+        this.setPauseBeforeTriggeringSeconds(pauseBeforeTrigggeringSeconds);
+        this.setExperimentDurationSeconds(experimentDurationSeconds);
     }
 }

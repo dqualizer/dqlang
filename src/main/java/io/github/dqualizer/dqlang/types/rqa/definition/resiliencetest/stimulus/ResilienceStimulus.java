@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME)
 @JsonSubTypes({
         @JsonSubTypes.Type(value = UnavailabilityStimulus.class, name = "UNAVAILABILITY"),
         @JsonSubTypes.Type(value = LateResponsesStimulus.class, name = "LATE_RESPONSES"),
@@ -23,8 +23,6 @@ import lombok.NoArgsConstructor;
 })
 public abstract class ResilienceStimulus {
 
-    // TODO remove? unused at the moment
-    private int accuracy;
     private int pauseBeforeTriggeringSeconds;
     private int experimentDurationSeconds;
 }
