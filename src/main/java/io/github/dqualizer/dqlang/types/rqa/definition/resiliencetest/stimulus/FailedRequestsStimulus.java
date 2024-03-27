@@ -14,4 +14,8 @@ public class FailedRequestsStimulus extends ResilienceStimulus {
         super(pauseBeforeTriggeringSeconds, experimentDurationSeconds);
         this.injectionFrequency = injectionFrequency;
     }
+
+    public int getInjectionFrequency() {
+        return injectionFrequency;
+    }
 }

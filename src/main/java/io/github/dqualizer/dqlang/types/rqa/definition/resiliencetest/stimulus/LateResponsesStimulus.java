@@ -18,4 +18,16 @@ public class LateResponsesStimulus extends ResilienceStimulus {
         this.minDelayMilliseconds = minDelayMilliseconds;
         this.maxDelayMilliseconds = maxDelayMilliseconds;
     }
+
+    public int getInjectionFrequency() {
+        return injectionFrequency;
+    }
+
+    public int getMinDelayMilliseconds() {
+        return minDelayMilliseconds;
+    }
+
+    public int getMaxDelayMilliseconds() {
+        return maxDelayMilliseconds;
+    }
 }
