@@ -12,8 +12,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@AllArgsConstructor
-@NoArgsConstructor
 @Data
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({
@@ -25,4 +23,9 @@ public abstract class ResilienceStimulus {
 
     private int pauseBeforeTriggeringSeconds;
     private int experimentDurationSeconds;
+
+    // Do not declare constructor for usage by subtypes,
+    // as constructor chaining does not seem to work with jackson object mapper (building objects from json)
+
 }
+

@@ -2,10 +2,12 @@ package io.github.dqualizer.dqlang.types.rqa.definition.resiliencetest.stimulus;
 
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
+@ToString(callSuper = true)
 public class LateResponsesStimulus extends ResilienceStimulus {
 
     private int injectionFrequency;
@@ -13,7 +15,8 @@ public class LateResponsesStimulus extends ResilienceStimulus {
     private int maxDelayMilliseconds;
 
     public LateResponsesStimulus(int pauseBeforeTriggeringSeconds, int experimentDurationSeconds, int injectionFrequency, int minDelayMilliseconds, int maxDelayMilliseconds) {
-        super(pauseBeforeTriggeringSeconds, experimentDurationSeconds);
+        this.setPauseBeforeTriggeringSeconds(pauseBeforeTriggeringSeconds);
+        this.setExperimentDurationSeconds(experimentDurationSeconds);
         this.injectionFrequency = injectionFrequency;
         this.minDelayMilliseconds = minDelayMilliseconds;
         this.maxDelayMilliseconds = maxDelayMilliseconds;
