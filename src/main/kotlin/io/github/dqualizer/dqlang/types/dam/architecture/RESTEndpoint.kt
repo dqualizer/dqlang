@@ -7,7 +7,8 @@ import java.util.*
 import kotlin.collections.HashSet
 
 class RESTEndpoint @JsonCreator constructor(
-    override val name: String,
+    // dont make override val
+    name: String,
     // reference to a code component, for example a method
     val component: String,
     val route: String,
