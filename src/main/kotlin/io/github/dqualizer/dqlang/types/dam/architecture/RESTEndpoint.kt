@@ -6,17 +6,17 @@ import org.springframework.http.HttpMethod
 import java.util.*
 import kotlin.collections.HashSet
 
-class RESTEndpoint @JsonCreator constructor(
-    // dont make override val
-    name: String,
+data class RESTEndpoint @JsonCreator constructor(
+    val name: String,
     // reference to a code component, for example a method
-    val component: String,
+    @JsonProperty("code_component")
+    val codeComponent: String,
     val route: String,
     val parameter: Set<EndpointParameter> = HashSet(),
     val methods: Set<HttpMethod> = HashSet(),
     @JsonProperty("response_description")
     val responseDescription: ResponseDescription? = null
-) : CodeComponent(name, name, "REST Endpoint") {
+) {
     enum class EndpointParameterType {
         PathVariable,
         QueryParameter,
