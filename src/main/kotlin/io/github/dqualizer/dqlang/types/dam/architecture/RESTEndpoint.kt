@@ -8,7 +8,7 @@ import kotlin.collections.HashSet
 
 class RESTEndpoint @JsonCreator constructor(
     // dont make override val
-    label: String,
+    name: String,
     // reference to a code component, for example a method
     val component: String,
     val route: String,
@@ -16,7 +16,7 @@ class RESTEndpoint @JsonCreator constructor(
     val methods: Set<HttpMethod> = HashSet(),
     @JsonProperty("response_description")
     val responseDescription: ResponseDescription? = null
-) : CodeComponent(label, label, "REST Endpoint") {
+) : CodeComponent(name, name, "REST Endpoint") {
     enum class EndpointParameterType {
         PathVariable,
         QueryParameter,
