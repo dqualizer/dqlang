@@ -4,35 +4,36 @@ import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import org.springframework.http.HttpMethod
 import java.util.*
-
+import kotlin.collections.HashSet
 
 class RESTEndpoint @JsonCreator constructor(
-    name: String,
+    override val name: String,
+    // reference to a code component, for example a method
+    val component: String,
     val route: String,
-    val components: Map<EndpointComponentType, Set<EndpointComponent>> = EnumMap(EndpointComponentType::class.java),
+    val parameter: Set<EndpointParameter> = HashSet(),
     val methods: Set<HttpMethod> = HashSet(),
     @JsonProperty("response_description")
     val responseDescription: ResponseDescription? = null
 ) : CodeComponent(name, name, "REST Endpoint") {
-    enum class EndpointComponentType {
+    enum class EndpointParameterType {
         PathVariable,
         QueryParameter,
         RequestBody,
         Header
     }
 
-    data class EndpointComponent(
-        val type: EndpointComponentType? = null,
-        val format: String? = null
+    data class EndpointParameter(
+        val type: EndpointParameterType? = null,
+        val data: String? = null
     ) {
         fun checkFormat(input: String?): Boolean {
-            val regex = Regex(format!!)
+            val regex = Regex(data!!)
             return regex.matches(input!!)
         }
     }
 
-
-    fun getComponentsOfType(type: EndpointComponentType?): Set<EndpointComponent> {
-        return components.getOrDefault(type, emptySet())
+    fun getParameterOfType(type: EndpointParameterType): Set<EndpointParameter> {
+        return parameter.filter { type == it.type }.toHashSet()
     }
 }
