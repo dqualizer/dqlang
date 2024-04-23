@@ -51,7 +51,11 @@ data class SoftwareSystem(
 
     @Transient
     val codeComponents: Set<CodeComponent> =
-        services.flatMap { it.codeComponents }.union(services.flatMap { it.endpoints })
+        services.flatMap { it.codeComponents }.toHashSet()
+
+    @Transient
+    val endpoints: Set<RESTEndpoint> =
+        services.flatMap { it.endpoints }.toHashSet()
 
 
     @Transient
