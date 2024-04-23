@@ -59,7 +59,7 @@ data class SoftwareSystem(
 
 
     @Transient
-    val architectureEntities: List<ArchitectureEntity> = services +  codeComponents
+    val architectureEntities: List<ArchitectureEntity> = services + codeComponents + endpoints
 
 
     inline fun <reified T : ArchitectureEntity> findArchitectureEntityOfType(architectureElementId: String): Optional<T> {

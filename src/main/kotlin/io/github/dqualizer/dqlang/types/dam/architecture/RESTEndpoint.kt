@@ -16,7 +16,7 @@ data class RESTEndpoint @JsonCreator constructor(
     val methods: Set<HttpMethod> = HashSet(),
     @JsonProperty("response_description")
     val responseDescription: ResponseDescription? = null
-) {
+): ArchitectureEntity() {
     enum class EndpointParameterType {
         PathVariable,
         QueryParameter,
