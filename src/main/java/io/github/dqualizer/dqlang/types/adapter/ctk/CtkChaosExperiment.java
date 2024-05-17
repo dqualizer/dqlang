@@ -54,11 +54,6 @@ public class CtkChaosExperiment {
     @JsonProperty(value = "extensions", required = false)
     public List<ResponseMeasuresExtension> extensions;
 
-    @JsonIgnore
-    @Valid
-    public int repetitions;
-
-
     /**
      * No args constructor for use in serialization
      */
@@ -76,10 +71,9 @@ public class CtkChaosExperiment {
         this.steadyStateHypothesis = source.steadyStateHypothesis;
         this.method = source.method;
         this.rollbacks = source.rollbacks;
-        this.repetitions = source.repetitions;
     }
 
-    public CtkChaosExperiment(String title, String description, List<Probe> method, int repetitions) {
+    public CtkChaosExperiment(String title, String description, List<Probe> method) {
         super();
         this.title = title;
         this.description = description;
@@ -87,7 +81,6 @@ public class CtkChaosExperiment {
         this.steadyStateHypothesis = steadyStateHypothesis;
         this.method = method;
         this.rollbacks = rollbacks;
-        this.repetitions = repetitions;
     }
 
     public void setSecrets(Secrets secrets) {

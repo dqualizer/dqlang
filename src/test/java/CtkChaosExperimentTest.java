@@ -37,7 +37,7 @@ public class CtkChaosExperimentTest {
         Action action = new Action("kill-cinema-booking-Service", provider, pauses);
         List<Probe> method = List.of(action, probe) ;
 
-        ctkChaosExperiment = new CtkChaosExperiment(title, description, method, 1);
+        ctkChaosExperiment = new CtkChaosExperiment(title, description, method);
         objectMapper = new ObjectMapper();
 
     }
