@@ -10,12 +10,13 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 
-// TODO Rename ResilienceTestConfiguration
 public class EnrichedResilienceTestDefinition {
 
-    private EnrichedArtifact artifact;
+    @NonNull
+    private String name;
     @NonNull
     private String description;
+    private EnrichedArtifact artifact;
     private ResilienceStimulus stimulus;
     @JsonProperty("response_measure")
     private ResilienceResponseMeasures responseMeasure;
