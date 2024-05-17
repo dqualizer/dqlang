@@ -16,15 +16,11 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 
-// TODO eventually refactor later to a configuration being ONE enrichedResilienceTestDefinition, necessary e.g. to run multiple tests in different environments, but first leave it like this because of major technical consequences of this refactoring
-
 public class ResilienceTestConfiguration {
 
     private String version;
     private String context;
     private String environment;
- /*   @JsonProperty("base_url")
-    private String baseURL;*/
     @JsonProperty("resilience_tests")
     private Set<EnrichedResilienceTestDefinition> enrichedResilienceTestDefinitions;
 }
