@@ -14,15 +14,9 @@ public class ResilienceTestDefinition {
     private String name;
     private Artifact artifact;
     private String description;
-
     private ResilienceStimulus stimulus;
-
-    //private ResilienceParametrization parametrization;
-
     @JsonProperty("response_measure")
     private ResilienceResponseMeasures responseMeasures;
-    //@JsonProperty("result_metrics")
-    //private Set<ResultMetrics> resultMetrics;
 
     public ResilienceTestDefinition(String name, Artifact artifact, String description, ResilienceStimulus stimulus, ResilienceResponseMeasures responseMeasures) {
         this.name = name;
