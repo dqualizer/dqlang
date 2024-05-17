@@ -12,9 +12,8 @@ public class Activity {
     @Id
     private String id;
     private String name;
-    // TODO RENAME packageMember
-    @JsonProperty("operation_id")
-    private String operationId;
+    @JsonProperty("method_path")
+    private String methodPath;
     private String initiator;
     private String workObject;
     private String action;
