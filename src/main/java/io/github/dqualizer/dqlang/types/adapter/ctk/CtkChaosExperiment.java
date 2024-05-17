@@ -1,6 +1,5 @@
 package io.github.dqualizer.dqlang.types.adapter.ctk;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyDescription;
@@ -8,7 +7,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.EqualsAndHashCode;
 
 import javax.annotation.processing.Generated;
-import javax.validation.Valid;
 import java.util.List;
 
 
@@ -29,30 +27,28 @@ import java.util.List;
 @EqualsAndHashCode
 public class CtkChaosExperiment {
 
-
-    // TODO public -> private
     @JsonProperty(value = "title", required = true)
     @JsonPropertyDescription("Title for this CTK Chaos Experiment")
-    public String title;
+    private String title;
 
     @JsonProperty(value = "description", required = true)
     @JsonPropertyDescription("Description for this CTK Chaos Experiment")
-    public String description;
+    private String description;
 
     @JsonProperty(value = "secrets", required = false)
-    public Secrets secrets;
+    private Secrets secrets;
 
     @JsonProperty(value = "steady-state-hypothesis", required = false)
-    public SteadyStateHypothesis steadyStateHypothesis;
+    private SteadyStateHypothesis steadyStateHypothesis;
 
     @JsonProperty(value = "method", required = true)
-    public List<Probe> method;
+    private List<Probe> method;
 
     @JsonProperty(value = "rollbacks", required = false)
-    public List<Action> rollbacks;
+    private List<Action> rollbacks;
 
     @JsonProperty(value = "extensions", required = false)
-    public List<ResponseMeasuresExtension> extensions;
+    private List<ResponseMeasuresExtension> extensions;
 
     /**
      * No args constructor for use in serialization
@@ -60,20 +56,7 @@ public class CtkChaosExperiment {
     public CtkChaosExperiment() {
     }
 
-    /**
-     * @param source the object being copied
-     */
-    // TODO necessary?
-    public CtkChaosExperiment(CtkChaosExperiment source) {
-        super();
-        this.title = source.title;
-        this.description = source.description;
-        this.steadyStateHypothesis = source.steadyStateHypothesis;
-        this.method = source.method;
-        this.rollbacks = source.rollbacks;
-    }
-
-    public CtkChaosExperiment(String title, String description, List<Probe> method) {
+    public CtkChaosExperiment(String title, String description, Secrets secrets, SteadyStateHypothesis steadyStateHypothesis, List<Probe> method, List<Action> rollbacks) {
         super();
         this.title = title;
         this.description = description;
@@ -81,21 +64,5 @@ public class CtkChaosExperiment {
         this.steadyStateHypothesis = steadyStateHypothesis;
         this.method = method;
         this.rollbacks = rollbacks;
-    }
-
-    public void setSecrets(Secrets secrets) {
-        this.secrets = secrets;
-    }
-
-    public void setSteadyStateHypothesis(SteadyStateHypothesis steadyStateHypothesis) {
-        this.steadyStateHypothesis = steadyStateHypothesis;
-    }
-
-    public void setRollbacks(List<Action> rollbacks) {
-        this.rollbacks = rollbacks;
-    }
-
-    public void setExtensions(List<ResponseMeasuresExtension> extensions) {
-        this.extensions = extensions;
     }
 }
