@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class EnrichedArtifact extends Artifact {
+public class EnrichedProcessArtifact extends Artifact {
 
     // used to kill process
     @JsonProperty("process_id")
@@ -22,25 +22,12 @@ public class EnrichedArtifact extends Artifact {
     @JsonProperty("process_path")
     private String processPath;
 
-    // used for Chaos Monkey for Spring Boot
-    @JsonProperty("base_url")
-    private String baseUrl;
-
-    // used for Chaos Monkey for Spring Boot
-    @JsonProperty("package_member")
-    private String packageMember;
-
-    // nodeId
-
-    // TODO split into 2 types: enrichedProcessArtifact, enrichedChaosMonkeyArtifact
-    public EnrichedArtifact(Artifact artifact, String processId, String processPath, String baseUrl, String packageMember){
+    public EnrichedProcessArtifact(Artifact artifact, String processId, String processPath){
 
         this.setSystemId(artifact.getSystemId());
         this.setActivityId(artifact.getActivityId());
         this.processId = processId;
         this.processPath = processPath;
-        this.baseUrl = baseUrl;
-        this.packageMember = packageMember;
     }
 
 

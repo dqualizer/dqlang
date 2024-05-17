@@ -16,7 +16,11 @@ public class EnrichedResilienceTestDefinition {
     private String name;
     @NonNull
     private String description;
-    private EnrichedArtifact artifact;
+    @JsonProperty("enriched_process_artifact")
+    private EnrichedProcessArtifact enrichedProcessArtifact;
+    @JsonProperty("enriched_cmsb_artifact")
+    private EnrichedCmsbArtifact artifact;
+    @NonNull
     private ResilienceStimulus stimulus;
     @JsonProperty("response_measure")
     private ResilienceResponseMeasures responseMeasure;
