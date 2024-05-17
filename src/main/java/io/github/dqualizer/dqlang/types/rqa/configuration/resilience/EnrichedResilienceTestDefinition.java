@@ -19,7 +19,7 @@ public class EnrichedResilienceTestDefinition {
     @JsonProperty("enriched_process_artifact")
     private EnrichedProcessArtifact enrichedProcessArtifact;
     @JsonProperty("enriched_cmsb_artifact")
-    private EnrichedCmsbArtifact artifact;
+    private EnrichedCmsbArtifact enrichedCmsbArtifact;
     @NonNull
     private ResilienceStimulus stimulus;
     @JsonProperty("response_measure")
