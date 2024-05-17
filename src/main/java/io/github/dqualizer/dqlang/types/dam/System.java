@@ -13,9 +13,8 @@ public class System {
     private String id;
     private String name;
     private String type;
-    // TODO change to "processName"
-    @JsonProperty("process_id")
-    private String processId;
+    @JsonProperty("processName")
+    private String processName;
     @JsonProperty("process_path")
     private String processPath;
     @JsonProperty("package_member")
