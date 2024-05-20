@@ -16,17 +16,17 @@ public class EnrichedProcessArtifact extends Artifact {
 
     // used to kill process
     @JsonProperty("process_id")
-    private String processId;
+    private String processName;
 
     // used to eventually restart process
     @JsonProperty("process_path")
     private String processPath;
 
-    public EnrichedProcessArtifact(Artifact artifact, String processId, String processPath){
+    public EnrichedProcessArtifact(Artifact artifact, String processName, String processPath){
 
         this.setSystemId(artifact.getSystemId());
         this.setActivityId(artifact.getActivityId());
-        this.processId = processId;
+        this.processName = processName;
         this.processPath = processPath;
     }
 
