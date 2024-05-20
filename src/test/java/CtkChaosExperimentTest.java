@@ -14,30 +14,33 @@ import io.github.dqualizer.dqlang.types.adapter.ctk.SteadyStateProbe;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CtkChaosExperimentTest {
-    CtkChaosExperiment ctkChaosExperiment;
     ObjectMapper objectMapper;
+    String title;
+    String description;
+    List<Probe> method;
+
+
     @BeforeEach
     void setup(){
 
         // arrange
 
-        String title = "CinemaBookingUnaivalabilty";
-        String description = "This is a resilience RQA, testing how long it takes until the cinema booking service is reachable again, after it was shutdown.";
+        title = "CinemaBookingUnaivalabilty";
+        description = "This is a resilience RQA, testing how long it takes until the cinema booking service is reachable again, after it was shutdown.";
 
         Provider provider = new Provider("python", "processMonitoring", "check_process_exists", Map.of("process_name", "cinema-booking-Service.exe"));
         Probe probe = new Probe("the-cinema-booking-service-must-be-running", provider);
 
         Pauses pauses = new Pauses(0,10);
         Action action = new Action("kill-cinema-booking-Service", provider, pauses);
-        List<Probe> method = List.of(action, probe) ;
-
-        ctkChaosExperiment = new CtkChaosExperiment(title, description, method);
+        method = List.of(action, probe) ;
         objectMapper = new ObjectMapper();
 
     }
@@ -65,11 +68,7 @@ public class CtkChaosExperimentTest {
         responseMeasuresExtension.setName("expected response measures");
         responseMeasuresExtension.setExpectedRecoveryTimeInMilliseconds(2000);
 
-
-        ctkChaosExperiment.setSecrets(secrets);
-        ctkChaosExperiment.setSteadyStateHypothesis(steadyStateHypothesis);
-        ctkChaosExperiment.setRollbacks(rollbacks);
-        ctkChaosExperiment.setExtensions(List.of(responseMeasuresExtension));
+        CtkChaosExperiment ctkChaosExperiment = new CtkChaosExperiment(title, description, secrets, steadyStateHypothesis, method, rollbacks, List.of(responseMeasuresExtension));
 
         // act
         String result = objectMapper.writeValueAsString(ctkChaosExperiment);
@@ -83,6 +82,9 @@ public class CtkChaosExperimentTest {
 
     @Test
     void testSerializationOnlyWithMandatoryProperties() throws JsonProcessingException {
+
+        // arrange
+        CtkChaosExperiment ctkChaosExperiment = new CtkChaosExperiment(title, description, null, null, method, null, null);
 
         // act
         String result = objectMapper.writeValueAsString(ctkChaosExperiment);
