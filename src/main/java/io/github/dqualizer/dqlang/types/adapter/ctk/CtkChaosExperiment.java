@@ -56,7 +56,7 @@ public class CtkChaosExperiment {
     public CtkChaosExperiment() {
     }
 
-    public CtkChaosExperiment(String title, String description, Secrets secrets, SteadyStateHypothesis steadyStateHypothesis, List<Probe> method, List<Action> rollbacks) {
+    public CtkChaosExperiment(String title, String description, Secrets secrets, SteadyStateHypothesis steadyStateHypothesis, List<Probe> method, List<Action> rollbacks, List<ResponseMeasuresExtension> extensions) {
         super();
         this.title = title;
         this.description = description;
@@ -64,5 +64,6 @@ public class CtkChaosExperiment {
         this.steadyStateHypothesis = steadyStateHypothesis;
         this.method = method;
         this.rollbacks = rollbacks;
+        this.extensions = extensions;
     }
 }
