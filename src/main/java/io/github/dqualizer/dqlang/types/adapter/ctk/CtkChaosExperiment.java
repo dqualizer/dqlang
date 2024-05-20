@@ -27,6 +27,7 @@ import java.util.List;
 @EqualsAndHashCode
 public class CtkChaosExperiment {
 
+
     @JsonProperty(value = "title", required = true)
     @JsonPropertyDescription("Title for this CTK Chaos Experiment")
     private String title;
@@ -50,13 +51,16 @@ public class CtkChaosExperiment {
     @JsonProperty(value = "extensions", required = false)
     private List<ResponseMeasuresExtension> extensions;
 
+    @JsonProperty(value = "runtime", required = false)
+    private Runtime runtime;
+
     /**
      * No args constructor for use in serialization
      */
     public CtkChaosExperiment() {
     }
 
-    public CtkChaosExperiment(String title, String description, Secrets secrets, SteadyStateHypothesis steadyStateHypothesis, List<Probe> method, List<Action> rollbacks, List<ResponseMeasuresExtension> extensions) {
+    public CtkChaosExperiment(String title, String description, Secrets secrets, SteadyStateHypothesis steadyStateHypothesis, List<Probe> method, List<Action> rollbacks, List<ResponseMeasuresExtension> extensions, Runtime runtime) {
         super();
         this.title = title;
         this.description = description;
@@ -65,5 +69,6 @@ public class CtkChaosExperiment {
         this.method = method;
         this.rollbacks = rollbacks;
         this.extensions = extensions;
+        this.runtime = runtime;
     }
 }

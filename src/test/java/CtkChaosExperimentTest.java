@@ -8,9 +8,11 @@ import io.github.dqualizer.dqlang.types.adapter.ctk.Pauses;
 import io.github.dqualizer.dqlang.types.adapter.ctk.Probe;
 import io.github.dqualizer.dqlang.types.adapter.ctk.Provider;
 import io.github.dqualizer.dqlang.types.adapter.ctk.ResponseMeasuresExtension;
+import io.github.dqualizer.dqlang.types.adapter.ctk.Runtime;
 import io.github.dqualizer.dqlang.types.adapter.ctk.Secrets;
 import io.github.dqualizer.dqlang.types.adapter.ctk.SteadyStateHypothesis;
 import io.github.dqualizer.dqlang.types.adapter.ctk.SteadyStateProbe;
+import io.github.dqualizer.dqlang.types.adapter.ctk.Strategy;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -68,13 +70,17 @@ public class CtkChaosExperimentTest {
         responseMeasuresExtension.setName("expected response measures");
         responseMeasuresExtension.setExpectedRecoveryTimeInMilliseconds(2000);
 
-        CtkChaosExperiment ctkChaosExperiment = new CtkChaosExperiment(title, description, secrets, steadyStateHypothesis, method, rollbacks, List.of(responseMeasuresExtension));
+        Strategy rollbacksStrategy = new Strategy("deviated");
+        Runtime runtime= new Runtime();
+        runtime.setRollbacksStrategy(rollbacksStrategy);
+
+        CtkChaosExperiment ctkChaosExperiment = new CtkChaosExperiment(title, description, secrets, steadyStateHypothesis, method, rollbacks, List.of(responseMeasuresExtension), runtime);
 
         // act
         String result = objectMapper.writeValueAsString(ctkChaosExperiment);
 
         // assert
-        String expectedJson = "{\"title\":\"CinemaBookingUnaivalabilty\",\"description\":\"This is a resilience RQA, testing how long it takes until the cinema booking service is reachable again, after it was shutdown.\",\"secrets\":{\"authentication\":{\"username\":\"oneUsername\",\"password\":\"onePasswort\",\"db_username\":\"oneDBUsername\",\"db_password\":\"oneDBPassword\"}},\"steady-state-hypothesis\":{\"title\":\"Application responds\",\"probes\":[{\"type\":\"probe\",\"name\":\"the-cinema-booking-service-must-be-running\",\"provider\":{\"type\":\"python\",\"module\":\"processMonitoring\",\"func\":\"check_process_exists\",\"arguments\":{\"process_name\":\"cinema-booking-Service.exe\"}},\"tolerance\":true}]},\"method\":[{\"type\":\"action\",\"name\":\"kill-cinema-booking-Service\",\"provider\":{\"type\":\"python\",\"module\":\"processMonitoring\",\"func\":\"check_process_exists\",\"arguments\":{\"process_name\":\"cinema-booking-Service.exe\"}},\"pauses\":{\"before\":0,\"after\":10}},{\"type\":\"probe\",\"name\":\"the-cinema-booking-service-must-be-running\",\"provider\":{\"type\":\"python\",\"module\":\"processMonitoring\",\"func\":\"check_process_exists\",\"arguments\":{\"process_name\":\"cinema-booking-Service.exe\"}}}],\"rollbacks\":[{\"type\":\"action\",\"name\":\"kill-cinema-booking-Service\",\"provider\":{\"type\":\"python\",\"module\":\"processMonitoring\",\"func\":\"check_process_exists\",\"arguments\":{\"process_name\":\"cinema-booking-Service.exe\"}}}],\"extensions\":[{\"name\":\"expected response measures\",\"expected_recovery_time_ms\":2000}]}";
+        String expectedJson = "{\"title\":\"CinemaBookingUnaivalabilty\",\"description\":\"This is a resilience RQA, testing how long it takes until the cinema booking service is reachable again, after it was shutdown.\",\"secrets\":{\"authentication\":{\"username\":\"oneUsername\",\"password\":\"onePasswort\",\"db_username\":\"oneDBUsername\",\"db_password\":\"oneDBPassword\"}},\"steady-state-hypothesis\":{\"title\":\"Application responds\",\"probes\":[{\"type\":\"probe\",\"name\":\"the-cinema-booking-service-must-be-running\",\"provider\":{\"type\":\"python\",\"module\":\"processMonitoring\",\"func\":\"check_process_exists\",\"arguments\":{\"process_name\":\"cinema-booking-Service.exe\"}},\"tolerance\":true}]},\"method\":[{\"type\":\"action\",\"name\":\"kill-cinema-booking-Service\",\"provider\":{\"type\":\"python\",\"module\":\"processMonitoring\",\"func\":\"check_process_exists\",\"arguments\":{\"process_name\":\"cinema-booking-Service.exe\"}},\"pauses\":{\"before\":0,\"after\":10}},{\"type\":\"probe\",\"name\":\"the-cinema-booking-service-must-be-running\",\"provider\":{\"type\":\"python\",\"module\":\"processMonitoring\",\"func\":\"check_process_exists\",\"arguments\":{\"process_name\":\"cinema-booking-Service.exe\"}}}],\"rollbacks\":[{\"type\":\"action\",\"name\":\"kill-cinema-booking-Service\",\"provider\":{\"type\":\"python\",\"module\":\"processMonitoring\",\"func\":\"check_process_exists\",\"arguments\":{\"process_name\":\"cinema-booking-Service.exe\"}}}],\"extensions\":[{\"name\":\"expected response measures\",\"expected_recovery_time_ms\":2000}],\"runtime\":{\"rollbacks\":{\"strategy\":\"deviated\"}}}";
         //System.out.println(result);
         assertEquals(expectedJson, result);
 
@@ -84,7 +90,7 @@ public class CtkChaosExperimentTest {
     void testSerializationOnlyWithMandatoryProperties() throws JsonProcessingException {
 
         // arrange
-        CtkChaosExperiment ctkChaosExperiment = new CtkChaosExperiment(title, description, null, null, method, null, null);
+        CtkChaosExperiment ctkChaosExperiment = new CtkChaosExperiment(title, description, null, null, method, null, null, null);
 
         // act
         String result = objectMapper.writeValueAsString(ctkChaosExperiment);
