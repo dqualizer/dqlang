@@ -2,18 +2,17 @@ package io.github.dqualizer.dqlang.types.dam.architecture
 
 import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
-import org.springframework.http.HttpMethod
 import java.util.*
 import kotlin.collections.HashSet
 
-data class RESTEndpoint @JsonCreator constructor(
+open class RESTEndpoint @JsonCreator constructor(
     val name: String,
     // reference to a code component, for example a method
     @JsonProperty("code_component")
     val codeComponent: String,
     val route: String,
     val parameter: Set<EndpointParameter> = HashSet(),
-    val methods: Set<HttpMethod> = HashSet(),
+    val methods: Set<EndpointMethod> = HashSet(),
     @JsonProperty("response_description")
     val responseDescription: ResponseDescription? = null
 ): ArchitectureEntity() {
@@ -22,6 +21,20 @@ data class RESTEndpoint @JsonCreator constructor(
         QueryParameter,
         RequestBody,
         Header
+    }
+
+    /**
+     * We use our own enum since the Spring HttpMethod is not working with RabbitMQ serialization
+     */
+    enum class EndpointMethod {
+        GET,
+        HEAD,
+        POST,
+        PUT,
+        PATCH,
+        DELETE,
+        OPTIONS,
+        TRACE
     }
 
     data class EndpointParameter(
