@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty
 import java.util.*
 import kotlin.collections.HashSet
 
-open class RESTEndpoint @JsonCreator constructor(
+data class RESTEndpoint @JsonCreator constructor(
     val name: String,
     // reference to a code component, for example a method
     @JsonProperty("code_component")
@@ -15,7 +15,7 @@ open class RESTEndpoint @JsonCreator constructor(
     val methods: Set<EndpointMethod> = HashSet(),
     @JsonProperty("response_description")
     val responseDescription: ResponseDescription? = null
-): ArchitectureEntity() {
+) {
     enum class EndpointParameterType {
         PathVariable,
         QueryParameter,
