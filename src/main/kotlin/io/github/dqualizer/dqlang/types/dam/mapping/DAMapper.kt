@@ -14,62 +14,62 @@ import org.slf4j.LoggerFactory
  */
 
 class DAMapper @JvmOverloads constructor(
-    private val domainArchitectureMapping: DomainArchitectureMapping,
-    private val lazy: Boolean = false
+  private val domainArchitectureMapping: DomainArchitectureMapping,
+  private val lazy: Boolean = false
 ) {
 
-    private val logger = LoggerFactory.getLogger(QueueFactory::class.java)
+  private val logger = LoggerFactory.getLogger(QueueFactory::class.java)
 
-    private val mappingCache = mutableMapOf<String, ArchitectureEntity>()
-    private val backMappingCache = mutableMapOf<String, DSTElement>()
+  private val mappingCache = mutableMapOf<String, ArchitectureEntity>()
+  private val backMappingCache = mutableMapOf<String, DSTElement>()
 
-    private val mappings: Set<DAMapping> = domainArchitectureMapping.DAMappings
+  private val mappings: Set<DAMapping> = domainArchitectureMapping.daMappings
 
-    init {
-        this.mappings.forEach { mapping ->
-            logger.debug("Mapping ${mapping.dstElementId} to ${mapping.architectureElementId}")
-            mappingCache[mapping.dstElementId!!] =
-                domainArchitectureMapping.softwareSystem.findArchitectureEntity(mapping.architectureElementId!!)
-                    .orElseThrow {
-                        NoSuchElementException("No architecture element with id ${mapping.architectureElementId} found.")
-                    }
-            backMappingCache[mapping.architectureElementId] =
-                domainArchitectureMapping.domainStory.findElementById(mapping.dstElementId)
-        }
+  init {
+    this.mappings.forEach { mapping ->
+      logger.debug("Mapping ${mapping.dstElementId} to ${mapping.architectureElementId}")
+      mappingCache[mapping.dstElementId!!] =
+        domainArchitectureMapping.softwareSystem.findArchitectureEntity(mapping.architectureElementId!!)
+          .orElseThrow {
+            NoSuchElementException("No architecture element with id ${mapping.architectureElementId} found.")
+          }
+      backMappingCache[mapping.architectureElementId] =
+        domainArchitectureMapping.domainStory.findElementById(mapping.dstElementId)
     }
+  }
 
-    fun getMappings(dstElement: DSTElement): Set<DAMapping> {
-        val id = dstElement.id
-        return getMappings(id!!)
+  fun getMappings(dstElement: DSTElement): Set<DAMapping> {
+    val id = dstElement.id
+    return getMappings(id!!)
+  }
+
+  fun getMappings(elementId: String): Set<DAMapping> {
+    return mappings.filter { it.dstElementId == elementId || it.architectureElementId == elementId }.toSet()
+  }
+
+  fun getMappings(architectureEntity: ArchitectureEntity): Set<DAMapping> {
+    return mappings.filter { it.architectureElementId == architectureEntity.id }.toSet()
+  }
+
+  fun mapToArchitecturalEntity(dstElement: DSTElement): ArchitectureEntity {
+    return mapToArchitecturalEntity(dstElement.id!!)
+  }
+
+  fun mapToArchitecturalEntity(dstElementId: String): ArchitectureEntity {
+    return mappingCache.computeIfAbsent(dstElementId) {
+      val mapping = mappings.find { it.dstElementId == dstElementId }
+        ?: throw NoSuchElementException("No mapping for DST element $dstElementId found.")
+
+      mapping.getArchitectureEntity(domainArchitectureMapping.softwareSystem).get()
     }
+  }
 
-    fun getMappings(elementId: String): Set<DAMapping> {
-        return mappings.filter { it.dstElementId == elementId || it.architectureElementId == elementId }.toSet()
+  fun mapToDSTEntity(architectureElementId: String): DSTElement {
+    return backMappingCache.computeIfAbsent(architectureElementId) {
+      val mapping = mappings.find { it.architectureElementId == architectureElementId }
+        ?: throw NoSuchElementException("No mapping for architecture element $architectureElementId found.")
+
+      mapping.getDSTEntity(domainArchitectureMapping.domainStory)
     }
-
-    fun getMappings(architectureEntity: ArchitectureEntity): Set<DAMapping> {
-        return mappings.filter { it.architectureElementId == architectureEntity.id }.toSet()
-    }
-
-    fun mapToArchitecturalEntity(dstElement: DSTElement): ArchitectureEntity {
-        return mapToArchitecturalEntity(dstElement.id!!)
-    }
-
-    fun mapToArchitecturalEntity(dstElementId: String): ArchitectureEntity {
-        return mappingCache.computeIfAbsent(dstElementId) {
-            val mapping = mappings.find { it.dstElementId == dstElementId }
-                ?: throw NoSuchElementException("No mapping for DST element $dstElementId found.")
-
-            mapping.getArchitectureEntity(domainArchitectureMapping.softwareSystem).get()
-        }
-    }
-
-    fun mapToDSTEntity(architectureElementId: String): DSTElement {
-        return backMappingCache.computeIfAbsent(architectureElementId) {
-            val mapping = mappings.find { it.architectureElementId == architectureElementId }
-                ?: throw NoSuchElementException("No mapping for architecture element $architectureElementId found.")
-
-            mapping.getDSTEntity(domainArchitectureMapping.domainStory)
-        }
-    }
+  }
 }
