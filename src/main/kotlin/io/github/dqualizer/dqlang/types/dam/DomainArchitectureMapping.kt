@@ -22,9 +22,7 @@ class DomainArchitectureMapping
    */
   @field:DocumentReference @param:JsonProperty("software_system") val softwareSystem: SoftwareSystem,
   @field:DocumentReference @param:JsonProperty("domain_story") val domainStory: DomainStory,
-  @field:JsonProperty("mappings") @param:JsonProperty(
-    "mappings"
-  ) val daMappings: Set<DAMapping>
+  @field:JsonProperty("mappings") @param:JsonProperty("mappings") val daMappings: Set<DAMapping>
 ) : Identifiable(), ComplexStorable<DomainArchitectureMapping?> {
   constructor(softwareSystem: SoftwareSystem, domainStory: DomainStory) : this(
     softwareSystem,

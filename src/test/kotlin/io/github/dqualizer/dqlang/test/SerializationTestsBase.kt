@@ -72,10 +72,6 @@ class SerializationTestsBase {
     while (list.isNotEmpty()) {
       val current = list.removeFirst()
 
-      if (current is Identifiable) {
-        _classField.set(current, current::class.java.name)
-      }
-
       current.javaClass.declaredFields.forEach {
         if (!Modifier.isStatic(it.modifiers)) {
           try {
@@ -106,10 +102,7 @@ class SerializationTestsBase {
 
     private val serializableClasses: Set<Class<*>>
 
-    private val _classField = Identifiable::class.java.getDeclaredField("_class")
-
     init {
-      _classField.isAccessible = true
 
       val reflection = Reflections("io.github.dqualizer.dqlang.types")
       val instantiatableIdentifiableTypes = reflection.getSubTypesOf(Identifiable::class.java)
