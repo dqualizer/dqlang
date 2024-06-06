@@ -4,12 +4,10 @@ import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonTypeInfo
 import org.springframework.data.annotation.PersistenceCreator
-import org.springframework.data.mongodb.core.mapping.Field
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY)
-data class WorkObject @JsonCreator @PersistenceCreator constructor(
-  @Field("workObjectName")
-  override val name: String,
+class WorkObject @JsonCreator @PersistenceCreator constructor(
+  name: String,
 
   val type: WorkObjectType,
 
