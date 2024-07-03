@@ -1,9 +1,4 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 group = "io.github.dqualizer"
-
-java.sourceCompatibility = JavaVersion.VERSION_17
-java.targetCompatibility = JavaVersion.VERSION_17
 
 plugins {
   kotlin("jvm") version "2.0.0"
@@ -17,6 +12,9 @@ plugins {
 }
 
 java {
+  toolchain {
+    languageVersion = JavaLanguageVersion.of(21)
+  }
   withSourcesJar()
 }
 
@@ -61,7 +59,6 @@ publishing {
   }
 }
 
-
 configurations {
   compileOnly {
     extendsFrom(configurations.annotationProcessor.get())
@@ -74,7 +71,7 @@ repositories {
 
 dependencies {
   //spring boot bom
-  implementation(platform("org.springframework.boot:spring-boot-dependencies:3.3.0"))
+  implementation(platform("org.springframework.boot:spring-boot-dependencies:3.3.1"))
   implementation(platform("org.jetbrains.kotlin:kotlin-bom:2.0.0"))
   implementation(platform("org.jetbrains.kotlinx:kotlinx-coroutines-bom:1.8.1"))
   implementation(platform("org.jetbrains.kotlinx:kotlinx-serialization-bom:1.6.3"))
@@ -100,15 +97,9 @@ dependencies {
   testImplementation("org.reflections:reflections:0.10.2")
 }
 
-sourceSets.main {
-  java.srcDirs("src/main/java", "src/main/kotlin")
-  kotlin.srcDirs("src/main/java", "src/main/kotlin")
-}
-
-tasks.withType<KotlinCompile> {
-  kotlinOptions {
-    freeCompilerArgs = listOf("-Xjsr305=strict")
-    jvmTarget = "17"
+kotlin {
+  compilerOptions {
+    freeCompilerArgs.addAll("-Xjsr305=strict")
   }
 }
 
