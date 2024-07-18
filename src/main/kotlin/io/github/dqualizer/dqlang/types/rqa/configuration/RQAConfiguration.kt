@@ -3,25 +3,26 @@ package io.github.dqualizer.dqlang.types.rqa.configuration
 import com.fasterxml.jackson.annotation.JsonPropertyDescription
 import io.github.dqualizer.dqlang.types.rqa.configuration.loadtest.LoadTestConfiguration
 import io.github.dqualizer.dqlang.types.rqa.configuration.monitoring.MonitoringConfiguration
-import lombok.Builder
 
-@Builder
+/**
+ * @author Lion Wagner
+ */
 data class RQAConfiguration(
+    /**
+     * The name of the Bounded Context to which this load test belongs (Required)
+     */
+    @JsonPropertyDescription("The id of the Bounded Context to which this load test belongs")
+    var context: String,
+
     /**
      * Version of this load test configuration (Required)
      */
     @JsonPropertyDescription("Version of this load test configuration")
     val version: Int = -1,
 
-    /**
-     * The name of the Bounded Context to which this load test belongs (Required)
-     */
-    @JsonPropertyDescription("The id of the Bounded Context to which this load test belongs")
-    val context: String,
+    var loadConfiguration: LoadTestConfiguration = LoadTestConfiguration(),
 
-    val loadConfiguration: LoadTestConfiguration,
-
-    val monitoringConfiguration: MonitoringConfiguration,
+    var monitoringConfiguration: MonitoringConfiguration = MonitoringConfiguration(),
 
     //val chaosConfiguration : ChaosConfiguration
 )

@@ -9,10 +9,10 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo
     JsonSubTypes.Type(value = System::class, name = "System"),
     JsonSubTypes.Type(value = Group::class, name = "Group")
 )
-sealed class Actor(actorName: String) : DSTElement(actorName)
+sealed class Actor(name: String) : DSTElement(name)
 
-data class Person(val personName: String) : Actor(personName)
+class Person(name: String) : Actor(name)
 
-data class System(val systemName: String) : Actor(systemName)
+class System(name: String) : Actor(name)
 
-data class Group(val groupName: String) : Actor(groupName)
+class Group(name: String) : Actor(name)

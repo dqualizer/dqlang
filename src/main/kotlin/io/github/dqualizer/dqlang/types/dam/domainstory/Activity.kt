@@ -2,9 +2,10 @@ package io.github.dqualizer.dqlang.types.dam.domainstory
 
 import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
+import org.springframework.data.annotation.PersistenceCreator
 
-data class Activity @JsonCreator constructor(
-    override val name: String,
+class Activity @JsonCreator @PersistenceCreator constructor(
+    name: String,
 
     val action: String,
 
@@ -26,7 +27,7 @@ data class Activity @JsonCreator constructor(
 
     override fun toString(): String {
         return "Activity %s: %s %s %s to/for %s".format(
-            id, initiators, action?.takeIf { it.isNotBlank() } ?: "?", workObjects, targets
+            id, initiators, action.takeIf { it.isNotBlank() } ?: "?", workObjects, targets
         )
     }
 }

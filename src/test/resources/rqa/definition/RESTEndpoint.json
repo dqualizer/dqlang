@@ -1,7 +1,8 @@
 {
   "name" : "eOMtThyhVNLWUZNRcBaQKxI",
+  "component": "e10tThkhVNLWUZNRcBSQrxI",
   "route" : "yedUsFwdkelQbxeTeQOvaScfqIOOmaa",
-  "components" : { },
+  "parameter" : { },
   "methods" : [ "TRACE", "HEAD", "DELETE", "POST", "GET" ],
   "response_description" : {
     "format" : "JxkyvRnL",

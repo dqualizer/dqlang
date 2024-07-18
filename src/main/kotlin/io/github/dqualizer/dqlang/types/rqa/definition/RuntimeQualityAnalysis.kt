@@ -5,9 +5,9 @@ import io.github.dqualizer.dqlang.types.rqa.definition.monitoring.MonitoringDefi
 import io.github.dqualizer.dqlang.types.rqa.definition.resilience.ResilienceDefinition
 
 data class RuntimeQualityAnalysis(
-    val loadTestDefinition: Set<LoadTestDefinition> = HashSet(),
-    val monitoringDefinition: Set<MonitoringDefinition> = HashSet(),
-    val resilienceDefinition: Set<ResilienceDefinition> = HashSet()
+  val loadTestDefinition: MutableSet<LoadTestDefinition> = HashSet(),
+  val monitoringDefinition: MutableSet<MonitoringDefinition> = HashSet(),
+  val resilienceDefinition: MutableSet<ResilienceDefinition> = HashSet()
 )
 
 

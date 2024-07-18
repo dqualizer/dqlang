@@ -2,38 +2,52 @@ package io.github.dqualizer.dqlang.types.dam.architecture
 
 import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
-import org.springframework.data.mongodb.core.mapping.Document
-import org.springframework.http.HttpMethod
 import java.util.*
-
+import kotlin.collections.HashSet
 
 data class RESTEndpoint @JsonCreator constructor(
-    override var name: String,
+    val name: String,
+    // reference to a code component, for example a method
+    @JsonProperty("code_component")
+    val codeComponent: String,
     val route: String,
-    val components: Map<EndpointComponentType, Set<EndpointComponent>> = EnumMap(EndpointComponentType::class.java),
-    val methods: Set<HttpMethod> = HashSet(),
+    val parameter: Set<EndpointParameter> = HashSet(),
+    val methods: Set<EndpointMethod> = HashSet(),
     @JsonProperty("response_description")
     val responseDescription: ResponseDescription? = null
-) : CodeComponent(name,name, "REST Endpoint") {
-    enum class EndpointComponentType {
+) {
+    enum class EndpointParameterType {
         PathVariable,
         QueryParameter,
         RequestBody,
         Header
     }
 
-    data class EndpointComponent(
-        val type: EndpointComponentType? = null,
-        val format: String? = null
+    /**
+     * We use our own enum since the Spring HttpMethod is not working with RabbitMQ serialization
+     */
+    enum class EndpointMethod {
+        GET,
+        HEAD,
+        POST,
+        PUT,
+        PATCH,
+        DELETE,
+        OPTIONS,
+        TRACE
+    }
+
+    data class EndpointParameter(
+        val type: EndpointParameterType? = null,
+        val data: String? = null
     ) {
         fun checkFormat(input: String?): Boolean {
-            val regex = Regex(format!!)
+            val regex = Regex(data!!)
             return regex.matches(input!!)
         }
     }
 
-
-    fun getComponentsOfType(type: EndpointComponentType?): Set<EndpointComponent> {
-        return components.getOrDefault(type, emptySet())
+    fun getParameterOfType(type: EndpointParameterType): Set<EndpointParameter> {
+        return parameter.filter { type == it.type }.toHashSet()
     }
 }
