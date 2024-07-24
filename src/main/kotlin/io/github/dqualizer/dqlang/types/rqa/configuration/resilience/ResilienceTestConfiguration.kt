@@ -8,5 +8,5 @@ data class ResilienceTestConfiguration(
   val environment: String? = null,
 
   @JsonProperty("resilience_tests")
-  val enrichedResilienceTestDefinitions: Set<ResilienceTestArtifact> = emptySet()
+  val resilienceTestArtifacts: Set<ResilienceTestArtifact> = emptySet()
 )

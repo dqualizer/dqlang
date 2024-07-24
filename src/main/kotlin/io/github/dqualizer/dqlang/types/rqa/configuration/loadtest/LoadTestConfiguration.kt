@@ -14,6 +14,6 @@ data class LoadTestConfiguration(
   val baseURL: String? = null,
 
   @JsonProperty("load_tests")
-  val loadTestArtifacts: Set<LoadTestArtifact>? = HashSet()
+  val loadTestArtifacts: Set<LoadTestArtifact> = HashSet()
 )
 
