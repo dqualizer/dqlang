@@ -20,10 +20,6 @@ import java.util.*
 
 @Document
 data class SoftwareSystem(
-  /**
-   * The name of the software system.
-   */
-  @JsonProperty("name")
   @JsonPropertyDescription("The name of the software system.")
   val name: String,
 
@@ -32,7 +28,6 @@ data class SoftwareSystem(
   /**
    * The services that the software system provides.
    */
-  @JsonProperty("services")
   @JsonPropertyDescription("The services that the software system provides.")
   @DocumentReference
   var services: List<ServiceDescription> = ArrayList(),
@@ -43,7 +38,20 @@ data class SoftwareSystem(
    */
   @JsonProperty("runtime_platforms")
   @JsonPropertyDescription("The runtime platforms that the valious parts of the software system run on. An empty array should indicate that the software system runs on a local runtime platform.")
-  val runtimePlatforms: List<RuntimePlatform> = ArrayList()
+  val runtimePlatforms: List<RuntimePlatform> = ArrayList(),
+
+  @JsonProperty("process_name")
+  private val processName: String? = null,
+
+  @JsonProperty("process_path")
+  private val processPath: String? = null,
+
+  @JsonProperty("package_member")
+  private val packageMember: String? = null,
+
+  // only used for resilience tests with Chaos Monkey at the moment, load tests use top level base_url
+  @JsonProperty("cmsb_base_url")
+  private val cmsbBaseUrl: String? = null
 ) : ArchitectureEntity(), ComplexStorable<SoftwareSystem> {
 
 

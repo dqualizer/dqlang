@@ -1,11 +1,11 @@
 package io.github.dqualizer.dqlang.types.adapter.gatling.stimulus
 
-data class GatlingInjectionPeakProfile (
+data class GatlingInjectionPeakProfile(
 
-    override val baseLoad: Double,
+  override val baseLoad: Double,
 
-    val peakLoad: Int,
+  val peakLoad: Int,
 
-    val duration: Int
+  val duration: Int
 
-): GatlingInjectionProfile(baseLoad)
+) : GatlingInjectionProfile(baseLoad)

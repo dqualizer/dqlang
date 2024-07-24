@@ -3,10 +3,10 @@ package io.github.dqualizer.dqlang.types.rqa.definition
 import com.fasterxml.jackson.databind.ObjectMapper
 import io.github.dqualizer.dqlang.messaging.AMQPAutoConfiguration
 import io.github.dqualizer.dqlang.test.MessagingTestConfiguration
-import io.github.dqualizer.dqlang.types.rqa.definition.stimulus.loadprofile.ConstantLoad
-import io.github.dqualizer.dqlang.types.rqa.definition.stimulus.loadprofile.LoadIncrease
-import io.github.dqualizer.dqlang.types.rqa.definition.stimulus.loadprofile.LoadPeak
-import io.github.dqualizer.dqlang.types.rqa.definition.stimulus.loadprofile.LoadProfile
+import io.github.dqualizer.dqlang.types.rqa.definition.loadtest.stimulus.loadprofile.ConstantLoad
+import io.github.dqualizer.dqlang.types.rqa.definition.loadtest.stimulus.loadprofile.LoadIncrease
+import io.github.dqualizer.dqlang.types.rqa.definition.loadtest.stimulus.loadprofile.LoadPeak
+import io.github.dqualizer.dqlang.types.rqa.definition.loadtest.stimulus.loadprofile.LoadProfile
 import org.jeasy.random.EasyRandom
 import org.jeasy.random.EasyRandomParameters
 import org.junit.jupiter.api.Assertions.*
@@ -22,51 +22,51 @@ import org.springframework.context.annotation.Import
 @Import(MessagingTestConfiguration::class)
 internal class RuntimeQualityAnalysisTest {
 
-    @Autowired
-    lateinit var messageConverter: MessageConverter
+  @Autowired
+  lateinit var messageConverter: MessageConverter
 
-    @Autowired
-    lateinit var objectMapper: ObjectMapper
+  @Autowired
+  lateinit var objectMapper: ObjectMapper
 
 
-    var generator = EasyRandom(
-        EasyRandomParameters().randomize(
-            LoadProfile::class.java
-        ) {
-            return@randomize EasyRandom().nextObject(
-                listOf(
-                    LoadIncrease::class.java,
-                    LoadPeak::class.java,
-                    ConstantLoad::class.java
-                ).random()
-            )
-        }
-    )
-
-    @Test
-    fun canSerializeToJson() {
-        val rqa = generateRandomRQA()
-
-        val msg = messageConverter.toMessage(rqa, MessageProperties())
-
-        assertNotNull(msg.body)
-        assertDoesNotThrow { objectMapper.readTree(msg.body) }
+  var generator = EasyRandom(
+    EasyRandomParameters().randomize(
+      LoadProfile::class.java
+    ) {
+      return@randomize EasyRandom().nextObject(
+        listOf(
+          LoadIncrease::class.java,
+          LoadPeak::class.java,
+          ConstantLoad::class.java
+        ).random()
+      )
     }
+  )
 
-    @Test
-    fun canDeserializeFromJson() {
-        val rqa = generateRandomRQA()
+  @Test
+  fun canSerializeToJson() {
+    val rqa = generateRandomRQA()
 
-        val msg = messageConverter.toMessage(rqa, MessageProperties())
+    val msg = messageConverter.toMessage(rqa, MessageProperties())
 
-        val deserialized = messageConverter.fromMessage(msg) as RuntimeQualityAnalysis
+    assertNotNull(msg.body)
+    assertDoesNotThrow { objectMapper.readTree(msg.body) }
+  }
 
-        assertNotNull(msg.body)
-        assertNotNull(deserialized)
-        assertEquals(rqa.toString(), deserialized.toString())
-    }
+  @Test
+  fun canDeserializeFromJson() {
+    val rqa = generateRandomRQA()
 
-    private fun generateRandomRQA(): RuntimeQualityAnalysis {
-        return generator.nextObject(RuntimeQualityAnalysis::class.java)
-    }
+    val msg = messageConverter.toMessage(rqa, MessageProperties())
+
+    val deserialized = messageConverter.fromMessage(msg) as RuntimeQualityAnalysis
+
+    assertNotNull(msg.body)
+    assertNotNull(deserialized)
+    assertEquals(rqa.toString(), deserialized.toString())
+  }
+
+  private fun generateRandomRQA(): RuntimeQualityAnalysis {
+    return generator.nextObject(RuntimeQualityAnalysis::class.java)
+  }
 }

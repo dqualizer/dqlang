@@ -2,10 +2,10 @@ package io.github.dqualizer.dqlang.types.adapter.gatling.stimulus
 
 data class GatlingInjectionIncreaseProfile(
 
-    override val baseLoad: Double,
+  override val baseLoad: Double,
 
-    val highestLoad: Int,
+  val highestLoad: Int,
 
-    val constantDuration: Int
+  val constantDuration: Int
 
-): GatlingInjectionProfile(baseLoad)
+) : GatlingInjectionProfile(baseLoad)

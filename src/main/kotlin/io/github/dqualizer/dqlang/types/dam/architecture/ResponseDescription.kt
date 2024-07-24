@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty
 
 
 data class ResponseDescription(
-    val format: String,
-    @JsonProperty("expected_status_codes")
-    val expectedStatusCodes: Set<Int> = emptySet()
+  val format: String,
+  @JsonProperty("expected_status_codes")
+  val expectedStatusCodes: Set<Int> = emptySet()
 )
