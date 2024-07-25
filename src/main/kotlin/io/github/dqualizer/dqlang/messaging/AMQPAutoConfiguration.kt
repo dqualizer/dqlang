@@ -3,7 +3,6 @@ package io.github.dqualizer.dqlang.messaging
 import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.PropertyNamingStrategies
-import com.fasterxml.jackson.databind.PropertyNamingStrategy
 import com.fasterxml.jackson.databind.module.SimpleModule
 import com.fasterxml.jackson.module.kotlin.registerKotlinModule
 import io.github.dqualizer.dqlang.messaging.MessagingConfiguration.ExchangeConfiguration
@@ -24,76 +23,76 @@ import java.lang.module.ModuleDescriptor
 @Configuration
 class AMQPAutoConfiguration {
 
-    @Bean
-    fun objectMapper(): ObjectMapper {
-        val converterModule = SimpleModule("dqlang_converters")
-            .addSerializer(ModuleDescriptor.Version::class.java, VersionSerializer())
-            .addDeserializer(ModuleDescriptor.Version::class.java, VersionDeserializer())
-            .addSerializer(HttpMethod::class.java, HTTPMethodSerializer())
-            .addDeserializer(HttpMethod::class.java, HTTPMethodDeserializer())
+  @Bean
+  fun objectMapper(): ObjectMapper {
+    val converterModule = SimpleModule("dqlang_converters")
+      .addSerializer(ModuleDescriptor.Version::class.java, VersionSerializer())
+      .addDeserializer(ModuleDescriptor.Version::class.java, VersionDeserializer())
+      .addSerializer(HttpMethod::class.java, HTTPMethodSerializer())
+      .addDeserializer(HttpMethod::class.java, HTTPMethodDeserializer())
 
 
-        return ObjectMapper()
-            .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
-            .configure(DeserializationFeature.FAIL_ON_MISSING_CREATOR_PROPERTIES, false)
-            .setPropertyNamingStrategy(PropertyNamingStrategies.SNAKE_CASE)
-            .registerModule(converterModule)
-            .registerKotlinModule()
-    }
+    return ObjectMapper()
+      .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
+      .configure(DeserializationFeature.FAIL_ON_MISSING_CREATOR_PROPERTIES, false)
+      .setPropertyNamingStrategy(PropertyNamingStrategies.SNAKE_CASE)
+      .registerModule(converterModule)
+      .registerKotlinModule()
+  }
 
-    @Bean
-    fun messageConverter(mapper: ObjectMapper): MessageConverter {
-        return Jackson2JsonMessageConverter(mapper)
-    }
+  @Bean
+  fun messageConverter(mapper: ObjectMapper): MessageConverter {
+    return Jackson2JsonMessageConverter(mapper)
+  }
 
-    @Bean
-    fun messagingConfiguration(): MessagingConfiguration {
-        return MessagingConfiguration()
-    }
+  @Bean
+  fun messagingConfiguration(): MessagingConfiguration {
+    return MessagingConfiguration()
+  }
 
-    @Bean
-    @ConditionalOnBean(MessagingConfiguration::class)
-    fun queueFactory(
-        applicationContext: ApplicationContext,
-        messagingConfiguration: MessagingConfiguration,
-        rabbitAdmin: AmqpAdmin
-    ): QueueFactory {
-        return QueueFactory(applicationContext, rabbitAdmin, messagingConfiguration)
-    }
+  @Bean
+  @ConditionalOnBean(MessagingConfiguration::class)
+  fun queueFactory(
+    applicationContext: ApplicationContext,
+    messagingConfiguration: MessagingConfiguration,
+    rabbitAdmin: AmqpAdmin
+  ): QueueFactory {
+    return QueueFactory(applicationContext, rabbitAdmin, messagingConfiguration)
+  }
 
-    @Suppress("ObjectLiteralToLambda")
-    @Bean
-    @ConfigurationPropertiesBinding //tell Spring to load this bean before loading Properties
-    @ConditionalOnBean(MessagingConfiguration::class)
-    fun queueConfigurationConverter(): Converter<String, QueueConfiguration> {
-        // This has to be an explicit object. Otherwise, the generic type arguments get erased.
-        // See https://github.com/spring-projects/spring-framework/issues/22509
-        return object : Converter<String, QueueConfiguration> {
-            override fun convert(propertyStr: String): QueueConfiguration {
-                if (propertyStr.isBlank()) {
-                    return QueueConfiguration()
-                } else {
-                    throw IllegalArgumentException("$propertyStr is not a valid value for ${QueueConfiguration::class.qualifiedName}. Expected a blank string or a map with properties.")
-                }
-            }
+  @Suppress("ObjectLiteralToLambda")
+  @Bean
+  @ConfigurationPropertiesBinding //tell Spring to load this bean before loading Properties
+  @ConditionalOnBean(MessagingConfiguration::class)
+  fun queueConfigurationConverter(): Converter<String, QueueConfiguration> {
+    // This has to be an explicit object. Otherwise, the generic type arguments get erased.
+    // See https://github.com/spring-projects/spring-framework/issues/22509
+    return object : Converter<String, QueueConfiguration> {
+      override fun convert(propertyStr: String): QueueConfiguration {
+        if (propertyStr.isBlank()) {
+          return QueueConfiguration()
+        } else {
+          throw IllegalArgumentException("$propertyStr is not a valid value for ${QueueConfiguration::class.qualifiedName}. Expected a blank string or a map with properties.")
         }
+      }
     }
+  }
 
-    @Suppress("ObjectLiteralToLambda")
-    @Bean
-    @ConfigurationPropertiesBinding //tell Spring to load this bean before loading Properties
-    @ConditionalOnBean(MessagingConfiguration::class)
-    fun exchangeConfigurationConverter(): Converter<String, ExchangeConfiguration> {
-        // This has to be an explicit object. Otherwise, the generic type arguments get erased.
-        // See https://github.com/spring-projects/spring-framework/issues/22509
-        return object : Converter<String, ExchangeConfiguration> {
-            override fun convert(propertyStr: String): ExchangeConfiguration {
-                if (propertyStr.isBlank()) {
-                    return ExchangeConfiguration()
-                } else {
-                    throw IllegalArgumentException("$propertyStr is not a valid value for ${ExchangeConfiguration::class.qualifiedName}. Expected a blank string or a map with properties.")
-                }
-            }
+  @Suppress("ObjectLiteralToLambda")
+  @Bean
+  @ConfigurationPropertiesBinding //tell Spring to load this bean before loading Properties
+  @ConditionalOnBean(MessagingConfiguration::class)
+  fun exchangeConfigurationConverter(): Converter<String, ExchangeConfiguration> {
+    // This has to be an explicit object. Otherwise, the generic type arguments get erased.
+    // See https://github.com/spring-projects/spring-framework/issues/22509
+    return object : Converter<String, ExchangeConfiguration> {
+      override fun convert(propertyStr: String): ExchangeConfiguration {
+        if (propertyStr.isBlank()) {
+          return ExchangeConfiguration()
+        } else {
+          throw IllegalArgumentException("$propertyStr is not a valid value for ${ExchangeConfiguration::class.qualifiedName}. Expected a blank string or a map with properties.")
         }
+      }
     }
+  }
 }

@@ -7,10 +7,10 @@ import io.github.dqualizer.dqlang.types.dam.domainstory.Actor
 import io.github.dqualizer.dqlang.types.dam.domainstory.Group
 import io.github.dqualizer.dqlang.types.dam.domainstory.Person
 import io.github.dqualizer.dqlang.types.dam.domainstory.System
-import io.github.dqualizer.dqlang.types.rqa.definition.stimulus.loadprofile.ConstantLoad
-import io.github.dqualizer.dqlang.types.rqa.definition.stimulus.loadprofile.LoadIncrease
-import io.github.dqualizer.dqlang.types.rqa.definition.stimulus.loadprofile.LoadPeak
-import io.github.dqualizer.dqlang.types.rqa.definition.stimulus.loadprofile.LoadProfile
+import io.github.dqualizer.dqlang.types.rqa.definition.loadtest.stimulus.loadprofile.ConstantLoad
+import io.github.dqualizer.dqlang.types.rqa.definition.loadtest.stimulus.loadprofile.LoadIncrease
+import io.github.dqualizer.dqlang.types.rqa.definition.loadtest.stimulus.loadprofile.LoadPeak
+import io.github.dqualizer.dqlang.types.rqa.definition.loadtest.stimulus.loadprofile.LoadProfile
 import org.jeasy.random.EasyRandom
 import org.jeasy.random.EasyRandomParameters
 import org.reflections.Reflections

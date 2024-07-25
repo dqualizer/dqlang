@@ -5,10 +5,10 @@ import io.github.dqualizer.dqlang.types.adapter.symbolics.generic.SymbolicDurati
 import java.util.concurrent.TimeUnit
 
 data class SymbolicDuration(
-    val integer: SymbolicDurationType<Int>,
+  val integer: SymbolicDurationType<Int>,
 
-    val decimal: SymbolicDurationType<Double>,
+  val decimal: SymbolicDurationType<Double>,
 
-    @JsonProperty("time_unit")
-    val timeUnit: TimeUnit
+  @JsonProperty("time_unit")
+  val timeUnit: TimeUnit
 )

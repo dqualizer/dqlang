@@ -5,29 +5,29 @@ import com.fasterxml.jackson.annotation.JsonProperty
 import org.springframework.data.annotation.PersistenceCreator
 
 class Activity @JsonCreator @PersistenceCreator constructor(
-    name: String,
+  name: String,
 
-    val action: String,
+  val action: String,
 
-    val number: Int,
+  val number: Int,
 
-    val initiators: Set<String>,
+  val initiators: Set<String>,
 
-    val targets: Set<String>,
+  val targets: Set<String>,
 
-    @JsonProperty("work_objects")
-    val workObjects: Set<String>
+  @JsonProperty("work_objects")
+  val workObjects: Set<String>
 ) : DSTElement(name) {
 
-    init {
-        if (number < 0) {
-            throw IllegalArgumentException("Number of Activity must be positive")
-        }
+  init {
+    if (number < 0) {
+      throw IllegalArgumentException("Number of Activity must be positive")
     }
+  }
 
-    override fun toString(): String {
-        return "Activity %s: %s %s %s to/for %s".format(
-            id, initiators, action.takeIf { it.isNotBlank() } ?: "?", workObjects, targets
-        )
-    }
+  override fun toString(): String {
+    return "Activity %s: %s %s %s to/for %s".format(
+      id, initiators, action.takeIf { it.isNotBlank() } ?: "?", workObjects, targets
+    )
+  }
 }

@@ -7,14 +7,14 @@ import java.lang.module.ModuleDescriptor.Version
 
 @ReadingConverter
 class VersionReadConverter : Converter<String, Version> {
-    override fun convert(sourceStr: String): Version {
-        return Version.parse(sourceStr)
-    }
+  override fun convert(sourceStr: String): Version {
+    return Version.parse(sourceStr)
+  }
 }
 
 @WritingConverter
 class VersionWriteConverter : Converter<Version, String> {
-    override fun convert(version: Version): String {
-        return version.toString()
-    }
+  override fun convert(version: Version): String {
+    return version.toString()
+  }
 }

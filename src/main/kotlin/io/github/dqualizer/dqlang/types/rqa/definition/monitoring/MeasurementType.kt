@@ -1,11 +1,11 @@
 package io.github.dqualizer.dqlang.types.rqa.definition.monitoring
 
 enum class MeasurementType {
-    EXECUTION_TIME,
-    EXECUTION_COUNT,
-    VALUE_INSPECTION;
+  EXECUTION_TIME,
+  EXECUTION_COUNT,
+  VALUE_INSPECTION;
 
-    override fun toString(): String {
-        return this.name
-    }
+  override fun toString(): String {
+    return this.name
+  }
 }

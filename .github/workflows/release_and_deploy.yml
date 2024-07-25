@@ -8,11 +8,14 @@ env:
 
 jobs:
   build_and_test:
-    name: Build, Test and Publish
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        java-version: [ 17, 21 ]
+    name: Build, Test and Publish
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Configure Git
         run: |
           git config --global committer.email "noreply@github.com"
@@ -20,18 +23,18 @@ jobs:
           git config --global author.email "${GITHUB_ACTOR}@users.noreply.github.com"
           git config --global author.name "${GITHUB_ACTOR}"
 
-      - name: Set up Java 17
-        uses: actions/setup-java@v3
+      - name: Set up Java ${{ matrix.java-version }}
+        uses: actions/setup-java@v4
         with:
-          java-version: '17'
+          java-version: '${{ matrix.java-version }}'
           distribution: 'adopt'
           cache: 'gradle'
 
       - name: Validate Gradle wrapper
-        uses: gradle/wrapper-validation-action@v1
+        uses: gradle/actions/wrapper-validation@v3
 
       - name: Setup Gradle
-        uses: gradle/gradle-build-action@v2
+        uses: gradle/actions/setup-gradle@v3
 
       - name: Get Artifact version
         run: |
@@ -54,4 +57,4 @@ jobs:
         if: github.ref != 'refs/heads/main'
         run: |
           echo "Performing snapshot release of version ${{ env.ARTIFACT_VERSION }}-${{ github.ref_name }}-SNAPSHOT"
-          ./gradlew --no-daemon -q release publish -x preTagCommit -x createReleaseTag -x updateVersion -x commitNewVersion -Prelease.releaseVersion=${{ env.ARTIFACT_VERSION }}-${{ github.ref_name }}-SNAPSHOT   
+          ./gradlew --no-daemon -q release publish -x preTagCommit -x createReleaseTag -x updateVersion -x commitNewVersion -Prelease.releaseVersion=${{ env.ARTIFACT_VERSION }}-${{ github.ref_name }}-SNAPSHOT

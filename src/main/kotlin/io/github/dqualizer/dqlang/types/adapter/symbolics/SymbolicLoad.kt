@@ -5,14 +5,14 @@ import io.github.dqualizer.dqlang.types.adapter.symbolics.generic.SymbolicLoadTy
 import java.util.concurrent.TimeUnit
 
 data class SymbolicLoad(
-    val integer: SymbolicLoadType<Int>,
+  val integer: SymbolicLoadType<Int>,
 
-    val decimal: SymbolicLoadType<Double>,
+  val decimal: SymbolicLoadType<Double>,
 
-    /**
-     * TimeUnit for open loads,
-     * @example users per SECONDS, users per MINUTES
-     */
-    @JsonProperty("time_unit")
-    val timeUnit: TimeUnit
+  /**
+   * TimeUnit for open loads,
+   * @example users per SECONDS, users per MINUTES
+   */
+  @JsonProperty("time_unit")
+  val timeUnit: TimeUnit
 )

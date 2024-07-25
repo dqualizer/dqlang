@@ -5,9 +5,9 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY)
 @JsonSubTypes(
-    JsonSubTypes.Type(value = Person::class, name = "Person"),
-    JsonSubTypes.Type(value = System::class, name = "System"),
-    JsonSubTypes.Type(value = Group::class, name = "Group")
+  JsonSubTypes.Type(value = Person::class, name = "Person"),
+  JsonSubTypes.Type(value = System::class, name = "System"),
+  JsonSubTypes.Type(value = Group::class, name = "Group")
 )
 sealed class Actor(name: String) : DSTElement(name)
 

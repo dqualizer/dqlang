@@ -4,11 +4,11 @@ package io.github.dqualizer.dqlang.types.rqa.configuration.monitoring.instrument
  * Instrument Types. Based on the opentelmetry spec.
  */
 enum class InstrumentType {
-    GAUGE,
-    COUNTER,
-    HISTOGRAM;
+  GAUGE,
+  COUNTER,
+  HISTOGRAM;
 
-    override fun toString(): String {
-        return name
-    }
+  override fun toString(): String {
+    return name
+  }
 }

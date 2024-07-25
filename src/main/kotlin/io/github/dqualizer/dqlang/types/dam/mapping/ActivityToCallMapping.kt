@@ -56,7 +56,7 @@ class ActivityToCallMapping : DAMapping {
     this.startCorrelationId = startCorrelationId
     this.end = end
   }
-  
+
   fun isAsync(): Boolean {
     return end != null
   }
