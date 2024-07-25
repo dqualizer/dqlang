@@ -47,6 +47,19 @@ data class ServiceDescription(
   @JsonPropertyDescription("The API Schema that this service provides.")
   val apiSchema: APISchema?,
 
+  @JsonProperty("process_name")
+  private val processName: String? = null,
+
+  @JsonProperty("process_path")
+  private val processPath: String? = null,
+
+  @JsonProperty("package_member")
+  private val packageMember: String? = null,
+
+  // only used for resilience tests with Chaos Monkey at the moment, load tests use top level base_url
+  @JsonProperty("cmsb_base_url")
+  private val cmsbBaseUrl: String? = null,
+
   @JsonProperty("code_components")
   @JsonPropertyDescription("The components that this service provides. Legacy class to keep compatibilty to the first iteration of dqualizer.")
   val codeComponents: Collection<CodeComponent>
