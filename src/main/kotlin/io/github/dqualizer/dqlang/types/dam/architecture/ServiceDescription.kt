@@ -52,17 +52,17 @@ data class ServiceDescription(
   val codeComponents: Collection<CodeComponent>,
 
   @JsonProperty("process_name")
-  private val processName: String? = null,
+  val processName: String? = null,
 
   @JsonProperty("process_path")
-  private val processPath: String? = null,
+  val processPath: String? = null,
 
   @JsonProperty("package_member")
-  private val packageMember: String? = null,
+  val packageMember: String? = null,
 
   // only used for resilience tests with Chaos Monkey at the moment, load tests use top level base_url
   @JsonProperty("cmsb_base_url")
-  private val cmsbBaseUrl: String? = null
+  val cmsbBaseUrl: String? = null
 
 ) : ArchitectureEntity() {
   fun getDeploymentName(): String {
