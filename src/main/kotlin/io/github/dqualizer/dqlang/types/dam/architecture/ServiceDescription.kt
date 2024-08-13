@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonPropertyDescription
 import io.github.dqualizer.dqlang.types.dam.architecture.apischema.APISchema
 import org.springframework.data.mongodb.core.mapping.Document
-import java.lang.module.ModuleDescriptor
 import java.net.URI
 
 /**
@@ -68,11 +67,6 @@ data class ServiceDescription(
 
 ) : ArchitectureEntity() {
   fun getDeploymentName(): String {
-    val service = ServiceDescription("name", "depl",  URI(""), ProgrammingFramework("", ModuleDescriptor.Version.parse("")), "lang",
-      InstrumentationFramework("name"), "", emptyList(), null, emptyList(), null, null, null )
-
-    service.processPath = "test"
-
     return deploymentName ?: name
   }
 }
