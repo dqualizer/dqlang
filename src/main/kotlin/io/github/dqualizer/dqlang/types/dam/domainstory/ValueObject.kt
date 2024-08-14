@@ -6,6 +6,6 @@ import org.springframework.data.annotation.PersistenceCreator;
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY)
 class ValueObject @JsonCreator @PersistenceCreator constructor(
-    name: String
+  name: String
 ) : DSTElement(name)
 

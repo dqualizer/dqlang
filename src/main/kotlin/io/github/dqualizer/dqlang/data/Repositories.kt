@@ -11,10 +11,10 @@ import org.springframework.stereotype.Repository
 
 @Component
 data class DqualizerRepositories(
-    val damRepository: DAMMongoRepository,
-    val softwareSystemRepository: SoftwareSystemMongoRepository,
-    val domainStoryRepository: DomainStoryMongoRepository,
-    val servicesRepository: ServicesMongoRepository
+  val damRepository: DAMMongoRepository,
+  val softwareSystemRepository: SoftwareSystemMongoRepository,
+  val domainStoryRepository: DomainStoryMongoRepository,
+  val servicesRepository: ServicesMongoRepository
 )
 
 @Repository

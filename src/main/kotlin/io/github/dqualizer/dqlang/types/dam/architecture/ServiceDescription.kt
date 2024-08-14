@@ -43,12 +43,27 @@ data class ServiceDescription(
   @JsonPropertyDescription("The technical Endpoints that this service has.")
   val endpoints: Collection<RESTEndpoint>,
 
+  @JsonProperty("api_schema")
   @JsonPropertyDescription("The API Schema that this service provides.")
   val apiSchema: APISchema?,
 
   @JsonProperty("code_components")
   @JsonPropertyDescription("The components that this service provides. Legacy class to keep compatibilty to the first iteration of dqualizer.")
-  val codeComponents: Collection<CodeComponent>
+  val codeComponents: Collection<CodeComponent>,
+
+  @JsonProperty("process_name")
+  val processName: String? = null,
+
+  // variable, since process_path should be re-definable
+  @JsonProperty("process_path")
+  var processPath: String? = null,
+
+  @JsonProperty("package_member")
+  val packageMember: String? = null,
+
+  // only used for resilience tests with Chaos Monkey at the moment, load tests use top level base_url
+  @JsonProperty("cmsb_base_url")
+  val cmsbBaseUrl: String? = null
 
 ) : ArchitectureEntity() {
   fun getDeploymentName(): String {

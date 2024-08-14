@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty
 
 data class FieldItem(
   val path: String? = null,
-  
+
   @JsonProperty("operation_id")
   val operationID: String? = null,
 
