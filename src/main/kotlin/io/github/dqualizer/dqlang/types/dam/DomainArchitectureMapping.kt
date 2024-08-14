@@ -17,6 +17,7 @@ import org.springframework.data.mongodb.core.mapping.DocumentReference
 @Document
 class DomainArchitectureMapping
 @PersistenceCreator @JsonCreator constructor(
+  val name: String,
   /**
    * technical system description
    */
@@ -25,6 +26,7 @@ class DomainArchitectureMapping
   @field:JsonProperty("mappings") @param:JsonProperty("mappings") val daMappings: Set<DAMapping>
 ) : Identifiable(), ComplexStorable<DomainArchitectureMapping?> {
   constructor(softwareSystem: SoftwareSystem, domainStory: DomainStory) : this(
+    "default-dam",
     softwareSystem,
     domainStory,
     HashSet<DAMapping>()
